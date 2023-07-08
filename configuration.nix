@@ -42,7 +42,7 @@
   users.users.phil = {
     isNormalUser = true;
     description = "Phil";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "libvirtd" "networkmanager" "wheel" "video" ];
     packages = with pkgs; [];
   };
 
