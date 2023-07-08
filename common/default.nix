@@ -21,6 +21,7 @@
       ffmpeg
       file
       firefox
+      gcc
       git
       glib
       gnome.zenity

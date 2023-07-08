@@ -1,7 +1,11 @@
 { config, pkgs, host, ... }:
 
 {
-  imports = [ ./alacritty.nix ./hosts/${host}.nix ];
+  imports = [
+    ./alacritty.nix
+    ./astronvim.nix
+    ./hosts/${host}.nix
+  ];
 
   home.username = "phil";
   home.homeDirectory = "/home/phil";
