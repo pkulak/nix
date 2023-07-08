@@ -2,40 +2,41 @@
   description = "Phil's Flake";
 
   inputs = {
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.url          = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url   = "github:NixOS/nixos-hardware";
+    
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware }: {
-    nixosConfigurations = {
-      fry = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        
-        specialArgs = {
-          inherit nixos-hardware;
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
-        };
-        
-        modules = [
-          ./configuration.nix
-          ./hosts/fry
-        ];
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware, home-manager }: let
+    mkSystem = host: nixpkgs.lib.nixosSystem rec {
+      system = "x86_64-linux";
+      
+      specialArgs = {
+        inherit nixos-hardware;
+        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
       };
+      
+      modules = [
+        ./configuration.nix
+        ./hosts/${host}
 
-      kvm = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        
-        specialArgs = {
-          inherit nixos-hardware;
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
-        };
-        
-        modules = [
-          ./configuration.nix
-          ./hosts/kvm
-        ];
-      };
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.phil = import ./home;
+          home-manager.extraSpecialArgs = { inherit host; };
+        }
+      ];
+    };
+  in {
+    nixosConfigurations = {
+      fry = mkSystem "fry";
+      kvm = mkSystem "kvm";
     };
   };
 }
