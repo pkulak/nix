@@ -26,7 +26,6 @@
       gnome.zenity
       gocryptfs
       imv
-      jetbrains.idea-ultimate
       mpv
       networkmanagerapplet
       pamixer

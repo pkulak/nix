@@ -55,7 +55,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

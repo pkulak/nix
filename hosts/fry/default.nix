@@ -12,5 +12,10 @@ in
     programs.dconf.enable = true;
 
     services.udev.packages = [ vuescan ];
-    environment.systemPackages = [ pkgs.virt-manager vuescan ];
+    
+    environment.systemPackages = [
+      pkgs.jetbrains.idea-ultimate
+      pkgs.virt-manager
+      vuescan
+    ];
   }
