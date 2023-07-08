@@ -25,7 +25,7 @@ align-check optimal 1
 # Disk Encryption
 #######################################
 
-echo -n "${LUKS_PASSWORD}" | cryptsetup --align-payload 8192 --type luks1 --cipher aes-xts-plain64 --hash sha256 luksFormat ${LUKS_PARTITION} -
+echo -n "${LUKS_PASSWORD}" | cryptsetup --type luks2 --label luks luksFormat ${LUKS_PARTITION} -
 echo -n "${LUKS_PASSWORD}" | cryptsetup luksOpen ${LUKS_PARTITION} ${LUKS_NAME} -
 
 #######################################
