@@ -33,8 +33,8 @@ echo -n "${LUKS_PASSWORD}" | cryptsetup luksOpen ${LUKS_PARTITION} ${LUKS_NAME} 
 #######################################
 
 # Format disk
-mkfs.vfat -F32 -n BOOT $BOOT_PARTITION
-mkfs.btrfs /dev/mapper/$LUKS_NAME
+mkfs.vfat -F32 -n boot $BOOT_PARTITION
+mkfs.btrfs --label root /dev/mapper/$LUKS_NAME
 
 # Mount BTRFS partition
 opts_btrfs="ssd,defaults,noatime,nodiratime,compress-force=zstd,autodefrag"
