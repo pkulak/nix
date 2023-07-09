@@ -37,7 +37,6 @@
       sublime-merge
       tldr
       woeusb
-      xdragon
       yt-dlp
       zathura
 
