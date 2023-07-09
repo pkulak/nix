@@ -22,5 +22,13 @@
         }
       }
     '';
+
+    "astronvim/lua/user/options.lua".text = ''
+      return {
+        opt = {
+          clipboard = "unnamed"
+        }
+      }
+    '';
   };
 }
