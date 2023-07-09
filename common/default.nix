@@ -30,7 +30,6 @@
       mpv
       networkmanagerapplet
       pamixer
-      pavucontrol
       podman
       ranger
       ripgrep

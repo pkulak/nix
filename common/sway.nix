@@ -82,7 +82,6 @@ in
       gnome.gnome-themes-extra
       grim
       mako
-      playerctl
       slurp
       start-sway
       swayidle
