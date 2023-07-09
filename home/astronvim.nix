@@ -14,8 +14,8 @@
     "astronvim/lua/user/mappings.lua".text = ''
       return {
         n = {
-          ["=j"] = { ":%!nix-shell -p jq --run jq<CR>:set syntax=json<CR>", desc = "Format JSON" },
-          ["=x"] = { ":%!nix-shell -p libxml2 --run \"xmllint --format -\"<CR>:set syntax=xml<CR>", desc = "Format XML" },
+          ["=j"] = { ":%!${pkgs.jq}/bin/jq<CR>:set syntax=json<CR>", desc = "Format JSON" },
+          ["=x"] = { ":%!${pkgs.libxml2}/bin/xmllint --format -<CR>:set syntax=xml<CR>", desc = "Format XML" },
           ["gb"] = { ":buffer #<cr>", desc = "Go to last buffer" },
           ["<leader>b"] = { name = "Buffers" },
           ["<leader>w"] = { ":wa<cr>", desc = "Save All" }
