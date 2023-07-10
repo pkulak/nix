@@ -6,6 +6,7 @@
     ./astronvim.nix
     ./sway
     ./waybar
+    ./wofi
 
     ./hosts/${host}.nix
   ];
