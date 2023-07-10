@@ -72,6 +72,23 @@
       clean_vim = true
     '';
 
+    # Default Apps
+    "mimeapps.list".text = ''
+      [Default Applications]
+      text/html=firefox.desktop
+      x-scheme-handler/http=firefox.desktop
+      x-scheme-handler/https=firefox.desktop
+
+      image/gif=swayimg.desktop
+      image/jpeg=swayimg.desktop
+      image/png=swayimg.desktop
+
+      video/mp4=mpv.desktop
+      video/quicktime=mpv.desktop
+
+      application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+    '';
+
     # Ranger
     "ranger/rc.conf".text = "map <C-d> shell ${pkgs.xdragon}/bin/dragon -a -x %p";
   };
