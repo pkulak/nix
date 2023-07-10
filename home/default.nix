@@ -4,6 +4,7 @@
   imports = [
     ./alacritty.nix
     ./astronvim.nix
+    ./sway
     ./waybar
 
     ./hosts/${host}.nix

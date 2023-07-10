@@ -80,17 +80,10 @@ in
       alacritty
       gnome.adwaita-icon-theme
       gnome.gnome-themes-extra
-      grim
-      mako
-      slurp
       start-sway
-      swayidle
       swayimg
-      waybar
       wayland
-      wlsunset
       wl-clipboard
-      wofi
       xdg-utils
     ];
 
