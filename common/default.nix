@@ -16,7 +16,6 @@
       cached-nix-shell
       curl
       exa
-      chezmoi
       distrobox
       ffmpeg
       file
