@@ -141,8 +141,8 @@ in {
       { criteria = { app_id = "popup_shell"; }; command = "resize set 1280 720"; }
 
       # Zoom Bullshit
-      { criteria = { title = "Firefox - Sharing Inidicator"; }; command = "floating enable"; }
-      { criteria = { title = "Firefox - Sharing Inidicator"; }; command = "move scratchpad"; }
+      { criteria = { title = "Firefox - Sharing Indicator"; }; command = "floating enable"; }
+      { criteria = { title = "Firefox - Sharing Indicator"; }; command = "move scratchpad"; }
 
       # Steam
       { criteria = { class = "Steam"; }; command = "floating enable"; }
