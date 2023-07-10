@@ -19,9 +19,9 @@
     };
 
     font = {
-      normal.family = "FantasqueSansMono Nerd Font";
-      bold.family = "FantasqueSansMono Nerd Font";
-      italic.family = "FantasqueSansMono Nerd Font";
+      normal.family = "FantasqueSansM Nerd Font Mono";
+      bold.family = "FantasqueSansM Nerd Font Mono";
+      italic.family = "FantasqueSansM Nerd Font Mono";
       size = pkgs.lib.mkDefault 13;
     };
 
