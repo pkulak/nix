@@ -1,6 +1,20 @@
 { config, pkgs, host, ... }:
 
-{
+let
+  import-photos = pkgs.writeShellApplication {
+    name = "import-photos";
+    text = ''
+      sudo mkdir -p /mnt/usbstick
+      sudo mount -o uid=phil,gid=users /dev/sdb1 /mnt/usbstick
+
+      mkdir -p /mnt/nas/Drive/Negatives/"$(date +%Y)"/"$(date +%m)"/
+
+      mv --backup=numbered /mnt/usbstick/DCIM/100OLYMP/*.ORF /mnt/nas/Drive/Negatives/"$(date +%Y)"/"$(date +%m)"/
+
+      sudo umount /mnt/usbstick
+    '';
+  };
+in {
   imports = [
     ./alacritty.nix
     ./astronvim.nix
@@ -9,6 +23,10 @@
     ./wofi
 
     ./hosts/${host}.nix
+  ];
+
+  home.packages = [
+    import-photos
   ];
 
   home.username = "phil";
