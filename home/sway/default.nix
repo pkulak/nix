@@ -40,7 +40,7 @@ let
   fish = "${pkgs.fish}/bin/fish";
   grim = "${pkgs.grim}/bin/grim";
   slurp = "${pkgs.slurp}/bin/slurp";
-  pamixer = "${pkgs.pamixer}/bin/pamixer";
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
 in {
   xdg.configFile."sway/environment".source = ./environment;
@@ -113,9 +113,9 @@ in {
       "${modifier}+Shift+s" = "exec mkdir -p $HOME/Screenshots && ${slurp} | ${grim} -g - $HOME/Screenshots/$(date +'%Y-%m-%d-%H%M%S.png')";
 
       # Multimedia
-      "--locked XF86AudioRaiseVolume" = "exec ${pamixer} -i 5";
-      "--locked XF86AudioLowerVolume" = "exec ${pamixer} -d 5";
-      "--locked XF86AudioMute" = "exec ${pamixer} --toggle-mute";
+      "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
+      "--locked XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+      "--locked XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
       "--locked XF86AudioPlay" = "exec ${playerctl} play-pause";
       "--locked XF86AudioNext" = "exec ${playerctl} next";
       "--locked XF86AudioPrev" = "exec ${playerctl} previous";
