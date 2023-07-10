@@ -83,10 +83,12 @@
       enableDefaultFonts = true;
       fonts = with pkgs; [ 
         cantarell-fonts
-        ubuntu_font_family
+        font-awesome
+        (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
+        ubuntu_font_family
       ];
 
       fontconfig = {
