@@ -75,7 +75,7 @@
 
     virtualisation.containers.enable = true;
 
-    nix.settings.experimental-features = [ "nix-command" ];
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     programs.neovim = {
       enable = true;
