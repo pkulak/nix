@@ -87,8 +87,10 @@ in {
     };
 
     seat = {
-      "*" = { hide_cursor = "3000"; };
-      "seat0" = { xcursor_theme = "Adwaita 24"; };
+      "*" = { 
+        hide_cursor = "3000";
+        xcursor_theme = "Adwaita 24";
+      };
     };
 
     keybindings = pkgs.lib.mkOptionDefault {

@@ -13,7 +13,6 @@
       age
       btop
       bc
-      cached-nix-shell
       curl
       exa
       distrobox
@@ -28,7 +27,6 @@
       imv
       mpv
       networkmanagerapplet
-      pamixer
       podman
       ranger
       ripgrep
@@ -53,6 +51,12 @@
       { domain = "phil"; type = "-"; item = "nice"; value = "-10"; }
       { domain = "phil"; type = "-"; item = "nofile"; value = "1048576"; }
     ];
+
+    # Printing is nice
+    services.printing.enable = true;
+    services.avahi.enable = true;
+    services.avahi.nssmdns = true;
+    services.avahi.openFirewall = true;
 
     programs.fish.enable = true;
 
