@@ -75,6 +75,8 @@
 
     virtualisation.containers.enable = true;
 
+    nix.settings.experimental-features = [ "nix-command" ];
+
     programs.neovim = {
       enable = true;
       defaultEditor = true;
