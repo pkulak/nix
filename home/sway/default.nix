@@ -150,9 +150,24 @@ in {
       { criteria = { class = "Steam"; }; command = "floating enable"; }
     ];
 
-    modes = pkgs.lib.mkOptionDefault {
+    modes = {
       passthrough = {
         "F12" = "mode \"default\"";
+      };
+
+      resize = {
+        h = "resize shrink width 25px";
+        j = "resize grow height 25px";
+        k = "resize shrink height 25px";
+        l = "resize grow width 25px";
+
+        Left = "resize shrink width 25px";
+        Down = "resize grow height 25px";
+        Up = "resize shrink height 25px";
+        Right = "resize grow width 25px";
+
+        Return = "mode \"default\"";
+        Escape = "mode \"default\"";
       };
     };
 
