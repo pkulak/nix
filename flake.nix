@@ -36,6 +36,7 @@
   in {
     nixosConfigurations = {
       fry = mkSystem "fry";
+      x1  = mkSystem "x1";
       kvm = mkSystem "kvm";
     };
   };
