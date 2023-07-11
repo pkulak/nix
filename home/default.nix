@@ -108,7 +108,19 @@ in {
     '';
 
     # Ranger
-    "ranger/rc.conf".text = "map <C-d> shell ${pkgs.xdragon}/bin/dragon -a -x %p";
+    "ranger/plugins/ranger_devicons" = {
+      source = pkgs.fetchFromGitHub {
+        owner = "alexanderjeurissen";
+        repo = "ranger_devicons";
+        rev = "1b5780117eeebdfcd221ce45823a1ddef8399848";
+        sha256 = "sha256-MMPbYXlSLwECf/Li4KqYbSmKZ8n8LfTdkOfZKshJ30w=";
+      };
+    };
+
+    "ranger/rc.conf".text = ''
+      map <C-d> shell ${pkgs.xdragon}/bin/dragon -a -x %p
+      default_linemode devicons
+    '';
   };
 
   home.stateVersion = "23.05";
