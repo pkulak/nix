@@ -35,9 +35,10 @@
     };
   in {
     nixosConfigurations = {
-      fry = mkSystem "fry";
-      x1  = mkSystem "x1";
-      kvm = mkSystem "kvm";
+      fry   = mkSystem "fry";
+      x1    = mkSystem "x1";
+      t460p = mkSystem "t460p";
+      kvm   = mkSystem "kvm";
     };
   };
 }
