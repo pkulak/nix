@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  programs.waybar.settings.default.output = "HDMI-A-1";
+
   wayland.windowManager.sway.config = {
     startup = [ {
       command = ''
