@@ -25,7 +25,7 @@
       gnome.zenity
       gocryptfs
       imv
-      mpv
+      (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       networkmanagerapplet
       podman
       ranger
