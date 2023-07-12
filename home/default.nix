@@ -123,6 +123,18 @@ in {
     '';
   };
 
+  home.file = {
+    # IntelliJ
+    ".ideavimrc".text = ''
+      set ignorecase
+      set smartcase
+      set relativenumber
+      set number
+      inoremap jj <esc>
+      set visualbell
+    '';
+  };
+
   home.stateVersion = "23.05";
   programs.home-manager.enable = true;
 }
