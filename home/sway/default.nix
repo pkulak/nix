@@ -43,7 +43,28 @@ let
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
 in {
-  xdg.configFile."sway/environment".source = ./environment;
+  xdg.configFile."sway/environment" = {
+    executable = true;
+
+    text = ''
+      #!/bin/sh
+
+      export TERMINAL="alacritty"
+      export BROWSER="firefox"
+      export EDITOR="nvim"
+      export VISUAL="nvim"
+
+      export SDL_VIDEODRIVER="wayland"
+      export QT_QPA_PLATFORM="wayland"
+      export GDK_BACKEND="wayland,x11"
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      export JAVA_HOME=${pkgs.jdk11}/lib/openjdk
+
+      export MOZ_ENABLE_WAYLAND=1
+      export MOZ_WEBRENDER=1
+      export MOZ_ACCELERATED=1
+    '';
+  };
 
   wayland.windowManager.sway.enable = true;
 
