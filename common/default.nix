@@ -13,6 +13,7 @@
       age
       btop
       bc
+      beets
       curl
       exa
       distrobox
@@ -32,10 +33,12 @@
       ripgrep
       sublime-merge
       tldr
+      unzip
       woeusb
       yt-dlp
       zathura
 
+      # (callPackage ./buzz pkgs)
       (callPackage ./matui (lib.trivial.mergeAttrs pkgs { inherit pkgs-unstable; }))
       (callPackage ./pgen pkgs)
     ];
