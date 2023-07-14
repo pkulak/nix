@@ -35,6 +35,7 @@
       tldr
       unzip
       woeusb
+      xfce.thunar
       yt-dlp
       zathura
 
