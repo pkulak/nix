@@ -44,6 +44,9 @@
       (callPackage ./pgen pkgs)
     ];
 
+    # Use a more desktop-focused kernel
+    boot.kernelPackages = pkgs.linuxPackages_xanmod;
+
     # Udev rule for game controllers
     services.udev.packages = [ (pkgs.callPackage ./game-devices.nix pkgs) ];
 
