@@ -61,8 +61,8 @@
     services.avahi.nssmdns = true;
     services.avahi.openFirewall = true;
 
+    security.polkit.enable = true;
     programs.fish.enable = true;
-
     services.flatpak.enable = true;
 
     services.openssh = {
@@ -78,7 +78,19 @@
 
     virtualisation.containers.enable = true;
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix = {
+      settings = {
+        warn-dirty = false;
+        auto-optimise-store = true;
+        experimental-features = [ "nix-command" "flakes" ];
+      };
+
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 14d";
+      };
+    };
 
     programs.neovim = {
       enable = true;

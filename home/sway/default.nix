@@ -79,6 +79,7 @@ in {
       { command = "${pkgs.mako}/bin/mako"; }
       { command = "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark"; }
       { command = "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme 'Adwaita"; }
+      { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
     ];
 
     input = {
