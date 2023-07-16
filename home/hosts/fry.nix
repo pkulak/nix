@@ -10,6 +10,8 @@
             timeout 10800 'systemctl suspend' \
                     after-resume 'swaymsg "output * dpms on"'
       '';
+    } {
+      command = "${pkgs.callPackage ../../common/buzz pkgs}/bin/buzz";
     } ];
   };
 }

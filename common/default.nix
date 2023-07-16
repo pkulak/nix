@@ -39,7 +39,6 @@
       yt-dlp
       zathura
 
-      # (callPackage ./buzz pkgs)
       (callPackage ./matui (lib.trivial.mergeAttrs pkgs { inherit pkgs-unstable; }))
       (callPackage ./pgen pkgs)
     ];
