@@ -11,6 +11,12 @@
       };
     };
 
+    # Include some stuff as plain source
+    "astronvim/lua/user/init.lua".source = ./user/init.lua;
+    "astronvim/lua/user/options.lua".source = ./user/options.lua;
+    "astronvim/lua/user/plugins".source = ./user/plugins;
+
+    # But do the mappings here so we can have substitutions
     "astronvim/lua/user/mappings.lua".text = ''
       return {
         n = {
@@ -19,14 +25,6 @@
           ["gb"] = { ":buffer #<cr>", desc = "Go to last buffer" },
           ["<leader>b"] = { name = "Buffers" },
           ["<leader>w"] = { ":wa<cr>", desc = "Save All" }
-        }
-      }
-    '';
-
-    "astronvim/lua/user/options.lua".text = ''
-      return {
-        opt = {
-          clipboard = "unnamed"
         }
       }
     '';

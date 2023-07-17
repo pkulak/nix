@@ -17,7 +17,7 @@ let
 in {
   imports = [
     ./alacritty.nix
-    ./astronvim.nix
+    ./astronvim
     ./sway
     ./waybar
     ./wofi
