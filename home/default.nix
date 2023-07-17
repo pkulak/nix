@@ -14,6 +14,21 @@ let
       sudo umount /mnt/usbstick
     '';
   };
+
+  rebuild = pkgs.writeShellApplication {
+    name = "rebuild";
+    text = "sudo nixos-rebuild --flake ~/nix/#${host} switch";
+  };
+
+  update = pkgs.writeShellApplication {
+    name = "update";
+    text = ''
+      cd ~/nix
+      nix flake update -I ~/nix
+      ${rebuild}/bin/rebuild
+      cd "$OLDPWD"
+    '';
+  };
 in {
   imports = [
     ./alacritty.nix
@@ -27,6 +42,8 @@ in {
 
   home.packages = [
     import-photos
+    rebuild
+    update
   ];
 
   home.username = "phil";
