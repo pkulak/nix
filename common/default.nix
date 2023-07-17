@@ -23,9 +23,9 @@
       gcc
       git
       glib
-      gnome.zenity
       gocryptfs
       imv
+      libsForQt5.kdialog
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       networkmanagerapplet
       podman
