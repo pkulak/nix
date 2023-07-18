@@ -10,6 +10,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelParams = ["rd.luks.options=discard"];
+  boot.tmp.useTmpfs = true;
   
   fileSystems = {
     "/".options = [ "compress-force=zstd" "autodefrag" ];
