@@ -73,6 +73,6 @@ mkswap swapfile
 swapon swapfile
 
 nixos-generate-config --root /mnt
-curl -o /mnt/etc/nixos/configuration.nix https://raw.githubusercontent.com/pkulak/nix/main/bootstrap.nix
+curl -o /mnt/etc/nixos/configuration.nix https://git.sr.ht/~pkulak/nix/tree/main/item/bootstrap.nix
 cd /mnt
 nixos-install
