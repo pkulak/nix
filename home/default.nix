@@ -15,6 +15,27 @@ let
     '';
   };
 
+  sync-notes = pkgs.writeShellApplication {
+    name = "sync-notes";
+    runtimeInputs = [ pkgs.git ];
+    text = ''
+      cd ~/notes
+
+      if [[ ''$(git status --porcelain) ]]; then
+	      git config user.email "phil@kulak.us"
+	      git config user.name "Phil Kulak"
+	      git stash save
+	      git pull --rebase
+	      git stash pop
+	      git add .
+	      git commit -m "''$(date)"
+	      git push origin main
+      else
+	      git pull
+      fi
+    '';
+  };
+
   rebuild = pkgs.writeShellApplication {
     name = "rebuild";
     text = "sudo nixos-rebuild --flake ~/nix/#${host} switch";
@@ -43,11 +64,24 @@ in {
   home.packages = [
     import-photos
     rebuild
+    sync-notes
     update
   ];
 
   home.username = "phil";
   home.homeDirectory = "/home/phil";
+
+  # sync our notes on a schedule
+  systemd.user.services.sync-notes = {
+    Unit.Description = "Synchronize my notes repo";
+    Service.ExecStart = "${sync-notes}/bin/sync-notes";
+  };
+
+  systemd.user.timers.sync-notes = {
+    Unit.Description = "Synchronize notes hourly";
+    Timer.OnCalendar = "hourly";
+    Install.WantedBy = [ "timers.target" ];
+  };
 
   xdg.configFile = {
     # Beets
@@ -83,6 +117,7 @@ in {
       alias rs 'rsync -avH --info=progress2'
       alias dr 'dragon-drop -a -x'
       alias screencast '${pkgs.wf-recorder}/bin/wf-recorder -g (${pkgs.slurp}/bin/slurp)'
+      alias mnt-private 'mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private'
     '';
 
     "fish/functions/compress.fish".text = ''
