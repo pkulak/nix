@@ -1,0 +1,67 @@
+{ config, pkgs, ... }:
+
+{
+  programs.alacritty.enable = true;
+
+  programs.alacritty.settings = {
+    key_bindings = [
+      { key = "V"; mods = "Control"; action = "Paste"; }
+      { key = "C"; mods = "Control"; action = "Copy"; }
+      { key = "V"; mods = "Control|Shift"; chars = "\\x16"; }
+      { key = "C"; mods = "Control|Shift"; chars = "\\x03"; }
+      { key = "Return"; mods = "Shift"; chars = "\\x1b[13;2u"; }
+      { key = "Return"; mods = "Control"; chars = "\\x1b[13;5u"; }
+    ];
+
+    window = {
+      opacity = 0.8;
+      padding = { x = 2; y = 2; };
+    };
+
+    font = {
+      normal.family = "FantasqueSansM Nerd Font Mono";
+      bold.family = "FantasqueSansM Nerd Font Mono";
+      italic.family = "FantasqueSansM Nerd Font Mono";
+      size = pkgs.lib.mkDefault 13;
+    };
+
+    colors = {
+      primary.background = "#000000";
+
+      cursor = { text = "#2c2c2c"; cursor = "#d9d9d9"; };
+
+      normal = {
+        black   = "#1c1c1c";
+        red     = "#bc5653";
+        green   = "#737d4f";
+        yellow  = "#ebc17a";
+        blue    = "#7eaac7";
+        magenta = "#aa6292";
+        cyan    = "#86d3ce";
+        white   = "#cacaca";
+      };
+
+      bright = {
+        black   = "#636363";
+        red     = "#bc5653";
+        green   = "#909d63";
+        yellow  = "#ebc17a";
+        blue    = "#7eaac7";
+        magenta = "#aa6292";
+        cyan    = "#86d3ce";
+        white   = "#f7f7f7";
+      };
+
+      dim = {
+        black   = "#232323";
+        red     = "#74423f";
+        green   = "#5e6547";
+        yellow  = "#8b7653";
+        blue    = "#556b79";
+        magenta = "#6e4962";
+        cyan    = "#5c8482";
+        white   = "#828282";
+      };
+    };
+  };
+}
