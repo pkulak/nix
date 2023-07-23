@@ -49,6 +49,8 @@ in {
   home.username = "phil";
   home.homeDirectory = "/home/phil";
 
+  programs.direnv.enable = true;
+
   xdg.configFile = {
     # Beets
     "beets/config.yaml".text = ''
@@ -149,6 +151,11 @@ in {
       set number
       inoremap jj <esc>
       set visualbell
+    '';
+
+    # Vevo
+    "vevo/.envrc".text = ''
+      export GIT_AUTHOR_EMAIL="phil.kulak@vevo.com"
     '';
   };
 

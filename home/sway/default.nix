@@ -54,6 +54,9 @@ in {
       export EDITOR="nvim"
       export VISUAL="nvim"
 
+      export GIT_AUTHOR_NAME="Phil Kulak"
+      export GIT_AUTHOR_EMAIL="phil@kulak.us"
+
       export SDL_VIDEODRIVER="wayland"
       export QT_QPA_PLATFORM="wayland"
       export GDK_BACKEND="wayland,x11"
