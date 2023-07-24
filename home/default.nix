@@ -115,7 +115,7 @@ in {
       alias l 'exa --long --all --links --git --sort mod'
       alias bc 'bc -lq'
       alias rs 'rsync -avH --info=progress2'
-      alias dr '${pkgs.xdragon}/bin/dragon -a -x'
+      alias dr '${pkgs.ripdrag}/bin/ripdrag -a'
       alias screencast '${pkgs.wf-recorder}/bin/wf-recorder -g (${pkgs.slurp}/bin/slurp)'
       alias mnt-private 'mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private'
     '';
@@ -170,8 +170,9 @@ in {
     };
 
     "ranger/rc.conf".text = ''
-      map <C-d> shell ${pkgs.xdragon}/bin/dragon -a -x %p
+      map dr shell ${pkgs.ripdrag}/bin/ripdrag -a %p
       default_linemode devicons
+      set preview_images false
     '';
   };
 
