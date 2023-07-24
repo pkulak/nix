@@ -17,13 +17,11 @@ let
 
   sync-notes = pkgs.writeShellApplication {
     name = "sync-notes";
-    runtimeInputs = [ pkgs.git ];
+    runtimeInputs = with pkgs; [ coreutils git openssh ];
     text = ''
       cd ~/notes
 
       if [[ ''$(git status --porcelain) ]]; then
-	      git config user.email "phil@kulak.us"
-	      git config user.name "Phil Kulak"
 	      git stash save
 	      git pull --rebase
 	      git stash pop
@@ -70,6 +68,8 @@ in {
 
   home.username = "phil";
   home.homeDirectory = "/home/phil";
+
+  programs.direnv.enable = true;
 
   # sync our notes on a schedule
   systemd.user.services.sync-notes = {
@@ -184,6 +184,11 @@ in {
       set number
       inoremap jj <esc>
       set visualbell
+    '';
+
+    # Vevo
+    "vevo/.envrc".text = ''
+      export GIT_AUTHOR_EMAIL="phil.kulak@vevo.com"
     '';
   };
 
