@@ -18,6 +18,7 @@
       exa
       distrobox
       ffmpeg
+      ffmpegthumbnailer
       file
       firefox
       gcc
@@ -29,13 +30,13 @@
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       networkmanagerapplet
       podman
-      ranger
       ripgrep
       sublime-merge
       tldr
       unzip
       woeusb
       xfce.thunar
+      xfce.tumbler
       yt-dlp
       zathura
 
