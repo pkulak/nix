@@ -142,6 +142,9 @@ in {
       clean_vim = true
     '';
 
+    # MPV
+    "mpv/mpv.conf".text = "mute=yes";
+
     # Default Apps
     "mimeapps.list".text = ''
       [Default Applications]

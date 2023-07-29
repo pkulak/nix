@@ -1,21 +1,22 @@
 { config, pkgs, ... }:
 
-let
-  vuescan = (pkgs.callPackage ./vuescan.nix pkgs);
-in
-  {
-    imports = [
-      ./hardware-configuration.nix
-      ../../common/vm.nix
-    ];
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../common/vm.nix
+  ];
 
-    networking.hostName = "fry";
-    boot.initrd.kernelModules = ["amdgpu"];
+  networking.hostName = "fry";
+  boot.initrd.kernelModules = ["amdgpu"];
 
-    services.udev.packages = [ vuescan ];
-    
-    environment.systemPackages = [
-      pkgs.jetbrains.idea-ultimate
-      vuescan
-    ];
-  }
+  environment.systemPackages = [
+    pkgs.jetbrains.idea-ultimate
+  ];
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+    flake = "${config.users.users.phil.home}/nix";
+    flags = [ "--update-input" "nixpkgs" ];
+  };
+}

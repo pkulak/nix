@@ -96,13 +96,6 @@
       };
     };
 
-    system.autoUpgrade = {
-      enable = true;
-      dates = "weekly";
-      flake = "${config.users.users.phil.home}/nix";
-      flags = [ "--update-input" "nixpkgs" ];
-    };
-
     programs.neovim = {
       enable = true;
       defaultEditor = true;
