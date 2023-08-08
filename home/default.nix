@@ -15,6 +15,14 @@ let
     '';
   };
 
+  mnt-usb = pkgs.writeShellApplication {
+    name = "mnt-usb";
+    text = ''
+      sudo mkdir -p /mnt/usbstick
+      sudo mount -o uid=phil,gid=users /dev/sdb1 /mnt/usbstick
+    '';
+  };
+
   sync-notes = pkgs.writeShellApplication {
     name = "sync-notes";
     runtimeInputs = with pkgs; [ coreutils git openssh ];
@@ -61,6 +69,7 @@ in {
 
   home.packages = [
     import-photos
+    mnt-usb
     rebuild
     sync-notes
     update
