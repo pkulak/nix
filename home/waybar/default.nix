@@ -1,10 +1,8 @@
 { config, pkgs, ... }:
 
 let
-  name = "now-playing";
-
   now-playing = pkgs.stdenv.mkDerivation {
-    inherit name;
+    name = "now-playing";
 
     propagatedBuildInputs = with pkgs; [
       (python3.withPackages (ps: with ps; [
@@ -17,7 +15,20 @@ let
     buildInputs = [ pkgs.gobject-introspection ];
 
     dontUnpack = true;
-    installPhase = "install -Dm755 ${./now-playing.py} $out/bin/${name}";
+    installPhase = "install -Dm755 ${./now-playing.py} $out/bin/now-playing";
+  };
+
+  weather = pkgs.stdenv.mkDerivation {
+    name = "weather";
+
+    propagatedBuildInputs = with pkgs; [
+      (python3.withPackages (ps: with ps; [
+        pyquery
+      ]))
+    ];
+
+    dontUnpack = true;
+    installPhase = "install -Dm755 ${./weather.py} $out/bin/weather";
   };
 in {
   programs.waybar.enable = true;
@@ -30,7 +41,7 @@ in {
 
     modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "sway/mode" "sway/window"];
     modules-center = ["sway/workspaces"];
-    modules-right = ["custom/media" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
+    modules-right = ["custom/media" "custom/weather" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
     
     "backlight" = {
       "format" = "{percent}% {icon}";
@@ -78,6 +89,12 @@ in {
       "max-length" = 40;
       "escape" = true;
       "exec" = "${now-playing}/bin/now-playing";
+    };
+
+    "custom/weather" = {
+      "restart-interval" = 300;
+      "return-type" = "json";
+      "exec" = "${weather}/bin/weather";
     };
 
     "disk" = {

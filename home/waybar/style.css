@@ -24,7 +24,7 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-#window, #custom-weather, #custom-media {
+#window, #custom-media {
     color: #eee;
     text-shadow: 0px 0px 2px #000;
 }

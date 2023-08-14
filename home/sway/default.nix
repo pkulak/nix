@@ -113,7 +113,7 @@ in {
 
     seat = {
       "*" = { 
-        hide_cursor = "3000";
+        hide_cursor = "10000";
         xcursor_theme = "Adwaita 24";
       };
     };
