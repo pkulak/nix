@@ -92,7 +92,7 @@ in {
     };
 
     "custom/weather" = {
-      "restart-interval" = 300;
+      "restart-interval" = 600;
       "return-type" = "json";
       "exec" = "${weather}/bin/weather";
     };
