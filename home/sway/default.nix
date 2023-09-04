@@ -77,12 +77,8 @@ in {
     modifier = "Mod4";
 
     startup = [
-      { command = "${autotiling}/bin/autotiling"; }
-      { command = "${pkgs.wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8"; }
-      { command = "${pkgs.mako}/bin/mako"; }
       { command = "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark"; }
       { command = "${pkgs.glib}/bin/gsettings set org.gnome.desktop.interface icon-theme 'Adwaita"; }
-      { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
     ];
 
     input = {
@@ -249,4 +245,29 @@ in {
       swaybar_command ${pkgs.waybar}/bin/waybar
     }
   '';
+
+  # use systemd to manage some services
+  systemd.user.services.wlsunset = {
+    Unit.Description = "wlsunset daemon";
+    Service.ExecStart = "${pkgs.wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8"; 
+    Install.WantedBy = [ "sway-session.target" ];
+  };
+
+  systemd.user.services.autotiling = {
+    Unit.Description = "autotiling daemon";
+    Service.ExecStart = "${autotiling}/bin/autotiling"; 
+    Install.WantedBy = [ "sway-session.target" ];
+  };
+
+  systemd.user.services.mako = {
+    Unit.Description = "mako daemon";
+    Service.ExecStart = "${pkgs.mako}/bin/mako"; 
+    Install.WantedBy = [ "sway-session.target" ];
+  };
+
+  systemd.user.services.polkit = {
+    Unit.Description = "polkit daemon";
+    Service.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; 
+    Install.WantedBy = [ "sway-session.target" ];
+  };
 }

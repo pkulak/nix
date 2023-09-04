@@ -4,17 +4,6 @@
   programs.waybar.settings.default.output = "HDMI-A-1";
 
   wayland.windowManager.sway.config = {
-    startup = [ {
-      command = ''
-        ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 300 '${pkgs.playerctl}/bin/playerctl pause' \
-            timeout 600 'swaymsg "output * dpms off"' \
-                    resume 'swaymsg "output * dpms on"' \
-      '';
-    } {
-      command = "nm-applet";
-    }];
-
     # (1440 - (1080 / 1.25))
     # 1920 / 1.25
     output = {
@@ -29,4 +18,24 @@
   };
 
   wayland.windowManager.sway.extraConfig = "workspace 1";
+
+  systemd.user.services.swayidle = {
+    Unit.Description = "swayidle daemon";
+
+    Service.ExecStart = ''
+        ${pkgs.swayidle}/bin/swayidle -w \
+            timeout 300 '${pkgs.playerctl}/bin/playerctl pause' \
+            timeout 600 'swaymsg "output * dpms off"' \
+                    resume 'swaymsg "output * dpms on"' \
+      '';
+
+    Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
+    Install.WantedBy = [ "sway-session.target" ];
+  };
+
+  systemd.user.services.nm-applet = {
+    Unit.Description = "nm-applet daemon";
+    Service.ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
+    Install.WantedBy = [ "sway-session.target" ];
+  };
 }

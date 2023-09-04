@@ -28,7 +28,6 @@
       imv
       libsForQt5.kdialog
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
-      networkmanagerapplet
       podman
       ripgrep
       sublime-merge
