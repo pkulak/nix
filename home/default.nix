@@ -112,7 +112,12 @@ in {
       fish_vi_key_bindings
       set fish_greeting
 
-      alias ls 'ls -tr --color=auto'
+      alias ls  'lsd'
+      alias l   'ls -l'
+      alias la  'ls -a'
+      alias lla 'ls -la'
+      alias lt  'ls --tree'
+
       alias .. 'cd ..'
       alias ... 'cd ../..'
       alias md 'mkdir -p'
@@ -121,7 +126,6 @@ in {
       alias c clear
       alias za zathura
       alias ts 'date -u +"%Y-%m-%dT%H:%M:%SZ"'
-      alias l 'exa --long --all --links --git --sort mod'
       alias bc 'bc -lq'
       alias rs 'rsync -avH --info=progress2'
       alias dr '${pkgs.ripdrag}/bin/ripdrag -a'

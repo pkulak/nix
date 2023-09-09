@@ -15,7 +15,6 @@
       bc
       beets
       curl
-      exa
       distrobox
       ffmpeg
       ffmpegthumbnailer
@@ -27,6 +26,7 @@
       gocryptfs
       imv
       libsForQt5.kdialog
+      lsd
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       podman
       ripgrep
