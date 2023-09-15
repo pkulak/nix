@@ -73,6 +73,11 @@ mkswap swapfile
 swapon swapfile
 
 nixos-generate-config --root /mnt
-curl -o /mnt/etc/nixos/configuration.nix https://git.sr.ht/~pkulak/nix/tree/main/item/bootstrap.nix
-cd /mnt
-nixos-install
+curl -o /mnt/etc/nixos/configuration.nix https://git.sr.ht/~pkulak/nix/blob/main/bootstrap.nix
+
+lsblk -o name,mountpoint,label,size,uuid
+
+# Now go edit /mnt/etc/nixos/hardware-configuration.nix
+
+# cd /mnt
+# nixos-install
