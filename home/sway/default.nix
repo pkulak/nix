@@ -122,6 +122,10 @@ in {
       "${modifier}+0" = "workspace number 10";
       "${modifier}+Shift+0" = "move container to workspace number 10";
 
+      # move workspaces between outputs
+      "${modifier}+Control+Shift+Right" = "move workspace to output right";
+      "${modifier}+Control+Shift+Left" = "move workspace to output left";
+
       # Browser
       "${modifier}+p" = "exec ${pkgs.firefox}/bin/firefox";
 
