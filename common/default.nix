@@ -14,6 +14,7 @@
       btop
       bc
       beets
+      cinnamon.nemo-with-extensions
       curl
       distrobox
       ffmpeg
@@ -34,8 +35,6 @@
       tldr
       unzip
       woeusb
-      xfce.thunar
-      xfce.tumbler
       yt-dlp
       zathura
 

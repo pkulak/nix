@@ -155,7 +155,7 @@ in {
       "${modifier}+Shift+Return" = "exec ${alacritty} --class popup_shell -e ${fish}";
 
       # File Manager
-      "${modifier}+Shift+T" = "exec ${pkgs.xfce.thunar}/bin/thunar";
+      "${modifier}+Shift+N" = "exec ${pkgs.cinnamon.nemo-with-extensions}/bin/nemo";
     };
 
     window.commands = [
