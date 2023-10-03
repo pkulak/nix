@@ -36,6 +36,7 @@
       woeusb
       yt-dlp
       zathura
+      zoom-us
 
       (callPackage ./matui (lib.trivial.mergeAttrs pkgs { inherit pkgs-unstable; }))
       (callPackage ./pgen pkgs)
@@ -78,6 +79,8 @@
       enable = true;
       setSocketVariable = true;
     };
+
+    virtualisation.podman.enable = true;
 
     nix = {
       settings = {
