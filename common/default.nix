@@ -42,6 +42,11 @@
       (callPackage ./pgen pkgs)
     ];
 
+    environment.etc = with pkgs; {
+      "jdk11".source = jdk11;
+      "jdk17".source = jdk17;
+    };
+
     # Udev rule for game controllers
     services.udev.packages = [ (pkgs.callPackage ./game-devices.nix pkgs) ];
 
