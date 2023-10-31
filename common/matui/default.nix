@@ -10,13 +10,13 @@
 
 pkgs-unstable.rustPlatform.buildRustPackage rec {
   pname = "matui";
-  version = "0.4.4";
+  version = "0.4.5";
 
   src = fetchFromGitHub {
     owner = "pkulak";
     repo = "matui";
     rev = "v${version}";
-    hash = "sha256-B3N1Kq3/cjyCgsNrh8r53GYqB2KaXAWg8xIj79hbK6g=";
+    hash = "sha256-6qT0wlujvkJ+XOQ8rR9YWdtKLKlCV95P1JtARSdlAGM=";
   };
 
   cargoLock = {
