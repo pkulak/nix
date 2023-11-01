@@ -60,6 +60,7 @@ in {
   imports = [
     ./alacritty.nix
     ./astronvim
+    ./firefox.nix
     ./sway
     ./waybar
     ./wofi

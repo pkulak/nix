@@ -5,6 +5,7 @@
     nixpkgs.url          = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url   = "github:NixOS/nixos-hardware";
+    nur.url = "github:nix-community/NUR";
     
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
@@ -12,12 +13,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware, home-manager }: let
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware, nur, home-manager }: let
     mkSystem = host: nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       
       specialArgs = {
         inherit nixos-hardware;
+        inherit nur;
         pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
       };
       

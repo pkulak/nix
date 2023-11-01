@@ -20,7 +20,6 @@
       ffmpeg
       ffmpegthumbnailer
       file
-      firefox
       gcc
       git
       glib

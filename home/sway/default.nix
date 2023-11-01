@@ -127,7 +127,7 @@ in {
       "${modifier}+Control+Shift+Left" = "move workspace to output left";
 
       # Browser
-      "${modifier}+p" = "exec ${pkgs.firefox}/bin/firefox";
+      "${modifier}+p" = "exec firefox";
 
       # Passthrough
       "F12" = "mode \"passthrough\"";

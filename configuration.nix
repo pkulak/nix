@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, nur, ... }:
 
 {
   imports = [ ./common ];
@@ -50,8 +50,13 @@
   # Enable automatic login for the user.
   services.getty.autologinUser = "phil";
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    # Allow unfree packages
+    config.allowUnfree = true;
+    
+    # Overlay the NUR packages
+    overlays = [ nur.overlay ];
+  };
 
   environment.systemPackages = with pkgs; [];
 
