@@ -28,13 +28,13 @@ let
     runtimeInputs = with pkgs; [ coreutils git openssh ];
     text = ''
       cd ~/notes
+	    git add .
 
       if [[ ''$(git status --porcelain) ]]; then
 	      git stash save
 	      git pull --rebase
 	      git stash pop
-	      git add .
-	      git commit -m "''$(date)"
+	      git -c "user.name=Phil Kulak" -c "user.email=phil@kulak.us" commit -m "''$(date)"
 	      git push origin main
       else
 	      git pull
