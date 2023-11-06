@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [ 
@@ -37,7 +37,7 @@
       zathura
       zoom-us
 
-      (callPackage ./matui (lib.trivial.mergeAttrs pkgs { inherit pkgs-unstable; }))
+      (callPackage ./matui pkgs)
       (callPackage ./pgen pkgs)
     ];
 

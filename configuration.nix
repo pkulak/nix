@@ -54,8 +54,13 @@
     # Allow unfree packages
     config.allowUnfree = true;
     
-    # Overlay the NUR packages
-    overlays = [ nur.overlay ];
+    # Overlay the NUR packages and unstable
+    overlays = [
+      nur.overlay
+      (final: prev: {
+        unstable = pkgs-unstable;
+      })
+    ];
   };
 
   environment.systemPackages = with pkgs; [];

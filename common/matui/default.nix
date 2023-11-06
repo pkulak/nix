@@ -4,11 +4,11 @@
 , openssl
 , stdenv
 , darwin
-, pkgs-unstable
+, pkgs
 , ...
 }:
 
-pkgs-unstable.rustPlatform.buildRustPackage rec {
+pkgs.unstable.rustPlatform.buildRustPackage rec {
   pname = "matui";
   version = "0.4.5";
 
