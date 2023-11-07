@@ -20,7 +20,11 @@
       specialArgs = {
         inherit nixos-hardware;
         inherit nur;
-        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+
+        pkgs-unstable = import nixpkgs-unstable {
+          config.allowUnfree = true;
+          localSystem = { inherit system; };
+        };
       };
       
       modules = [

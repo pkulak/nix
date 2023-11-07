@@ -29,7 +29,7 @@
       lsd
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
-      sublime-merge
+      unstable.sublime-merge
       tldr
       unzip
       woeusb
