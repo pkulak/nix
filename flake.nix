@@ -5,7 +5,13 @@
     nixpkgs.url          = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url   = "github:NixOS/nixos-hardware";
-    nur.url = "github:nix-community/NUR";
+    nur.url              = "github:nix-community/NUR";
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = ""; # don't download OSX deps
+    };
     
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
@@ -13,7 +19,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware, nur, home-manager }: let
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware, nur, home-manager, agenix }: let
     mkSystem = host: nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       
@@ -30,6 +36,20 @@
       modules = [
         ./configuration.nix
         ./hosts/${host}
+
+        agenix.nixosModules.default
+
+        { environment.systemPackages = [ agenix.packages.${system}.default ]; }
+
+        {
+          age = {
+            identityPaths = [ "/home/phil/.ssh/id_ed25519" ];
+            secrets = {
+              "smb-secrets".file = ./secrets/smb-secrets.age;
+              "1pass".file = ./secrets/1pass.age;
+            };
+          };
+        }
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

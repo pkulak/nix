@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-    automount_opts = ["x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,uid=phil,gid=users,credentials=/home/phil/.ssh/smb-secrets"];
+    automount_opts = ["x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,uid=phil,gid=users,credentials=${config.age.secrets.smb-secrets.path}"];
 in {
   config = {
     environment.systemPackages = [ pkgs.cifs-utils ];
@@ -32,6 +32,12 @@ in {
 
     fileSystems."/mnt/swap" = {
         device = "//lilnas.home/swap";
+        fsType = "cifs";
+        options = automount_opts;
+    };
+
+    fileSystems."/mnt/video" = {
+        device = "//lilnas.home/video";
         fsType = "cifs";
         options = automount_opts;
     };
