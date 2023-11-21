@@ -8,7 +8,7 @@ in {
   ];
 
   networking.hostName = "fry";
-  boot.initrd.kernelModules = ["amdgpu"];
+  # boot.initrd.kernelModules = ["amdgpu"];
 
   services.udev.packages = [ vuescan ];
 
@@ -28,24 +28,5 @@ in {
     dates = "weekly";
     flake = "${config.users.users.phil.home}/nix";
     flags = [ "--update-input" "nixpkgs" ];
-  };
-
-  # Suspend at 5pm at 10pm
-  systemd.services.suspend = {
-    description = "Suspend the computer.";
-
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "systemctl suspend";
-    };
-  };
-
-  systemd.timers.suspend = {
-    description = "Suspend at 5pm and 10pm";
-    wantedBy = [ "timers.target" ];
-
-    timerConfig = {
-      OnCalendar = "*-*-* 17,22:00:00";
-    };
   };
 }
