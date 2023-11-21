@@ -17,9 +17,14 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware, nur, home-manager, agenix }: let
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware, nur, home-manager, agenix, nix-index-database }: let
     mkSystem = host: nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       
@@ -49,6 +54,13 @@
               "1pass".file = ./secrets/1pass.age;
             };
           };
+        }
+
+        nix-index-database.nixosModules.nix-index
+
+        {
+          programs.command-not-found.enable = false;
+          programs.nix-index-database.comma.enable = true;
         }
 
         home-manager.nixosModules.home-manager {
