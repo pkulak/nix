@@ -48,7 +48,6 @@
 
         {
           age = {
-            identityPaths = [ "/home/phil/.ssh/id_ed25519" ];
             secrets = {
               "smb-secrets".file = ./secrets/smb-secrets.age;
               "1pass".file = ./secrets/1pass.age;
