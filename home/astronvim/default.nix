@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = [
+    pkgs.jq
+    pkgs.libxml2
+  ];
+
   xdg.configFile = {
     nvim = {
       source = pkgs.fetchFromGitHub {
@@ -20,8 +25,8 @@
     "astronvim/lua/user/mappings.lua".text = ''
       return {
         n = {
-          ["=j"] = { ":%!${pkgs.jq}/bin/jq<CR>:set syntax=json<CR>", desc = "Format JSON" },
-          ["=x"] = { ":%!${pkgs.libxml2}/bin/xmllint --format -<CR>:set syntax=xml<CR>", desc = "Format XML" },
+          ["=j"] = { ":%!jq<CR>:set syntax=json<CR>", desc = "Format JSON" },
+          ["=x"] = { ":%!xmllint --format -<CR>:set syntax=xml<CR>", desc = "Format XML" },
           ["gb"] = { ":buffer #<cr>", desc = "Go to last buffer" },
           ["<leader>b"] = { name = "Buffers" },
           ["<leader>w"] = { ":wa<cr>", desc = "Save All" }
