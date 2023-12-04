@@ -33,6 +33,8 @@
     Install.WantedBy = [ "sway-session.target" ];
   };
 
+  home.packages = [ pkgs.networkmanagerapplet ];
+
   systemd.user.services.nm-applet = {
     Unit.Description = "nm-applet daemon";
     Service.ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
