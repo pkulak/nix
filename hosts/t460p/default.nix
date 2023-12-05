@@ -7,7 +7,7 @@
   ];
 
   environment.systemPackages = [
-    pkgs.jetbrains.idea-ultimate
+    pkgs.unstable.jetbrains.idea-ultimate
   ];
 
   networking.hostName = "t460p";

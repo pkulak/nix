@@ -11,7 +11,7 @@
   services.blueman.enable = true;
 
   environment.systemPackages = [
-    pkgs.jetbrains.idea-ultimate
+    pkgs.unstable.jetbrains.idea-ultimate
   ];
 
   networking.hostName = "x1";
