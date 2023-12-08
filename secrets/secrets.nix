@@ -7,6 +7,7 @@ let
 
   keys = [ user fry x1 t460p ];
 in {
+  "jmap-secrets.age".publicKeys = keys;
   "smb-secrets.age".publicKeys = keys;
   "1pass.age".publicKeys = keys;
 }

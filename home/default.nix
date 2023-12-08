@@ -163,7 +163,7 @@ in {
 
     # Matui
     "matui/config.toml".text = ''
-      reactions = ["👍️", "😂", "❤️", "👎", "‼️", "❓️", "🙁", "🚀", "🤣", "👆"]
+      reactions = ["👍️", "😂", "❤️", "👎", "‼️", "❓️", "🙁", "🚀", "🤣", "👆", "😱"]
       muted = ["!hMPITSQBLFEleSJmVm:kulak.us", "!zCIiPpUbrNESgmegGW:kulak.us"]
       clean_vim = true
     '';

@@ -16,13 +16,6 @@
     Install.WantedBy = [ "sway-session.target" ];
   };
 
-  systemd.user.services.buzz = {
-    Unit.Description = "buzz daemon";
-    Service.ExecStart = "${pkgs.callPackage ../../common/buzz pkgs}/bin/buzz"; 
-    Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
-    Install.WantedBy = [ "sway-session.target" ];
-  };
-
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];

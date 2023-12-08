@@ -49,6 +49,12 @@
         {
           age = {
             secrets = {
+              "jmap-secrets" = {
+                file = ./secrets/jmap-secrets.age;
+                owner = "phil";
+                group = "users";
+                mode = "600";
+              };
               "smb-secrets".file = ./secrets/smb-secrets.age;
               "1pass".file = ./secrets/1pass.age;
             };

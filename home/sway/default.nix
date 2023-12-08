@@ -14,6 +14,43 @@ let
     installPhase = "install -Dm755 ${./autotiling.py} $out/bin/autotiling";
   };
 
+  imap-notify-packages = ps: with ps; [
+    (
+      buildPythonPackage rec {
+        pname = "jmapc";
+        version = "0.2.18";
+        format = "pyproject";
+        doCheck = false;
+
+        src = fetchPypi {
+          inherit pname version;
+          sha256 = "sha256-phzN78c4ZuLskwW2UkYD0g6grRcl3o0mhi4RABG+rTs=";
+        };
+
+        propagatedBuildInputs = [
+          pkgs.python3Packages.dataclasses-json
+          pkgs.python3Packages.poetry-core
+          pkgs.python3Packages.poetry-dynamic-versioning
+          pkgs.python3Packages.python-dateutil
+          pkgs.python3Packages.requests
+          pkgs.python3Packages.sseclient
+        ];
+      }
+    )
+  ];
+
+  imap-notify = pkgs.stdenv.mkDerivation {
+    name = "imap-notify";
+
+    propagatedBuildInputs = with pkgs; [
+      libnotify
+      (python3.withPackages imap-notify-packages)
+    ];
+
+    dontUnpack = true;
+    installPhase = "install -Dm755 ${./imap-notify.py} $out/bin/imap-notify";
+  };
+
   wofi-power = pkgs.stdenv.mkDerivation {
     name = "wofi-power";
     nativeBuildInputs = with pkgs; [ makeWrapper ];
@@ -264,6 +301,13 @@ in {
   systemd.user.services.autotiling = {
     Unit.Description = "autotiling daemon";
     Service.ExecStart = "${autotiling}/bin/autotiling"; 
+    Install.WantedBy = [ "sway-session.target" ];
+  };
+
+  systemd.user.services.imap-notify = {
+    Unit.Description = "email notifications daemon";
+    Service.ExecStart = "${imap-notify}/bin/imap-notify"; 
+    Service.Environment = "PATH=${pkgs.libnotify}/bin";
     Install.WantedBy = [ "sway-session.target" ];
   };
 
