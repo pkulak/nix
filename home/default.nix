@@ -32,7 +32,7 @@ let
       if [[ ''$(git status --porcelain) ]]; then
 	      git stash save
 	      git pull --rebase
-	      git stash pop
+	      git stash pop || true
 	      git add .
 	      git -c "user.name=Phil Kulak" -c "user.email=phil@kulak.us" commit -m "''$(date)"
 	      git push origin main
