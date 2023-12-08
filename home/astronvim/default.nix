@@ -4,6 +4,7 @@
   home.packages = [
     pkgs.jq
     pkgs.libxml2
+    pkgs.rust-analyzer
   ];
 
   xdg.configFile = {

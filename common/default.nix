@@ -15,6 +15,7 @@
       bc
       beets
       cinnamon.nemo-with-extensions
+      chromium
       curl
       distrobox
       ffmpeg
