@@ -43,12 +43,16 @@ let
     name = "imap-notify";
 
     propagatedBuildInputs = with pkgs; [
-      libnotify
       (python3.withPackages imap-notify-packages)
     ];
 
     dontUnpack = true;
-    installPhase = "install -Dm755 ${./imap-notify.py} $out/bin/imap-notify";
+
+    installPhase = ''
+      install -Dm755 ${./imap-notify.py} $out/bin/imap-notify
+      install -Dm755 ${./mailbox.png} $out/share/icon.png
+      substituteInPlace $out/bin/imap-notify --replace 'icon.png' "$out/share/icon.png"
+    '';
   };
 
   wofi-power = pkgs.stdenv.mkDerivation {

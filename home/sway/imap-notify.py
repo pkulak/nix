@@ -34,7 +34,7 @@ def email_change_callback(
 
     for new_email in email_get_response.data:
         if new_email.mailbox_ids.get(inbox_id, False):
-            subprocess.Popen(['notify-send', new_email.subject])
+            subprocess.Popen(['notify-send', new_email.subject, "--icon", "icon.png"])
 
 # Listen for events from the EventSource endpoint
 all_prev_state: Dict[str, TypeState] = collections.defaultdict(TypeState)
