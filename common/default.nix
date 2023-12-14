@@ -110,8 +110,9 @@
     };
 
     fonts = {
-      enableDefaultFonts = true;
-      fonts = with pkgs; [ 
+      enableDefaultPackages = true;
+
+      packages = with pkgs; [ 
         cantarell-fonts
         font-awesome
         (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })

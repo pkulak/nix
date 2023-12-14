@@ -28,6 +28,7 @@
         n = {
           ["=j"] = { ":%!jq<CR>:set syntax=json<CR>", desc = "Format JSON" },
           ["=x"] = { ":%!xmllint --format -<CR>:set syntax=xml<CR>", desc = "Format XML" },
+          ["=s"] = { ":%sort<CR>", desc = "Sort lines" },
           ["gb"] = { ":buffer #<cr>", desc = "Go to last buffer" },
           ["<leader>b"] = { name = "Buffers" },
           ["<leader>w"] = { ":wa<cr>", desc = "Save All" }
