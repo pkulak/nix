@@ -103,7 +103,7 @@ in {
       export GDK_BACKEND="wayland,x11"
       export _JAVA_AWT_WM_NONREPARENTING=1
 
-      export JAVA_HOME=${pkgs.jdk11}/lib/openjdk
+      export JAVA_HOME=${pkgs.jdk17}/lib/openjdk
       export JAVA_11_HOME=${pkgs.jdk11}/lib/openjdk
       export JAVA_17_HOME=${pkgs.jdk17}/lib/openjdk
 
