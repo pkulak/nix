@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+# After an update, you may need to run this:
+#
+# mv ~/.local/share/nvim ~/.local/share/nvim.bak
+# mv ~/.local/state/nvim ~/.local/state/nvim.bak
+# mv ~/.cache/nvim ~/.cache/nvim.bak
+
 {
   home.packages = [
     pkgs.jq
