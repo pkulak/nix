@@ -10,6 +10,7 @@ in {
   "jmap-secrets.age".publicKeys = keys;
   "smb-secrets.age".publicKeys = keys;
   "1pass.age".publicKeys = keys;
+  "ha-secrets.age".publicKeys = keys;
 }
 
 # ssh-keyscan localhost
