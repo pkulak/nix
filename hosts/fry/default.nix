@@ -18,6 +18,9 @@ in {
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  # the firewall screws up Virt-Manger; disable until we can figure out why
+  networking.firewall.enable = false;
+
   environment.systemPackages = [
     pkgs.unstable.jetbrains.idea-ultimate
     vuescan
