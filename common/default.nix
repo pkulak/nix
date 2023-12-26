@@ -25,6 +25,7 @@
       git
       glib
       gocryptfs
+      httpie
       imv
       libsForQt5.kdialog
       lsd

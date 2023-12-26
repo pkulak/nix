@@ -23,7 +23,7 @@ let
 
     propagatedBuildInputs = with pkgs; [
       (python3.withPackages (ps: with ps; [
-        pyquery
+        requests
       ]))
     ];
 
@@ -92,7 +92,7 @@ in {
     };
 
     "custom/weather" = {
-      "restart-interval" = 600;
+      "restart-interval" = 30;
       "return-type" = "json";
       "exec" = "${weather}/bin/weather";
     };

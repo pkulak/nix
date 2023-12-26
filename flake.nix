@@ -55,9 +55,14 @@
                 group = "users";
                 mode = "600";
               };
+              "ha-secrets" = {
+                file = ./secrets/ha-secrets.age;
+                owner = "phil";
+                group = "users";
+                mode = "600";
+              };
               "smb-secrets".file = ./secrets/smb-secrets.age;
               "1pass".file = ./secrets/1pass.age;
-              "ha-secrets".file = ./secrets/ha-secrets.age;
             };
           };
         }
