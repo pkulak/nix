@@ -36,8 +36,13 @@ elif precip < 3:
 else:
     icon = u"\U0000f740"
 
+precip_str = f"   {precip} "
+
+if precip == 0.0:
+    precip_str = ""
+
 data = {
-    "text": f"{temp}°    {precip} {icon}"
+    "text": f"{temp}° {precip_str}{icon}"
 }
 
 print(json.dumps(data))
