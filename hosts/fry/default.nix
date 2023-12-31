@@ -18,8 +18,8 @@ in {
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  # the firewall screws up Virt-Manger; disable until we can figure out why
-  networking.firewall.enable = false;
+  # the firewall screws up Virt-Manger; disable on that interface
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 
   environment.systemPackages = [
     pkgs.unstable.jetbrains.idea-ultimate
