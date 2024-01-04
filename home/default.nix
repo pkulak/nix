@@ -114,9 +114,9 @@ in {
       set fish_greeting
 
       alias ls  'lsd'
-      alias l   'ls -l'
-      alias la  'ls -a'
-      alias lla 'ls -la'
+      alias l   'ls -ltr'
+      alias la  'ls -atr'
+      alias lla 'ls -latr'
       alias lt  'ls --tree'
 
       alias .. 'cd ..'
