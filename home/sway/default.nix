@@ -88,7 +88,7 @@ in {
     executable = true;
 
     text = ''
-      #!/bin/sh
+      #!/usr/bin/env bash
 
       export TERMINAL="alacritty"
       export BROWSER="firefox"
@@ -110,6 +110,12 @@ in {
       export MOZ_ENABLE_WAYLAND=1
       export MOZ_WEBRENDER=1
       export MOZ_ACCELERATED=1
+
+      # jam some Vevo stuff in the env to make builds easier
+      if test -f /home/phil/.m2/settings.xml; then
+        export NEXUS_USER=deployment
+        export NEXUS_PASSWORD=$(${pkgs.xq-xml}/bin/xq /home/phil/.m2/settings.xml -x "/settings/servers/*[1]/password")
+      fi
     '';
   };
 
