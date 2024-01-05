@@ -30,6 +30,11 @@ in {
     enable = true;
     dates = "weekly";
     flake = "${config.users.users.phil.home}/nix";
-    flags = [ "--update-input" "nixpkgs" ];
+    flags = [
+      "--update-input" "nixpkgs"
+      "--update-input" "nixpkgs-unstable"
+      "--update-input" "nur"
+      "--update-input" "home-manager"
+    ];
   };
 }
