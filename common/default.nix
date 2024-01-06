@@ -41,6 +41,7 @@
 
       (callPackage ./matui pkgs)
       (callPackage ./pgen pkgs)
+      (callPackage ./pixlet.nix pkgs)
     ];
 
     environment.etc = with pkgs; {
