@@ -15,12 +15,6 @@ in {
 
   services.udev.packages = [ vuescan ];
 
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
-
-  # the firewall screws up Virt-Manger; disable on that interface
-  networking.firewall.trustedInterfaces = [ "virbr0" ];
-
   environment.systemPackages = [
     pkgs.unstable.jetbrains.idea-ultimate
     vuescan

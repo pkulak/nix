@@ -9,15 +9,19 @@
 
   # Install necessary packages
   environment.systemPackages = with pkgs; [
-    virt-manager
-    virt-viewer
-    spice spice-gtk
+    spice
+    spice-gtk
     spice-protocol
     win-virtio
     win-spice
   ];
 
+  # the firewall screws up Virt-Manger; disable on that interface
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
+
   # Manage the virtualisation services
+  programs.virt-manager.enable = true;
+
   virtualisation = {
     libvirtd = {
       enable = true;
