@@ -25,7 +25,7 @@ lux = int(response.json()['state'])
 icon = ""
 
 if precip == 0:
-    if lux > 10000:
+    if lux > 20000:
         icon = u"\U0000f185"
     elif sun == 'above_horizon':
         icon = u"\U0000f0c2"
