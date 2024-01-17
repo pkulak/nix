@@ -7,10 +7,6 @@ in {
     ../../common/vm.nix
   ];
 
-  # we have lot's of memory; use it
-  boot.tmp.useTmpfs = true;
-  boot.tmp.tmpfsSize = "50%";
-
   networking.hostName = "fry";
 
   services.udev.packages = [ vuescan ];
