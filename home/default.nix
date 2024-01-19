@@ -1,6 +1,14 @@
 { config, pkgs, host, ... }:
 
 let
+  todo = pkgs.writeShellApplication {
+    name = "todo";
+    runtimeInputs = with pkgs; [ moreutils ];
+    text = ''
+      echo -e "$(date +%F): $*" | cat - ~/notes/tasks.md | sponge ~/notes/tasks.md
+    '';
+  };
+
   import-photos = pkgs.writeShellApplication {
     name = "import-photos";
     text = ''
@@ -73,6 +81,7 @@ in {
     mnt-usb
     rebuild
     sync-notes
+    todo
     update
   ];
 
