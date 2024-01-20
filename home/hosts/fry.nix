@@ -6,14 +6,14 @@
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 600 'swaymsg "output * dpms off"' \
-                    resume 'swaymsg "output * dpms on"' \
+            timeout 600 'hyprctl dispatch dpms off' \
+                    resume 'hyprctl dispatch dpms on && systemctl --user restart wlsunset' \
             timeout 7200 'systemctl suspend' \
-                    after-resume 'swaymsg "output * dpms on"'
+                    after-resume 'hyprctl dispatch dpms on && systemctl --user restart wlsunset'
       ''; 
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
-    Install.WantedBy = [ "sway-session.target" ];
+    Install.WantedBy = [ "hyprland-session.target" ];
   };
 
   dconf.settings = {

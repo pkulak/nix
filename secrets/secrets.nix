@@ -4,8 +4,9 @@ let
   fry    = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHT/UgnbVTNVHfcdGfnaFmRPwxTKtm8SZWVVV/3k/KDu";
   x1     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKqzqd5PgJylsmJdYAZi0xRXD+nF8SQxuQVZVOZS7H45";
   t460p  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxLL9ihLEJdYgXX0qTtCBwexdC1ffA2Qh3wHPKhQHCM";
+  kvm    = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID1r9a/7YHv+zcAyn3V7t/a1X+hSRBYhGPJ93f3eQeBl";
 
-  keys = [ user fry x1 t460p ];
+  keys = [ user fry x1 t460p kvm ];
 in {
   "jmap-secrets.age".publicKeys = keys;
   "smb-secrets.age".publicKeys = keys;

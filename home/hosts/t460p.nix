@@ -17,20 +17,19 @@
     };
   };
 
-  wayland.windowManager.sway.extraConfig = "workspace 1";
-
   systemd.user.services.swayidle = {
     Unit.Description = "swayidle daemon";
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
             timeout 300 '${pkgs.playerctl}/bin/playerctl pause' \
-            timeout 600 'swaymsg "output * dpms off"' \
-                    resume 'swaymsg "output * dpms on"' \
+            timeout 600 'hyprctl dispatch dpms off' \
+                    resume 'hyprctl dispatch dpms on' \
+
       '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
-    Install.WantedBy = [ "sway-session.target" ];
+    Install.WantedBy = [ "hyprland-session.target" ];
   };
 
   home.packages = [ pkgs.networkmanagerapplet ];

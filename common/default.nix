@@ -5,12 +5,13 @@
     ./snapper.nix
     ./smb.nix
     ./sublime-music.nix
-    ./sway.nix
+    ./hyprland.nix
   ];
 
   config = {
     environment.systemPackages = with pkgs; [
       age
+      alacritty
       btop
       bc
       beets
@@ -34,6 +35,7 @@
       unstable.sublime-merge
       tldr
       unzip
+      wlsunset
       woeusb
       yt-dlp
       zathura

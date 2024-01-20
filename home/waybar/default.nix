@@ -39,8 +39,8 @@ in {
     position = "top";
     height = 30;
 
-    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "sway/mode" "sway/window"];
-    modules-center = ["sway/workspaces"];
+    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "hyprland/window"];
+    modules-center = ["hyprland/workspaces"];
     modules-right = ["custom/media" "custom/weather" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
     
     "backlight" = {
@@ -169,11 +169,7 @@ in {
       "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
     };
 
-    "sway/mode" = {
-      "format" = "{}";
-    };
-
-    "sway/window" = {
+    "hyprland/window" = {
       "format" = "{}";
       "max-length" = 50;
       "all-outputs" = true;
@@ -184,7 +180,7 @@ in {
       };
     };
 
-    "sway/workspaces" = {
+    "hyprland/workspaces" = {
       "disable-scroll" = true;
       "all-outputs" = false;
       "format" = "{name}";

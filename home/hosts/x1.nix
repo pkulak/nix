@@ -26,10 +26,11 @@
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 120 'swaymsg "output * dpms off"' \
-                    resume 'swaymsg "output * dpms on"' \
+            timeout 120 'hyprctl dispatch dpms off' \
+                    resume 'hyprctl dispatch dpms on' \
             timeout 600 'systemctl suspend' \
-                    after-resume 'swaymsg "output * dpms on"'
+                    after-resume 'hyprctl dispatch dpms on'
+
       '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";

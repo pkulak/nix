@@ -69,7 +69,7 @@ in {
     ./alacritty.nix
     ./astronvim
     ./firefox.nix
-    ./sway
+    ./hyprland
     ./waybar
     ./wofi
 
@@ -187,9 +187,9 @@ in {
       x-scheme-handler/http=firefox.desktop
       x-scheme-handler/https=firefox.desktop
 
-      image/gif=swayimg.desktop
-      image/jpeg=swayimg.desktop
-      image/png=swayimg.desktop
+      image/gif=imv.desktop
+      image/jpeg=imv.desktop
+      image/png=imv.desktop
 
       video/mp4=mpv.desktop
       video/quicktime=mpv.desktop
