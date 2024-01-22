@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
 
 let
-  rules = pkgs.writeShellApplication {
-    name = "rules";
-    runtimeInputs = with pkgs; [ socat ];
-    text = ./rules.sh;
-  };
-
   imap-notify-packages = ps: with ps; [
     (
       buildPythonPackage rec {
@@ -47,12 +41,42 @@ let
       substituteInPlace $out/bin/imap-notify --replace 'icon.png' "$out/share/icon.png"
     '';
   };
-in {
-  imports = [
-    ./keybinds.nix
-  ];
 
-  xdg.configFile."hypr/environment" = {
+  wofi-power = pkgs.stdenv.mkDerivation {
+    name = "wofi-power";
+    nativeBuildInputs = with pkgs; [ makeWrapper ];
+    dontUnpack = true;
+
+    installPhase = ''
+      makeWrapper ${./wofi-power} $out/bin/wofi-power \
+        --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.wofi ]}
+    '';
+  };
+
+  wofi-emoji = pkgs.stdenv.mkDerivation {
+    name = "wofi-emoji";
+    nativeBuildInputs = with pkgs; [ makeWrapper ];
+    dontUnpack = true;
+
+    installPhase = ''
+      makeWrapper ${./wofi-emoji} $out/bin/wofi-emoji \
+        --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.wofi ]}
+    '';
+  };
+
+  init = pkgs.stdenv.mkDerivation {
+    name = "init";
+    dontUnpack = true;
+
+    installPhase = ''
+      install -Dm755 ${./init} $out/bin/init
+      substituteInPlace $out/bin/init --replace 'wofi-emoji' '${wofi-emoji}/bin/wofi-emoji'
+      substituteInPlace $out/bin/init --replace 'wofi-power' '${wofi-power}/bin/wofi-power'
+      substituteInPlace $out/bin/init --replace 'wallpaper.png' '${./wallpaper.png}'
+    '';
+  };
+in {
+  xdg.configFile."river/environment" = {
     executable = true;
 
     text = ''
@@ -87,6 +111,11 @@ in {
     '';
   };
 
+  xdg.configFile."river/init" = {
+    executable = true;
+    source = "${init}/bin/init";
+  };
+
   home.pointerCursor = {
     gtk.enable = true;
     package = pkgs.bibata-cursors;
@@ -107,146 +136,39 @@ in {
     };
   };
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = pkgs.unstable.hyprland;
-
-    settings = {
-      "$mod" = "SUPER";
-      monitor = ",preferred,auto,auto";
-
-      exec-once = [
-        "${rules}/bin/rules"
-        "waybar"
-        "swaybg -i ${./wallpaper.png} -m fill"
-      ];
-
-      input = {
-        kb_layout = "us";
-        follow_mouse = 1;
-        natural_scroll = true;
-        scroll_method = "on_button_down";
-        scroll_button = "275";
-        accel_profile = "adaptive";
-        
-        repeat_delay = 200;
-        repeat_rate = 30;
-      };
-
-      general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 2;
-        cursor_inactive_timeout = 4;
-        "col.active_border" = "rgba(ffffffaa)";
-        "col.inactive_border" = "rgba(595959aa)";
-        layout = "master";
-        allow_tearing = false;
-      };
-
-      decoration = {
-        rounding = 10;
-
-        blur = {
-            enabled = true;
-            size = 3;
-            passes = 1;
-            vibrancy = 0.1696;
-        };
-
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
-      };
-
-      group = {
-        groupbar = {
-          gradients = false;
-          render_titles = false;
-        };
-      };
-
-      animations = {
-        enabled = true;
-
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.0A";
-
-        animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
-      };
-
-      dwindle = {
-          pseudotile = true;
-          preserve_split = true;
-      };
-
-      master = {
-        new_is_master = false;
-      };
-
-      windowrulev2 = [
-        # Sublime Merge
-        "float,class:sublime_merge"
-        "dimaround,class:sublime_merge"
-        "size 1440 1024,class:sublime_merge"
-        "center 1,class:sublime_merge"
-
-        # Popup Terminals (and anything else)
-        "float,class:floating"
-        "size 1280 720,class:floating"
-        "center 1,class:floating"
-
-        # Volume Control
-        "float,class:pavucontrol"
-
-        # Music
-        "workspace special:scratch,class:.sublime-music-wrapped"
-      ];
-
-      workspace = [
-        "special:scratch,gapsin:30,gapsout:128"
-      ];
-
-      misc = {
-        disable_hyprland_logo = true;
-        disable_splash_rendering = true;
-        force_default_wallpaper = 0;
-        mouse_move_enables_dpms = false;
-        key_press_enables_dpms = true;
-      };
+  # use systemd to manage some services
+  systemd.user.targets.river-session = {
+    Unit = {
+      Description = "River compositor session";
+      Documentation = "man:systemd.special";
+      BindsTo = "graphical-session.target";
+      Wants = "graphical-session-pre.target";
+      After = "graphical-session-pre.target";
     };
   };
 
-  # use systemd to manage some services
   systemd.user.services.wlsunset = {
     Unit.Description = "wlsunset daemon";
     Service.ExecStart = "${pkgs.wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8"; 
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = [ "river-session.target" ];
   };
 
   systemd.user.services.imap-notify = {
     Unit.Description = "email notifications daemon";
     Service.ExecStart = "${imap-notify}/bin/imap-notify"; 
     Service.Environment = "PATH=${pkgs.libnotify}/bin";
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = [ "river-session.target" ];
   };
 
   systemd.user.services.mako = {
     Unit.Description = "mako daemon";
     Service.ExecStart = "${pkgs.mako}/bin/mako"; 
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = [ "river-session.target" ];
   };
 
   systemd.user.services.polkit = {
     Unit.Description = "polkit daemon";
     Service.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; 
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = [ "river-session.target" ];
   };
 }

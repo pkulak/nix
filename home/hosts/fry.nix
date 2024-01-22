@@ -6,14 +6,14 @@
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 600 'hyprctl dispatch dpms off' \
-                    resume 'hyprctl dispatch dpms on && systemctl --user restart wlsunset' \
+            timeout 600 'wlopm --off "*"' \
+                    resume 'wlopm --on "*"' \
             timeout 7200 'systemctl suspend' \
-                    after-resume 'hyprctl dispatch dpms on && systemctl --user restart wlsunset'
+                    after-resume 'wlopm --on "*"'
       ''; 
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = [ "river-session.target" ];
   };
 
   dconf.settings = {

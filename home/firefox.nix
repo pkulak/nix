@@ -42,7 +42,6 @@
           decentraleyes
           nitter-redirect
           onepassword-password-manager
-          sidebery
           sponsorblock
           theater-mode-for-youtube
           ublock-origin
@@ -97,18 +96,11 @@
           user_pref("browser.tabs.closeWindowWithLastTab", false);
           user_pref("browser.toolbars.bookmarks.visibility", "never");
           user_pref("media.hardwaremediakeys.enabled", false);
-          user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
           user_pref("media.ffmpeg.vaapi.enabled", true);
           user_pref("privacy.clearOnShutdown.cache", false);
           user_pref("privacy.clearOnShutdown.cookies", false);
           user_pref("privacy.clearOnShutdown.sessions", false);
           user_pref("privacy.history.custom", true);
-        '';
-
-        userChrome = ''
-          #TabsToolbar {
-            visibility: collapse;
-          }
         '';
 
         userContent = "";

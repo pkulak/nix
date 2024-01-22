@@ -5,7 +5,7 @@
     ./snapper.nix
     ./smb.nix
     ./sublime-music.nix
-    ./hyprland.nix
+    ./river.nix
   ];
 
   config = {

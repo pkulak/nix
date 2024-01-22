@@ -1,6 +1,12 @@
 { config, pkgs, host, ... }:
 
 let
+  matuiDesktopItem = pkgs.makeDesktopItem {
+    name = "matui";
+    desktopName = "Matui";
+    exec = "${pkgs.alacritty}/bin/alacritty --class floating -e matui";
+  };
+
   todo = pkgs.writeShellApplication {
     name = "todo";
     runtimeInputs = with pkgs; [ moreutils ];
@@ -69,7 +75,7 @@ in {
     ./alacritty.nix
     ./astronvim
     ./firefox.nix
-    ./hyprland
+    ./river
     ./waybar
     ./wofi
 
@@ -77,6 +83,7 @@ in {
   ];
 
   home.packages = [
+    matuiDesktopItem
     import-photos
     mnt-usb
     rebuild

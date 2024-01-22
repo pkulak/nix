@@ -39,8 +39,8 @@ in {
     position = "top";
     height = 30;
 
-    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "hyprland/window"];
-    modules-center = ["hyprland/workspaces"];
+    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "river/window"];
+    modules-center = ["river/tags"];
     modules-right = ["custom/media" "custom/weather" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
     
     "backlight" = {
@@ -169,7 +169,7 @@ in {
       "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
     };
 
-    "hyprland/window" = {
+    "river/window" = {
       "format" = "{}";
       "max-length" = 50;
       "all-outputs" = true;
@@ -180,15 +180,8 @@ in {
       };
     };
 
-    "hyprland/workspaces" = {
-      "disable-scroll" = true;
-      "all-outputs" = false;
-      "format" = "{name}";
-      "format-icons" = {
-        "urgent" = "";
-        "focused" = "";
-        "default" = "";
-      };
+    "river/tags" = {
+      "num-tags" = 6;
     };
 
     "temperature" = {

@@ -26,10 +26,10 @@
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 120 'hyprctl dispatch dpms off' \
-                    resume 'hyprctl dispatch dpms on' \
+            timeout 120 'wlopm --off "*"' \
+                    resume 'wlopm --on "*"' \
             timeout 600 'systemctl suspend' \
-                    after-resume 'hyprctl dispatch dpms on'
+                    after-resume 'wlopm --on "*"'
 
       '';
 
