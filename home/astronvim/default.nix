@@ -7,10 +7,15 @@
 # mv ~/.cache/nvim ~/.cache/nvim.bak
 
 {
-  home.packages = [
-    pkgs.jq
-    pkgs.libxml2
-    pkgs.rust-analyzer
+  home.packages = with pkgs; [
+    bacon
+    cargo
+    clippy
+    jq
+    libxml2
+    rustfmt
+    rustc
+    rust-analyzer
   ];
 
   xdg.configFile = {
