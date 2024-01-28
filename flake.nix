@@ -7,6 +7,11 @@
     nixos-hardware.url   = "github:NixOS/nixos-hardware";
     nur.url              = "github:nix-community/NUR";
 
+    matui = {
+      url = "github:pkulak/matui";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,13 +29,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix, nixos-hardware, nur, home-manager, agenix, nix-index-database }: let
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix, matui, nixos-hardware, nur, home-manager, agenix, nix-index-database }: let
     mkSystem = host: nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       
       specialArgs = {
         inherit nixos-hardware;
         inherit nur;
+        inherit matui;
 
         pkgs-unstable = import nixpkgs-unstable {
           config.allowUnfree = true;

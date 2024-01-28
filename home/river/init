@@ -90,7 +90,7 @@ riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 # Define a couple special worspaces
-riverctl map normal Super S set-focused-tags $((1 << 6))
+riverctl map normal Super S toggle-focused-tags $((1 << 6))
 riverctl map normal Super+Shift S set-view-tags $((1 << 6))
 
 riverctl map normal Super V set-focused-tags $((1 << 7))

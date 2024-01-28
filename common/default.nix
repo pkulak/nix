@@ -30,6 +30,7 @@
       imv
       libsForQt5.kdialog
       lsd
+      matui
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
       unstable.sublime-merge
@@ -41,7 +42,6 @@
       zathura
       zoom-us
 
-      (callPackage ./matui pkgs)
       (callPackage ./pgen pkgs)
       (callPackage ./pixlet.nix pkgs)
     ];

@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, nur, ... }:
+{ config, matui, pkgs, pkgs-unstable, nur, ... }:
 
 {
   imports = [ ./common ];
@@ -59,6 +59,7 @@
     overlays = [
       nur.overlay
       (final: prev: {
+        matui = matui.packages.${prev.stdenv.system}.matui;
         unstable = pkgs-unstable;
       })
     ];
