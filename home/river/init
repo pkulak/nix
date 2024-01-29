@@ -40,13 +40,9 @@ riverctl map normal Super+Shift Comma send-to-output previous
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super M zoom
 
-# Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
-
-# Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+# Super+H and Super+L to decrease/increase the main ratio of filtile
+riverctl map normal Super H send-layout-cmd filtile "main-ratio -5"
+riverctl map normal Super L send-layout-cmd filtile "main-ratio +5"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -105,11 +101,9 @@ riverctl map normal Super+Shift Space toggle-float
 # Super+F to toggle fullscreen
 riverctl map normal Super F toggle-fullscreen
 
-# Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
+# Layout manager
+riverctl map normal Super Z send-layout-cmd filtile "swap"
+riverctl map normal Super C send-layout-cmd filtile "pad"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
@@ -170,10 +164,14 @@ riverctl float-filter-add app-id 'mpv'
 # Anything specific to this machine
 test -f host && source host
 
-# Set the default layout generator to be rivertile and start it.
+# Set the default layout generator to be filtile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
-riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+riverctl default-layout filtile
+
+filtile \
+    --tags 1 pad on, \
+    --tags 1 main-ratio 70, \
+    --tags 1 main-location right &
 
 swaybg -i wallpaper.png -m fill &
 waybar &

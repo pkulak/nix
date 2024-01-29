@@ -22,6 +22,7 @@
       ffmpeg
       ffmpegthumbnailer
       file
+      filtile
       gcc
       git
       glib

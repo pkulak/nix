@@ -12,6 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    filtile = {
+      url = "github:pkulak/filtile";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +34,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix, matui, nixos-hardware, nur, home-manager, agenix, nix-index-database }: let
+  outputs = { self,
+    nixpkgs, nixpkgs-unstable, nix,
+    matui, filtile,
+    nixos-hardware, nur, home-manager, agenix, nix-index-database
+  }: let
     mkSystem = host: nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       
@@ -37,6 +46,7 @@
         inherit nixos-hardware;
         inherit nur;
         inherit matui;
+        inherit filtile;
 
         pkgs-unstable = import nixpkgs-unstable {
           config.allowUnfree = true;

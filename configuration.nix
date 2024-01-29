@@ -1,4 +1,4 @@
-{ config, matui, pkgs, pkgs-unstable, nur, ... }:
+{ config, matui, filtile, pkgs, pkgs-unstable, nur, ... }:
 
 {
   imports = [ ./common ];
@@ -60,6 +60,7 @@
       nur.overlay
       (final: prev: {
         matui = matui.packages.${prev.stdenv.system}.matui;
+        filtile = filtile.packages.${prev.stdenv.system}.filtile;
         unstable = pkgs-unstable;
       })
     ];
