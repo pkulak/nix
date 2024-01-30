@@ -1,25 +1,21 @@
 { config, pkgs, ... }:
 
 {
-  wayland.windowManager.sway.config = {
-    input = {
-      "1:1:AT_Translated_Set_2_keyboard" = {
-        xkb_options = "altwin:swap_lalt_lwin,caps:escape";
-      };
-
-      "1739:0:Synaptics_TM3289-021" = {
-        scroll_factor = "0.5";
-      };
-    };
-
-    keybindings = pkgs.lib.mkOptionDefault {
-      "--locked Print" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-      "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 10";
-      "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 10";
-    };
+  xdg.configFile."river/host" = {
+    executable = true;
+    text = ''
+      riverctl input pointer-1739-0-Synaptics_TM3289-021 natural-scroll enabled
+      
+      for mode in normal locked
+      do
+        riverctl map $mode None Print spawn playerctl play-pause
+      done
+    '';
   };
 
-  wayland.windowManager.sway.extraConfig = "workspace 1";
+  xdg.configFile."river/environment" = {
+    text = "export XKB_DEFAULT_OPTIONS=altwin:swap_lalt_lwin,caps:escape";
+  };
 
   systemd.user.services.swayidle = {
     Unit.Description = "swayidle daemon";
@@ -34,14 +30,18 @@
       '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
-    Install.WantedBy = [ "sway-session.target" ];
+    Install.WantedBy = [ "river-session.target" ];
   };
+
+  programs.firefox.profiles.phil.extraConfig = ''
+    user_pref("mousewheel.default.delta_multiplier_y", 50);
+  '';
 
   home.packages = [ pkgs.networkmanagerapplet ];
 
   systemd.user.services.nm-applet = {
     Unit.Description = "nm-applet daemon";
     Service.ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
-    Install.WantedBy = [ "sway-session.target" ];
+    Install.WantedBy = [ "river-session.target" ];
   };
 }

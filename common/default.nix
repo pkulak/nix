@@ -73,6 +73,7 @@
 
     security.polkit.enable = true;
     programs.fish.enable = true;
+    programs.dconf.enable = true;
     services.flatpak.enable = true;
 
     services.openssh = {

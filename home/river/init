@@ -92,7 +92,7 @@ riverctl map normal Super+Shift S set-view-tags $((1 << 6))
 riverctl map normal Super V set-focused-tags $((1 << 7))
 riverctl map normal Super+Shift V set-view-tags $((1 << 7))
 
-riverctl map normal Super Minus set-focused-tags $((1 << 8))
+riverctl map normal Super Minus toggle-focused-tags $((1 << 8))
 riverctl map normal Super+Shift Minus set-view-tags $((1 << 8))
 
 # Super+Space to toggle float
@@ -162,16 +162,12 @@ riverctl float-filter-add app-id 'imv'
 riverctl float-filter-add app-id 'mpv'
 
 # Anything specific to this machine
-test -f host && source host
+test -f ~/.config/river/host && source ~/.config/river/host
 
 # Set the default layout generator to be filtile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout filtile
-
-filtile \
-    --tags 1 pad on, \
-    --tags 1 main-ratio 70, \
-    --tags 1 main-location right &
+filtile &
 
 swaybg -i wallpaper.png -m fill &
 waybar &
