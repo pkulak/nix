@@ -41,8 +41,8 @@ riverctl map normal Super+Shift Comma send-to-output previous
 riverctl map normal Super M zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of filtile
-riverctl map normal Super H send-layout-cmd filtile "main-ratio -5"
-riverctl map normal Super L send-layout-cmd filtile "main-ratio +5"
+riverctl map normal Super DOWN send-layout-cmd filtile "main-ratio -5"
+riverctl map normal Super UP send-layout-cmd filtile "main-ratio +5"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
