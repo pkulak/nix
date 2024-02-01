@@ -98,8 +98,9 @@ riverctl map normal Super+Shift Minus set-view-tags $((1 << 8))
 # Super+Space to toggle float
 riverctl map normal Super+Shift Space toggle-float
 
-# Super+F to toggle fullscreen
-riverctl map normal Super F toggle-fullscreen
+# Super+F to toggle fullscreen (monocle)
+riverctl map normal Super F send-layout-cmd filtile "monocle"
+riverctl map normal Super+Shift F toggle-fullscreen
 
 # Layout manager
 riverctl map normal Super Z send-layout-cmd filtile "swap"
