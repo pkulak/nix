@@ -4,8 +4,6 @@
   xdg.configFile."river/host" = {
     executable = true;
     text = ''
-      riverctl input pointer-1739-0-Synaptics_TM3289-021 natural-scroll enabled
-      
       for mode in normal locked
       do
         riverctl map $mode None Print spawn playerctl play-pause

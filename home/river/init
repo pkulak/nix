@@ -141,11 +141,18 @@ riverctl attach-mode bottom
 riverctl focus-follows-cursor disabled
 riverctl hide-cursor timeout 4000
 
-# Inputs (maybe have this scroll all pointers someday)
+# Inputs
+configure_matching_inputs() {
+    riverctl list-inputs \
+        | grep $1 \
+        | xargs -I '{}' riverctl input '{}' $2 $3
+}
+
+configure_matching_inputs pointer natural-scroll enabled
+
 riverctl input pointer-1149-8257-Kensington_Slimblade_Trackball scroll-method button
 riverctl input pointer-1149-8257-Kensington_Slimblade_Trackball scroll-button BTN_SIDE
 riverctl input pointer-1149-8257-Kensington_Slimblade_Trackball accel-profile adaptive
-riverctl input pointer-1149-8257-Kensington_Slimblade_Trackball natural-scroll enabled
 
 # Set background and border color
 riverctl background-color 0x002b36
