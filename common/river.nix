@@ -39,6 +39,7 @@ in
       mako
       playerctl
       river
+      river-bnf
       slurp
       start-river
       swaybg

@@ -73,7 +73,7 @@ do
     tags=$((1 << ($i - 1)))
 
     # Super+[1-6] to focus tag [0-5]
-    riverctl map normal Super $i set-focused-tags $tags
+    riverctl map normal Super $i spawn "river-bnf $tags"
 
     # Super+Shift+[1-6] to tag focused view with tag [0-5]
     riverctl map normal Super+Shift $i set-view-tags $tags
@@ -89,7 +89,7 @@ riverctl map normal Super+Shift 0 set-view-tags $all_tags
 riverctl map normal Super S toggle-focused-tags $((1 << 6))
 riverctl map normal Super+Shift S set-view-tags $((1 << 6))
 
-riverctl map normal Super V set-focused-tags $((1 << 7))
+riverctl map normal Super V spawn "river-bnf $((1 << 7))"
 riverctl map normal Super+Shift V set-view-tags $((1 << 7))
 
 riverctl map normal Super Minus toggle-focused-tags $((1 << 8))
