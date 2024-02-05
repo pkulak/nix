@@ -175,7 +175,11 @@ test -f ~/.config/river/host && source ~/.config/river/host
 # Set the default layout generator to be filtile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout filtile
-filtile &
+
+filtile \
+    --output HDMI-A-1 pad on, \
+    --output HDMI-A-1 --tags 1 main-ratio 70, \
+    --output HDMI-A-1 --tags 1 main-location right &
 
 swaybg -i wallpaper.png -m fill &
 waybar &
