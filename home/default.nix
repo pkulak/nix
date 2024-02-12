@@ -187,6 +187,21 @@ in {
     # MPV
     "mpv/mpv.conf".text = "mute=yes";
 
+    # Git
+    "git/config".text = ''
+      [user]
+        name=Phil Kulak
+        email=phil@kulak.us
+
+      [includeIf "gitdir:~/vevo/"]
+        path = ~/.config/git/vevo
+    '';
+
+    "git/vevo".text = ''
+      [user]
+        email=phil.kulak@vevo.com
+    '';
+
     # Default Apps
     "mimeapps.list".text = ''
       [Default Applications]
@@ -226,11 +241,6 @@ in {
       set number
       inoremap jj <esc>
       set visualbell
-    '';
-
-    # Vevo
-    "vevo/.envrc".text = ''
-      export GIT_AUTHOR_EMAIL="phil.kulak@vevo.com"
     '';
   };
 

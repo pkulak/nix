@@ -168,6 +168,7 @@ riverctl float-filter-add app-id 'pavucontrol'
 riverctl float-filter-add app-id '.sublime-music-wrapped'
 riverctl float-filter-add app-id 'imv'
 riverctl float-filter-add app-id 'mpv'
+riverctl float-filter-add app-id 'org.kde.kdialog'
 
 # Anything specific to this machine
 test -f ~/.config/river/host && source ~/.config/river/host
@@ -177,7 +178,7 @@ test -f ~/.config/river/host && source ~/.config/river/host
 riverctl default-layout filtile
 
 filtile \
-    --output HDMI-A-1 pad on, \
+    --output HDMI-A-1 --tags 1 pad on, \
     --output HDMI-A-1 --tags 1 main-ratio 70, \
     --output HDMI-A-1 --tags 1 main-location right &
 
