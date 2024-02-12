@@ -76,6 +76,8 @@
     programs.dconf.enable = true;
     services.flatpak.enable = true;
 
+    programs.ssh.startAgent = true;
+
     services.openssh = {
       enable = true;
       settings = {

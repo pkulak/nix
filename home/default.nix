@@ -1,7 +1,7 @@
 { config, pkgs, host, ... }:
 
 let
-  matuiDesktopItem = pkgs.makeDesktopItem {
+  matui-desktop-item = pkgs.makeDesktopItem {
     name = "matui";
     desktopName = "Matui";
     exec = "${pkgs.alacritty}/bin/alacritty --class floating -e matui";
@@ -70,6 +70,9 @@ let
       cd "$OLDPWD"
     '';
   };
+
+  public-key =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWOTXI/ryuoyQSepiKc+EF5lm+Ye3vqa2a5xS4pBA4C phil@kulak.us";
 in {
   imports = [
     ./alacritty.nix
@@ -83,7 +86,7 @@ in {
   ];
 
   home.packages = [
-    matuiDesktopItem
+    matui-desktop-item
     import-photos
     mnt-usb
     rebuild
@@ -192,6 +195,16 @@ in {
       [user]
         name=Phil Kulak
         email=phil@kulak.us
+        signingKey=~/.ssh/id_ed25519.pub
+
+      [gpg]
+        format=ssh
+
+      [gpg "ssh"]
+        allowedSignersFile="~/.ssh/allowed_signers"
+
+      [commit]
+        gpgSign=true
 
       [includeIf "gitdir:~/vevo/"]
         path = ~/.config/git/vevo
@@ -242,6 +255,10 @@ in {
       inoremap jj <esc>
       set visualbell
     '';
+
+    # SSH
+    ".ssh/allowed_signers".text = "* ${public-key}";
+    ".ssh/id_ed25519.pub".text = public-key;
   };
 
   home.stateVersion = "23.05";
