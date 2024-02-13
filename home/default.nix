@@ -78,6 +78,7 @@ in {
     ./alacritty.nix
     ./astronvim
     ./firefox.nix
+    ./git.nix
     ./river
     ./waybar
     ./wofi
@@ -189,31 +190,6 @@ in {
 
     # MPV
     "mpv/mpv.conf".text = "mute=yes";
-
-    # Git
-    "git/config".text = ''
-      [user]
-        name=Phil Kulak
-        email=phil@kulak.us
-        signingKey=~/.ssh/id_ed25519.pub
-
-      [gpg]
-        format=ssh
-
-      [gpg "ssh"]
-        allowedSignersFile="~/.ssh/allowed_signers"
-
-      [commit]
-        gpgSign=true
-
-      [includeIf "gitdir:~/vevo/"]
-        path = ~/.config/git/vevo
-    '';
-
-    "git/vevo".text = ''
-      [user]
-        email=phil.kulak@vevo.com
-    '';
 
     # Default Apps
     "mimeapps.list".text = ''
