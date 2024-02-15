@@ -103,8 +103,10 @@ riverctl map normal Super F send-layout-cmd filtile "monocle"
 riverctl map normal Super+Shift F toggle-fullscreen
 
 # Layout manager
-riverctl map normal Super Z send-layout-cmd filtile "swap"
+riverctl map normal Super Z send-layout-cmd filtile "flip"
 riverctl map normal Super C send-layout-cmd filtile "pad"
+riverctl map normal Super+Shift UP send-layout-cmd filtile "main-count +1"
+riverctl map normal Super+Shift DOWN send-layout-cmd filtile "main-count -1"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor

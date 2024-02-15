@@ -42,6 +42,7 @@
       yt-dlp
       zathura
       zoom-us
+      zoxide
 
       (callPackage ./pgen pkgs)
       (callPackage ./pixlet.nix pkgs)

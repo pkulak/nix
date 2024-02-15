@@ -40,7 +40,6 @@
           clearurls
           consent-o-matic
           decentraleyes
-          nitter-redirect
           onepassword-password-manager
           sponsorblock
           theater-mode-for-youtube

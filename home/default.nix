@@ -152,6 +152,8 @@ in {
       alias dr '${pkgs.ripdrag}/bin/ripdrag -a'
       alias screencast '${pkgs.wf-recorder}/bin/wf-recorder -g (${pkgs.slurp}/bin/slurp)'
       alias mnt-private 'mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private'
+
+      zoxide init fish | source
     '';
 
     "fish/functions/compress.fish".text = ''
