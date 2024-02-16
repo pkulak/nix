@@ -86,7 +86,7 @@ riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 # Define a couple special worspaces
-riverctl map normal Super S toggle-focused-tags $((1 << 6))
+riverctl map normal Super S spawn "river-bnf $((1 << 6))"
 riverctl map normal Super+Shift S set-view-tags $((1 << 6))
 
 riverctl map normal Super V spawn "river-bnf $((1 << 7))"
@@ -167,7 +167,6 @@ riverctl set-repeat 30 200
 # Floaty bits
 riverctl float-filter-add app-id 'sublime_merge'
 riverctl float-filter-add app-id 'pavucontrol'
-riverctl float-filter-add app-id '.sublime-music-wrapped'
 riverctl float-filter-add app-id 'imv'
 riverctl float-filter-add app-id 'mpv'
 riverctl float-filter-add app-id 'org.kde.kdialog'
@@ -180,6 +179,9 @@ test -f ~/.config/river/host && source ~/.config/river/host
 riverctl default-layout filtile
 
 filtile \
+    --tags $((1 << 6)) pad on, \
+    --tags $((1 << 6)) view-padding 64, \
+    --tags $((1 << 6)) outer-padding 64, \
     --output HDMI-A-1 --tags 1 pad on, \
     --output HDMI-A-1 --tags 1 main-ratio 70, \
     --output HDMI-A-1 --tags 1 main-location right &

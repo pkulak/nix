@@ -4,7 +4,7 @@ let
   matui-desktop-item = pkgs.makeDesktopItem {
     name = "matui";
     desktopName = "Matui";
-    exec = "${pkgs.alacritty}/bin/alacritty --class floating -e matui";
+    exec = "${pkgs.alacritty}/bin/alacritty -e matui";
   };
 
   todo = pkgs.writeShellApplication {
