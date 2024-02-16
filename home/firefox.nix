@@ -40,6 +40,7 @@
           clearurls
           consent-o-matic
           decentraleyes
+          don-t-fuck-with-paste
           onepassword-password-manager
           sponsorblock
           theater-mode-for-youtube
