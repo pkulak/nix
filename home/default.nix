@@ -11,6 +11,11 @@ let
     name = "todo";
     runtimeInputs = with pkgs; [ moreutils ];
     text = ''
+      if [ $# -eq 0 ]; then
+        vim ~/notes/tasks.md
+        exit
+      fi
+
       echo -e "$(date +%F): $*" | cat - ~/notes/tasks.md | sponge ~/notes/tasks.md
     '';
   };

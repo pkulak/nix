@@ -179,11 +179,10 @@ test -f ~/.config/river/host && source ~/.config/river/host
 riverctl default-layout filtile
 
 filtile \
+    --output HDMI-A-1 smart-padding-h 384, \
     --tags $((1 << 6)) pad on, \
     --tags $((1 << 6)) view-padding 64, \
     --tags $((1 << 6)) outer-padding 64, \
-    --output HDMI-A-1 --tags 1 pad on, \
-    --output HDMI-A-1 --tags 1 main-ratio 70, \
     --output HDMI-A-1 --tags 1 main-location right &
 
 swaybg -i wallpaper.png -m fill &
