@@ -85,6 +85,7 @@ in {
     ./firefox.nix
     ./git.nix
     ./river
+    ./tmux.nix
     ./waybar
     ./wofi
 

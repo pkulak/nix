@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-riverctl map normal Super Return spawn 'alacritty -e fish'
+riverctl map normal Super Return spawn 'alacritty -e tmux new-session -A -s scratch'
 riverctl map normal Super P spawn 'firefox'
 riverctl map normal Super D spawn 'wofi -a -b -I -modi drun --show drun'
 riverctl map normal Super E spawn 'wofi-emoji'
@@ -13,8 +13,8 @@ riverctl map normal Control+Shift Space spawn 'makoctl dismiss --all'
 riverctl map normal Super+Shift C spawn \
     'mkdir -p $HOME/Screenshots && slurp | grim -g - $HOME/Screenshots/$(date +"%Y-%m-%d-%H%M%S.png")'
 
-# Popup Terminal
-riverctl map normal Super+Shift Return spawn 'alacritty --class floating -e fish'
+# Bare Terminal
+riverctl map normal Super+Shift Return spawn 'alacritty -e fish'
 riverctl float-filter-add app-id 'floating'
 
 # Close the focused view
