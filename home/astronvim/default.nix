@@ -23,8 +23,8 @@
       source = pkgs.fetchFromGitHub {
         owner = "AstroNvim";
         repo = "AstroNvim";
-        rev = "v3.39.0";
-        sha256 = "sha256-wttBcj9OoFHx+EukGzQYKHVlApphZXzZqY5zP5chU6g=";
+        rev = "v3.44.1";
+        sha256 = "sha256-1nfMx9XaTOfuz1IlvepJdEfrX539RRVN5RXzUR00tfk=";
       };
     };
 
