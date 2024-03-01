@@ -15,7 +15,7 @@
         {
           plugin = tmuxPlugins.catppuccin;
           extraConfig = '' 
-            set -g @catppuccin_flavour 'frappe'
+            set -g @catppuccin_flavour 'mocha'
             set -g @catppuccin_window_tabs_enabled on
             set -g @catppuccin_date_time "%H:%M"
           '';
@@ -28,7 +28,8 @@
       set -g mouse on
 
       # full color
-      set-option -sa terminal-overrides ",xterm*:Tc"
+      set -g default-terminal "alacritty" 
+      set-option -sa terminal-overrides ",alacritty*:Tc"
 
       # index windows starting at 1
       set -g base-index 1

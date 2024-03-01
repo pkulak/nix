@@ -1,4 +1,4 @@
-{ config, pkgs, host, ... }:
+{ pkgs, host, ... }:
 
 let
   matui-desktop-item = pkgs.makeDesktopItem {
@@ -80,7 +80,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWOTXI/ryuoyQSepiKc+EF5lm+Ye3vqa2a5xS4pBA4C phil@kulak.us";
 in {
   imports = [
-    ./alacritty.nix
+    ./alacritty
     ./astronvim
     ./firefox.nix
     ./git.nix

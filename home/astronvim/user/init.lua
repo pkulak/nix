@@ -31,6 +31,8 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
+      "kotlin_language_server",
+      "nil_ls",
       "rust_analyzer"
     },
   },

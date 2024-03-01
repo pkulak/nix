@@ -1,9 +1,13 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.alacritty.enable = true;
 
   programs.alacritty.settings = {
+    import = [
+      "${./catppuccin-mocha.yml}"
+    ];
+
     key_bindings = [
       { key = "V"; mods = "Control"; action = "Paste"; }
       { key = "C"; mods = "Control"; action = "Copy"; }

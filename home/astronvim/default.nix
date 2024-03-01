@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 # After an update, you may need to run this:
 #
@@ -12,7 +12,9 @@
     cargo
     clippy
     jq
+    kotlin-language-server
     libxml2
+    nil
     rustfmt
     rustc
     rust-analyzer
