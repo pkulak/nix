@@ -10,7 +10,7 @@ riverctl map normal Control Space spawn 'makoctl dismiss'
 riverctl map normal Control+Shift Space spawn 'makoctl dismiss --all'
 
 # Screenshots
-riverctl map normal Super+Shift C spawn \
+riverctl map normal Super+Shift S spawn \
     'mkdir -p $HOME/Screenshots && slurp | grim -g - $HOME/Screenshots/$(date +"%Y-%m-%d-%H%M%S.png")'
 
 # Scratch Terminal
@@ -87,7 +87,7 @@ riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 # Define a couple special worspaces
 riverctl map normal Super S spawn "river-bnf $((1 << 6))"
-riverctl map normal Super+Shift S set-view-tags $((1 << 6))
+riverctl map normal Super+Alt S set-view-tags $((1 << 6))
 
 riverctl map normal Super V spawn "river-bnf $((1 << 7))"
 riverctl map normal Super+Shift V set-view-tags $((1 << 7))
