@@ -185,9 +185,6 @@ filtile \
     --tags $((1 << 6)) outer-padding 64, \
     --output HDMI-A-1 --tags 1 main-location right &
 
-swaybg -i wallpaper.png -m fill &
-waybar &
-
 dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP 
 systemctl --user stop river-session.target
 systemctl --user start river-session.target

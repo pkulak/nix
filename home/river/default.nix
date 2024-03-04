@@ -168,4 +168,16 @@ in {
     Service.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; 
     Install.WantedBy = [ "river-session.target" ];
   };
+
+  systemd.user.services.waybar = {
+    Unit.Description = "waybar daemon";
+    Service.ExecStart = "${pkgs.waybar}/bin/waybar"; 
+    Install.WantedBy = [ "river-session.target" ];
+  };
+
+  systemd.user.services.swaybg = {
+    Unit.Description = "swaybg daemon";
+    Service.ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png} -m fill"; 
+    Install.WantedBy = [ "river-session.target" ];
+  };
 }

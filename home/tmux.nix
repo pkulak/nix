@@ -22,6 +22,7 @@
         }
         tmuxPlugins.fzf-tmux-url
         tmuxPlugins.sensible
+        tmuxPlugins.vim-tmux-navigator
         tmuxPlugins.yank
       ];
     extraConfig = ''
@@ -36,6 +37,20 @@
       set -g pane-base-index 1
       set-window-option -g pane-base-index 1
       set-option -g renumber-windows on
+
+      set -g renumber-windows on
+
+      # better splits
+      unbind %
+      bind-key - split-window -v
+      unbind '"'
+      bind-key | split-window -h
+
+      bind -r j resize-pane -D 5
+      bind -r k resize-pane -U 5
+      bind -r l resize-pane -R 5
+      bind -r h resize-pane -L 5
+      bind -r m resize-pane -Z
 
       # easily create new sessions
       bind S command-prompt -p "New Session:" "new-session -A -s '%%'"

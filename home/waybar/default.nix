@@ -39,7 +39,7 @@ in {
     position = "top";
     height = 30;
 
-    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "river/window"];
+    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "river/layout" "river/window"];
     modules-center = ["river/tags"];
     modules-right = ["custom/weather" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
     
@@ -182,6 +182,10 @@ in {
 
     "river/tags" = {
       "num-tags" = 6;
+    };
+
+    "river/layout" = {
+      "format" = "{}    ";
     };
 
     "temperature" = {
