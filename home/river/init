@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-riverctl map normal Super Return spawn 'alacritty -e tmux new-session -A -s main'
+riverctl map normal Super Return spawn 'alacritty -e tmux'
 riverctl map normal Super P spawn 'firefox'
 riverctl map normal Super D spawn 'wofi -a -b -I -modi drun --show drun'
 riverctl map normal Super E spawn 'wofi-emoji'

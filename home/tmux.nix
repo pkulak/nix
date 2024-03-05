@@ -52,9 +52,13 @@
       bind -r h resize-pane -L 5
       bind -r m resize-pane -Z
 
-      # easily create new sessions
+      bind c new-window -c "#{pane_current_path}"
+
+      # easily create/rename new sessions
       bind S command-prompt -p "New Session:" "new-session -A -s '%%'"
       bind K confirm kill-session
+
+      bind r command-prompt -p "New Name:" "rename-session '%%'"
 
       # Use vim keybindings in copy mode
       set-window-option -g mode-keys vi
