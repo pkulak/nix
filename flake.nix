@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = ""; # don't download OSX deps
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
@@ -35,23 +40,29 @@
   };
 
   outputs = { self,
-    nixpkgs, nixpkgs-unstable, nix,
-    matui, filtile,
+    nixpkgs, nixpkgs-unstable,
+    matui, filtile, nixvim,
     nixos-hardware, nur, home-manager, agenix, nix-index-database
   }: let
     mkSystem = host: nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       
-      specialArgs = {
-        inherit nixos-hardware;
-        inherit nur;
-        inherit matui;
-        inherit filtile;
-
+      specialArgs = let
         pkgs-unstable = import nixpkgs-unstable {
           config.allowUnfree = true;
           localSystem = { inherit system; };
         };
+
+        my-nixvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          module = ./common/nixvim/config;
+        };
+      in {
+        inherit pkgs-unstable;
+        inherit nixos-hardware;
+        inherit nur;
+        inherit matui;
+        inherit filtile;
+        nixvim = my-nixvim;
       };
       
       modules = [

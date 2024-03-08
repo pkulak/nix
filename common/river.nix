@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   start-river = pkgs.writeTextFile {
@@ -13,7 +13,7 @@ let
       export XDG_CURRENT_DESKTOP=river
       export XDG_SESSION_DESKTOP=river
       export XDG_SESSION_TYPE=wayland
-      
+
       ## Load user environment customizations
       if [ -f "''${XDG_CONFIG_HOME:-$HOME/.config}/river/environment" ]; then
           set -o allexport
@@ -21,14 +21,13 @@ let
           . "''${XDG_CONFIG_HOME:-$HOME/.config}/river/environment"
           set +o allexport
       fi
-      
+
       # Start River and send output to the journal
       exec systemd-cat -- river
     '';
   };
 
-in
-{
+in {
   config = {
     environment.systemPackages = with pkgs; [
       alacritty
@@ -54,9 +53,7 @@ in
       enable = true;
       wlr.enable = true;
 
-      config = {
-        common.default = [ "wlr" ];
-      };
+      config = { common.default = [ "wlr" ]; };
     };
 
     services.pipewire = {

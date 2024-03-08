@@ -1,4 +1,4 @@
-{ config, matui, filtile, pkgs, pkgs-unstable, nur, ... }:
+{ matui, filtile, nixvim, pkgs-unstable, nur, ... }:
 
 {
   imports = [ ./common ];
@@ -45,7 +45,6 @@
     isNormalUser = true;
     description = "Phil";
     extraGroups = [ "libvirtd" "networkmanager" "wheel" "video" ];
-    packages = with pkgs; [];
   };
 
   # Enable automatic login for the user.
@@ -61,12 +60,11 @@
       (final: prev: {
         matui = matui.packages.${prev.stdenv.system}.matui;
         filtile = filtile.packages.${prev.stdenv.system}.filtile;
+        inherit nixvim;
         unstable = pkgs-unstable;
       })
     ];
   };
-
-  environment.systemPackages = with pkgs; [];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

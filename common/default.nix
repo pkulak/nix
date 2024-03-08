@@ -32,6 +32,7 @@
       libsForQt5.kdialog
       lsd
       matui
+      nixvim
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
       unstable.sublime-merge
@@ -109,13 +110,6 @@
         dates = "weekly";
         options = "--delete-older-than 14d";
       };
-    };
-
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
     };
 
     fonts = {

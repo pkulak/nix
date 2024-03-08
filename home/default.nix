@@ -81,7 +81,6 @@ let
 in {
   imports = [
     ./alacritty
-    ./astronvim
     ./firefox.nix
     ./git.nix
     ./river
