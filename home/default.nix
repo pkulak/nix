@@ -194,7 +194,6 @@ in {
     "matui/config.toml".text = ''
       reactions = ["👍️", "😂", "❤️", "👎", "‼️", "❓️", "🙁", "🚀", "🤣", "👆", "😱"]
       muted = ["!hMPITSQBLFEleSJmVm:kulak.us", "!zCIiPpUbrNESgmegGW:kulak.us"]
-      clean_vim = true
     '';
 
     # MPV
