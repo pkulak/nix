@@ -151,6 +151,8 @@ in {
       alias ssh 'TERM=xterm-256color command ssh'
       alias c clear
       alias e exit
+      alias vim nvim
+      alias vi nvim
       alias cat '${pkgs.bat}/bin/bat'
       alias za zathura
       alias ts 'date -u +"%Y-%m-%dT%H:%M:%SZ"'

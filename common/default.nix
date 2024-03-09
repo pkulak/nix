@@ -1,11 +1,12 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [ 
+  imports = [
     ./snapper.nix
-    ./smb.nix
+    ./smb.nix 
     ./sublime-music.nix
     ./river.nix
+    ./rust.nix
   ];
 
   config = {
@@ -115,7 +116,7 @@
     fonts = {
       enableDefaultPackages = true;
 
-      packages = with pkgs; [ 
+      packages = with pkgs; [
         cantarell-fonts
         font-awesome
         (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })

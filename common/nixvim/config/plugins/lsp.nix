@@ -45,7 +45,6 @@
       java-language-server.enable = true;
       kotlin-language-server.enable = true;
       nil_ls.enable = true;
-      nixd.enable = true;
 
       rust-analyzer = {
         enable = true;
@@ -58,11 +57,13 @@
   plugins.none-ls = {
     enable = true;
     enableLspFormat = true;
-
-    sources = { formatting = { nixfmt.enable = true; }; };
   };
 
-  plugins.lsp-format = { enable = true; };
+  plugins.lsp-format = {
+    enable = true;
+    lspServersToEnable = [ "rust-analyzer" ];
+  };
+
   plugins.luasnip.enable = true;
 
   plugins.cmp = {
@@ -85,6 +86,8 @@
             ['<C-e>'] = cmp.mapping.abort(),
             ['<CR>'] = cmp.mapping.confirm({ select = true }),
             ['<Tab>'] = cmp.mapping(function(fallback)
+               local luasnip = require('luasnip')
+
                if cmp.visible() then
                  cmp.select_next_item()
                elseif luasnip.expand_or_jumpable() then
@@ -94,6 +97,8 @@
                end
              end, { 'i', 's' }),
              ['<S-Tab>'] = cmp.mapping(function(fallback)
+               local luasnip = require('luasnip')
+
                if cmp.visible() then
                  cmp.select_prev_item()
                elseif luasnip.jumpable(-1) then

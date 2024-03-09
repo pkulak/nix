@@ -2,7 +2,9 @@
   # Import all your configuration modules here
   imports = [
     ./catppuccin.nix
+    ./plugins/auto-save.nix
     ./plugins/barbar.nix
+    ./plugins/comment.nix
     ./plugins/gitsigns.nix
     ./plugins/lsp.nix
     ./plugins/lualine.nix
@@ -68,6 +70,10 @@
         key = "<esc>";
         action = ":noh<CR>";
         options.silent = true;
+      }
+      {
+        key = "<leader>n";
+        action = ":ASToggle<CR>";
       }
     ];
   };
