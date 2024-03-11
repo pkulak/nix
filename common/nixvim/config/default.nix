@@ -48,6 +48,26 @@
 
     keymaps = [
       {
+        key = "<Up>";
+        options.silent = true;
+        action = "<Nop>";
+      }
+      {
+        key = "<Down>";
+        options.silent = true;
+        action = "<Nop>";
+      }
+      {
+        key = "<Left>";
+        options.silent = true;
+        action = "<Nop>";
+      }
+      {
+        key = "<Right>";
+        options.silent = true;
+        action = "<Nop>";
+      }
+      {
         key = "=j";
         options.silent = true;
         action = ":%!${pkgs.jq}/bin/jq<CR>:set syntax=json<CR>";

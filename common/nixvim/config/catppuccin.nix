@@ -1,6 +1,7 @@
 {
   colorschemes.catppuccin = {
     enable = true;
-    background.dark = "mocha";
+    flavour = "mocha";
+    transparentBackground = true;
   };
 }
