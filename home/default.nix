@@ -133,6 +133,12 @@ in {
         comp: Compilations/$album%aunique{}/$track - $title
     '';
 
+    # Direnv
+    "direnv/direnv.toml".text = ''
+      [global]
+      load_dotenv = true
+    '';
+
     # Fish
     "fish/config.fish".text = ''
       fish_vi_key_bindings
@@ -163,6 +169,7 @@ in {
       alias mnt-private 'mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private'
 
       zoxide init fish | source
+      direnv hook fish | source
     '';
 
     "fish/functions/compress.fish".text = ''
