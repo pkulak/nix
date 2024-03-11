@@ -38,6 +38,14 @@
           action = "hover";
           desc = "Hover";
         };
+        "<leader>lr" = {
+          action = "rename";
+          desc = "Rename";
+        };
+        "<leader>la" = {
+          action = "code_action";
+          desc = "Code Action";
+        };
       };
     };
 
