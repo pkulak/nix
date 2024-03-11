@@ -6,6 +6,10 @@
       silent = true;
 
       diagnostic = {
+        "<leader>ld" = {
+          action = "open_float";
+          desc = "Open Diagnostic Float";
+        };
         "<leader>k" = {
           action = "goto_prev";
           desc = "Previous Diagnostic";
@@ -45,6 +49,10 @@
         "<leader>la" = {
           action = "code_action";
           desc = "Code Action";
+        };
+        "<leader>ls" = {
+          action = "signature_help";
+          desc = "Signature Help";
         };
       };
     };
