@@ -95,6 +95,16 @@
         key = "<leader>n";
         action = ":ASToggle<CR>";
       }
+      {
+        key = "jj";
+        action = "<Esc>";
+        mode = "i";
+      }
+      {
+        key = "jx";
+        action = "<Esc>:x<CR>";
+        mode = "i";
+      }
     ];
   };
 }

@@ -20,6 +20,15 @@ let
     '';
   };
 
+  clean = pkgs.writeShellApplication {
+    name = "clean";
+    runtimeInputs = with pkgs; [ moreutils ];
+    text = ''
+      tmux list-sessions | grep -v "(attached)" | awk 'BEGIN{FS=":"}{print $1}' \
+        | ifne xargs -n 1 tmux kill-session -t
+    '';
+  };
+
   import-photos = pkgs.writeShellApplication {
     name = "import-photos";
     text = ''
@@ -92,6 +101,7 @@ in {
   ];
 
   home.packages = [
+    clean
     matui-desktop-item
     import-photos
     mnt-usb
