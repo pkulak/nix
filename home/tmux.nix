@@ -1,5 +1,14 @@
 { pkgs, ... }:
-{
+let
+  edit-buffer = pkgs.writeShellApplication {
+    name = "edit-buffer";
+    text = ''
+      file=$(mktemp)
+      tmux capture-pane -pS -1024 > "$file"
+      tmux new-window -n:edit "nvim '+ normal G $' $file"
+    '';
+  };
+in {
   home.packages = with pkgs; [
     fzf
   ];
@@ -60,20 +69,12 @@
 
       bind r command-prompt -p "New Name:" "rename-session '%%'"
 
-      # Use vim keybindings in copy mode
-      set-window-option -g mode-keys vi
-
-      # v in copy mode starts making selection
-      bind-key -T copy-mode-vi v send-keys -X begin-selection
-      bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-      bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-
-      # Escape turns on copy mode
-      bind Escape copy-mode
-
       # Fast window switching and creating
       bind -n C-n select-window -n
       bind -n C-p select-window -p
+
+      # Edit buffer in Vim
+      bind-key e run-shell "${edit-buffer}/bin/edit-buffer"
     '';
   };
 }
