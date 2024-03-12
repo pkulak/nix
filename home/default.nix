@@ -24,6 +24,7 @@ let
     name = "clean";
     runtimeInputs = with pkgs; [ moreutils ];
     text = ''
+      tmux list-sessions | grep -v "(attached)"
       tmux list-sessions | grep -v "(attached)" | awk 'BEGIN{FS=":"}{print $1}' \
         | ifne xargs -n 1 tmux kill-session -t
     '';
