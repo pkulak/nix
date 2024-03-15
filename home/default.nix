@@ -170,7 +170,6 @@ in {
       alias e exit
       alias vim nvim
       alias vi nvim
-      alias cat '${pkgs.bat}/bin/bat'
       alias za zathura
       alias ts 'date -u +"%Y-%m-%dT%H:%M:%SZ"'
       alias bc 'bc -lq'
