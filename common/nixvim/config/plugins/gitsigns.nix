@@ -36,11 +36,29 @@
     }
     {
       mode = "n";
+      key = "<leader>gr";
+      action = ":Gitsigns reset_hunk<CR>";
+      options = {
+        silent = true;
+        desc = "Reset Hunk";
+      };
+    }
+    {
+      mode = "n";
       key = "<leader>gS";
       action = ":Gitsigns stage_buffer<CR>";
       options = {
         silent = true;
         desc = "Stage Buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>gs";
+      action = ":Gitsigns stage_hunk<CR>";
+      options = {
+        silent = true;
+        desc = "Stage Hunk";
       };
     }
   ];
