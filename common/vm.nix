@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Enable dconf (System Management Tool)
@@ -16,8 +16,8 @@
     win-spice
   ];
 
-  # the firewall screws up Virt-Manger; disable on that interface
-  networking.firewall.trustedInterfaces = [ "virbr0" ];
+  # the firewall screws up Virt-Manger; disable on those interfaces
+  networking.firewall.trustedInterfaces = [ "virbr0" "vmbr0" ];
 
   # Manage the virtualisation services
   programs.virt-manager.enable = true;
