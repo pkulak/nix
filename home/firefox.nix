@@ -39,6 +39,7 @@
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           clearurls
           consent-o-matic
+          container-proxy
           decentraleyes
           don-t-fuck-with-paste
           onepassword-password-manager
