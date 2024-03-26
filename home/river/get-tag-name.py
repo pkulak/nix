@@ -7,7 +7,7 @@ tags = json.loads(subprocess.getoutput("river-bedload -print tags"))
 focused = [t for t in tags if t["output"] == "HDMI-A-1" and t["focused"]]
 
 if len(focused) == 0:
-    print("scratch")
+    print("global")
     exit
 
 match focused[0]["id"]:
@@ -26,4 +26,4 @@ match focused[0]["id"]:
     case 8:
         print("vevo")
     case _:
-        print("scratch")
+        print("global")

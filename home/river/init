@@ -13,8 +13,8 @@ riverctl map normal Control+Shift Space spawn 'makoctl dismiss --all'
 riverctl map normal Super+Shift S spawn \
     'mkdir -p $HOME/Screenshots && slurp | grim -g - $HOME/Screenshots/$(date +"%Y-%m-%d-%H%M%S.png")'
 
-# Scratch Terminal
-riverctl map normal Super+Shift Return spawn 'alacritty -e tmux new-session -A -s scratch'
+# Global Terminal
+riverctl map normal Super+Shift Return spawn 'alacritty -e tmux new-session -A -s global'
 riverctl float-filter-add app-id 'floating'
 
 # Close the focused view
