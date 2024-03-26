@@ -1,13 +1,6 @@
 { pkgs, ... }:
 
 let
-  get-tag-name =  pkgs.stdenv.mkDerivation {
-    name = "get-tag-name";
-    propagatedBuildInputs = [ pkgs.python3 ];
-    dontUnpack = true;
-    installPhase = "install -Dm755 ${./get-tag-name.py} $out/bin/get-tag-name";
-  };
-
   imap-notify-packages = ps: with ps; [
     (
       buildPythonPackage rec {
@@ -79,12 +72,14 @@ let
       install -Dm755 ${./init} $out/bin/init
       substituteInPlace $out/bin/init --replace 'wofi-emoji' '${wofi-emoji}/bin/wofi-emoji'
       substituteInPlace $out/bin/init --replace 'wofi-power' '${wofi-power}/bin/wofi-power'
-      substituteInPlace $out/bin/init --replace 'get-tag-name' '${get-tag-name}/bin/get-tag-name'
       substituteInPlace $out/bin/init --replace 'wallpaper.png' '${./wallpaper.png}'
     '';
   };
 in {
-  home.packages = [ (pkgs.callPackage ./bedload.nix pkgs) ];
+  home.packages = [
+    (pkgs.callPackage ./bedload.nix pkgs)
+    (pkgs.callPackage ./get-tag-name.nix pkgs)
+  ];
 
   xdg.configFile."river/environment" = {
     executable = true;

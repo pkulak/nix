@@ -13,10 +13,6 @@ riverctl map normal Control+Shift Space spawn 'makoctl dismiss --all'
 riverctl map normal Super+Shift S spawn \
     'mkdir -p $HOME/Screenshots && slurp | grim -g - $HOME/Screenshots/$(date +"%Y-%m-%d-%H%M%S.png")'
 
-# Global Terminal
-riverctl map normal Super+Shift Return spawn 'alacritty -e tmux new-session -A -s global'
-riverctl float-filter-add app-id 'floating'
-
 # Close the focused view
 riverctl map normal Super W close
 
@@ -165,6 +161,7 @@ riverctl border-color-unfocused 0x586e75
 riverctl set-repeat 30 200
 
 # Floaty bits
+riverctl float-filter-add app-id 'floating'
 riverctl float-filter-add app-id 'sublime_merge'
 riverctl float-filter-add app-id 'pavucontrol'
 riverctl float-filter-add app-id 'imv'

@@ -69,6 +69,10 @@ in {
 
       bind r command-prompt -p "New Name:" "rename-session '%%'"
 
+      # swap to and from the global session
+      bind C-b run-shell "tmux switch -t $(get-tag-name)"
+      bind g new-session -A -s global
+
       # Fast window switching and creating
       bind -n C-n select-window -n
       bind -n C-p select-window -p
