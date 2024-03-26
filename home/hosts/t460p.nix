@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.waybar.settings.default.output = "HDMI-A-1";
@@ -11,6 +11,8 @@
     text = ''
       wlr-randr --output eDP-1 --pos 0,576 --scale 1.25
       wlr-randr --output HDMI-A-1 --pos 1536,0
+
+      riverctl send-layout-cmd filtile "--output eDP-1 --tags 1 smart-padding 0"
     '';
   };
 
