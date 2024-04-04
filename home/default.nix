@@ -1,4 +1,4 @@
-{ pkgs, host, ... }:
+{ config, pkgs, host, ... }:
 
 let
   matui-desktop-item = pkgs.makeDesktopItem {
@@ -262,6 +262,9 @@ in {
     # SSH
     ".ssh/allowed_signers".text = "* ${public-key}";
     ".ssh/id_ed25519.pub".text = public-key;
+
+    # Login Keyring
+    ".local/share/keyrings/login.keyring".source = config.lib.file.mkOutOfStoreSymlink "/run/agenix/login.keyring";
   };
 
   home.stateVersion = "23.05";

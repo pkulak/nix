@@ -12,9 +12,14 @@ in {
   "smb-secrets.age".publicKeys = keys;
   "1pass.age".publicKeys = keys;
   "ha-secrets.age".publicKeys = keys;
+  "login.keyring.age".publicKeys = keys;
 }
 
 # ssh-keyscan localhost
 # add the new system key
 # agenix --rekey
 # commit
+
+# add a line for the new secret file
+# agenix -e new-secret.age
+# save the file

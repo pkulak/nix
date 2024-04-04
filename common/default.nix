@@ -37,6 +37,7 @@
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
       unstable.sublime-merge
+      unstable.supersonic-wayland
       tldr
       unzip
       wlsunset
@@ -77,7 +78,11 @@
     security.polkit.enable = true;
     programs.fish.enable = true;
     programs.dconf.enable = true;
+    programs.seahorse.enable = true;
     services.flatpak.enable = true;
+
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.gnomekey.enableGnomeKeyring = true;
 
     programs.ssh.startAgent = true;
 
