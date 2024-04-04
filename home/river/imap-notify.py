@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import keyring
 import collections
 import os
 import subprocess
@@ -8,7 +9,7 @@ from typing import Dict, Optional
 from jmapc import Client, Ref, TypeState, MailboxQueryFilterCondition
 from jmapc.methods import EmailChanges, EmailGet, EmailGetResponse, MailboxQuery
 
-token = open('/run/agenix/jmap-secrets').read().strip()
+token = keyring.get_password("nix", "jmap")
 
 # Create and configure client
 client = Client.create_with_api_token(host="api.fastmail.com", api_token=token)

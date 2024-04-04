@@ -16,6 +16,7 @@ let
 
         propagatedBuildInputs = [
           pkgs.python3Packages.dataclasses-json
+          pkgs.python3Packages.keyring
           pkgs.python3Packages.poetry-core
           pkgs.python3Packages.poetry-dynamic-versioning
           pkgs.python3Packages.python-dateutil

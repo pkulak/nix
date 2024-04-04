@@ -8,10 +8,7 @@ let
 
   keys = [ user fry x1 t460p kvm ];
 in {
-  "jmap-secrets.age".publicKeys = keys;
   "smb-secrets.age".publicKeys = keys;
-  "1pass.age".publicKeys = keys;
-  "ha-secrets.age".publicKeys = keys;
   "login.keyring.age".publicKeys = keys;
 }
 

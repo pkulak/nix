@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
+import keyring
 import requests
 import json
 
-token = open('/run/agenix/ha-secrets').read().strip()
+token = keyring.get_password("nix", "ha")
 headers = {'Authorization': f"Bearer {token}"}
 
 url = "http://ha.home/api/states/sensor.temperature"

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   now-playing = pkgs.stdenv.mkDerivation {
@@ -23,6 +23,7 @@ let
 
     propagatedBuildInputs = with pkgs; [
       (python3.withPackages (ps: with ps; [
+        keyring
         requests
       ]))
     ];
