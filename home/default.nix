@@ -246,6 +246,9 @@ in {
       XDG_TEMPLATES_DIR="$HOME/Templates"
       XDG_VIDEOS_DIR="$HOME/Videos"
     '';
+
+    # Supersonic Music Player
+    "supersonic/config.toml".source = ./supersonic.toml;
   };
 
   home.file = {
