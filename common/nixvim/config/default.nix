@@ -11,6 +11,8 @@
     ./plugins/neo-tree.nix
     ./plugins/telescope.nix
     ./plugins/tmux-navigator.nix
+    ./plugins/treesitter.nix
+    ./plugins/trouble.nix
     ./plugins/which-key.nix
   ];
 
@@ -21,7 +23,7 @@
       loaded_netrwPlugin = 0;
     };
 
-    options = {
+    opts = {
       number = true;
       relativenumber = true;
       showmode = false;

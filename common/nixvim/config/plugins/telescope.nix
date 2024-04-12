@@ -5,21 +5,21 @@
     keymaps = {
       "<leader>fg" = {
         action = "live_grep";
-        desc = "Live Grep";
+        options.desc = "Live Grep";
       };
 
       "<leader>ff" = {
         action = "find_files";
-        desc = "Open File";
+        options.desc = "Open File";
       };
 
       "<leader>b" = {
         action = "buffers";
-        desc = "Open Buffer";
+        options.desc = "Open Buffer";
       };
     };
 
-    defaults = {
+    settings.defaults = {
       file_ignore_patterns = [
         "^.git/"
         "^.mypy_cache/"

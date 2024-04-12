@@ -4,7 +4,6 @@
   imports = [
     ./snapper.nix
     ./smb.nix 
-    ./sublime-music.nix
     ./river.nix
     ./rust.nix
   ];
@@ -19,6 +18,7 @@
       cinnamon.nemo-with-extensions
       chromium
       curl
+      unstable.devenv
       distrobox
       ffmpeg
       ffmpegthumbnailer

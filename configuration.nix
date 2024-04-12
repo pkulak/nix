@@ -50,6 +50,8 @@
   # Enable automatic login for the user.
   services.getty.autologinUser = "phil";
 
+  nix.settings.trusted-users = [ "root" "phil" ];
+
   nixpkgs = {
     # Allow unfree packages
     config.allowUnfree = true;
