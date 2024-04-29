@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.firefox = {
@@ -42,6 +42,7 @@
           container-proxy
           decentraleyes
           don-t-fuck-with-paste
+          ff2mpv
           onepassword-password-manager
           sponsorblock
           theater-mode-for-youtube

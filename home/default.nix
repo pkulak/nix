@@ -252,6 +252,9 @@ in {
   };
 
   home.file = {
+    # Firefox
+    ".mozilla/native-messaging-hosts/ff2mpv.json".source = "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
+
     # IntelliJ
     ".ideavimrc".text = ''
       set ignorecase
