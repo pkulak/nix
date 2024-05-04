@@ -43,6 +43,24 @@ let
     '';
   };
 
+  # get rid of this when nikpkgs updates
+  wlsunset = pkgs.stdenv.mkDerivation rec {
+    pname = "wlsunset";
+    version = "0.4.0";
+
+    src = pkgs.fetchFromSourcehut {
+      owner = "~kennylevinsen";
+      repo = pname;
+      rev = version;
+      sha256 = "sha256-U/yROKkU9pOBLIIIsmkltF64tt5ZR97EAxxGgrFYwNg=";
+    };
+
+    strictDeps = true;
+    depsBuildBuild = with pkgs; [ pkg-config ];
+    nativeBuildInputs = with pkgs; [ meson pkg-config ninja wayland-scanner scdoc ];
+    buildInputs = with pkgs; [ wayland wayland-protocols ];
+  };
+
   wofi-power = pkgs.stdenv.mkDerivation {
     name = "wofi-power";
     nativeBuildInputs = with pkgs; [ makeWrapper ];
@@ -152,15 +170,29 @@ in {
 
   systemd.user.services.wlsunset = {
     Unit.Description = "wlsunset daemon";
-    Service.ExecStart = "${pkgs.wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8"; 
+    Service.ExecStart = "${wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8"; 
     Install.WantedBy = [ "river-session.target" ];
+  };
+
+  systemd.user.services.wlsunset-restart = {
+    Unit = {
+      Description = "restart wlsunset on resume";
+      After = "suspend.target";
+    };
+
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.systemd}/bin/systemctl --user --no-block restart wlsunset.service";
+    };
+
+    Install.WantedBy = [ "suspend.target" ];
   };
 
   systemd.user.services.imap-notify = {
     Unit.Description = "email notifications daemon";
     Service.ExecStart = "${imap-notify}/bin/imap-notify"; 
     Service.Environment = "PATH=${pkgs.libnotify}/bin";
-    Install.WantedBy = [ "river-session.target" ];
+    Install.WantedBy = [ "river-session.target" "network-online.target" ];
   };
 
   systemd.user.services.mako = {

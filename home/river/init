@@ -161,12 +161,16 @@ riverctl border-color-unfocused 0x586e75
 riverctl set-repeat 30 200
 
 # Floaty bits
-riverctl float-filter-add app-id 'floating'
-riverctl float-filter-add app-id 'sublime_merge'
-riverctl float-filter-add app-id 'pavucontrol'
-riverctl float-filter-add app-id 'imv'
-riverctl float-filter-add app-id 'mpv'
-riverctl float-filter-add app-id 'org.kde.kdialog'
+for id in floating sublime_merge pavucontrol imv mpv org.kde.kdialog
+do
+  riverctl rule-add -app-id $id float
+done
+
+# Server-side decorations
+for id in firefox
+do
+  riverctl rule-add -app-id $id ssd
+done
 
 # Anything specific to this machine
 test -f ~/.config/river/host && source ~/.config/river/host

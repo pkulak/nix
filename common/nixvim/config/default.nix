@@ -2,7 +2,6 @@
   # Import all your configuration modules here
   imports = [
     ./catppuccin.nix
-    ./plugins/auto-save.nix
     ./plugins/barbar.nix
     ./plugins/comment.nix
     ./plugins/gitsigns.nix

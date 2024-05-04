@@ -40,7 +40,6 @@
       unstable.supersonic-wayland
       tldr
       unzip
-      wlsunset
       woeusb
       yt-dlp
       zathura

@@ -18,13 +18,13 @@ in {
 
   system.autoUpgrade = {
     enable = true;
-    dates = "weekly";
+    dates = "02:00";
+    randomizedDelaySec = "45min";
     flake = "${config.users.users.phil.home}/nix";
     flags = [
       "--update-input" "nixpkgs"
       "--update-input" "nixpkgs-unstable"
       "--update-input" "nur"
-      "--update-input" "home-manager"
     ];
   };
 }

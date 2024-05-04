@@ -230,6 +230,10 @@ in {
       image/png=imv.desktop
 
       video/mp4=mpv.desktop
+      video/avi=mpv.desktop
+      video/mpeg=mpv.desktop
+      video/wmv=mpv.desktop
+      video/flv=mpv.desktop
       video/quicktime=mpv.desktop
 
       application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
