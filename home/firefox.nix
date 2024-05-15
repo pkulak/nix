@@ -47,6 +47,7 @@
           sponsorblock
           theater-mode-for-youtube
           ublock-origin
+          user-agent-string-switcher
         ];
 
         search = {
