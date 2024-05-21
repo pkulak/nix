@@ -81,7 +81,6 @@ let
     text = ''
       cd ~/nix
       nix flake update -I ~/nix
-      ${rebuild}/bin/rebuild
       cd "$OLDPWD"
     '';
   };
