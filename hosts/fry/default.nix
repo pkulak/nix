@@ -12,7 +12,7 @@ in {
   services.udev.packages = [ vuescan ];
 
   environment.systemPackages = [
-    pkgs.unstable.jetbrains.idea-ultimate
+    pkgs.ideapin.jetbrains.idea-ultimate
     vuescan
   ];
 

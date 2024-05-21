@@ -1,4 +1,4 @@
-{ matui, filtile, nixvim, pkgs-unstable, nur, ... }:
+{ matui, filtile, nixvim, pkgs-unstable, pkgs-ideapin, nur, ... }:
 
 {
   imports = [ ./common ];
@@ -64,6 +64,7 @@
         filtile = filtile.packages.${prev.stdenv.system}.filtile;
         inherit nixvim;
         unstable = pkgs-unstable;
+        ideapin = pkgs-ideapin;
       })
     ];
   };

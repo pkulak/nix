@@ -402,6 +402,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-ideapin": {
+      "locked": {
+        "lastModified": 1711701090,
+        "narHash": "sha256-aTnRUf59DKbtgF0J+E4ZBGZXIMdH8wSX5+zC7lQfmVw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3a5eb38af0215cd697a78c25ececdab111f21388",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3a5eb38af0215cd697a78c25ececdab111f21388",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1716137900,
@@ -529,6 +545,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-ideapin": "nixpkgs-ideapin",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "nur": "nur"

@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url          = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-ideapin.url  = "github:NixOS/nixpkgs/3a5eb38af0215cd697a78c25ececdab111f21388";
     nixos-hardware.url   = "github:NixOS/nixos-hardware";
     nur.url              = "github:nix-community/NUR";
 
@@ -40,7 +41,7 @@
   };
 
   outputs = { self,
-    nixpkgs, nixpkgs-unstable,
+    nixpkgs, nixpkgs-unstable, nixpkgs-ideapin,
     matui, filtile, nixvim,
     nixos-hardware, nur, home-manager, agenix, nix-index-database
   }: let
@@ -53,11 +54,17 @@
           localSystem = { inherit system; };
         };
 
+        pkgs-ideapin = import nixpkgs-ideapin {
+          config.allowUnfree = true;
+          localSystem = { inherit system; };
+        };
+
         my-nixvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
           module = ./common/nixvim/config;
         };
       in {
         inherit pkgs-unstable;
+        inherit pkgs-ideapin;
         inherit nixos-hardware;
         inherit nur;
         inherit matui;

@@ -1,4 +1,4 @@
-{ config, pkgs, nixos-hardware, ... }:
+{ pkgs, nixos-hardware, ... }:
 
 {
   imports = [
@@ -11,7 +11,7 @@
   services.blueman.enable = true;
 
   environment.systemPackages = [
-    pkgs.unstable.jetbrains.idea-ultimate
+    pkgs.ideapin.jetbrains.idea-ultimate
   ];
 
   networking.hostName = "x1";
