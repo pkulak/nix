@@ -177,6 +177,7 @@ in {
       alias screencast '${pkgs.wf-recorder}/bin/wf-recorder -g (${pkgs.slurp}/bin/slurp)'
       alias mnt-private 'mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private'
       alias daily 'nvim ~/notes/daily/$(date +%F).md'
+      alias vevo 'ssh vevo.home'
 
       zoxide init fish | source
       direnv hook fish | source
@@ -191,18 +192,6 @@ in {
     "fish/functions/extract.fish".text = ''
       function extract --wraps tar
         tar -xvf $argv
-      end
-    '';
-
-    "fish/functions/frg.fish".text = ''
-      function frg --description "rg tui built with fzf and bat"
-        ${pkgs.ripgrep}/bin/rg --ignore-case --color=always --line-number --no-heading "$argv" |
-            ${pkgs.fzf}/bin/fzf --ansi \
-                --color 'hl:-1:underline,hl+:-1:underline:reverse' \
-                --delimiter ':' \
-                --preview "${pkgs.bat}/bin/bat --color=always {1} --theme='Solarized (light)' --highlight-line {2}" \
-                --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-                --bind "enter:become($EDITOR +{2} {1})"
       end
     '';
 

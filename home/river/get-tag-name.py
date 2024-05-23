@@ -10,20 +10,28 @@ if len(focused) == 0:
     print("global")
     exit
 
+tag = "global"
+
 match focused[0]["id"]:
     case 1:
-        print("one")
+        tag = "one"
     case 2:
-        print("two")
+        tag = "two"
     case 3:
-        print("three")
+        tag = "three"
     case 4:
-        print("four")
+        tag = "four"
     case 5:
-        print("five")
+        tag = "five"
     case 6:
-        print("six")
+        tag = "six"
     case 8:
-        print("vevo")
-    case _:
-        print("global")
+        tag = "vevo"
+
+grep = subprocess.run('tmux list-sessions | grep "(attached)" | grep ' + tag, shell=True, capture_output=True)
+
+# if we are already attached, open up the global session
+if grep.returncode == 0:
+    print("global")
+else:
+    print(tag)
