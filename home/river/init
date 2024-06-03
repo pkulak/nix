@@ -36,9 +36,15 @@ riverctl map normal Super+Shift Comma send-to-output previous
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super M zoom
 
-# Move the split location around
+# Move the split locations around
 riverctl map normal Super LEFT send-layout-cmd filtile "move-split-left 5"
 riverctl map normal Super RIGHT send-layout-cmd filtile "move-split-right 5"
+
+riverctl map normal Super UP send-layout-cmd filtile "diminish -20"
+riverctl map normal Super DOWN send-layout-cmd filtile "diminish +20"
+
+riverctl map normal Super+Shift UP send-layout-cmd filtile "diminish -200"
+riverctl map normal Super+Shift DOWN send-layout-cmd filtile "diminish 100"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -101,8 +107,6 @@ riverctl map normal Super+Shift F toggle-fullscreen
 # Layout manager
 riverctl map normal Super Z send-layout-cmd filtile "flip"
 riverctl map normal Super C send-layout-cmd filtile "pad"
-riverctl map normal Super+Shift UP send-layout-cmd filtile "main-count +1"
-riverctl map normal Super+Shift DOWN send-layout-cmd filtile "main-count -1"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor

@@ -49,26 +49,6 @@
 
     keymaps = [
       {
-        key = "<Up>";
-        options.silent = true;
-        action = "<Nop>";
-      }
-      {
-        key = "<Down>";
-        options.silent = true;
-        action = "<Nop>";
-      }
-      {
-        key = "<Left>";
-        options.silent = true;
-        action = "<Nop>";
-      }
-      {
-        key = "<Right>";
-        options.silent = true;
-        action = "<Nop>";
-      }
-      {
         key = "=j";
         options.silent = true;
         action = ":%!${pkgs.jq}/bin/jq<CR>:set syntax=json<CR>";
@@ -93,10 +73,6 @@
         options.silent = true;
       }
       {
-        key = "<leader>n";
-        action = ":ASToggle<CR>";
-      }
-      {
         key = "jj";
         action = "<Esc>";
         mode = "i";
@@ -105,6 +81,65 @@
         key = "jx";
         action = "<Esc>:x<CR>";
         mode = "i";
+      }
+
+      # BarBar
+      {
+        key = "<A-,>";
+        options.silent = true;
+        action = "<Cmd>BufferPrevious<CR>";
+      }
+      {
+        key = "<A-.>";
+        options.silent = true;
+        action = "<Cmd>BufferNext<CR>";
+      }
+      {
+        key = "<A-p>";
+        options.silent = true;
+        action = "<Cmd>BufferPick<CR>";
+      }
+      {
+        key = "<A-d>";
+        options.silent = true;
+        action = "<Cmd>BufferPickDelete<CR>";
+      }
+      {
+        key = "<A-w>";
+        options.silent = true;
+        action = "<Cmd>BufferClose<CR>";
+      }
+      {
+        key = "<A-W>";
+        options.silent = true;
+        action = "<Cmd>BufferWipeout<CR>";
+      }
+      {
+        key = "<A-0>";
+        options.silent = true;
+        action = "<Cmd>BufferLast<CR>";
+      }
+
+      # Wipe out the arrow keys
+      {
+        key = "<Up>";
+        options.silent = true;
+        action = "<Nop>";
+      }
+      {
+        key = "<Down>";
+        options.silent = true;
+        action = "<Nop>";
+      }
+      {
+        key = "<Left>";
+        options.silent = true;
+        action = "<Nop>";
+      }
+      {
+        key = "<Right>";
+        options.silent = true;
+        action = "<Nop>";
       }
     ];
   };
