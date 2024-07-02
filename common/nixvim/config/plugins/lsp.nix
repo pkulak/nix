@@ -60,7 +60,7 @@
     servers = {
       java-language-server.enable = true;
       kotlin-language-server.enable = true;
-      nil_ls.enable = true;
+      nil-ls.enable = true;
 
       rust-analyzer = {
         enable = true;
