@@ -13,6 +13,8 @@ riverctl map normal Control+Shift Space spawn 'makoctl dismiss --all'
 riverctl map normal Super+Shift S spawn \
     'mkdir -p $HOME/Screenshots && slurp | grim -g - $HOME/Screenshots/$(date +"%Y-%m-%d-%H%M%S.png")'
 
+riverctl map normal Super+Alt+Shift S spawn grim
+
 # Close the focused view
 riverctl map normal Super W close
 
