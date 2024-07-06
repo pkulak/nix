@@ -18,7 +18,6 @@
       cinnamon.nemo-with-extensions
       chromium
       curl
-      unstable.devenv
       distrobox
       ffmpeg
       ffmpegthumbnailer
@@ -36,8 +35,8 @@
       nixvim
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
-      unstable.sublime-merge
-      unstable.supersonic-wayland
+      sublime-merge
+      supersonic-wayland
       tldr
       unzip
       woeusb
@@ -71,7 +70,7 @@
     # Printing is nice
     services.printing.enable = true;
     services.avahi.enable = true;
-    services.avahi.nssmdns = true;
+    services.avahi.nssmdns4 = true;
     services.avahi.openFirewall = true;
 
     security.polkit.enable = true;

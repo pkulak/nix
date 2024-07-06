@@ -37,7 +37,7 @@ in {
       grim
       mako
       playerctl
-      unstable.river
+      river
       river-bnf
       slurp
       start-river

@@ -5,23 +5,24 @@ let
     (
       buildPythonPackage rec {
         pname = "jmapc";
-        version = "0.2.18";
+        version = "0.2.21";
         format = "pyproject";
         doCheck = false;
 
         src = fetchPypi {
           inherit pname version;
-          sha256 = "sha256-phzN78c4ZuLskwW2UkYD0g6grRcl3o0mhi4RABG+rTs=";
+          sha256 = "sha256-BCu3avovvlEsAi4jlKZAiCI5KidVWWYj2Gs5jV2ve6U=";
         };
 
-        propagatedBuildInputs = [
-          pkgs.python3Packages.dataclasses-json
-          pkgs.python3Packages.keyring
-          pkgs.python3Packages.poetry-core
-          pkgs.python3Packages.poetry-dynamic-versioning
-          pkgs.python3Packages.python-dateutil
-          pkgs.python3Packages.requests
-          pkgs.python3Packages.sseclient
+        propagatedBuildInputs = with pkgs; [
+          python3Packages.dataclasses-json
+          python3Packages.keyring
+          python3Packages.poetry-core
+          python3Packages.poetry-dynamic-versioning
+          python3Packages.python-dateutil
+          python3Packages.requests
+          python3Packages.sseclient
+          python3Packages.brotli
         ];
       }
     )

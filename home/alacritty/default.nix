@@ -5,16 +5,14 @@
 
   programs.alacritty.settings = {
     import = [
-      "${./catppuccin-mocha.yml}"
+      "${./catppuccin-mocha.toml}"
     ];
 
-    key_bindings = [
+    keyboard.bindings = [
       { key = "V"; mods = "Control"; action = "Paste"; }
       { key = "C"; mods = "Control"; action = "Copy"; }
-      { key = "V"; mods = "Control|Shift"; chars = "\\x16"; }
-      { key = "C"; mods = "Control|Shift"; chars = "\\x03"; }
-      { key = "Return"; mods = "Shift"; chars = "\\x1b[13;2u"; }
-      { key = "Return"; mods = "Control"; chars = "\\x1b[13;5u"; }
+      { key = "V"; mods = "Control|Shift"; chars = "\\u0016"; }
+      { key = "C"; mods = "Control|Shift"; chars = "\\u0003"; }
     ];
 
     window = {
