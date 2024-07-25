@@ -173,10 +173,7 @@ do
 done
 
 # Server-side decorations
-for id in firefox
-do
-  riverctl rule-add -app-id $id ssd
-done
+riverctl rule-add -app-id ssd
 
 # Anything specific to this machine
 test -f ~/.config/river/host && source ~/.config/river/host
