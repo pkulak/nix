@@ -6,14 +6,13 @@
 , gtk2
 , xorg
 , libgudev
-, undmg
 , makeDesktopItem
 , ...
 }:
 
 let
   pname = "vuescan";
-  version = "9.8.16";
+  version = "9.8.35";
 
   desktopItem = makeDesktopItem {
     name = "VueScan";
@@ -32,11 +31,11 @@ let
 
   src = fetchurl {
     url = "https://public.kulak.us/vuex64-${version}.tgz";
-    sha256 = "sha256-6L9NuzikGMt5XA5f+b7H8TPZBK0jNgDxhzqHLyDj/GA=";
+    sha256 = "sha256-nHtv9b3AQQuQsE2wl/EeR4GER81PTvmevJEiwjM+p8E=";
   };
 
 in
-  stdenv.mkDerivation rec {
+  stdenv.mkDerivation {
     inherit pname version src;
 
     # Stripping the binary breaks the license form
