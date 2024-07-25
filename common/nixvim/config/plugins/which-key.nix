@@ -7,4 +7,12 @@
       "<leader>g" = "Git Signs";
     };
   };
+
+  plugins.mini = {
+    enable = true;
+
+    modules = {
+      icons = {};
+    };
+  };
 }
