@@ -80,4 +80,4 @@ lsblk -o name,mountpoint,label,size,uuid
 # Now go edit /mnt/etc/nixos/hardware-configuration.nix
 
 # cd /mnt
-# nixos-install
+# sudo nixos-install

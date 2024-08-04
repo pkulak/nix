@@ -22,7 +22,6 @@ in {
     randomizedDelaySec = "45min";
     flake = "${config.users.users.phil.home}/nix";
     flags = [
-      "--update-input" "nixpkgs"
       "--update-input" "nixpkgs-unstable"
       "--update-input" "nur"
     ];

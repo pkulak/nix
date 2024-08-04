@@ -165,7 +165,7 @@ in {
       alias md 'mkdir -p'
       alias sm 'smerge .'
       alias ssh 'TERM=xterm-256color command ssh'
-      alias c clear
+      alias c 'clear; cd'
       alias e exit
       alias vim nvim
       alias vi nvim

@@ -5,6 +5,6 @@
     nixvimInjections = true;
 
     folding = false;
-    indent = true;
+    settings.indent.enable = true;
   };
 }
