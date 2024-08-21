@@ -183,6 +183,13 @@ in {
       direnv hook fish | source
     '';
 
+    "fish/functions/dbc.fish".text = ''
+      function dbc --wraps=distrobox
+        mkdir -p /home/phil/homes/$argv
+        distrobox create --name $argv --image debian:latest --home /home/phil/homes/$argv
+      end
+    '';
+
     "fish/functions/compress.fish".text = ''
       function compress --wraps=tar
         tar -czf (basename $argv).tar.gz $argv
