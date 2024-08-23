@@ -85,6 +85,11 @@
       };
     };
 
+    services.earlyoom = {
+      enable = true;
+      enableNotifications = true;
+    };
+
     users.users.phil = {
       openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWOTXI/ryuoyQSepiKc+EF5lm+Ye3vqa2a5xS4pBA4C" ];
     };

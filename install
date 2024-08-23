@@ -63,7 +63,14 @@ btrfs subvolume create /mnt/home/.snapshots
 mkdir /mnt/boot
 mount $BOOT_PARTITION /mnt/boot
 
-# Swap file
+# Swap file (this probably won't be picked up; edit the hardware-configuration
+# to use it)
+#
+#  swapDevices = [{
+#    device = "/swap/swapfile";
+#    size = 8 * 1024; # 8GB
+#  }];
+
 cd /mnt/swap
 truncate -s 0 swapfile
 chattr +C swapfile
