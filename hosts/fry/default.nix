@@ -18,8 +18,8 @@ in {
 
   system.autoUpgrade = {
     enable = true;
-    dates = "02:00";
-    randomizedDelaySec = "45min";
+    dates = "16:30";
+    randomizedDelaySec = "5min";
     flake = "${config.users.users.phil.home}/nix";
     flags = [
       "--update-input" "nixpkgs-unstable"
