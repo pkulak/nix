@@ -40,7 +40,7 @@
       tldr
       unzip
       woeusb
-      yt-dlp
+      unstable.yt-dlp
       zathura
       zoom-us
       zoxide
