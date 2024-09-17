@@ -224,6 +224,8 @@ in {
       image/gif=imv.desktop
       image/jpeg=imv.desktop
       image/png=imv.desktop
+      image/heic=imv.desktop
+      image/heif=imv.desktop
 
       video/mp4=mpv.desktop
       video/avi=mpv.desktop
@@ -231,6 +233,7 @@ in {
       video/wmv=mpv.desktop
       video/flv=mpv.desktop
       video/quicktime=mpv.desktop
+      video/mp2t=mpv.desktop
 
       application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
     '';
