@@ -96,7 +96,7 @@ riverctl map normal Super+Alt S set-view-tags $((1 << 6))
 riverctl map normal Super V spawn "river-bnf $((1 << 7))"
 riverctl map normal Super+Shift V set-view-tags $((1 << 7))
 
-riverctl map normal Super Minus toggle-focused-tags $((1 << 8))
+riverctl map normal Super Minus spawn "river-bnf $((1 << 8))"
 riverctl map normal Super+Shift Minus set-view-tags $((1 << 8))
 
 # Super+Space to toggle float

@@ -154,11 +154,16 @@ in {
       fish_vi_key_bindings
       set fish_greeting
 
-      alias ls  'lsd'
-      alias l   'ls -ltr'
-      alias la  'ls -atr'
-      alias lla 'ls -latr'
-      alias lt  'ls --tree'
+      alias l   'lsd -ltr'
+      alias la  'lsd -atr'
+      alias lla 'lsd -latr'
+      alias lt  'lsd --tree'
+
+      alias last 'ls -t | head -n1'
+      alias vlast 'nvim (last)'
+      alias mlast 'mpv (last)'
+      alias ilast 'imv (last)'
+      alias zlast 'zathura (last)'
 
       alias .. 'cd ..'
       alias ... 'cd ../..'
