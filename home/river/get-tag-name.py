@@ -6,9 +6,13 @@ import subprocess
 tags = json.loads(subprocess.getoutput("river-bedload -print tags"))
 focused = [t for t in tags if t["output"] == "HDMI-A-1" and t["focused"]]
 
+# if we don't find anyting on HDMI, grab from any output
+if len(focused) == 0:
+    focused = [t for t in tags if t["focused"]]
+
 if len(focused) == 0:
     print("global")
-    exit
+    quit()
 
 tag = "global"
 
