@@ -160,6 +160,7 @@ in {
       alias lt  'lsd --tree'
 
       alias last 'ls -t | head -n1'
+      alias clast 'cat (last)'
       alias vlast 'nvim (last)'
       alias mlast 'mpv (last)'
       alias ilast 'imv (last)'
@@ -212,7 +213,7 @@ in {
 
     # Matui
     "matui/config.toml".text = ''
-      reactions = ["👍️", "😂", "❤️", "👎", "‼️", "❓️", "🙁", "🚀", "🤣", "👆", "😱"]
+      reactions = ["👍️", "😂", "😘", "❤️", "👎", "‼️", "❓️", "🙁", "🚀", "🤣", "👆", "😱"]
       muted = ["!hMPITSQBLFEleSJmVm:kulak.us", "!zCIiPpUbrNESgmegGW:kulak.us"]
     '';
 
