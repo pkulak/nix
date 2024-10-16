@@ -173,7 +173,7 @@ do
 done
 
 # Server-side decorations
-riverctl rule-add -app-id ssd
+riverctl rule-add ssd
 
 # Anything specific to this machine
 test -f ~/.config/river/host && source ~/.config/river/host
