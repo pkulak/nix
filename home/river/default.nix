@@ -108,6 +108,7 @@ in {
       #!/usr/bin/env bash
 
       export TERMINAL="alacritty"
+      export TERM="xterm-256color"
       export BROWSER="firefox"
       export EDITOR="nvim"
       export VISUAL="nvim"

@@ -38,8 +38,8 @@ in {
       set -g mouse on
 
       # full color
-      set -g default-terminal "alacritty" 
-      set-option -sa terminal-overrides ",alacritty*:Tc"
+      set -g default-terminal "xterm-256color"
+      set-option -sa terminal-overrides ",xterm-256color:Tc"
 
       # index windows starting at 1
       set -g base-index 1

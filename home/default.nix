@@ -170,7 +170,6 @@ in {
       alias ... 'cd ../..'
       alias md 'mkdir -p'
       alias sm 'smerge .'
-      alias ssh 'TERM=xterm-256color command ssh'
       alias c 'clear; cd'
       alias e exit
       alias vim nvim
@@ -209,7 +208,17 @@ in {
     '';
 
     # Mako
-    "mako/config".text = "font=monospace 12";
+    "mako/config".text = ''
+      font=monospace 12
+
+      background-color=#1e1e2e
+      text-color=#cdd6f4
+      border-color=#94e2d5
+      progress-color=over #313244
+
+      [urgency=high]
+      border-color=#fab387
+    '';
 
     # Matui
     "matui/config.toml".text = ''
