@@ -107,7 +107,7 @@ in {
     text = ''
       #!/usr/bin/env bash
 
-      export TERMINAL="alacritty"
+      export TERMINAL="footclient"
       export TERM="xterm-256color"
       export BROWSER="firefox"
       export EDITOR="nvim"
@@ -218,6 +218,12 @@ in {
   systemd.user.services.swaybg = {
     Unit.Description = "swaybg daemon";
     Service.ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png} -m fill"; 
+    Install.WantedBy = [ "river-session.target" ];
+  };
+
+  systemd.user.services.foot = {
+    Unit.Description = "foot terminal";
+    Service.ExecStart = "${pkgs.foot}/bin/foot --server"; 
     Install.WantedBy = [ "river-session.target" ];
   };
 }

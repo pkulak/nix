@@ -4,7 +4,7 @@ let
   matui-desktop-item = pkgs.makeDesktopItem {
     name = "matui";
     desktopName = "Matui";
-    exec = "${pkgs.alacritty}/bin/alacritty -e matui";
+    exec = "${pkgs.foot}/bin/footclient -e matui";
   };
 
   todo = pkgs.writeShellApplication {
@@ -89,7 +89,6 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWOTXI/ryuoyQSepiKc+EF5lm+Ye3vqa2a5xS4pBA4C phil@kulak.us";
 in {
   imports = [
-    ./alacritty
     ./firefox.nix
     ./git.nix
     ./river
@@ -267,6 +266,9 @@ in {
 
     # Supersonic Music Player
     "supersonic/config.toml".source = ./supersonic.toml;
+
+    # Foot Terminal
+    "foot/foot.ini".source = ./foot.ini;
   };
 
   home.file = {

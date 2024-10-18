@@ -11,7 +11,6 @@
   config = {
     environment.systemPackages = with pkgs; [
       age
-      alacritty
       btop
       bc
       beets
@@ -23,6 +22,7 @@
       ffmpegthumbnailer
       file
       filtile
+      foot
       gcc
       git
       glib
