@@ -160,7 +160,7 @@ riverctl input pointer-1149-8257-Kensington_Slimblade_Trackball accel-profile ad
 
 # Set background and border color
 riverctl background-color 0x002b36
-riverctl border-color-focused 0xbec7c7
+riverctl border-color-focused 0x94e2d5
 riverctl border-color-unfocused 0x586e75
 
 # Set keyboard repeat rate

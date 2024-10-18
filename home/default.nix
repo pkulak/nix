@@ -210,7 +210,7 @@ in {
     "mako/config".text = ''
       font=monospace 12
 
-      background-color=#1e1e2e
+      background-color=#181825
       text-color=#cdd6f4
       border-color=#94e2d5
       progress-color=over #313244
