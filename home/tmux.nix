@@ -29,7 +29,6 @@ in {
             set -g @catppuccin_date_time "%H:%M"
           '';
         }
-        tmuxPlugins.fzf-tmux-url
         tmuxPlugins.sensible
         tmuxPlugins.vim-tmux-navigator
         tmuxPlugins.yank
@@ -76,6 +75,12 @@ in {
       # Fast window switching and creating
       bind -n C-n select-window -n
       bind -n C-p select-window -p
+
+      # Copy/Paste
+      setw -g mode-keys vi
+      bind -T copy-mode-vi Y send -X copy-end-of-line-and-cancel "wl-copy"
+      bind -T copy-mode-vi v send -X begin-selection
+      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "wl-copy"
 
       # Edit buffer in Vim
       bind-key e run-shell "${edit-buffer}/bin/edit-buffer"
