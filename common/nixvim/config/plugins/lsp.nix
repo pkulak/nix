@@ -1,130 +1,154 @@
 {
-  plugins.lsp = {
-    enable = true;
+  plugins = {
+    lsp = {
+      enable = true;
 
-    keymaps = {
-      silent = true;
+      keymaps = {
+        silent = true;
 
-      diagnostic = {
-        "<leader>ld" = {
-          action = "open_float";
-          desc = "Open Diagnostic Float";
+        diagnostic = {
+          "<leader>ld" = {
+            action = "open_float";
+            desc = "Open Diagnostic Float";
+          };
+          "<leader>k" = {
+            action = "goto_prev";
+            desc = "Previous Diagnostic";
+          };
+
+          "<leader>j" = {
+            action = "goto_next";
+            desc = "Next Diagnostic";
+          };
         };
-        "<leader>k" = {
-          action = "goto_prev";
-          desc = "Previous Diagnostic";
-        };
 
-        "<leader>j" = {
-          action = "goto_next";
-          desc = "Next Diagnostic";
+        lspBuf = {
+          "gd" = {
+            action = "definition";
+            desc = "Goto Definition";
+          };
+          "gD" = {
+            action = "references";
+            desc = "Goto References";
+          };
+          "gt" = {
+            action = "type_definition";
+            desc = "Goto Type Definition";
+          };
+          "gi" = {
+            action = "implementation";
+            desc = "Goto Implementation";
+          };
+          "K" = {
+            action = "hover";
+            desc = "Hover";
+          };
+          "<leader>lr" = {
+            action = "rename";
+            desc = "Rename";
+          };
+          "<leader>la" = {
+            action = "code_action";
+            desc = "Code Action";
+          };
+          "<leader>ls" = {
+            action = "signature_help";
+            desc = "Signature Help";
+          };
         };
       };
 
-      lspBuf = {
-        "gd" = {
-          action = "definition";
-          desc = "Goto Definition";
-        };
-        "gD" = {
-          action = "references";
-          desc = "Goto References";
-        };
-        "gt" = {
-          action = "type_definition";
-          desc = "Goto Type Definition";
-        };
-        "gi" = {
-          action = "implementation";
-          desc = "Goto Implementation";
-        };
-        "K" = {
-          action = "hover";
-          desc = "Hover";
-        };
-        "<leader>lr" = {
-          action = "rename";
-          desc = "Rename";
-        };
-        "<leader>la" = {
-          action = "code_action";
-          desc = "Code Action";
-        };
-        "<leader>ls" = {
-          action = "signature_help";
-          desc = "Signature Help";
+      servers = {
+        java-language-server.enable = true;
+        kotlin-language-server.enable = true;
+        nixd.enable = true;
+
+        rust-analyzer = {
+          enable = true;
+          installCargo = false;
+          installRustc = false;
         };
       };
     };
 
-    servers = {
-      java-language-server.enable = true;
-      kotlin-language-server.enable = true;
-      nil-ls.enable = true;
-
-      rust-analyzer = {
-        enable = true;
-        installCargo = false;
-        installRustc = false;
+    fidget = {
+      enable = true;
+      progress = {
+        suppressOnInsert = true;
+        ignoreDoneAlready = true;
+        pollRate = 0.5;
       };
     };
-  };
 
-  plugins.none-ls = {
-    enable = true;
-    enableLspFormat = true;
-  };
+    none-ls = {
+      enable = true;
+      sources = {
+        diagnostics = {
+          ktlint.enable = true;
+          statix.enable = true;
+        };
+        formatting = {
+          ktlint.enable = true;
+          nixfmt.enable = true;
+          markdownlint.enable = true;
+          shellharden.enable = true;
+          shfmt.enable = true;
+        };
+      };
+    };
 
-  plugins.lsp-format = {
-    enable = true;
-    lspServersToEnable = [ "rust-analyzer" ];
-  };
+    lsp-format = {
+      enable = true;
+      lspServersToEnable = [ "rust-analyzer" ];
+    };
 
-  plugins.luasnip.enable = true;
+    trouble.enable = true;
+    luasnip.enable = true;
 
-  plugins.cmp = {
-    enable = true;
-    autoEnableSources = true;
+    cmp = {
+      enable = true;
+      autoEnableSources = true;
 
-    settings = {
-      snippet.expand =
-        "function(args) require('luasnip').lsp_expand(args.body) end";
+      settings = {
+        snippet.expand =
+          "function(args) require('luasnip').lsp_expand(args.body) end";
 
-      sources =
-        [ { name = "nvim_lsp"; } { name = "path"; } { name = "buffer"; } ];
+        sources =
+          [ { name = "nvim_lsp"; } { name = "path"; } { name = "buffer"; } ];
 
-      mapping = {
-        __raw = ''
-          cmp.mapping.preset.insert({
-            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm({ select = false }),
-            ['<Tab>'] = cmp.mapping(function(fallback)
-               local luasnip = require('luasnip')
+        mapping = {
+          __raw = ''
+            cmp.mapping.preset.insert({
+              ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+              ['<C-f>'] = cmp.mapping.scroll_docs(4),
+              ['<C-Space>'] = cmp.mapping.complete(),
+              ['<C-e>'] = cmp.mapping.abort(),
+              ['<CR>'] = cmp.mapping.confirm({ select = false }),
+              ['<Tab>'] = cmp.mapping(function(fallback)
+                 local luasnip = require('luasnip')
 
-               if cmp.visible() then
-                 cmp.select_next_item()
-               elseif luasnip.expand_or_jumpable() then
-                 luasnip.expand_or_jump()
-               else
-                 fallback()
-               end
-             end, { 'i', 's' }),
-             ['<S-Tab>'] = cmp.mapping(function(fallback)
-               local luasnip = require('luasnip')
+                 if cmp.visible() then
+                   cmp.select_next_item()
+                 elseif luasnip.expand_or_jumpable() then
+                   luasnip.expand_or_jump()
+                 else
+                   fallback()
+                 end
+               end, { 'i', 's' }),
+               ['<S-Tab>'] = cmp.mapping(function(fallback)
+                 local luasnip = require('luasnip')
 
-               if cmp.visible() then
-                 cmp.select_prev_item()
-               elseif luasnip.jumpable(-1) then
-                 luasnip.jump(-1)
-               else
-                 fallback()
-               end
-             end, { 'i', 's' }),
-          })
-        '';
+                 if cmp.visible() then
+                   cmp.select_prev_item()
+                 elseif luasnip.jumpable(-1) then
+                   luasnip.jump(-1)
+                 else
+                   fallback()
+                 end
+               end, { 'i', 's' }),
+            })
+          '';
+        };
       };
     };
   };
