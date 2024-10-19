@@ -108,7 +108,7 @@ in {
       #!/usr/bin/env bash
 
       export TERMINAL="footclient"
-      export TERM="xterm-256color"
+      export TERM="foot"
       export BROWSER="firefox"
       export EDITOR="nvim"
       export VISUAL="nvim"

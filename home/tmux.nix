@@ -16,7 +16,7 @@ in {
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
-    terminal = "tmux-256color";
+    terminal = "foot";
     historyLimit = 100000;
 
     plugins = with pkgs;
@@ -35,10 +35,6 @@ in {
       ];
     extraConfig = ''
       set -g mouse on
-
-      # full color
-      set -g default-terminal "xterm-256color"
-      set-option -sa terminal-overrides ",xterm-256color:Tc"
 
       # index windows starting at 1
       set -g base-index 1
