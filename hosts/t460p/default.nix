@@ -9,7 +9,7 @@
 
   environment.systemPackages = [
     pkgs.unstable.jetbrains.idea-ultimate
-  ]
+  ];
 
   networking.hostName = "t460p";
   programs.light.enable = true;
