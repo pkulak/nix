@@ -3,9 +3,6 @@
 {
   xdg.configFile = {
     "git/config".text = ''
-      [alias]
-        gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
-
       [commit]
         gpgSign = true
 

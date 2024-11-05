@@ -58,15 +58,15 @@ let
     text = ''
       cd ~/notes
 
-      if [[ ''$(git status --porcelain) ]]; then
-	      git stash save
-	      git pull --rebase
-	      git stash pop || true
-	      git add .
-	      git -c "user.name=Phil Kulak" -c "user.email=phil@kulak.us" commit -m "''$(date)"
-	      git push origin main
+      if [[ $(git status --porcelain) ]]; then
+        git stash save
+        git pull --rebase
+        git stash pop || true
+        git add .
+        git -c "user.name=Phil Kulak" -c "user.email=phil@kulak.us" commit -m "$(date)"
+        git push origin main
       else
-	      git pull
+        git pull
       fi
     '';
   };
@@ -85,6 +85,8 @@ let
     '';
   };
 
+  toolgit = pkgs.callPackage ./toolgit.nix pkgs;
+
   public-key =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWOTXI/ryuoyQSepiKc+EF5lm+Ye3vqa2a5xS4pBA4C phil@kulak.us";
 in {
@@ -99,19 +101,22 @@ in {
     ./hosts/${host}.nix
   ];
 
-  home.packages = [
-    clean
-    matui-desktop-item
-    import-photos
-    mnt-usb
-    rebuild
-    sync-notes
-    todo
-    update
-  ];
+  home = {
+    username = "phil";
+    homeDirectory = "/home/phil";
 
-  home.username = "phil";
-  home.homeDirectory = "/home/phil";
+    packages = [
+      clean
+      matui-desktop-item
+      import-photos
+      mnt-usb
+      rebuild
+      sync-notes
+      toolgit
+      todo
+      update
+    ];
+  };
 
   programs.direnv.enable = true;
 
@@ -274,7 +279,8 @@ in {
 
   home.file = {
     # Firefox
-    ".mozilla/native-messaging-hosts/ff2mpv.json".source = "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
+    ".mozilla/native-messaging-hosts/ff2mpv.json".source =
+      "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
 
     # IntelliJ
     ".ideavimrc".text = ''
@@ -291,7 +297,8 @@ in {
     ".ssh/id_ed25519.pub".text = public-key;
 
     # Login Keyring
-    ".local/share/keyrings/login.keyring".source = config.lib.file.mkOutOfStoreSymlink "/run/agenix/login.keyring";
+    ".local/share/keyrings/login.keyring".source =
+      config.lib.file.mkOutOfStoreSymlink "/run/agenix/login.keyring";
   };
 
   home.stateVersion = "23.05";
