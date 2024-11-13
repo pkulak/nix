@@ -93,7 +93,7 @@ in {
   imports = [
     ./firefox.nix
     ./git.nix
-    ./jj.nix
+    ./jj
     ./river
     ./tmux.nix
     ./waybar
@@ -192,7 +192,6 @@ in {
 
       zoxide init fish | source
       direnv hook fish | source
-      jj util completion fish | source
     '';
 
     "fish/functions/dbc.fish".text = ''
