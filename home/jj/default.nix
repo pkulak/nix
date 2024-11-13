@@ -30,6 +30,9 @@ _:
     '';
 
     "fish/config.fish".text = ''
+      alias pr 'jj git push -c @'
+      alias merge 'jj bookmark move --from master && jj git push master'
+
       jj util completion fish | source
     '';
   };
