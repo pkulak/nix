@@ -16,8 +16,8 @@ _:
         backend = "ssh"
         key = "/home/phil/.ssh/id_ed25519.pub"
 
-      [revsets]
-        log = "latest(all(), 5)"
+      [revset-aliases]
+        all = "latest(all(), 5)"
     '';
 
     "fish/functions/fish_jj_prompt.fish".source = ./prompt.fish;
@@ -31,7 +31,7 @@ _:
 
     "fish/config.fish".text = ''
       alias pr 'jj git push -c @'
-      alias merge 'jj bookmark move --from master && jj git push master'
+      alias merge 'jj bookmark move --from trunk() && jj git push -r @'
 
       jj util completion fish | source
     '';
