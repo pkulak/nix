@@ -1,24 +1,30 @@
 _:
 
-{
+let
+  config = ''
+    [user]
+      name = "Phil Kulak"
+      email = "phil@kulak.us"
+
+    [ui]
+      paginate = "never"
+      default-command = "log"
+
+    [signing]
+      sign-all = true
+      backend = "ssh"
+      key = "/home/phil/.ssh/id_ed25519.pub"
+
+    [revset-aliases]
+      all = "latest(all(), 5)"
+  '';
+in {
   xdg.configFile = {
-    "jj/config.toml".text = ''
-      [user]
-        name = "Phil Kulak"
-        email = "phil.kulak@vevo.com"
+    "jj/config.toml".text = config;
 
-      [ui]
-        paginate = "never"
-        default-command = "log"
-
-      [signing]
-        sign-all = true
-        backend = "ssh"
-        key = "/home/phil/.ssh/id_ed25519.pub"
-
-      [revset-aliases]
-        all = "latest(all(), 5)"
-    '';
+    "jj/vevo.toml".text =
+      builtins.replaceStrings [ "phil@kulak.us" ] [ "phil.kulak@vevo.com" ]
+      config;
 
     "fish/functions/fish_jj_prompt.fish".source = ./prompt.fish;
 
@@ -34,6 +40,12 @@ _:
       alias merge 'jj bookmark move --from trunk() && jj git push -r @'
 
       jj util completion fish | source
+    '';
+  };
+
+  home.file = {
+    "vevo/.envrc".text = ''
+      export JJ_CONFIG=~/.config/jj/vevo.toml
     '';
   };
 }
