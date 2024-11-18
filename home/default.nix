@@ -152,6 +152,7 @@ in {
     "direnv/direnv.toml".text = ''
       [global]
       load_dotenv = true
+      hide_env_diff = true
     '';
 
     # Fish
