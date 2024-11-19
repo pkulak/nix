@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 let
   config = ''
@@ -7,8 +7,9 @@ let
       email = "phil@kulak.us"
 
     [ui]
-      paginate = "never"
-      default-command = "log"
+      paginate = "auto"
+      default-command = ["log", "--no-pager"]
+      diff.tool = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
 
     [signing]
       sign-all = true
