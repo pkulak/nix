@@ -12,8 +12,7 @@
 
   environment.systemPackages = [
     pkgs.unstable.jetbrains.idea-ultimate
-  ]
-
+  ];
 
   networking.hostName = "x1";
   programs.light.enable = true;
