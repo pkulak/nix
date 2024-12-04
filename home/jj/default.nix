@@ -38,7 +38,7 @@ in {
 
     "fish/config.fish".text = ''
       alias pr 'jj git push -c @'
-      alias merge 'jj bookmark move --from trunk() && jj git push -r @'
+      alias merge "jj bookmark move --from 'trunk()' && jj git push -r @"
 
       jj util completion fish | source
     '';
