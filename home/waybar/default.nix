@@ -144,7 +144,7 @@ in {
           ""
         ];
       };
-      "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
+      "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
     };
 
     "pulseaudio#source" = {
@@ -167,7 +167,7 @@ in {
           ""
         ];
       };
-      "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol";
+      "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
     };
 
     "river/window" = {
