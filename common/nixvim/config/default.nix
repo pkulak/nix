@@ -119,28 +119,6 @@
         options.silent = true;
         action = "<Cmd>BufferLast<CR>";
       }
-
-      # Wipe out the arrow keys
-      {
-        key = "<Up>";
-        options.silent = true;
-        action = "<Nop>";
-      }
-      {
-        key = "<Down>";
-        options.silent = true;
-        action = "<Nop>";
-      }
-      {
-        key = "<Left>";
-        options.silent = true;
-        action = "<Nop>";
-      }
-      {
-        key = "<Right>";
-        options.silent = true;
-        action = "<Nop>";
-      }
     ];
   };
 }
