@@ -58,9 +58,10 @@
             "Kagi" = {
               urls = [{
                 template = "https://links.kulak.us";
-                params = [
-                  { name = "q"; value = "{searchTerms}"; }
-                ];
+                params = [{
+                  name = "q";
+                  value = "{searchTerms}";
+                }];
               }];
             };
 
@@ -68,16 +69,25 @@
               urls = [{
                 template = "https://search.nixos.org/packages";
                 params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
                 ];
               }];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon =
+                "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@np" ];
             };
 
             "NixOS Wiki" = {
-              urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+              urls = [{
+                template = "https://nixos.wiki/index.php?search={searchTerms}";
+              }];
               iconUpdateURL = "https://nixos.wiki/favicon.png";
               updateInterval = 24 * 60 * 60 * 1000;
               definedAliases = [ "@nw" ];
@@ -104,6 +114,7 @@
           user_pref("privacy.clearOnShutdown.cookies", false);
           user_pref("privacy.clearOnShutdown.sessions", false);
           user_pref("privacy.history.custom", true);
+          user_pref("geo.provider.network.url", 'data:application/json,{"location": {"lat": 45.569805, "lng": -122.640229}, "accuracy": 128.0}');
         '';
 
         userContent = "";

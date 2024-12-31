@@ -7,17 +7,16 @@
     nixos-hardware.nixosModules.lenovo-thinkpad-t460p
   ];
 
-  environment.systemPackages = [
-    pkgs.unstable.jetbrains.idea-ultimate
-  ];
+  environment.systemPackages = [ pkgs.unstable.jetbrains.idea-ultimate ];
 
-  networking.hostName = "t460p";
   programs.light.enable = true;
 
-  # set up a bridge for VMs
-  networking.bridges = {
-    vmbr0 = { interfaces = [ "enp0s31f6" ]; };
-  };
+  networking = {
+    hostName = "t460p";
 
-  networking.interfaces.vmbr0.useDHCP = true;
+    # set up a bridge for VMs
+    bridges = { vmbr0 = { interfaces = [ "enp0s31f6" ]; }; };
+
+    interfaces.vmbr0.useDHCP = true;
+  };
 }
