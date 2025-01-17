@@ -4,47 +4,54 @@
 { config, lib, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+      kernelModules = [ ];
+      luks.devices."nixroot".device = "/dev/disk/by-label/luks";
+    };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-label/root";
+    kernelModules = [ ];
+    extraModulePackages = [ ];
+  };
+
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/root";
       fsType = "btrfs";
       options = [ "subvol=@root" ];
     };
 
-  boot.initrd.luks.devices."nixroot".device = "/dev/disk/by-label/luks";
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-label/root";
+    "/home" = {
+      device = "/dev/disk/by-label/root";
       fsType = "btrfs";
       options = [ "subvol=@home" ];
     };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-label/root";
+    "/nix" = {
+      device = "/dev/disk/by-label/root";
       fsType = "btrfs";
       options = [ "subvol=@nix" ];
     };
 
-  fileSystems."/swap" =
-    { device = "/dev/disk/by-label/root";
+    "/swap" = {
+      device = "/dev/disk/by-label/root";
       fsType = "btrfs";
       options = [ "subvol=@swap" ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-label/boot";
+    "/boot" = {
+      device = "/dev/disk/by-label/boot";
       fsType = "vfat";
     };
+  };
 
-  swapDevices = [ ];
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 8 * 1024; # 8GB
+  }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -56,5 +63,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
