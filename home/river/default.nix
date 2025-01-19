@@ -110,8 +110,8 @@ in {
       export TERMINAL="footclient"
       export TERM="foot"
       export BROWSER="firefox"
-      export EDITOR="nvim"
-      export VISUAL="nvim"
+      export EDITOR="hx"
+      export VISUAL="hx"
 
       export SDL_VIDEODRIVER="wayland"
       export QT_QPA_PLATFORM="wayland"
