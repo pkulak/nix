@@ -13,7 +13,7 @@
         options.desc = "Open File";
       };
 
-      "<leader>b" = {
+      "<leader>fb" = {
         action = "buffers";
         options.desc = "Open Buffer";
       };

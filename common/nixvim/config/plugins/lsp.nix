@@ -59,9 +59,13 @@
       };
 
       servers = {
-        java-language-server.enable = true;
-        kotlin-language-server.enable = true;
-        nixd.enable = true;
+        # harper_ls = {
+        #   enable = true;
+        #   filetypes = [ "markdown" ];
+        # };
+
+        marksman.enable = true;
+        nil-ls.enable = true;
 
         rust-analyzer = {
           enable = true;
@@ -82,13 +86,10 @@
 
     none-ls = {
       enable = true;
+
       sources = {
-        diagnostics = {
-          ktlint.enable = true;
-          statix.enable = true;
-        };
+        diagnostics = { statix.enable = true; };
         formatting = {
-          ktlint.enable = true;
           nixfmt.enable = true;
           markdownlint.enable = true;
           shellharden.enable = true;
@@ -102,7 +103,6 @@
       lspServersToEnable = [ "rust-analyzer" ];
     };
 
-    trouble.enable = true;
     luasnip.enable = true;
 
     cmp = {
@@ -152,11 +152,4 @@
       };
     };
   };
-
-  keymaps = [{
-    key = "<leader>lf";
-    options.silent = true;
-    action = ":Format<CR>";
-    options.desc = "Format";
-  }];
 }

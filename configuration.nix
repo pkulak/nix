@@ -9,13 +9,14 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
-  boot.kernelParams = ["rd.luks.options=discard"];
-  
+  boot.kernelParams = [ "rd.luks.options=discard" ];
+
   fileSystems = {
     "/".options = [ "compress-force=zstd" "autodefrag" ];
     "/home".options = [ "compress-force=zstd" "autodefrag" ];
-    "/nix".options = [ "compress-force=zstd" "noatime" "nodiratime" "autodefrag"];
-    "/swap".options = [ "noatime" "nodiratime"];
+    "/nix".options =
+      [ "compress-force=zstd" "noatime" "nodiratime" "autodefrag" ];
+    "/swap".options = [ "noatime" "nodiratime" ];
   };
 
   networking.networkmanager.enable = true;
@@ -55,10 +56,10 @@
   nixpkgs = {
     # Allow unfree packages
     config.allowUnfree = true;
-    
+
     # Overlay the NUR packages and unstable
     overlays = [
-      nur.overlay
+      nur.overlays.default
       (final: prev: {
         matui = matui.packages.${prev.stdenv.system}.matui;
         filtile = filtile.packages.${prev.stdenv.system}.filtile;
