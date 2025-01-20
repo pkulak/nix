@@ -117,8 +117,8 @@ in {
       export TERMINAL="footclient"
       export TERM="foot"
       export BROWSER="firefox"
-      export EDITOR="hx"
-      export VISUAL="hx"
+      export EDITOR="nvim"
+      export VISUAL="nvim"
 
       export SDL_VIDEODRIVER="wayland"
       export QT_QPA_PLATFORM="wayland"
