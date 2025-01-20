@@ -1,9 +1,10 @@
 { pkgs, ... }:
 
 let
-  imap-notify-packages = ps: with ps; [
-    (
-      buildPythonPackage rec {
+  imap-notify-packages = ps:
+    with ps;
+    [
+      (buildPythonPackage rec {
         pname = "jmapc";
         version = "0.2.21";
         format = "pyproject";
@@ -24,16 +25,14 @@ let
           python3Packages.sseclient
           python3Packages.brotli
         ];
-      }
-    )
-  ];
+      })
+    ];
 
   imap-notify = pkgs.stdenv.mkDerivation {
     name = "imap-notify";
 
-    propagatedBuildInputs = with pkgs; [
-      (python3.withPackages imap-notify-packages)
-    ];
+    propagatedBuildInputs = with pkgs;
+      [ (python3.withPackages imap-notify-packages) ];
 
     dontUnpack = true;
 
@@ -58,7 +57,13 @@ let
 
     strictDeps = true;
     depsBuildBuild = with pkgs; [ pkg-config ];
-    nativeBuildInputs = with pkgs; [ meson pkg-config ninja wayland-scanner scdoc ];
+    nativeBuildInputs = with pkgs; [
+      meson
+      pkg-config
+      ninja
+      wayland-scanner
+      scdoc
+    ];
     buildInputs = with pkgs; [ wayland wayland-protocols ];
   };
 
@@ -92,12 +97,14 @@ let
       install -Dm755 ${./init} $out/bin/init
       substituteInPlace $out/bin/init --replace 'wofi-emoji' '${wofi-emoji}/bin/wofi-emoji'
       substituteInPlace $out/bin/init --replace 'wofi-power' '${wofi-power}/bin/wofi-power'
-      substituteInPlace $out/bin/init --replace 'wallpaper.png' '${./wallpaper.png}'
+      substituteInPlace $out/bin/init --replace 'wallpaper.png' '${
+        ./wallpaper.png
+      }'
     '';
   };
 in {
   home.packages = [
-    (pkgs.callPackage ./bedload.nix pkgs)
+    (pkgs.callPackage ./bedload pkgs)
     (pkgs.callPackage ./get-tag-name.nix pkgs)
   ];
 
@@ -149,12 +156,12 @@ in {
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.gnome.gnome-themes-extra;
+      package = pkgs.gnome-themes-extra;
       name = "Adwaita-dark";
     };
 
     iconTheme = {
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
     };
   };
@@ -172,7 +179,7 @@ in {
 
   systemd.user.services.wlsunset = {
     Unit.Description = "wlsunset daemon";
-    Service.ExecStart = "${wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8"; 
+    Service.ExecStart = "${wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8";
     Install.WantedBy = [ "river-session.target" ];
   };
 
@@ -184,7 +191,8 @@ in {
 
     Service = {
       Type = "simple";
-      ExecStart = "${pkgs.systemd}/bin/systemctl --user --no-block restart wlsunset.service";
+      ExecStart =
+        "${pkgs.systemd}/bin/systemctl --user --no-block restart wlsunset.service";
     };
 
     Install.WantedBy = [ "suspend.target" ];
@@ -192,38 +200,40 @@ in {
 
   systemd.user.services.imap-notify = {
     Unit.Description = "email notifications daemon";
-    Service.ExecStart = "${imap-notify}/bin/imap-notify"; 
+    Service.ExecStart = "${imap-notify}/bin/imap-notify";
     Service.Environment = "PATH=${pkgs.libnotify}/bin";
     Install.WantedBy = [ "river-session.target" "network-online.target" ];
   };
 
   systemd.user.services.mako = {
     Unit.Description = "mako daemon";
-    Service.ExecStart = "${pkgs.mako}/bin/mako"; 
+    Service.ExecStart = "${pkgs.mako}/bin/mako";
     Install.WantedBy = [ "river-session.target" ];
   };
 
   systemd.user.services.polkit = {
     Unit.Description = "polkit daemon";
-    Service.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; 
+    Service.ExecStart =
+      "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     Install.WantedBy = [ "river-session.target" ];
   };
 
   systemd.user.services.waybar = {
     Unit.Description = "waybar daemon";
-    Service.ExecStart = "${pkgs.waybar}/bin/waybar"; 
+    Service.ExecStart = "${pkgs.waybar}/bin/waybar";
     Install.WantedBy = [ "river-session.target" ];
   };
 
   systemd.user.services.swaybg = {
     Unit.Description = "swaybg daemon";
-    Service.ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png} -m fill"; 
+    Service.ExecStart =
+      "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png} -m fill";
     Install.WantedBy = [ "river-session.target" ];
   };
 
   systemd.user.services.foot = {
     Unit.Description = "foot terminal";
-    Service.ExecStart = "${pkgs.foot}/bin/foot --server"; 
+    Service.ExecStart = "${pkgs.foot}/bin/foot --server";
     Install.WantedBy = [ "river-session.target" ];
   };
 }

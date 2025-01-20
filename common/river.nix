@@ -32,8 +32,8 @@ in {
     environment.systemPackages = with pkgs; [
       alacritty
       glib
-      gnome.adwaita-icon-theme
-      gnome.gnome-themes-extra
+      adwaita-icon-theme
+      gnome-themes-extra
       grim
       mako
       playerctl

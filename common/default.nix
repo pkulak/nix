@@ -9,7 +9,7 @@
       btop
       bc
       beets
-      cinnamon.nemo-with-extensions
+      nemo-with-extensions
       chromium
       curl
       distrobox
@@ -131,7 +131,7 @@
         font-awesome
         (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
         noto-fonts
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         noto-fonts-emoji
         ubuntu_font_family
       ];
