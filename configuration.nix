@@ -1,4 +1,4 @@
-{ matui, filtile, nixvim, pkgs-unstable, nur, ... }:
+{ matui, filtile, pkgs-unstable, nur, neve, ... }:
 
 {
   imports = [ ./common ];
@@ -57,13 +57,13 @@
     # Allow unfree packages
     config.allowUnfree = true;
 
-    # Overlay the NUR packages and unstable
+    # Overlay some stuff
     overlays = [
       nur.overlays.default
       (final: prev: {
-        matui = matui.packages.${prev.stdenv.system}.matui;
-        filtile = filtile.packages.${prev.stdenv.system}.filtile;
-        inherit nixvim;
+        inherit (matui.packages.${prev.stdenv.system}) matui;
+        inherit (filtile.packages.${prev.stdenv.system}) filtile;
+        neve = neve.packages.${prev.stdenv.system}.default;
         unstable = pkgs-unstable;
       })
     ];

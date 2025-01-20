@@ -23,11 +23,6 @@
       inputs.darwin.follows = ""; # don't download OSX deps
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,9 +32,12 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    #neve.url = "git+file:///home/phil/Projects/Neve";
+    neve.url = "github:pkulak/Neve";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, matui, filtile, nixvim
+  outputs = { self, nixpkgs, nixpkgs-unstable, matui, filtile, neve
     , nixos-hardware, nur, home-manager, agenix, nix-index-database }:
     let
       mkSystem = host:
@@ -51,17 +49,13 @@
               config.allowUnfree = true;
               localSystem = { inherit system; };
             };
-
-            my-nixvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
-              module = ./common/nixvim/config;
-            };
           in {
             inherit pkgs-unstable;
             inherit nixos-hardware;
             inherit nur;
             inherit matui;
             inherit filtile;
-            nixvim = my-nixvim;
+            inherit neve;
           };
 
           modules = [

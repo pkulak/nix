@@ -117,6 +117,7 @@ in {
       toolgit
       todo
       update
+      pkgs.neve
     ];
   };
 

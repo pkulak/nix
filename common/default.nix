@@ -28,7 +28,6 @@
       libsForQt5.kdialog
       lsd
       matui
-      nixvim
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
       sublime-merge
