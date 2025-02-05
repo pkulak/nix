@@ -172,6 +172,9 @@ do
   riverctl rule-add -app-id $id float
 done
 
+# Idea diff edit float
+riverctl rule-add -title "left - right*" float
+
 # Server-side decorations
 riverctl rule-add ssd
 
