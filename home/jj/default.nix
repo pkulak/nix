@@ -3,22 +3,25 @@
 let
   config = ''
     [user]
-      name = "Phil Kulak"
-      email = "phil@kulak.us"
+    name = "Phil Kulak"
+    email = "phil@kulak.us"
 
     [ui]
-      paginate = "auto"
-      default-command = ["log", "--no-pager"]
-      diff.tool = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
-      diff-editor = ["idea-ultimate", "diff", "$left", "$right"] 
+    paginate = "auto"
+    default-command = ["log", "--no-pager"]
+    diff.tool = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
+    diff-editor = ["idea-ultimate", "diff", "$left", "$right"] 
 
     [signing]
-      sign-all = true
-      backend = "ssh"
-      key = "/home/phil/.ssh/id_ed25519.pub"
+    sign-all = true
+    backend = "ssh"
+    key = "/home/phil/.ssh/id_ed25519.pub"
 
     [revset-aliases]
-      all = "latest(all(), 5)"
+    all = "latest(all(), 5)"
+
+    [git]
+    push-bookmark-prefix = "phil-"
   '';
 in {
   xdg.configFile = {

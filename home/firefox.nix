@@ -37,7 +37,6 @@
         name = "phil";
 
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          clearurls
           consent-o-matic
           container-proxy
           decentraleyes
@@ -47,7 +46,6 @@
           sponsorblock
           theater-mode-for-youtube
           ublock-origin
-          user-agent-string-switcher
         ];
 
         search = {
