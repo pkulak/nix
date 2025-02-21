@@ -112,6 +112,7 @@
           user_pref("privacy.clearOnShutdown.cookies", false);
           user_pref("privacy.clearOnShutdown.sessions", false);
           user_pref("privacy.history.custom", true);
+          user_pref("gfx.webrender.compositor.force-enabled", true);
           user_pref("geo.provider.network.url", 'data:application/json,{"location": {"lat": 45.568259, "lng": -122.631719}, "accuracy": 128.0}');
         '';
 
