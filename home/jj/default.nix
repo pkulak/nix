@@ -13,7 +13,7 @@ let
     diff-editor = ["idea-ultimate", "diff", "$left", "$right"] 
 
     [signing]
-    sign-all = true
+    behavior = "own"
     backend = "ssh"
     key = "/home/phil/.ssh/id_ed25519.pub"
 
