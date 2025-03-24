@@ -111,6 +111,7 @@
         warn-dirty = false;
         auto-optimise-store = true;
         experimental-features = [ "nix-command" "flakes" ];
+        download-buffer-size = 500000000; # 500 MB;
       };
 
       gc = {
