@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 riverctl map normal Super Return spawn 'footclient tmux new-session -A -s $(get-tag-name)'
-riverctl map normal Super P spawn 'faketime "3 seconds from now" firefox'
+riverctl map normal Super P spawn 'faketime "3 seconds" firefox'
 riverctl map normal Super D spawn 'wofi -a -b -I -modi drun --show drun'
 riverctl map normal Super E spawn 'wofi-emoji'
 riverctl map normal Super X spawn 'wofi-power'
