@@ -106,7 +106,6 @@ in {
   home.packages = [
     (pkgs.callPackage ./bedload pkgs)
     (pkgs.callPackage ./get-tag-name.nix pkgs)
-    pkgs.libfaketime
   ];
 
   xdg.configFile."river/environment" = {
