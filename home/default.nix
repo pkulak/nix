@@ -303,6 +303,10 @@ in {
     # Login Keyring
     ".local/share/keyrings/login.keyring".source =
       config.lib.file.mkOutOfStoreSymlink "/run/agenix/login.keyring";
+
+    # AWS Creds
+    ".aws/credentials".source =
+      config.lib.file.mkOutOfStoreSymlink "/run/agenix/aws-credentials";
   };
 
   home.stateVersion = "23.05";

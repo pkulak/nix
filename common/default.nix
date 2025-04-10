@@ -6,6 +6,7 @@
   config = {
     environment.systemPackages = with pkgs; [
       age
+      awscli2
       btop
       bc
       beets

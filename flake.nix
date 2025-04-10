@@ -72,6 +72,12 @@
             {
               age = {
                 secrets = {
+                  "aws-credentials" = {
+                    file = ./secrets/aws-credentials.age;
+                    owner = "phil";
+                    group = "users";
+                    mode = "600";
+                  };
                   "login.keyring" = {
                     file = ./secrets/login.keyring.age;
                     owner = "phil";
