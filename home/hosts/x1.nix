@@ -42,4 +42,11 @@
     Service.ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
     Install.WantedBy = [ "river-session.target" ];
   };
+
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
+  };
 }
