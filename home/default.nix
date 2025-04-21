@@ -85,8 +85,6 @@ let
     '';
   };
 
-  toolgit = pkgs.callPackage ./toolgit.nix pkgs;
-
   public-key =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWOTXI/ryuoyQSepiKc+EF5lm+Ye3vqa2a5xS4pBA4C phil@kulak.us";
 in {
@@ -114,7 +112,6 @@ in {
       mnt-usb
       rebuild
       sync-notes
-      toolgit
       todo
       update
       pkgs.neve
