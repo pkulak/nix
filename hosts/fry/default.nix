@@ -3,8 +3,6 @@ let vuescan = pkgs.callPackage ./vuescan.nix pkgs;
 in {
   imports = [ ./hardware-configuration.nix ../../common/vm.nix ];
 
-  networking.hostName = "fry";
-
   services.udev.packages = [ vuescan ];
 
   environment.systemPackages =
@@ -16,5 +14,14 @@ in {
     randomizedDelaySec = "5min";
     flake = "${config.users.users.phil.home}/nix";
     flags = [ "--update-input" "nixpkgs-unstable" "--update-input" "nur" ];
+  };
+
+  networking = {
+    hostName = "fry";
+
+    # set up a bridge for VMs
+    bridges = { vmbr0 = { interfaces = [ "enp37s0" ]; }; };
+
+    interfaces.vmbr0.useDHCP = true;
   };
 }
