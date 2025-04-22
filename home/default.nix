@@ -189,6 +189,7 @@ in {
       alias mnt-private 'mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private'
       alias daily 'nvim ~/notes/daily/$(date +%F).md'
       alias v 'ssh vevo.home'
+      alias jdr 'jj diff -f "$(current-bookmark)@origin"'
 
       zoxide init fish | source
       direnv hook fish | source
@@ -210,6 +211,12 @@ in {
     "fish/functions/extract.fish".text = ''
       function extract --wraps tar
         tar -xvf $argv
+      end
+    '';
+
+    "fish/functions/current-bookmark.fish".text = ''
+      function current-bookmark
+        jj bookmark list --tracked -r 'trunk()..@' -T 'name++"\n"' | head -1
       end
     '';
 
