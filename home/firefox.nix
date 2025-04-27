@@ -42,7 +42,9 @@
           decentraleyes
           don-t-fuck-with-paste
           ff2mpv
+          link-cleaner
           onepassword-password-manager
+          return-youtube-dislikes
           sponsorblock
           theater-mode-for-youtube
           ublock-origin
