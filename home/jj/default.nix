@@ -18,7 +18,7 @@ let
     key = "/home/phil/.ssh/id_ed25519.pub"
 
     [revset-aliases]
-    all = "latest(all(), 5)"
+    all = "latest(all(), 16)"
 
     [git]
     push-bookmark-prefix = "phil-"
@@ -42,7 +42,7 @@ in {
 
     "fish/config.fish".text = ''
       alias pr 'jj git push -c @'
-      alias merge "jj bookmark move --from 'trunk()' && jj git push -r @"
+      alias merge "jj git fetch && jj bookmark move --from 'trunk()' --to @ && jj git push -r @"
       alias fetch 'jj git fetch'
 
       jj util completion fish | source
