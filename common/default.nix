@@ -10,6 +10,8 @@
       btop
       bc
       beets
+      cmatrix
+      cowsay
       nemo-with-extensions
       curl
       distrobox
