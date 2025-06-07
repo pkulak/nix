@@ -130,7 +130,7 @@
       packages = with pkgs; [
         cantarell-fonts
         font-awesome
-        (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+        nerd-fonts.fantasque-sans-mono
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-emoji

@@ -9,7 +9,7 @@ let
     [ui]
     paginate = "auto"
     default-command = ["log", "--no-pager"]
-    diff.tool = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
+    diff-formatter = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
     diff-editor = ["idea-ultimate", "diff", "$left", "$right"] 
 
     [signing]
