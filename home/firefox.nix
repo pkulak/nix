@@ -36,7 +36,7 @@
         id = 0;
         name = "phil";
 
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           consent-o-matic
           container-proxy
           decentraleyes
@@ -88,15 +88,15 @@
               urls = [{
                 template = "https://nixos.wiki/index.php?search={searchTerms}";
               }];
-              iconUpdateURL = "https://nixos.wiki/favicon.png";
+              icon = "https://nixos.wiki/favicon.png";
               updateInterval = 24 * 60 * 60 * 1000;
               definedAliases = [ "@nw" ];
             };
 
-            "Wikipedia (en)".metaData.alias = "@wiki";
-            "Google".metaData.hidden = true;
-            "Amazon.com".metaData.hidden = true;
-            "eBay".metaData.hidden = true;
+            "wikipedia".metaData.alias = "@wiki";
+            "google".metaData.hidden = true;
+            "amazondotcom-us".metaData.hidden = true;
+            "ebay".metaData.hidden = true;
           };
         };
 
