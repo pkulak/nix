@@ -24,4 +24,13 @@ in {
 
     interfaces.vmbr0.useDHCP = true;
   };
+
+  fileSystems = {
+    "/mnt/storage" = {
+      device = "/dev/disk/by-label/Storage";
+      fsType = "ext4";
+      neededForBoot = false;
+      options = ["defaults"];
+    };
+  };
 }
