@@ -15,6 +15,7 @@
       nemo-with-extensions
       curl
       distrobox
+      fastfetchMinimal
       ffmpeg
       ffmpegthumbnailer
       file
