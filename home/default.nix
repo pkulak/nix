@@ -92,7 +92,6 @@ in {
     ./firefox.nix
     ./git.nix
     ./jj
-    ./helix.nix
     ./river
     ./tmux.nix
     ./waybar
