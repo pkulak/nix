@@ -3,10 +3,9 @@ let
 
   fry    = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHT/UgnbVTNVHfcdGfnaFmRPwxTKtm8SZWVVV/3k/KDu";
   x1     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICspXgN3lyyzw0ElGhcqmeccdRBg5ZVXkalt3oM1Go+c";
-  t460p  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxLL9ihLEJdYgXX0qTtCBwexdC1ffA2Qh3wHPKhQHCM";
   kvm    = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID1r9a/7YHv+zcAyn3V7t/a1X+hSRBYhGPJ93f3eQeBl";
 
-  keys = [ user fry x1 t460p kvm ];
+  keys = [ user fry x1 kvm ];
 in {
   "smb-secrets.age".publicKeys = keys;
   "login.keyring.age".publicKeys = keys;
