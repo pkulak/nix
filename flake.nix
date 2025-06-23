@@ -39,6 +39,12 @@
 
   outputs = { self, ... }@inputs:
     let
+      mkSecret = file: {
+        inherit file;
+        owner = "phil";
+        group = "users";
+        mode = "600";
+      };
       mkSystem = host:
         inputs.nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
@@ -69,18 +75,8 @@
             {
               age = {
                 secrets = {
-                  "aws-credentials" = {
-                    file = ./secrets/aws-credentials.age;
-                    owner = "phil";
-                    group = "users";
-                    mode = "600";
-                  };
-                  "login.keyring" = {
-                    file = ./secrets/login.keyring.age;
-                    owner = "phil";
-                    group = "users";
-                    mode = "600";
-                  };
+                  "aws-credentials" = mkSecret ./secrets/aws-credentials.age;
+                  "login.keyring" = mkSecret ./secrets/login.keyring.age;
                   "smb-secrets".file = ./secrets/smb-secrets.age;
                 };
               };
