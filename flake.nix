@@ -37,36 +37,33 @@
     nvix.url = "github:pkulak/nvix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, matui, filtile, nvix
-    , nixos-hardware, nur, home-manager, agenix, nix-index-database }:
+  outputs = { self, ... }@inputs:
     let
       mkSystem = host:
-        nixpkgs.lib.nixosSystem rec {
+        inputs.nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
 
-          specialArgs = let
-            pkgs-unstable = import nixpkgs-unstable {
-              config.allowUnfree = true;
-              localSystem = { inherit system; };
+          specialArgs =
+            let
+              pkgs-unstable = import inputs.nixpkgs-unstable {
+                config.allowUnfree = true;
+                localSystem = { inherit system; };
+              };
+            in
+            {
+              inherit pkgs-unstable;
+              inherit (inputs) nixos-hardware nur matui filtile nvix;
             };
-          in {
-            inherit pkgs-unstable;
-            inherit nixos-hardware;
-            inherit nur;
-            inherit matui;
-            inherit filtile;
-            inherit nvix;
-          };
 
           modules = [
             ./configuration.nix
             ./hosts/${host}
 
-            agenix.nixosModules.default
+            inputs.agenix.nixosModules.default
 
             {
               environment.systemPackages =
-                [ agenix.packages.${system}.default ];
+                [ inputs.agenix.packages.${system}.default ];
             }
 
             {
@@ -89,14 +86,14 @@
               };
             }
 
-            nix-index-database.nixosModules.nix-index
+            inputs.nix-index-database.nixosModules.nix-index
 
             {
               programs.command-not-found.enable = false;
               programs.nix-index-database.comma.enable = true;
             }
 
-            home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -105,7 +102,8 @@
             }
           ];
         };
-    in {
+    in
+    {
       nixosConfigurations = {
         fry = mkSystem "fry";
         x1 = mkSystem "x1";

@@ -1,28 +1,29 @@
 { pkgs, ... }:
 
 let
-  config = ''
-    [user]
-    name = "Phil Kulak"
-    email = "phil@kulak.us"
+  config = # toml
+    ''
+      [user]
+      name = "Phil Kulak"
+      email = "phil@kulak.us"
 
-    [ui]
-    paginate = "auto"
-    default-command = ["log", "--no-pager"]
-    diff-formatter = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
-    diff-editor = ["idea-ultimate", "diff", "$left", "$right"] 
+      [ui]
+      paginate = "auto"
+      default-command = ["log", "--no-pager"]
+      diff-formatter = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
+      diff-editor = ["idea-ultimate", "diff", "$left", "$right"]
 
-    [signing]
-    behavior = "own"
-    backend = "ssh"
-    key = "/home/phil/.ssh/id_ed25519.pub"
+      [signing]
+      behavior = "own"
+      backend = "ssh"
+      key = "/home/phil/.ssh/id_ed25519.pub"
 
-    [revset-aliases]
-    all = "latest(all(), 16)"
+      [revset-aliases]
+      all = "latest(all(), 16)"
 
-    [git]
-    push-bookmark-prefix = "phil-"
-  '';
+      [git]
+      push-bookmark-prefix = "phil-"
+    '';
 in {
   xdg.configFile = {
     "jj/config.toml".text = config;
