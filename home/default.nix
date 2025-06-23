@@ -113,7 +113,8 @@ in {
       sync-notes
       todo
       update
-      pkgs.neve
+
+      pkgs.nvix
     ];
   };
 

@@ -33,11 +33,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #neve.url = "git+file:///home/phil/Projects/Neve";
-    neve.url = "github:pkulak/Neve";
+    # nvix.url = "git+file:///home/phil/Projects/nvix";
+    nvix.url = "github:pkulak/nvix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, matui, filtile, neve
+  outputs = { self, nixpkgs, nixpkgs-unstable, matui, filtile, nvix
     , nixos-hardware, nur, home-manager, agenix, nix-index-database }:
     let
       mkSystem = host:
@@ -55,7 +55,7 @@
             inherit nur;
             inherit matui;
             inherit filtile;
-            inherit neve;
+            inherit nvix;
           };
 
           modules = [
