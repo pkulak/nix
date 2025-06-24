@@ -9,7 +9,8 @@ let
 in {
   "smb-secrets.age".publicKeys = keys;
   "login.keyring.age".publicKeys = keys;
-  "aws-credentials".publicKeys = keys;
+  "aws-credentials.age".publicKeys = keys;
+  "m2-settings.xml.age".publicKeys = keys;
 }
 
 # ssh-keyscan localhost

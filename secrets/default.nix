@@ -17,6 +17,7 @@ in
     secrets = {
       "aws-credentials" = mkSecret ./aws-credentials.age;
       "login.keyring" = mkSecret ./login.keyring.age;
+      "m2-settings.xml" = mkSecret ./m2-settings.xml.age;
       "smb-secrets".file = ./smb-secrets.age;
     };
   };

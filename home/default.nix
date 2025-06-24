@@ -311,6 +311,10 @@ in {
     # AWS Creds
     ".aws/credentials".source =
       config.lib.file.mkOutOfStoreSymlink "/run/agenix/aws-credentials";
+
+    # Maven Creds
+    ".m2/settings.xml".source =
+      config.lib.file.mkOutOfStoreSymlink "/run/agenix/m2-settings.xml";
   };
 
   home.stateVersion = "23.05";
