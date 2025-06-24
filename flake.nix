@@ -39,65 +39,43 @@
 
   outputs = { self, ... }@inputs:
     let
-      mkSecret = file: {
-        inherit file;
-        owner = "phil";
-        group = "users";
-        mode = "600";
-      };
-      mkSystem = host:
-        inputs.nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
+      mkSystem = host: inputs.nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
 
-          specialArgs =
-            let
-              pkgs-unstable = import inputs.nixpkgs-unstable {
-                config.allowUnfree = true;
-                localSystem = { inherit system; };
-              };
-            in
-            {
-              inherit pkgs-unstable;
-              inherit (inputs) nixos-hardware nur matui filtile nvix;
+        specialArgs =
+          let
+            pkgs-unstable = import inputs.nixpkgs-unstable {
+              config.allowUnfree = true;
+              localSystem = { inherit system; };
             };
+          in
+          {
+            inherit pkgs-unstable system;
+            inherit (inputs) nixos-hardware nur matui filtile nvix agenix;
+          };
 
-          modules = [
-            ./configuration.nix
-            ./hosts/${host}
+        modules = [
+          ./configuration.nix
+          ./hosts/${host}
+          ./secrets
 
-            inputs.agenix.nixosModules.default
+          inputs.agenix.nixosModules.default
+          inputs.nix-index-database.nixosModules.nix-index
 
-            {
-              environment.systemPackages =
-                [ inputs.agenix.packages.${system}.default ];
-            }
+          {
+            programs.command-not-found.enable = false;
+            programs.nix-index-database.comma.enable = true;
+          }
 
-            {
-              age = {
-                secrets = {
-                  "aws-credentials" = mkSecret ./secrets/aws-credentials.age;
-                  "login.keyring" = mkSecret ./secrets/login.keyring.age;
-                  "smb-secrets".file = ./secrets/smb-secrets.age;
-                };
-              };
-            }
-
-            inputs.nix-index-database.nixosModules.nix-index
-
-            {
-              programs.command-not-found.enable = false;
-              programs.nix-index-database.comma.enable = true;
-            }
-
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.phil = import ./home;
-              home-manager.extraSpecialArgs = { inherit host; };
-            }
-          ];
-        };
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.phil = import ./home;
+            home-manager.extraSpecialArgs = { inherit host; };
+          }
+        ];
+      };
     in
     {
       nixosConfigurations = {

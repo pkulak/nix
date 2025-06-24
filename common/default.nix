@@ -34,7 +34,7 @@
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
       sublime-merge
-      supersonic-wayland
+      unstable.supersonic-wayland
       tldr
       unzip
       woeusb
