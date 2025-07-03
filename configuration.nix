@@ -60,7 +60,7 @@
       (final: prev: {
         inherit (matui.packages.${prev.stdenv.system}) matui;
         inherit (filtile.packages.${prev.stdenv.system}) filtile;
-        nvix = nvix.packages.${prev.stdenv.system}.phil;
+        nvix = nvix.packages.${prev.stdenv.system}.core;
         unstable = pkgs-unstable;
       })
     ];
