@@ -140,9 +140,11 @@ do
     riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
 done
 
+# Headphone/speaker switcher
+riverctl map normal Super H spawn switch-audio
+
 # My config that makes me happy
 riverctl attach-mode bottom
-riverctl focus-follows-cursor disabled
 riverctl hide-cursor timeout 4000
 
 # Inputs

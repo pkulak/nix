@@ -22,7 +22,7 @@ let
       all = "latest(all(), 16)"
 
       [git]
-      push-bookmark-prefix = "phil-"
+      templates.git_push_bookmark = '"phil-" ++ change_id.short()'
     '';
 in {
   xdg.configFile = {
