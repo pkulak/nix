@@ -78,6 +78,8 @@
         enable = true;
         enableNotifications = true;
       };
+
+      tailscale.enable = true;
     };
 
     programs = {

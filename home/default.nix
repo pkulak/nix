@@ -181,7 +181,8 @@ in {
       alias vim nvim
       alias vi nvim
       alias za zathura
-      alias ts 'date -u +"%Y-%m-%dT%H:%M:%SZ"'
+      alias timestamp 'date -u +"%Y-%m-%dT%H:%M:%SZ"'
+      alias ts 'sudo tailscale up --accept-routes --hostname ${host}'
       alias bc 'bc -lq'
       alias rs 'rsync -avH --info=progress2'
       alias dr '${pkgs.ripdrag}/bin/ripdrag -a'
