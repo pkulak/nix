@@ -221,6 +221,23 @@ in {
       end
     '';
 
+    "fish/functions/tail-daily.fish".text = ''
+      function tail-daily
+        set cutoff (date -d "-30 day" -u +"%Y-%m-%d.md")
+
+        for f in ~/notes/daily/*
+          set file (basename $f)
+
+          if expr "$file" \> "$cutoff" >/dev/null
+            echo "# $file"
+            echo
+            cat $f
+            echo
+          end
+        end
+      end
+    '';
+
     # Mako
     "mako/config".text = ''
       font=monospace 12
