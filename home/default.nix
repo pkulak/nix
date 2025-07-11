@@ -90,6 +90,7 @@ let
 in {
   imports = [
     ./firefox.nix
+    ./fish.nix
     ./git.nix
     ./jj
     ./river
@@ -152,90 +153,6 @@ in {
       [global]
       load_dotenv = true
       hide_env_diff = true
-    '';
-
-    # Fish
-    "fish/config.fish".text = ''
-      fish_vi_key_bindings
-      set fish_greeting
-
-      alias l   'lsd -ltr'
-      alias la  'lsd -atr'
-      alias lla 'lsd -latr'
-      alias lt  'lsd --tree'
-
-      alias last 'ls -t | head -n1'
-      alias clast 'cat (last)'
-      alias vlast 'nvim (last)'
-      alias mlast 'mpv (last)'
-      alias ilast 'imv (last)'
-      alias zlast 'zathura (last)'
-
-      alias .. 'cd ..'
-      alias ... 'cd ../..'
-      alias md 'mkdir -p'
-      alias sm 'smerge .'
-      alias ssh 'TERM=xterm-256color command ssh'
-      alias c 'clear; cd'
-      alias e exit
-      alias vim nvim
-      alias vi nvim
-      alias za zathura
-      alias timestamp 'date -u +"%Y-%m-%dT%H:%M:%SZ"'
-      alias ts 'sudo tailscale up --accept-routes --hostname ${host}'
-      alias bc 'bc -lq'
-      alias rs 'rsync -avH --info=progress2'
-      alias dr '${pkgs.ripdrag}/bin/ripdrag -a'
-      alias screencast '${pkgs.wf-recorder}/bin/wf-recorder -g (${pkgs.slurp}/bin/slurp)'
-      alias mnt-private 'mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private'
-      alias daily 'nvim ~/notes/daily/$(date +%F).md'
-      alias v 'ssh vevo.home'
-      alias jdr 'jj diff -f "$(current-bookmark)@origin"'
-
-      zoxide init fish | source
-      direnv hook fish | source
-    '';
-
-    "fish/functions/dbc.fish".text = ''
-      function dbc --wraps=distrobox
-        mkdir -p /home/phil/homes/$argv
-        distrobox create --name $argv --image debian:latest --home /home/phil/homes/$argv
-      end
-    '';
-
-    "fish/functions/compress.fish".text = ''
-      function compress --wraps=tar
-        tar -czf (basename $argv).tar.gz $argv
-      end
-    '';
-
-    "fish/functions/extract.fish".text = ''
-      function extract --wraps tar
-        tar -xvf $argv
-      end
-    '';
-
-    "fish/functions/current-bookmark.fish".text = ''
-      function current-bookmark
-        jj bookmark list --tracked -r 'trunk()..@' -T 'name++"\n"' | head -1
-      end
-    '';
-
-    "fish/functions/tail-daily.fish".text = ''
-      function tail-daily
-        set cutoff (date -d "-30 day" -u +"%Y-%m-%d.md")
-
-        for f in ~/notes/daily/*
-          set file (basename $f)
-
-          if expr "$file" \> "$cutoff" >/dev/null
-            echo "# $file"
-            echo
-            cat $f
-            echo
-          end
-        end
-      end
     '';
 
     # Mako

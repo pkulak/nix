@@ -25,29 +25,32 @@ let
       templates.git_push_bookmark = '"phil-" ++ change_id.short()'
     '';
 in {
+  programs.fish = {
+    shellInit = ''
+      jj util completion fish | source
+    '';
+
+    shellAliases = {
+      pr = "jj git push -c @";
+      merge = "jj git fetch && jj bookmark move --from 'trunk()' --to @ && jj git push -r @";
+      fetch = "jj git fetch";
+    };
+
+    functions = {
+      fish_jj_prompt.body = builtins.readFile ./prompt.fish;
+
+      fish_vcs_prompt.body = ''
+        fish_jj_prompt $argv or fish_git_prompt $argv
+      '';
+    };
+  };
+
   xdg.configFile = {
     "jj/config.toml".text = config;
 
     "jj/vevo.toml".text =
       builtins.replaceStrings [ "phil@kulak.us" ] [ "phil.kulak@vevo.com" ]
       config;
-
-    "fish/functions/fish_jj_prompt.fish".source = ./prompt.fish;
-
-    "fish/functions/fish_vcs_prompt.fish".text = ''
-      function fish_vcs_prompt --description "Print all vcs prompts"
-        fish_jj_prompt $argv
-        or fish_git_prompt $argv
-      end
-    '';
-
-    "fish/config.fish".text = ''
-      alias pr 'jj git push -c @'
-      alias merge "jj git fetch && jj bookmark move --from 'trunk()' --to @ && jj git push -r @"
-      alias fetch 'jj git fetch'
-
-      jj util completion fish | source
-    '';
   };
 
   home.file = {
