@@ -1,4 +1,4 @@
-{ agenix, pkgs, host, system, ... }:
+{ agenix, config, pkgs, host, system, ... }:
 
 let
   matui-desktop-item = pkgs.makeDesktopItem {
@@ -93,6 +93,7 @@ in {
     ./fish.nix
     ./git.nix
     ./jj
+    ./mpd
     ./river
     ./secrets
     ./tmux.nix
@@ -214,9 +215,6 @@ in {
       XDG_TEMPLATES_DIR="$HOME/Templates"
       XDG_VIDEOS_DIR="$HOME/Videos"
     '';
-
-    # Supersonic Music Player
-    "supersonic/config.toml".source = ./supersonic.toml;
 
     # Foot Terminal
     "foot/foot.ini".source = ./foot.ini;

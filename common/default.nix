@@ -33,8 +33,8 @@
       matui
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
+      rmpc
       sublime-merge
-      unstable.supersonic-wayland
       tldr
       unzip
       woeusb

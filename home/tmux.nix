@@ -23,7 +23,7 @@ in {
       [
         {
           plugin = tmuxPlugins.catppuccin;
-          extraConfig = '' 
+          extraConfig = ''
             set -g @catppuccin_flavor 'mocha'
 
             # Make the status line pretty and add some modules
@@ -64,16 +64,6 @@ in {
 
       bind c new-window -c "#{pane_current_path}"
 
-      # easily create/rename new sessions
-      bind S command-prompt -p "New Session:" "new-session -A -s '%%'"
-      bind K confirm kill-session
-
-      bind r command-prompt -p "New Name:" "rename-session '%%'"
-
-      # swap to and from the global session
-      bind C-b run-shell "tmux switch -t $(get-tag-name)"
-      bind g new-session -A -s global
-
       # Fast window switching and creating
       bind -n C-n select-window -n
       bind -n C-p select-window -p
@@ -86,7 +76,9 @@ in {
 
       # Edit buffer in Vim
       bind-key e run-shell "${edit-buffer}/bin/edit-buffer"
+
+      # Popups
+      bind-key m display-popup -w 90% -h 90% -E 'rmpc'
     '';
   };
 }
-
