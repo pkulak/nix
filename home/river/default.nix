@@ -72,6 +72,20 @@ let
     checkPhase = "";
   };
 
+  matui-monitor = pkgs.writeShellApplication {
+    name = "matui-monitor";
+    text = #bash
+      ''
+        tmux new-session -d -s matui "${pkgs.matui}/bin/matui"
+
+        while tmux has-session -t matui 2>/dev/null; do
+          sleep 5
+        done
+
+        exit 0
+      '';
+  };
+
   init = pkgs.stdenv.mkDerivation {
     name = "init";
     dontUnpack = true;
@@ -180,11 +194,22 @@ in {
     Install.WantedBy = [ "suspend.target" ];
   };
 
+  systemd.user.services.matui = {
+    Unit.Description = "matui chat tmux session";
+    Unit.After = [ "network-online.target" ];
+    Service.ExecStart = "${matui-monitor}/bin/matui-monitor";
+    Service.ExecStop = "${pkgs.tmux}/bin/tmux kill-session -t matui";
+    Service.Restart = "always";
+    Service.RestartSec = 10;
+    Install.WantedBy = [ "river-session.target" ];
+  };
+
   systemd.user.services.imap-notify = {
     Unit.Description = "email notifications daemon";
+    Unit.After = [ "network-online.target" ];
     Service.ExecStart = "${imap-notify}/bin/imap-notify";
     Service.Environment = "PATH=${pkgs.libnotify}/bin";
-    Install.WantedBy = [ "river-session.target" "network-online.target" ];
+    Install.WantedBy = [ "river-session.target" ];
   };
 
   systemd.user.services.mako = {

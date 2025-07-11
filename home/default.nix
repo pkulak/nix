@@ -1,12 +1,6 @@
 { agenix, config, pkgs, host, system, ... }:
 
 let
-  matui-desktop-item = pkgs.makeDesktopItem {
-    name = "matui";
-    desktopName = "Matui";
-    exec = "${pkgs.foot}/bin/footclient -e matui";
-  };
-
   todo = pkgs.writeShellApplication {
     name = "todo";
     runtimeInputs = with pkgs; [ moreutils ];
@@ -109,7 +103,6 @@ in {
 
     packages = [
       clean
-      matui-desktop-item
       import-photos
       mnt-usb
       rebuild
