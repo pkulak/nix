@@ -1,4 +1,4 @@
-{ config, pkgs, host, ... }:
+{ agenix, pkgs, host, system, ... }:
 
 let
   matui-desktop-item = pkgs.makeDesktopItem {
@@ -94,6 +94,7 @@ in {
     ./git.nix
     ./jj
     ./river
+    ./secrets
     ./tmux.nix
     ./waybar
     ./wofi
@@ -115,6 +116,7 @@ in {
       todo
       update
 
+      agenix.packages.${system}.default
       pkgs.nvix
     ];
   };
@@ -238,18 +240,6 @@ in {
     # SSH
     ".ssh/allowed_signers".text = "* ${public-key}";
     ".ssh/id_ed25519.pub".text = public-key;
-
-    # Login Keyring
-    ".local/share/keyrings/login.keyring".source =
-      config.lib.file.mkOutOfStoreSymlink "/run/agenix/login.keyring";
-
-    # AWS Creds
-    ".aws/credentials".source =
-      config.lib.file.mkOutOfStoreSymlink "/run/agenix/aws-credentials";
-
-    # Maven Creds
-    ".m2/settings.xml".source =
-      config.lib.file.mkOutOfStoreSymlink "/run/agenix/m2-settings.xml";
   };
 
   home.stateVersion = "23.05";

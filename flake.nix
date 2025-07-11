@@ -57,9 +57,7 @@
         modules = [
           ./configuration.nix
           ./hosts/${host}
-          ./secrets
 
-          inputs.agenix.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
 
           {
@@ -72,7 +70,15 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.phil = import ./home;
-            home-manager.extraSpecialArgs = { inherit host; };
+
+            home-manager.extraSpecialArgs = {
+              inherit host system;
+              inherit (inputs) agenix;
+            };
+
+            home-manager.sharedModules = [
+              inputs.agenix.homeManagerModules.default
+            ];
           }
         ];
       };
