@@ -1,14 +1,19 @@
 { config, ... }:
 
-{
+let
+  mkSecret = file: name: {
+    file = file;
+    path = "/run/user/1000/agenix/${name}";
+  };
+in {
   age = {
     identityPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
 
     secrets = {
-      aws-credentials.file = ./aws-credentials.age;
-      login-keyring.file = ./login.keyring.age;
-      m2-settings.file = ./m2-settings.xml.age;
-      smb-secrets.file = ./smb-secrets.age;
+      aws-credentials = mkSecret ./aws-credentials.age "aws-credentials";
+      login-keyring = mkSecret ./login.keyring.age "login-keyring";
+      m2-settings = mkSecret ./m2-settings.xml.age "m2-settings";
+      smb-secrets = mkSecret ./smb-secrets.age "smb-secrets";
     };
   };
 
