@@ -12,7 +12,7 @@
   services.blueman.enable = true;
 
   environment.systemPackages = [
-    pkgs.unstable.jetbrains.idea-ultimate
+    pkgs.jetbrains.idea-ultimate
   ];
 
   programs.light.enable = true;
