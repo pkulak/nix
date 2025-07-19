@@ -13,7 +13,8 @@
     wrap_navigation: false,
     enable_mouse: true,
     status_update_interval_ms: 1000,
-    select_current_song_on_change: false,
+    select_current_song_on_change: true,
+    directories_sort: ModifiedTime(group_directories_first: true, reverse: true),
     album_art: (
         method: Auto,
         max_size_px: (width: 400, height: 400),
@@ -115,6 +116,10 @@
         (
             name: "Queue",
             pane: Pane(Queue),
+        ),
+        (
+            name: "Recent",
+            pane: Pane(Directories),
         ),
         (
             name: "Artists",

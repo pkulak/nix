@@ -33,7 +33,7 @@
       matui
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
-      rmpc
+      unstable.rmpc
       sublime-merge
       tldr
       unzip
