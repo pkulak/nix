@@ -84,6 +84,9 @@ do
     riverctl map normal Super+Shift $i set-view-tags $tags
 done
 
+# Super Tab to swap back and forth
+riverctl map normal Super Tab spawn "TAG=\$(river-bedload -print tags | jq 'first(.[] | select(.focused == true)).id'); river-bnf \$((1 << (\$TAG - 1)))"
+
 # Super+0 to focus all tags
 # Super+Shift+0 to tag focused view with all tags
 all_tags=$(((1 << 6) - 1))

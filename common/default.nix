@@ -27,6 +27,7 @@
       gocryptfs
       httpie
       imv
+      jq
       unstable.jujutsu
       libsForQt5.kdialog
       lsd
