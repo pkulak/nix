@@ -21,8 +21,8 @@ let
       [revset-aliases]
       all = "latest(all(), 16)"
 
-      [git]
-      templates.git_push_bookmark = '"phil-" ++ change_id.short()'
+      [templates]
+      git_push_bookmark = '"phil-" ++ change_id.short()'
     '';
 in {
   programs.fish = {

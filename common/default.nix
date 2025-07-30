@@ -35,6 +35,7 @@
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
       unstable.rmpc
+      serpl
       sublime-merge
       tldr
       unzip
