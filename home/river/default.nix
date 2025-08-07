@@ -86,6 +86,18 @@ let
       '';
   };
 
+  matui-toggle = pkgs.writeShellApplication {
+    name = "matui-toggle";
+    text = #bash
+      ''
+        if tmux list-sessions | grep matui | grep -q attached; then
+          tmux detach-client -s matui
+        else
+          footclient -a floating -w 860x860 tmux a -t matui \; set-option status off
+        fi
+      '';
+  };
+
   init = pkgs.stdenv.mkDerivation {
     name = "init";
     dontUnpack = true;
@@ -95,6 +107,7 @@ let
       substituteInPlace $out/bin/init --replace 'wofi-emoji' '${wofi-emoji}/bin/wofi-emoji'
       substituteInPlace $out/bin/init --replace 'wofi-power' '${wofi-power}/bin/wofi-power'
       substituteInPlace $out/bin/init --replace 'switch-audio' '${switch-audio}/bin/switch-audio'
+      substituteInPlace $out/bin/init --replace 'matui-toggle' '${matui-toggle}/bin/matui-toggle'
       substituteInPlace $out/bin/init --replace 'wallpaper.png' '${./wallpaper.png}'
     '';
   };
