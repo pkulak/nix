@@ -20,6 +20,10 @@ let
 
       [revset-aliases]
       all = "latest(all(), 16)"
+      'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+
+      [aliases]
+      tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 
       [templates]
       git_push_bookmark = '"phil-" ++ change_id.short()'
