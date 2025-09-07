@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  programs.fish.shellAliases = {
+    ts = "sudo tailscale up --accept-routes";
+  };
+
   xdg.configFile."river/host" = {
     executable = true;
     text = ''

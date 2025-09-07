@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  programs.fish.shellAliases = {
+    ts = "sudo tailscale up";
+  };
+
   systemd.user.services.swayidle = {
     Unit.Description = "swayidle daemon";
 
@@ -10,7 +14,7 @@
                     resume 'wlopm --on "*"' \
             timeout 7200 'systemctl suspend' \
                     after-resume 'wlopm --on "*"'
-      ''; 
+      '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
     Install.WantedBy = [ "river-session.target" ];

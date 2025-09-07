@@ -36,7 +36,6 @@
       vi = "nvim";
       za = "zathura";
       timestamp = ''date -u +"%Y-%m-%dT%H:%M:%SZ"'';
-      ts = "sudo tailscale up --accept-routes --hostname ${host}";
       bc = "bc -lq";
       rs = "rsync -avH --info=progress2";
       dr = "${pkgs.ripdrag}/bin/ripdrag -a";
