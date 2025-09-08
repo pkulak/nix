@@ -2,7 +2,7 @@
 
 {
   programs.fish.shellAliases = {
-    ts = "sudo tailscale up";
+    ts = "sudo tailscale switch kulak.us && sudo tailscale up";
   };
 
   systemd.user.services.swayidle = {

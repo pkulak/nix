@@ -2,7 +2,7 @@
 
 {
   programs.fish.shellAliases = {
-    ts = "sudo tailscale up --accept-routes";
+    ts = "sudo tailscale switch kulak.us && sudo tailscale up --accept-routes";
   };
 
   xdg.configFile."river/host" = {

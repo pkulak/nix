@@ -43,6 +43,9 @@
       mnt-private = "mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private";
       daily = "nvim ~/notes/daily/$(date +%F).md";
       v = "ssh vevo.home";
+      tsv = "sudo tailscale switch vevo.com && sudo tailscale up --accept-routes --hostname phil-${host}";
+      tsd = "sudo tailscale down";
+      tss = "sudo tailscale status";
       jdr = ''jj diff -f "$(current-bookmark)@origin"'';
     };
 
