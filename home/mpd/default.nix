@@ -1,18 +1,18 @@
-{ agenix, config, pkgs, host, system, ... }:
+{ config, ... }:
 
 {
   services.mpd = {
     enable = true;
     dataDir = "${config.xdg.dataHome}/mpd";
     musicDirectory = "/mnt/music/";
-    network.startWhenNeeded = true;
     extraConfig = ''
       audio_output {
         type    "pipewire"
         name    "pipewire"
       }
-      auto_update "yes"
+      auto_update "no"
       replaygain "auto"
+      zeroconf_enabled "no"
     '';
   };
 
