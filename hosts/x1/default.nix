@@ -13,6 +13,7 @@
 
   environment.systemPackages = [
     pkgs.jetbrains.idea-ultimate
+    pkgs.wdisplays
   ];
 
   programs.light.enable = true;
