@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
-    ../../common/vm.nix
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -18,12 +17,5 @@
 
   programs.light.enable = true;
 
-  networking = {
-    hostName = "x1";
-
-    # set up a bridge for VMs
-    bridges = { vmbr0 = { interfaces = [ "wlp2s0" ]; }; };
-
-    interfaces.vmbr0.useDHCP = true;
-  };
+  networking.hostName = "x1";
 }
