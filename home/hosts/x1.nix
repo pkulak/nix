@@ -11,8 +11,7 @@
       for mode in normal locked
       do
         riverctl map $mode None Print spawn 'playerctl play-pause'
-        riverctl map $mode Super period spawn 'playerctl next'
-        riverctl map $mode Super comma spawn 'playerctl previous'
+        riverctl map $mode Super Slash spawn 'playerctl next'
       done
     '';
   };
