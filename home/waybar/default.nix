@@ -23,7 +23,6 @@ let
 
     propagatedBuildInputs = with pkgs; [
       (python3.withPackages (ps: with ps; [
-        keyring
         requests
       ]))
     ];
@@ -43,7 +42,7 @@ in {
     modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "river/layout" "river/window"];
     modules-center = ["river/tags"];
     modules-right = ["custom/media" "custom/weather" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
-    
+
     "backlight" = {
       "format" = "{percent}% {icon}";
       "format-icons" = [

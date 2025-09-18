@@ -17,7 +17,6 @@ let
 
         propagatedBuildInputs = with pkgs; [
           python3Packages.dataclasses-json
-          python3Packages.keyring
           python3Packages.poetry-core
           python3Packages.poetry-dynamic-versioning
           python3Packages.python-dateutil
@@ -120,34 +119,40 @@ in {
   xdg.configFile."river/environment" = {
     executable = true;
 
-    text = ''
-      #!/usr/bin/env bash
+    text = # bash
+      ''
+        #!/usr/bin/env bash
 
-      export TERMINAL="footclient"
-      export TERM="foot"
-      export BROWSER="firefox"
-      export EDITOR="nvim"
-      export VISUAL="nvim"
+        export TERMINAL="footclient"
+        export TERM="foot"
+        export BROWSER="firefox"
+        export EDITOR="nvim"
+        export VISUAL="nvim"
 
-      export SDL_VIDEODRIVER="wayland"
-      export QT_QPA_PLATFORM="wayland"
-      export GDK_BACKEND="wayland,x11"
-      export _JAVA_AWT_WM_NONREPARENTING=1
+        export SDL_VIDEODRIVER="wayland"
+        export QT_QPA_PLATFORM="wayland"
+        export GDK_BACKEND="wayland,x11"
+        export _JAVA_AWT_WM_NONREPARENTING=1
 
-      export JAVA_HOME=${pkgs.jdk17}/lib/openjdk
-      export JAVA_11_HOME=${pkgs.jdk11}/lib/openjdk
-      export JAVA_17_HOME=${pkgs.jdk17}/lib/openjdk
+        export JAVA_HOME=${pkgs.jdk17}/lib/openjdk
+        export JAVA_11_HOME=${pkgs.jdk11}/lib/openjdk
+        export JAVA_17_HOME=${pkgs.jdk17}/lib/openjdk
 
-      export MOZ_ENABLE_WAYLAND=1
-      export MOZ_WEBRENDER=1
-      export MOZ_ACCELERATED=1
+        export MOZ_ENABLE_WAYLAND=1
+        export MOZ_WEBRENDER=1
+        export MOZ_ACCELERATED=1
 
-      # jam some Vevo stuff in the env to make builds easier
-      if test -f /home/phil/.m2/settings.xml; then
-        export NEXUS_USER=deployment
-        export NEXUS_PASSWORD=$(${pkgs.xq-xml}/bin/xq /home/phil/.m2/settings.xml -x "/settings/servers/*[1]/password")
-      fi
-    '';
+        # jam some Vevo stuff in the env to make builds easier
+        if test -f /home/phil/.m2/settings.xml; then
+          export NEXUS_USER=deployment
+          export NEXUS_PASSWORD=$(${pkgs.xq-xml}/bin/xq /home/phil/.m2/settings.xml -x "/settings/servers/*[1]/password")
+        fi
+
+        # and load secrets
+        if test -f /home/phil/.config/river/secrets; then
+          source /home/phil/.config/river/secrets
+        fi
+      '';
   };
 
   xdg.configFile."river/init" = {

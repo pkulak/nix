@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-import keyring
+import os
 import requests
 import json
 
-token = keyring.get_password("nix", "ha")
+token = os.environ['HA_KEY']
 headers = {"Authorization": f"Bearer {token}"}
 
 url = "http://ha.home/api/states/sensor.temperature"

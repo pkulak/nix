@@ -3,9 +3,9 @@ let
   keys = [ user ];
 in {
   "smb-secrets.age".publicKeys = keys;
-  "login.keyring.age".publicKeys = keys;
   "aws-credentials.age".publicKeys = keys;
   "m2-settings.xml.age".publicKeys = keys;
+  "env.age".publicKeys = keys;
 }
 
 # add a line for the new secret file

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import keyring
 import collections
 import os
 import subprocess
@@ -9,7 +8,7 @@ from typing import Dict, Optional
 from jmapc import Client, Ref, TypeState, MailboxQueryFilterCondition
 from jmapc.methods import EmailChanges, EmailGet, EmailGetResponse, MailboxQuery
 
-token = keyring.get_password("nix", "jmap")
+token = os.environ['JMAP_KEY']
 
 # Create and configure client
 client = Client.create_with_api_token(host="api.fastmail.com", api_token=token)
@@ -46,4 +45,3 @@ for i, event in enumerate(client.events):
             if prev_state.email != new_state.email:
                 email_change_callback(prev_state.email, new_state.email)
             all_prev_state[account_id] = new_state
-

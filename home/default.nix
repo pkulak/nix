@@ -1,4 +1,4 @@
-{ agenix, config, pkgs, host, system, ... }:
+{ agenix, pkgs, host, system, ... }:
 
 let
   todo = pkgs.writeShellApplication {
