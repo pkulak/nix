@@ -245,6 +245,7 @@ in {
 
   systemd.user.services.waybar = {
     Unit.Description = "waybar daemon";
+    Unit.After = [ "network-online.target" ];
     Service.ExecStart = "${pkgs.waybar}/bin/waybar";
     Install.WantedBy = [ "river-session.target" ];
   };
