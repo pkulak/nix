@@ -84,6 +84,30 @@
           end
         end
       '';
+
+      basename_no_ext.body = ''
+        string replace -r '\.[^.]*$' "" $argv[1]
+      '';
+
+      transcode.body = ''
+        ${pkgs.ffmpeg}/bin/ffmpeg -i $argv[1] -vf scale=1920:1080 -c:v libx264 -preset veryslow -crf 23 -c:a copy (basename_no_ext $argv[1])-1080p.mp4
+      '';
+
+      img2jpg.body = ''
+        ${pkgs.imagemagick}/bin/magick $argv[1] -quality 90 -strip (basename_no_ext $argv[1]).jpg
+      '';
+
+      img2jpg-small.body = ''
+        ${pkgs.imagemagick}/bin/magick $argv[1] -resize 1440x\> -quality 90 -strip (basename_no_ext $argv[1]).jpg
+      '';
+
+      img2png.body = ''
+        ${pkgs.imagemagick}/bin/magick $argv[1] -strip -define png:compression-filter=5 \
+          -define png:compression-level=9 \
+          -define png:compression-strategy=1 \
+          -define png:exclude-chunk=all \
+          (basename_no_ext $argv[1]).png
+      '';
     };
   };
 }
