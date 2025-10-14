@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./snapper.nix ./smb.nix ./river.nix ./rust.nix ];
+  imports = [ ./1password.nix ./snapper.nix ./smb.nix ./river.nix ./rust.nix ];
 
   config = {
     environment.systemPackages = with pkgs; [
