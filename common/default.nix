@@ -90,8 +90,9 @@
       ssh.startAgent = true;
     };
 
-    # Tame the proxy a bit to let Wireguard work
-    networking.firewall.checkReversePath = false;
+    # use resolvd
+    services.resolved.enable = true;
+    networking.networkmanager.dns = "systemd-resolved";
 
     security = {
       polkit.enable = true;

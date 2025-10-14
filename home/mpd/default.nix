@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   services.mpd = {
@@ -14,6 +14,13 @@
       replaygain "auto"
       zeroconf_enabled "no"
     '';
+  };
+
+  systemd.user.services.mpd = {
+    Unit = {
+      After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
+    };
   };
 
   services.mpd-mpris.enable = true;

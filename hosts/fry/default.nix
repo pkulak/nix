@@ -8,14 +8,7 @@ in {
   environment.systemPackages =
     [ pkgs.jetbrains.idea-ultimate vuescan ];
 
-  networking = {
-    hostName = "fry";
-
-    # set up a bridge for VMs
-    bridges = { vmbr0 = { interfaces = [ "enp37s0" ]; }; };
-
-    interfaces.vmbr0.useDHCP = true;
-  };
+  networking.hostName = "fry";
 
   fileSystems = {
     "/mnt/storage" = {

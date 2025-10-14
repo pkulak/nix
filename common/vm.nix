@@ -16,9 +16,6 @@
     win-spice
   ];
 
-  # the firewall screws up Virt-Manger; disable on those interfaces
-  networking.firewall.trustedInterfaces = [ "virbr0" "vmbr0" ];
-
   # Manage the virtualisation services
   programs.virt-manager.enable = true;
 
