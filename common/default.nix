@@ -16,7 +16,7 @@
       curl
       distrobox
       fastfetchMinimal
-      ffmpeg
+      ffmpeg-full
       ffmpegthumbnailer
       file
       filtile
