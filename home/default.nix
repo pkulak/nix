@@ -111,7 +111,7 @@ in {
       update
 
       agenix.packages.${system}.default
-      pkgs.nvix
+      pkgs.neve
     ];
   };
 

@@ -37,8 +37,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nvix.url = "git+file:///home/phil/Projects/nvix";
-    nvix.url = "github:pkulak/nvix";
+    # neve.url = "git+file:///home/phil/Projects/Neve";
+    neve.url = "github:pkulak/neve";
   };
 
   outputs = { self, ... }@inputs:
@@ -55,7 +55,7 @@
           in
           {
             inherit pkgs-unstable system;
-            inherit (inputs) nixos-hardware nur matui filtile nvix agenix;
+            inherit (inputs) nixos-hardware nur matui filtile neve agenix;
           };
 
         modules = [

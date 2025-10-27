@@ -1,4 +1,4 @@
-{ matui, filtile, pkgs-unstable, nur, nvix, ... }:
+{ matui, filtile, pkgs-unstable, nur, neve, ... }:
 
 {
   imports = [ ./common ];
@@ -60,7 +60,7 @@
       (final: prev: {
         inherit (matui.packages.${prev.stdenv.system}) matui;
         inherit (filtile.packages.${prev.stdenv.system}) filtile;
-        nvix = nvix.packages.${prev.stdenv.system}.core;
+        neve = neve.packages.${prev.stdenv.system}.default;
         unstable = pkgs-unstable;
       })
     ];

@@ -31,6 +31,7 @@
       unstable.jujutsu
       libsForQt5.kdialog
       lsd
+      masterpdfeditor
       matui
       (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
       ripgrep
