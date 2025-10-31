@@ -3,16 +3,17 @@
 , gnutar
 , autoPatchelfHook
 , glibc
-, gtk2
+, gtk3
 , xorg
 , libgudev
+, libxkbcommon
 , makeDesktopItem
 , ...
 }:
 
 let
   pname = "vuescan";
-  version = "9.8.35";
+  version = "9.8.48";
 
   desktopItem = makeDesktopItem {
     name = "VueScan";
@@ -31,7 +32,7 @@ let
 
   src = fetchurl {
     url = "https://public.kulak.us/vuex64-${version}.tgz";
-    sha256 = "sha256-nHtv9b3AQQuQsE2wl/EeR4GER81PTvmevJEiwjM+p8E=";
+    sha256 = "sha256-Nre27SY6KH3z7NLiIHx5TSklbY2GIA86RSDj+I1Ebeo=";
   };
 
 in
@@ -48,9 +49,10 @@ in
 
     buildInputs = [
       glibc
-      gtk2
+      gtk3
       xorg.libSM
       libgudev
+      libxkbcommon
     ];
 
     unpackPhase = ''

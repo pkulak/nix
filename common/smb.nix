@@ -47,5 +47,11 @@ in {
         fsType = "cifs";
         options = automount_opts;
     };
+
+    fileSystems."/mnt/documents" = {
+        device = "//lilnas.home/documents";
+        fsType = "cifs";
+        options = automount_opts;
+    };
   };
 }
