@@ -1,4 +1,4 @@
-{ lib, stdenv, callPackage, fetchFromSourcehut, pkg-config, river, wayland
+{ lib, stdenv, callPackage, fetchFromSourcehut, pkg-config, river-classic, wayland
 , wayland-protocols, wayland-scanner, zig_0_13, ... }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -14,7 +14,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs =
-    [ pkg-config river wayland wayland-protocols wayland-scanner zig_0_13.hook ];
+    [ pkg-config river-classic wayland wayland-protocols wayland-scanner zig_0_13.hook ];
 
   postPatch = ''
     cp -a ${callPackage ./deps.nix { }}/. $ZIG_GLOBAL_CACHE_DIR/p

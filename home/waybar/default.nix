@@ -11,7 +11,7 @@ let
       pkgs.playerctl
     ];
 
-    nativeBuildInputs = [ pkgs.wrapGAppsHook ];
+    nativeBuildInputs = [ pkgs.wrapGAppsHook3 ];
     buildInputs = [ pkgs.gobject-introspection ];
 
     dontUnpack = true;

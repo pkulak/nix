@@ -37,7 +37,7 @@ in {
       grim
       mako
       playerctl
-      river
+      river-classic
       river-bnf
       slurp
       start-river

@@ -29,7 +29,7 @@
       imv
       jq
       unstable.jujutsu
-      libsForQt5.kdialog
+      kdePackages.kdialog
       lsd
       masterpdfeditor
       matui
@@ -52,6 +52,7 @@
 
     environment.etc = with pkgs; {
       "jdk17".source = jdk17;
+      "jdk11".source = jdk11;
     };
 
     services = {
@@ -67,10 +68,6 @@
         openFirewall = true;
       };
 
-      flatpak.enable = true;
-
-      gnome.gnome-keyring.enable = true;
-
       openssh = {
         enable = true;
         settings = { PasswordAuthentication = false; };
@@ -81,6 +78,12 @@
         enableNotifications = true;
       };
 
+      gnome = {
+        gnome-keyring.enable = true;
+        gcr-ssh-agent.enable = false;
+      };
+
+      flatpak.enable = true;
       tailscale.enable = true;
     };
 
@@ -97,7 +100,6 @@
 
     security = {
       polkit.enable = true;
-      pam.services.gnomekey.enableGnomeKeyring = true;
     };
 
     users.users.phil = {
@@ -139,8 +141,8 @@
         nerd-fonts.fantasque-sans-mono
         noto-fonts
         noto-fonts-cjk-sans
-        noto-fonts-emoji
-        ubuntu_font_family
+        noto-fonts-color-emoji
+        ubuntu-classic
       ];
 
       fontconfig = {
