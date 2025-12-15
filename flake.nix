@@ -43,20 +43,20 @@
 
   outputs = { self, ... }@inputs:
     let
-      mkSystem = host: inputs.nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
+      system = "x86_64-linux";
 
-        specialArgs =
-          let
-            pkgs-unstable = import inputs.nixpkgs-unstable {
-              config.allowUnfree = true;
-              localSystem = { inherit system; };
-            };
-          in
-          {
-            inherit pkgs-unstable system;
-            inherit (inputs) nixos-hardware nur matui filtile neve agenix;
-          };
+      pkgs-unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      mkSystem = host: inputs.nixpkgs.lib.nixosSystem rec {
+        inherit system;
+
+        specialArgs = {
+          inherit pkgs-unstable system;
+          inherit (inputs) nixos-hardware nur matui filtile neve agenix;
+        };
 
         modules = [
           ./configuration.nix
@@ -76,7 +76,7 @@
             home-manager.users.phil = import ./home;
 
             home-manager.extraSpecialArgs = {
-              inherit host system;
+              inherit host system pkgs-unstable;
               inherit (inputs) agenix;
             };
 

@@ -61,7 +61,6 @@
         inherit (matui.packages.${prev.stdenv.system}) matui;
         inherit (filtile.packages.${prev.stdenv.system}) filtile;
         neve = neve.packages.${prev.stdenv.system}.default;
-        unstable = pkgs-unstable;
       })
     ];
   };

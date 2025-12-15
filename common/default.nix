@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   imports = [ ./1password.nix ./snapper.nix ./smb.nix ./river.nix ./rust.nix ];
@@ -27,20 +27,20 @@
     httpie
     imv
     jq
-    unstable.jujutsu
+    jujutsu
     kdePackages.kdialog
     lsd
     masterpdfeditor
     matui
     (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
     ripgrep
-    unstable.rmpc
+    rmpc
     serpl
     sublime-merge
     tldr
     unzip
     woeusb
-    unstable.yt-dlp
+    pkgs-unstable.yt-dlp
     zathura
     zoom-us
     zoxide
