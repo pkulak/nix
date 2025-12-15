@@ -84,7 +84,7 @@ in {
     };
 
     "custom/media" = {
-      "format" = "{icon} {}";
+      "format" = "{icon} {text}";
       "return-type" = "json";
       "max-length" = 40;
       "escape" = true;
