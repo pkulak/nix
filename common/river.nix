@@ -28,38 +28,36 @@ let
   };
 
 in {
-  config = {
-    environment.systemPackages = with pkgs; [
-      alacritty
-      glib
-      adwaita-icon-theme
-      gnome-themes-extra
-      grim
-      mako
-      playerctl
-      river-classic
-      river-bnf
-      slurp
-      start-river
-      swaybg
-      wireplumber
-      wl-clipboard
-      wlr-randr
-      wlopm
-      wofi
-    ];
+  environment.systemPackages = with pkgs; [
+    alacritty
+    glib
+    adwaita-icon-theme
+    gnome-themes-extra
+    grim
+    mako
+    playerctl
+    river-classic
+    river-bnf
+    slurp
+    start-river
+    swaybg
+    wireplumber
+    wl-clipboard
+    wlr-randr
+    wlopm
+    wofi
+  ];
 
-    xdg.portal = {
-      enable = true;
-      wlr.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
 
-      config = { common.default = [ "wlr" ]; };
-    };
+    config = { common.default = [ "wlr" ]; };
+  };
 
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
   };
 }
