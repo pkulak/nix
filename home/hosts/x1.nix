@@ -5,18 +5,7 @@
     ts = "sudo tailscale switch kulak.us && sudo tailscale up --accept-routes";
   };
 
-  xdg.configFile."river/host" = {
-    executable = true;
-    text = ''
-      for mode in normal locked
-      do
-        riverctl map $mode None Print spawn 'playerctl play-pause'
-        riverctl map $mode Super Slash spawn 'playerctl next'
-      done
-    '';
-  };
-
-  xdg.configFile."river/environment" = {
+  xdg.configFile."niri/environment" = {
     text = "export XKB_DEFAULT_OPTIONS=altwin:swap_lalt_lwin,caps:escape";
   };
 
@@ -33,7 +22,7 @@
       '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
-    Install.WantedBy = [ "river-session.target" ];
+    Install.WantedBy = [ "niri-session.target" ];
   };
 
   programs.firefox.profiles.phil.extraConfig = ''
@@ -45,7 +34,7 @@
   systemd.user.services.nm-applet = {
     Unit.Description = "nm-applet daemon";
     Service.ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
-    Install.WantedBy = [ "river-session.target" ];
+    Install.WantedBy = [ "niri-session.target" ];
   };
 
   dconf.settings = {

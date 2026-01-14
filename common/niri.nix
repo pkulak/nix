@@ -1,58 +1,56 @@
 { pkgs, ... }:
 
 let
-  start-river = pkgs.writeTextFile {
-    name = "start-river";
-    destination = "/bin/start-river";
+  start-niri = pkgs.writeTextFile {
+    name = "start-niri";
+    destination = "/bin/start-niri";
     executable = true;
 
     text = ''
       #!/usr/bin/env bash
 
       ## General exports
-      export XDG_CURRENT_DESKTOP=river
-      export XDG_SESSION_DESKTOP=river
+      export XDG_CURRENT_DESKTOP=niri
+      export XDG_SESSION_DESKTOP=niri
       export XDG_SESSION_TYPE=wayland
 
       ## Load user environment customizations
-      if [ -f "''${XDG_CONFIG_HOME:-$HOME/.config}/river/environment" ]; then
+      if [ -f "''${XDG_CONFIG_HOME:-$HOME/.config}/niri/environment" ]; then
           set -o allexport
           # shellcheck source=/dev/null
-          . "''${XDG_CONFIG_HOME:-$HOME/.config}/river/environment"
+          . "''${XDG_CONFIG_HOME:-$HOME/.config}/niri/environment"
           set +o allexport
       fi
 
-      # Start River and send output to the journal
-      exec systemd-cat -- river
+      # Start Niri and send output to the journal
+      exec systemd-cat -- niri
     '';
   };
 
 in {
   environment.systemPackages = with pkgs; [
-    alacritty
-    glib
     adwaita-icon-theme
     gnome-themes-extra
     grim
     mako
     playerctl
-    river-classic
-    river-bnf
     slurp
-    start-river
+    start-niri
     swaybg
     wireplumber
     wl-clipboard
     wlr-randr
     wlopm
     wofi
+    xwayland-satellite
   ];
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-
-    config = { common.default = [ "wlr" ]; };
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+    config.common.default = "gtk";
   };
 
   services.pipewire = {
@@ -60,4 +58,6 @@ in {
     alsa.enable = true;
     pulse.enable = true;
   };
+
+  programs.niri.enable = true;
 }

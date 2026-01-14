@@ -8,7 +8,7 @@ case $selected in
   suspend)
     exec systemctl suspend;;
   logout)
-    riverctl exit;;
+    niri msg action quit --skip-confirmation;;
   reboot)
     exec systemctl reboot;;
   shutdown)

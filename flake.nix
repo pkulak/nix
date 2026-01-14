@@ -37,8 +37,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # neve.url = "git+file:///home/phil/Projects/Neve";
-    neve.url = "github:pkulak/neve";
+    neovim = {
+      url = "git+file:///home/phil/Projects/nixcats";
+      # url = "github:pkulak/neovim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = { self, ... }@inputs:
@@ -55,7 +58,7 @@
 
         specialArgs = {
           inherit pkgs-unstable system;
-          inherit (inputs) nixos-hardware nur matui filtile neve agenix;
+          inherit (inputs) nixos-hardware nur matui filtile neovim agenix;
         };
 
         modules = [

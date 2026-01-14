@@ -69,30 +69,29 @@ window#waybar.hidden {
   border-radius: 5px 0px 0px 5px;
 }
 
-#tags button {
+#workspaces button {
     padding: 3px 5px 0px 5px;
     background-color: transparent;
     border-bottom: 3px solid transparent;
     color: black;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#tags button:hover {
+#workspaces button:hover {
     background: #bbb;
     box-shadow: inherit;
     border-bottom: 3px solid #bbb;
 }
 
-#tags button.occupied {
+#workspaces button.active {
     border-bottom: 3px solid #999;
 }
 
-#tags button.focused {
+#workspaces button.focused {
     border-bottom: 3px solid #444;
 }
 
-#tags button.urgent {
-    background-color: #eb4d4b;
+#workspaces button.empty {
+    color: gray;
 }
 
 #mode {

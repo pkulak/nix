@@ -11,7 +11,7 @@
   services.blueman.enable = true;
 
   environment.systemPackages = [
-    pkgs.jetbrains.idea-ultimate
+    pkgs.jetbrains.idea
     pkgs.wdisplays
   ];
 

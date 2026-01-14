@@ -6,7 +6,7 @@ in {
   services.udev.packages = [ vuescan ];
 
   environment.systemPackages =
-    [ pkgs.jetbrains.idea-ultimate vuescan ];
+    [ pkgs.jetbrains.idea vuescan ];
 
   networking.hostName = "fry";
 

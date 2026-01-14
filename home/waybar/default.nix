@@ -39,8 +39,8 @@ in {
     position = "top";
     height = 30;
 
-    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "river/layout" "river/window"];
-    modules-center = ["river/tags"];
+    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "niri/window"];
+    modules-center = ["niri/workspaces"];
     modules-right = ["custom/media" "custom/weather" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
 
     "backlight" = {
@@ -169,23 +169,11 @@ in {
       "on-click" = "${pkgs.pavucontrol}/bin/pavucontrol -t 3";
     };
 
-    "river/window" = {
+    "niri/window" = {
       "format" = "{}";
-      "max-length" = 50;
-      "all-outputs" = true;
-      "offscreen-css" = true;
-      "offscreen-css-text" = "(inactive)";
       "rewrite" = {
-        "(.*) — Mozilla Firefox" = "  $1";
+        "(.*) — Mozilla Firefox" = "      $1";
       };
-    };
-
-    "river/tags" = {
-      "num-tags" = 6;
-    };
-
-    "river/layout" = {
-      "format" = "{}    ";
     };
 
     "temperature" = {

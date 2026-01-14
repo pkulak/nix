@@ -1,4 +1,4 @@
-{ matui, filtile, pkgs-unstable, nur, neve, ... }:
+{ matui, filtile, pkgs-unstable, nur, neovim, ... }:
 
 {
   imports = [ ./common ];
@@ -60,7 +60,7 @@
       (final: prev: {
         inherit (matui.packages.${prev.stdenv.system}) matui;
         inherit (filtile.packages.${prev.stdenv.system}) filtile;
-        neve = neve.packages.${prev.stdenv.system}.default;
+        neovim = neovim.packages.${prev.stdenv.system}.default;
       })
     ];
   };

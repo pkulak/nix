@@ -20,6 +20,6 @@ in {
   home.file = with config.age.secrets; with config.lib.file; {
     ".aws/credentials".source = mkOutOfStoreSymlink aws-credentials.path;
     ".m2/settings.xml".source = mkOutOfStoreSymlink m2-settings.path;
-    ".config/river/secrets".source = mkOutOfStoreSymlink env.path;
+    ".config/niri/secrets".source = mkOutOfStoreSymlink env.path;
   };
 }

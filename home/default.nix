@@ -88,7 +88,7 @@ in {
     ./git.nix
     ./jj
     ./mpd
-    ./river
+    ./niri
     ./secrets
     ./tmux.nix
     ./waybar
@@ -111,7 +111,7 @@ in {
       update
 
       agenix.packages.${system}.default
-      pkgs.neve
+      pkgs.neovim
     ];
   };
 
@@ -231,6 +231,20 @@ in {
     # SSH
     ".ssh/allowed_signers".text = "* ${public-key}";
     ".ssh/id_ed25519.pub".text = public-key;
+  };
+
+  xdg.desktopEntries.matui = {
+    name = "Matui";
+    genericName = "Kulak Chat";
+    comment = "Launch the Matui Matix client.";
+    exec = "footclient --app-id=matui -e matui";
+    icon = "im-matrix";
+    terminal = false;
+    categories = [ "Network" "InstantMessaging" "Chat" ];
+    settings = {
+      Keywords = "chat;messaging;matrix;im;";
+      StartupNotify = "false";
+    };
   };
 
   home.stateVersion = "23.05";

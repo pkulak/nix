@@ -17,7 +17,7 @@
       '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
-    Install.WantedBy = [ "river-session.target" ];
+    Install.WantedBy = [ "niri-session.target" ];
   };
 
   dconf.settings = {

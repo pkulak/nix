@@ -11,7 +11,7 @@ let
       paginate = "auto"
       default-command = ["log", "--no-pager"]
       diff-formatter = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
-      diff-editor = ["idea-ultimate", "diff", "$left", "$right"]
+      diff-editor = ["idea", "diff", "$left", "$right"]
 
       [signing]
       behavior = "own"

@@ -1,7 +1,7 @@
 { pkgs, pkgs-unstable, ... }:
 
 {
-  imports = [ ./1password.nix ./snapper.nix ./smb.nix ./river.nix ./rust.nix ];
+  imports = [ ./1password.nix ./snapper.nix ./smb.nix ./niri.nix ./rust.nix ];
 
   environment.systemPackages = with pkgs; [
     age
@@ -29,6 +29,7 @@
     jq
     jujutsu
     kdePackages.kdialog
+    libinput
     lsd
     masterpdfeditor
     matui
