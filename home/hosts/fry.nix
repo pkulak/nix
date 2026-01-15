@@ -15,10 +15,8 @@
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 600 'wlopm --off "*"' \
-                    resume 'wlopm --on "*"' \
-            timeout 7200 'systemctl suspend' \
-                    after-resume 'wlopm --on "*"'
+            timeout 600 'niri msg action power-off-monitors' \
+            timeout 7200 'systemctl suspend'
       '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";

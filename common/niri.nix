@@ -34,7 +34,6 @@ in {
     wireplumber
     wl-clipboard
     wlr-randr
-    wlopm
     wofi
     xwayland-satellite
   ];

@@ -159,6 +159,7 @@ in {
       text-color=#cdd6f4
       border-color=#94e2d5
       progress-color=over #313244
+      border-radius=6
 
       [urgency=high]
       border-color=#fab387
