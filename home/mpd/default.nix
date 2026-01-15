@@ -18,8 +18,7 @@
 
   systemd.user.services.mpd = {
     Unit = {
-      After = [ "network-online.target" ];
-      Wants = [ "network-online.target" ];
+      RequiresMountsFor = [ "/mnt/music" ];
     };
   };
 

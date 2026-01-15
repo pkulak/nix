@@ -110,67 +110,71 @@ in {
   };
 
   # use systemd to manage some services
-  systemd.user.targets.niri-session = {
-    Unit = {
-      Description = "Niri compositor session";
-      Documentation = "man:systemd.special";
-      BindsTo = "graphical-session.target";
-      Wants = "graphical-session-pre.target";
-      After = "graphical-session-pre.target";
-    };
-  };
-
   systemd.user.services.wlsunset = {
-    Unit.Description = "wlsunset daemon";
-    Service.ExecStart = "${pkgs.wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8";
-    Install.WantedBy = [ "niri-session.target" ];
-  };
-
-  systemd.user.services.wlsunset-restart = {
     Unit = {
-      Description = "restart wlsunset on resume";
-      After = "suspend.target";
+      Description = "wlsunet daemon";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
     };
-
-    Service = {
-      Type = "simple";
-      ExecStart =
-        "${pkgs.systemd}/bin/systemctl --user --no-block restart wlsunset.service";
-    };
-
-    Install.WantedBy = [ "suspend.target" ];
+    Service.ExecStart = "${pkgs.wlsunset}/bin/wlsunset -l 45.5 -L -122.6 -g 0.8";
+    Install.WantedBy = [ "niri.service" ];
   };
 
   systemd.user.services.mako = {
-    Unit.Description = "mako daemon";
+    Unit = {
+      Description = "mako daemon";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
     Service.ExecStart = "${pkgs.mako}/bin/mako";
-    Install.WantedBy = [ "niri-session.target" ];
+    Install.WantedBy = [ "niri.service" ];
   };
 
   systemd.user.services.polkit = {
-    Unit.Description = "polkit daemon";
+    Unit = {
+      Description = "polkit authentication agent";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
     Service.ExecStart =
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-    Install.WantedBy = [ "niri-session.target" ];
+    Install.WantedBy = [ "niri.service" ];
   };
 
   systemd.user.services.waybar = {
-    Unit.Description = "waybar daemon";
-    Unit.After = [ "network-online.target" ];
+    Unit = {
+      Description = "waybar daemon";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" "network-online.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
     Service.ExecStart = "${pkgs.waybar}/bin/waybar";
-    Install.WantedBy = [ "niri-session.target" ];
+    Install.WantedBy = [ "niri.service" ];
   };
 
   systemd.user.services.swaybg = {
-    Unit.Description = "swaybg daemon";
+    Unit = {
+      Description = "swaybg daemon";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
     Service.ExecStart =
       "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png} -m fill";
-    Install.WantedBy = [ "niri-session.target" ];
+    Install.WantedBy = [ "niri.service" ];
   };
 
   systemd.user.services.foot = {
-    Unit.Description = "foot terminal";
+    Unit = {
+      Description = "foot terminal server";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
     Service.ExecStart = "${pkgs.foot}/bin/foot --server";
-    Install.WantedBy = [ "niri-session.target" ];
+    Install.WantedBy = [ "niri.service" ];
   };
 }

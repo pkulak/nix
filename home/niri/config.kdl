@@ -90,6 +90,8 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
+    always-center-single-column
+    
     // Set gaps around windows in logical pixels.
     gaps 16
 
@@ -241,14 +243,6 @@ layout {
         // bottom 64
     }
 }
-
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
-
-spawn-sh-at-startup "systemctl --user stop niri-session.target"
-spawn-sh-at-startup "systemctl --user start niri-session.target"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.

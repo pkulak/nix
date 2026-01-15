@@ -6,7 +6,12 @@
   };
 
   systemd.user.services.swayidle = {
-    Unit.Description = "swayidle daemon";
+    Unit = {
+      Description = "swayidle daemon";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
@@ -17,7 +22,7 @@
       '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
-    Install.WantedBy = [ "niri-session.target" ];
+    Install.WantedBy = [ "niri.service" ];
   };
 
   dconf.settings = {
