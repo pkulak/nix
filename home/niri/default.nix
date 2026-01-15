@@ -92,7 +92,11 @@ in {
     };
 
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+
+    # Override just for GTK4 to use plain Adwaita
+    gtk4.extraConfig = {
+      gtk-theme-name = "Adwaita";
+    };
   };
 
   qt = {
@@ -102,7 +106,6 @@ in {
     };
   };
 
-  # Force dark mode
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
