@@ -9,21 +9,15 @@ let
     text = ''
       #!/usr/bin/env bash
 
-      ## General exports
-      export XDG_CURRENT_DESKTOP=niri
-      export XDG_SESSION_DESKTOP=niri
-      export XDG_SESSION_TYPE=wayland
-
-      ## Load user environment customizations
+      # Load user environment
       if [ -f "''${XDG_CONFIG_HOME:-$HOME/.config}/niri/environment" ]; then
           set -o allexport
-          # shellcheck source=/dev/null
           . "''${XDG_CONFIG_HOME:-$HOME/.config}/niri/environment"
           set +o allexport
       fi
 
-      # Start Niri and send output to the journal
-      exec systemd-cat -- niri
+      # Start Niri in Systemd
+      exec niri-session
     '';
   };
 
@@ -44,14 +38,6 @@ in {
     wofi
     xwayland-satellite
   ];
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = "gtk";
-  };
 
   services.pipewire = {
     enable = true;

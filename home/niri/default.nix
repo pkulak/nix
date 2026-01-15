@@ -47,9 +47,6 @@ in {
         export EDITOR="nvim"
         export VISUAL="nvim"
 
-        export SDL_VIDEODRIVER="wayland"
-        export QT_QPA_PLATFORM="wayland"
-        export GDK_BACKEND="wayland,x11"
         export _JAVA_AWT_WM_NONREPARENTING=1
         export GTK_THEME="Adwaita-dark"
 
@@ -58,8 +55,6 @@ in {
         export JAVA_17_HOME=${pkgs.jdk17}/lib/openjdk
 
         export MOZ_ENABLE_WAYLAND=1
-        export MOZ_WEBRENDER=1
-        export MOZ_ACCELERATED=1
 
         # jam some Vevo stuff in the env to make builds easier
         if test -f /home/phil/.m2/settings.xml; then

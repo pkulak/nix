@@ -247,7 +247,6 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-sh-at-startup "dbus-update-activation-environment --systemd --all"
 spawn-sh-at-startup "systemctl --user stop niri-session.target"
 spawn-sh-at-startup "systemctl --user start niri-session.target"
 
