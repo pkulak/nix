@@ -16,11 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    filtile = {
-      url = "github:pkulak/filtile";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +53,7 @@
 
         specialArgs = {
           inherit pkgs-unstable system;
-          inherit (inputs) nixos-hardware nur matui filtile neovim agenix;
+          inherit (inputs) nixos-hardware nur matui neovim agenix;
         };
 
         modules = [

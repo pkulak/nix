@@ -1,4 +1,4 @@
-{ matui, filtile, pkgs-unstable, nur, neovim, ... }:
+{ matui, pkgs-unstable, nur, neovim, ... }:
 
 {
   imports = [ ./common ];
@@ -59,7 +59,6 @@
       nur.overlays.default
       (final: prev: {
         inherit (matui.packages.${prev.stdenv.system}) matui;
-        inherit (filtile.packages.${prev.stdenv.system}) filtile;
         neovim = neovim.packages.${prev.stdenv.system}.default;
       })
     ];

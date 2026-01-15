@@ -18,7 +18,6 @@
     ffmpeg-full
     ffmpegthumbnailer
     file
-    filtile
     foot
     gcc
     git
