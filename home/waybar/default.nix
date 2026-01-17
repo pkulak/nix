@@ -30,6 +30,19 @@ let
     dontUnpack = true;
     installPhase = "install -Dm755 ${./weather.py} $out/bin/weather";
   };
+
+  co2 = pkgs.stdenv.mkDerivation {
+    name = "co2";
+
+    propagatedBuildInputs = with pkgs; [
+      (python3.withPackages (ps: with ps; [
+        requests
+      ]))
+    ];
+
+    dontUnpack = true;
+    installPhase = "install -Dm755 ${./co2.py} $out/bin/co2";
+  };
 in {
   programs.waybar.enable = true;
   programs.waybar.style = ./style.css;
@@ -37,11 +50,11 @@ in {
   programs.waybar.settings.default = {
     layer = "top";
     position = "top";
-    height = 30;
+    height = 34;
 
     modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "niri/window"];
     modules-center = ["niri/workspaces"];
-    modules-right = ["custom/media" "custom/weather" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
+    modules-right = ["custom/media" "custom/weather" "custom/co2" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
 
     "backlight" = {
       "format" = "{percent}% {icon}";
@@ -86,7 +99,7 @@ in {
     "custom/media" = {
       "format" = "{icon} {text}";
       "return-type" = "json";
-      "max-length" = 40;
+      "max-length" = 32;
       "escape" = true;
       "exec" = "${now-playing}/bin/now-playing";
     };
@@ -95,6 +108,15 @@ in {
       "restart-interval" = 30;
       "return-type" = "json";
       "exec" = "${weather}/bin/weather";
+      "on-click" = "firefox https://ha.kulak.us/lovelace/default_view";
+    };
+
+    "custom/co2" = {
+      "format" = "   {text}";
+      "restart-interval" = 30;
+      "return-type" = "json";
+      "exec" = "${co2}/bin/co2";
+      "on-click" = "firefox https://ha.kulak.us/lovelace/default_view";
     };
 
     "disk" = {
@@ -171,6 +193,7 @@ in {
 
     "niri/window" = {
       "format" = "{}";
+      "max-length" = 32;
       "rewrite" = {
         "(.*) — Mozilla Firefox" = "      $1";
       };
@@ -187,7 +210,7 @@ in {
     };
 
     "tray" = {
-      "spacing" = 10;
+      "spacing" = 5;
     };
   };
 }

@@ -465,3 +465,5 @@ cursor {
 }
 
 workspace "vevo"
+
+workspace "home"

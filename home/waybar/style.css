@@ -1,11 +1,12 @@
-@define-color bg_primary rgba(255, 255, 255, 0.7);
-@define-color fg_primary #333;
+@define-color bg_dark #1e1e2e;
+@define-color bg_light #74c7ec;
+@define-color text_light #cdd6f4;
+@define-color text_dark #181825;
+@define-color text_dark_faded #585b70;
 
 * {
     border: none;
     border-radius: 0;
-    /* `otf-font-awesome` is required to be installed for icons */
-    /* font-family: Roboto, Helvetica, Arial, sans-serif; */
     font-family: Cantarell, "Font Awesome 6 Free";
     font-size: 14px;
     min-height: 0;
@@ -13,89 +14,68 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0);
-    border-bottom: 3px solid rgba(0, 0, 0, 0);
-    color: @fg_primary;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background-color: @bg_dark;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-#window, #custom-media {
-    color: #eee;
-    text-shadow: 0px 0px 2px #000;
+window#waybar > box {
+    padding-top: 4px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #11111b;
 }
 
 .modules-center {
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 0px 10px;
-    background-color: @bg_primary;
-}
-
-#tags button.focused {
-   border-bottom: 3px solid #444;
-}
-
-.modules-left > * {
-  background-color: @bg_primary;
-  padding: 0px 10px;
-}
-
-.modules-left > widget:last-child {
-  background-color: transparent;
-}
-
-.modules-left > widget:nth-last-child(2) {
-  border-radius: 0px 5px 5px 0px;
-}
-
-.modules-right > * {
-  background-color: @bg_primary;
-  padding: 0px 15px;
-}
-
-.modules-right > widget:first-child {
-  background-color: transparent;
-}
-
-.modules-right > widget:last-child {
-  padding-right: 10px;
-}
-
-.modules-right > widget:nth-child(2) {
-  border-radius: 5px 0px 0px 5px;
+    background-color: @bg_light;
 }
 
 #workspaces button {
     padding: 3px 5px 0px 5px;
-    background-color: transparent;
     border-bottom: 3px solid transparent;
-    color: black;
-}
-
-#workspaces button:hover {
-    background: #bbb;
-    box-shadow: inherit;
-    border-bottom: 3px solid #bbb;
-}
-
-#workspaces button.active {
-    border-bottom: 3px solid #999;
+    color: @text_dark;
 }
 
 #workspaces button.focused {
-    border-bottom: 3px solid #444;
+    border-bottom: 3px solid @text_dark;
 }
 
 #workspaces button.empty {
-    color: gray;
+    color: @text_dark_faded;
 }
 
-#mode {
-    color: red;
+
+.modules-left > * {
+    background-color: @bg_light;
+    color: @text_dark;
+    padding: 0px 10px;
+}
+
+.modules-left > widget:last-child {
+    background-color: transparent;
+    color: @text_light;
+}
+
+.modules-left > widget:nth-last-child(2) {
+    border-radius: 0px 8px 8px 0px;
+}
+
+.modules-right > * {
+    background-color: @bg_light;
+    color: @text_dark;
+    padding: 0px 15px;
+}
+
+.modules-right > widget:first-child {
+    background-color: transparent;
+    color: @text_light;
+}
+
+.modules-right > widget:last-child {
+    padding-right: 10px;
+}
+
+.modules-right > widget:nth-child(2) {
+    border-radius: 8px 0px 0px 8px;
 }
 
 #clock,
