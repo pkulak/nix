@@ -14,16 +14,6 @@ let
     '';
   };
 
-  clean = pkgs.writeShellApplication {
-    name = "clean";
-    runtimeInputs = with pkgs; [ moreutils ];
-    text = ''
-      tmux list-sessions | grep -v "(attached)"
-      tmux list-sessions | grep -v "(attached)" | awk 'BEGIN{FS=":"}{print $1}' \
-        | ifne xargs -n 1 tmux kill-session -t
-    '';
-  };
-
   import-photos = pkgs.writeShellApplication {
     name = "import-photos";
     text = ''
@@ -90,7 +80,6 @@ in {
     ./mpd
     ./niri
     ./secrets
-    ./tmux.nix
     ./waybar
     ./wofi
 
@@ -102,7 +91,6 @@ in {
     homeDirectory = "/home/phil";
 
     packages = [
-      clean
       import-photos
       mnt-usb
       rebuild
@@ -210,8 +198,22 @@ in {
       XDG_VIDEOS_DIR="$HOME/Videos"
     '';
 
-    # Foot Terminal
-    "foot/foot.ini".source = ./foot.ini;
+    # Ghosty Terminal
+    "ghostty/config".text = ''
+      theme = Catppuccin Mocha
+      command = fish
+      palette = 0=#181825
+      font-size = 12
+      window-padding-x = 2
+      window-padding-y = 2
+      window-padding-balance = true
+
+      keybind = ctrl+c=copy_to_clipboard
+      keybind = ctrl+v=paste_from_clipboard
+
+      keybind = ctrl+shift+c=text:\x03
+      keybind = ctrl+shift+v=text:\x16
+    '';
   };
 
   home.file = {
@@ -238,7 +240,7 @@ in {
     name = "Matui";
     genericName = "Kulak Chat";
     comment = "Launch the Matui Matix client.";
-    exec = "footclient --app-id=matui -e matui";
+    exec = "ghostty --title=Matui -e matui";
     icon = "im-matrix";
     terminal = false;
     categories = [ "Network" "InstantMessaging" "Chat" ];

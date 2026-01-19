@@ -41,8 +41,7 @@ in {
       ''
         #!/usr/bin/env bash
 
-        export TERMINAL="footclient"
-        export TERM="foot"
+        export TERMINAL="ghostty"
         export BROWSER="firefox"
         export EDITOR="nvim"
         export VISUAL="nvim"
@@ -170,14 +169,20 @@ in {
     Install.WantedBy = [ "niri.service" ];
   };
 
-  systemd.user.services.foot = {
+  systemd.user.services.ghostty = {
     Unit = {
-      Description = "foot terminal server";
+      Description = "ghostty terminal server";
       PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" "dbus.socket" ];
+      Requires = [ "dbus-socket" ];
       Requisite = [ "graphical-session.target" ];
     };
-    Service.ExecStart = "${pkgs.foot}/bin/foot --server";
+    Service = {
+      Type = "notify-reload";
+      ReloadSignal = "SIGUSR2";
+      BusName = "com.mitchellh.ghostty";
+      ExecStart = "${pkgs.ghostty}/bin/ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false";
+    };
     Install.WantedBy = [ "niri.service" ];
   };
 }

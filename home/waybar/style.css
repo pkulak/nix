@@ -1,5 +1,6 @@
 @define-color bg_dark #1e1e2e;
 @define-color bg_light #74c7ec;
+@define-color bg_light_hover #89b4fa; 
 @define-color text_light #cdd6f4;
 @define-color text_dark #181825;
 @define-color text_dark_faded #585b70;
@@ -43,6 +44,12 @@ window#waybar > box {
     color: @text_dark_faded;
 }
 
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background: @bg_light_hover;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
 
 .modules-left > * {
     background-color: @bg_light;

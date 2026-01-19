@@ -18,9 +18,9 @@
     ffmpeg-full
     ffmpegthumbnailer
     file
-    foot
     gcc
     git
+    ghostty
     glib
     gocryptfs
     httpie
