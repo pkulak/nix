@@ -33,8 +33,8 @@
     };
 
     neovim = {
-      url = "git+file:///home/phil/Projects/nixcats";
-      # url = "github:pkulak/neovim";
+      # url = "git+file:///home/phil/Projects/nixcats";
+      url = "github:pkulak/neovim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
