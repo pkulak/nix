@@ -53,7 +53,7 @@ def on_player_appeared(manager, player, selected_player=None):
 
 
 def on_player_vanished(manager, player):
-    output = {'text': '',
+    output = {'text': '  ',
               'class': 'custom-none',
               'alt': 'none'}
 
@@ -92,7 +92,7 @@ def parse_arguments():
 
 
 def main():
-    output = {'text': '',
+    output = {'text': '  ',
               'class': 'custom-none',
               'alt': 'none'}
 
