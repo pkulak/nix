@@ -1,23 +1,6 @@
 { pkgs, ... }:
 
 let
-  now-playing = pkgs.stdenv.mkDerivation {
-    name = "now-playing";
-
-    propagatedBuildInputs = with pkgs; [
-      (python3.withPackages (ps: with ps; [
-        pygobject3
-      ]))
-      pkgs.playerctl
-    ];
-
-    nativeBuildInputs = [ pkgs.wrapGAppsHook3 ];
-    buildInputs = [ pkgs.gobject-introspection ];
-
-    dontUnpack = true;
-    installPhase = "install -Dm755 ${./now-playing.py} $out/bin/now-playing";
-  };
-
   weather = pkgs.stdenv.mkDerivation {
     name = "weather";
 
@@ -54,7 +37,7 @@ in {
 
     modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "custom/weather" "custom/co2" "niri/window"];
     modules-center = ["niri/workspaces"];
-    modules-right = ["custom/media" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
+    modules-right = ["mpd" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
 
     "backlight" = {
       "format" = "{percent}% {icon}";
@@ -96,12 +79,8 @@ in {
       "tooltip" = false;
     };
 
-    "custom/media" = {
-      "format" = "{icon} {text}";
-      "return-type" = "json";
+    "mpd" = {
       "max-length" = 32;
-      "escape" = true;
-      "exec" = "${now-playing}/bin/now-playing";
     };
 
     "custom/weather" = {
