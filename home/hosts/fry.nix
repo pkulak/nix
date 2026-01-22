@@ -5,6 +5,24 @@
     ts = "sudo tailscale switch kulak.us && sudo tailscale up";
   };
 
+  xdg.configFile."niri/host.kdl".text = # kdl
+    ''
+      window-rule {
+          match app-id="com.mitchellh.ghostty"
+          default-column-width { proportion 0.3; }
+      }
+
+      window-rule {
+          match app-id="jetbrains-idea"
+          default-column-width { proportion 0.6; }
+      }
+
+      window-rule {
+          match app-id="com.mitchellh.ghostty" title="Matui"
+          default-column-width { proportion 0.4; }
+      }
+    '';
+
   systemd.user.services.swayidle = {
     Unit = {
       Description = "swayidle daemon";

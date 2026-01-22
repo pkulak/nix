@@ -8,7 +8,6 @@
 // https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
-        xkb { }
         numlock
         repeat-delay 200
         repeat-rate 30
@@ -178,23 +177,6 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
-}
-
-// Terminals open skinny enought to fit next to the largest column.
-window-rule {
-    match app-id="com.mitchellh.ghostty"
-    default-column-width { proportion 0.3; }
-}
-
-// Intellij needs some room to breath
-window-rule {
-    match app-id="jetbrains-idea"
-    default-column-width { proportion 0.6; }
-}
-
-window-rule {
-    match app-id="com.mitchellh.ghostty" title="Matui"
-    default-column-width { proportion 0.4; }
 }
 
 binds {
@@ -484,3 +466,6 @@ cursor {
 workspace "vevo"
 
 workspace "home"
+
+include "host.kdl"
+

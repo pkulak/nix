@@ -5,9 +5,37 @@
     ts = "sudo tailscale switch kulak.us && sudo tailscale up --accept-routes";
   };
 
-  xdg.configFile."niri/environment" = {
-    text = "export XKB_DEFAULT_OPTIONS=altwin:swap_lalt_lwin,caps:escape";
-  };
+  xdg.configFile."niri/host.kdl".text = # kdl
+    ''
+      input {
+          keyboard {
+              xkb {
+                  options "altwin:swap_lalt_lwin,caps:escape"
+              }
+          }
+      } 
+
+      output "eDP-1" {
+          layout {
+              preset-column-widths {
+                  proportion 0.6
+                  proportion 0.8
+              }
+              
+              default-column-width { proportion 0.6; }
+          }
+      }
+
+      window-rule {
+          match app-id="jetbrains-idea"
+          default-column-width { proportion 1.0; }
+      }
+
+      window-rule {
+          match app-id="com.mitchellh.ghostty"
+          default-column-width { proportion 0.4; }
+      }
+    '';
 
   systemd.user.services.swayidle = {
     Unit = {
@@ -42,12 +70,5 @@
     };
     Service.ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
     Install.WantedBy = [ "niri.service" ];
-  };
-
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
   };
 }

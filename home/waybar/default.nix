@@ -52,9 +52,9 @@ in {
     position = "top";
     height = 34;
 
-    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "niri/window"];
+    modules-left = ["idle_inhibitor" "cpu" "memory" "disk" "custom/weather" "custom/co2" "niri/window"];
     modules-center = ["niri/workspaces"];
-    modules-right = ["custom/media" "custom/weather" "custom/co2" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
+    modules-right = ["custom/media" "pulseaudio#sink" "backlight" "battery" "clock" "tray"];
 
     "backlight" = {
       "format" = "{percent}% {icon}";
@@ -112,7 +112,7 @@ in {
     };
 
     "custom/co2" = {
-      "format" = "   {text}";
+      "format" = "{text}";
       "restart-interval" = 30;
       "return-type" = "json";
       "exec" = "${co2}/bin/co2";

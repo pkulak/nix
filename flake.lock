@@ -137,14 +137,15 @@
       "locked": {
         "lastModified": 1769048565,
         "narHash": "sha256-N4lQZdFKGJQFP0zvVlFbT57S6mG5b6SlIwhz3xkRxOk=",
+        "owner": "pkulak",
+        "repo": "neovim",
         "rev": "ec731231b011dfa376479800478323af6c54c4a6",
-        "revCount": 5,
-        "type": "git",
-        "url": "file:///home/phil/Projects/nixcats"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/phil/Projects/nixcats"
+        "owner": "pkulak",
+        "repo": "neovim",
+        "type": "github"
       }
     },
     "nix-index-database": {

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   wofi-power = pkgs.stdenv.mkDerivation {
