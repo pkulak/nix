@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   imports = [ ./1password.nix ./snapper.nix ./smb.nix ./niri.nix ./rust.nix ];
@@ -114,6 +114,14 @@
     };
 
     podman.enable = true;
+  };
+
+  # Tailscale stuffs
+  networking.firewall = {
+    enable = true;
+    checkReversePath = "loose";
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
   nix = {
