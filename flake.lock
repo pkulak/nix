@@ -113,11 +113,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1769047719,
-        "narHash": "sha256-n4zLoM5BGUJqUekRjVKv+h4Coa9j7ryoG/VfMIy51WY=",
+        "lastModified": 1769308854,
+        "narHash": "sha256-AX16gh9jPT2ZunCULsSY95aONCDWR3BpHRDak/YNBXE=",
         "owner": "pkulak",
         "repo": "matui",
-        "rev": "592b4567a27e6b6738f8a2b07292b22aa2d6c7c3",
+        "rev": "5f9f9b97de776a7836a611dab15834d35cb344e8",
         "type": "github"
       },
       "original": {
@@ -135,11 +135,11 @@
         "plugins-treesitter-textobjects": "plugins-treesitter-textobjects"
       },
       "locked": {
-        "lastModified": 1769048565,
-        "narHash": "sha256-N4lQZdFKGJQFP0zvVlFbT57S6mG5b6SlIwhz3xkRxOk=",
+        "lastModified": 1769119610,
+        "narHash": "sha256-8vQ8Fx7XjVsvM19HYUBTnH/lAUNrlD8KOGfQDCVmKp4=",
         "owner": "pkulak",
         "repo": "neovim",
-        "rev": "ec731231b011dfa376479800478323af6c54c4a6",
+        "rev": "d248f436292066056af2bbbaa549f922b7bc8a19",
         "type": "github"
       },
       "original": {

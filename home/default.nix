@@ -202,7 +202,8 @@ in {
     "ghostty/config".text = ''
       theme = Catppuccin Mocha
       command = fish
-      palette = 0=#181825
+      background = #181825
+      background-opacity = 0.90
       font-size = 12
       window-padding-x = 2
       window-padding-y = 2
