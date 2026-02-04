@@ -155,8 +155,9 @@ in {
 
     # Matui
     "matui/config.toml".text = ''
-      reactions = ["👍️", "😂", "😘", "❤️", "👎", "‼️", "❓️", "🙁", "🚀", "🤣", "👆", "😱"]
+      reactions = ["👍️", "😂", "🤣", "😘", "❤️", "🎉", "👎", "‼️", "❓️", "🙁", "🚀", "👆", "😱"]
       muted = ["!hMPITSQBLFEleSJmVm:kulak.us", "!zCIiPpUbrNESgmegGW:kulak.us"]
+      max_events = 16384
     '';
 
     # MPV
