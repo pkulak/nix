@@ -185,9 +185,10 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn-sh "ghostty +new-window"; }
     Mod+P hotkey-overlay-title="Open a Browser: firefox" { spawn "firefox"; }
-    Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi -a -b -I -modi drun --show drun"; }
-    Mod+E hotkey-overlay-title="Browse Emojis" { spawn "wofi-emoji"; }
-    Mod+X hotkey-overlay-title="Power Options" { spawn "wofi-power"; }
+    Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -wayland -show drun"; }
+    Mod+E hotkey-overlay-title="Browse Emojis" { spawn-sh "rofi -wayland -show emoji"; }
+    Mod+Z hotkey-overlay-title="Calculator" { spawn-sh "rofi -wayland -modi calc -show calc -no-show-match -no-sort -terse"; }
+    Mod+X hotkey-overlay-title="Power Options" { spawn "rofi-power"; }
     Mod+S hotkey-overlay-title="Audio Output Toggle" { spawn "switch-audio"; }
     Ctrl+Space hotkey-overlay-title="Dismiss Notification" { spawn-sh "makoctl dismiss"; }
     Ctrl+Shift+Space hotkey-overlay-title="Dismiss All Notifications" { spawn-sh "makoctl dismiss --all"; }

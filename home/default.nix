@@ -79,9 +79,9 @@ in {
     ./jj
     ./mpd
     ./niri
+    ./rofi
     ./secrets
     ./waybar
-    ./wofi
 
     ./hosts/${host}.nix
   ];

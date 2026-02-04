@@ -1,25 +1,14 @@
 { pkgs, lib, ... }:
 
 let
-  wofi-power = pkgs.stdenv.mkDerivation {
-    name = "wofi-power";
+  rofi-power = pkgs.stdenv.mkDerivation {
+    name = "rofi-power";
     nativeBuildInputs = with pkgs; [ makeWrapper ];
     dontUnpack = true;
 
     installPhase = ''
-      makeWrapper ${./wofi-power} $out/bin/wofi-power \
-        --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.wofi ]}
-    '';
-  };
-
-  wofi-emoji = pkgs.stdenv.mkDerivation {
-    name = "wofi-emoji";
-    nativeBuildInputs = with pkgs; [ makeWrapper ];
-    dontUnpack = true;
-
-    installPhase = ''
-      makeWrapper ${./wofi-emoji} $out/bin/wofi-emoji \
-        --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.wofi ]}
+      makeWrapper ${./rofi-power} $out/bin/rofi-power \
+        --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.rofi ]}
     '';
   };
 
@@ -31,7 +20,7 @@ let
   };
 in {
   home.packages = [
-    wofi-power wofi-emoji switch-audio
+    rofi-power switch-audio
   ];
 
   xdg.configFile."niri/environment" = {

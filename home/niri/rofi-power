@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+entries="☁️  Darken\n⏾  Suspend\n⇠  Logout\n⭮  Reboot\n⏻  Shutdown"
+
+selected=$(echo -e $entries | rofi -wayland -dmenu -cache-file /dev/null | awk '{print tolower($2)}')
+
+case $selected in
+  darken)
+    niri msg action power-off-monitors;;
+  suspend)
+    exec systemctl suspend;;
+  logout)
+    niri msg action quit --skip-confirmation;;
+  reboot)
+    exec systemctl reboot;;
+  shutdown)
+    exec systemctl poweroff -i;;
+esac
