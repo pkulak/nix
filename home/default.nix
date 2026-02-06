@@ -82,6 +82,7 @@ in {
     ./rofi
     ./secrets
     ./waybar
+    ./yazi
 
     ./hosts/${host}.nix
   ];

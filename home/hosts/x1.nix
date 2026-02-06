@@ -35,6 +35,11 @@
           match app-id="com.mitchellh.ghostty"
           default-column-width { proportion 0.4; }
       }
+
+      window-rule {
+          match app-id="com.mitchellh.ghostty" title="termfilechooser"
+          default-column-width { proportion 0.6; }
+      }
     '';
 
   systemd.user.services.swayidle = {

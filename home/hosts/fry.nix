@@ -21,6 +21,11 @@
           match app-id="com.mitchellh.ghostty" title="Matui"
           default-column-width { proportion 0.4; }
       }
+
+      window-rule {
+          match app-id="com.mitchellh.ghostty" title="termfilechooser"
+          default-column-width { proportion 0.5; }
+      }
     '';
 
   systemd.user.services.swayidle = {

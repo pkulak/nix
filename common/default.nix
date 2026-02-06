@@ -11,7 +11,6 @@
     beets
     cmatrix
     cowsay
-    nemo-with-extensions
     curl
     distrobox
     fastfetchMinimal
@@ -27,7 +26,6 @@
     imv
     jq
     jujutsu
-    kdePackages.kdialog
     libinput
     lsd
     masterpdfeditor
@@ -40,8 +38,10 @@
     tldr
     unzip
     woeusb
+    yazi
     pkgs-unstable.yt-dlp
     zathura
+    zenity
     zoom-us
     zoxide
 

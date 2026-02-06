@@ -135,11 +135,11 @@
         "plugins-treesitter-textobjects": "plugins-treesitter-textobjects"
       },
       "locked": {
-        "lastModified": 1769119610,
-        "narHash": "sha256-8vQ8Fx7XjVsvM19HYUBTnH/lAUNrlD8KOGfQDCVmKp4=",
+        "lastModified": 1770316804,
+        "narHash": "sha256-Jjz1r5JDmcyje8KY7PgFv5+/wTVfU1u1OXzPSD5LIh8=",
         "owner": "pkulak",
         "repo": "neovim",
-        "rev": "d248f436292066056af2bbbaa549f922b7bc8a19",
+        "rev": "de4f4a4c0b9f4437418f4ec2b0b9b59619abca86",
         "type": "github"
       },
       "original": {
