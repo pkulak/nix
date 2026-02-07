@@ -42,8 +42,9 @@ in {
           # more Vim-like than <C-s>
           { on = "<C-l>", run = "escape --search", desc = "Cancel the ongoing search" },
 
-          # only use Zoxide
+          # prefer Zoxide
           { on = "z", run = "plugin zoxide", desc = "Jump to a file/directory via zoxide" },
+          { on = "Z", run = "plugin fzf", desc = "Jump to a file/directory via zoxide" },
         
           { on = "<C-o>", run = 'shell "umount $@"', desc = "Unmount" },
         ]
