@@ -16,7 +16,7 @@ in {
       text = ''
         [filechooser]
         cmd=${yazi-filechooser}/bin/yazi-filechooser
-        default_dir=$HOME/Downloads
+        default_dir=$HOME/Screenshots
         open_mode=suggested
         save_mode=last
       '';
@@ -45,6 +45,10 @@ in {
           # prefer Zoxide
           { on = "z", run = "plugin zoxide", desc = "Jump to a file/directory via zoxide" },
           { on = "Z", run = "plugin fzf", desc = "Jump to a file/directory via zoxide" },
+          
+          # bookmarks
+          { on = [ "g", "s" ], run = "cd ~/Screenshots", desc = "Go ~/Screenshots" },
+          { on = [ "g", "m" ], run = "cd /mnt", desc = "Go /mnt" },
         
           { on = "<C-o>", run = 'shell "umount $@"', desc = "Unmount" },
         ]

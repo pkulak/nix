@@ -35,6 +35,7 @@
       vim = "nvim";
       vi = "nvim";
       za = "zathura";
+      y = "yazi";
       timestamp = ''date -u +"%Y-%m-%dT%H:%M:%SZ"'';
       bc = "bc -lq";
       rs = "rsync -avH --info=progress2";
