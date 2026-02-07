@@ -26,7 +26,6 @@ in {
     adwaita-icon-theme
     gnome-themes-extra
     grim
-    kitty
     mako
     playerctl
     slurp

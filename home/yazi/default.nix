@@ -38,6 +38,14 @@ in {
           # use Oil bindings
           { on = "<Enter>", run = "enter", desc = "Enter the child directory." },
           { on = "-", run = "leave", desc = "Back to the parent directory." },
+
+          # more Vim-like than <C-s>
+          { on = "<C-l>", run = "escape --search", desc = "Cancel the ongoing search" },
+
+          # only use Zoxide
+          { on = "z", run = "plugin zoxide", desc = "Jump to a file/directory via zoxide" },
+        
+          { on = "<C-o>", run = 'shell "umount $@"', desc = "Unmount" },
         ]
       '';
 
