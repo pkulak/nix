@@ -26,6 +26,7 @@
     imv
     jq
     jujutsu
+    bind.dnsutils
     libinput
     lsd
     masterpdfeditor
