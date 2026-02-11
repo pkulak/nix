@@ -38,6 +38,7 @@
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
+            timeout 300 'playerctl pause' \
             timeout 600 'niri msg action power-off-monitors' \
             timeout 7200 'systemctl suspend'
       '';
