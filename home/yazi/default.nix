@@ -30,7 +30,8 @@ in {
           { on = "d", run = "noop" },
           { on = "D", run = "noop" },
           { on = ["d", "d"], run = "remove", desc = "Trash selected files" },
-	        { on = ["D", "D"], run = "remove --permanently", desc = "Permanently delete selected files" },
+          { on = ["d", "m"], run = 'shell "umount $@"', desc = "Unmount" },
+	        { on = ["d", "D"], run = "remove --permanently", desc = "Permanently delete selected files" },
 
           # use RipDrag
           { on = ["d", "r"], run = 'shell "${pkgs.ripdrag}/bin/ripdrag -a $@"', desc = "Drag and drop selected files" },
@@ -49,8 +50,6 @@ in {
           # bookmarks
           { on = [ "g", "s" ], run = "cd ~/Screenshots", desc = "Go ~/Screenshots" },
           { on = [ "g", "m" ], run = "cd /mnt", desc = "Go /mnt" },
-        
-          { on = "<C-o>", run = 'shell "umount $@"', desc = "Unmount" },
         ]
       '';
 
