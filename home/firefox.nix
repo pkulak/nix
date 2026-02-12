@@ -37,6 +37,7 @@
         name = "phil";
 
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          adsum-notabs
           consent-o-matic
           container-proxy
           decentraleyes
@@ -106,7 +107,6 @@
         };
 
         extraConfig = ''
-          user_pref("browser.tabs.closeWindowWithLastTab", false);
           user_pref("browser.toolbars.bookmarks.visibility", "never");
           user_pref("media.hardwaremediakeys.enabled", false);
           user_pref("privacy.clearOnShutdown.cache", false);
@@ -116,10 +116,16 @@
           user_pref("browser.ml.chat.enabled", false);
           user_pref("browser.link.open_newwindow.override.external", 2);
           user_pref("widget.use-xdg-desktop-portal.file-picker", 1);
+          user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
           user_pref("geo.provider.network.url", 'data:application/json,{"location": {"lat": 45.568259, "lng": -122.631719}, "accuracy": 128.0}');
         '';
 
-        userContent = "";
+        userChrome = ''
+          /* Hide tab bar */
+          #TabsToolbar {
+            visibility: collapse !important;
+          }
+        '';
       };
     };
   };
