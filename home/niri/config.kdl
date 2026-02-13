@@ -209,6 +209,10 @@ binds {
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
+    // Alternative media controls for keyboards without media keys
+    Prior               allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    Next                allow-when-locked=true { spawn-sh "playerctl next"; }
+
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
