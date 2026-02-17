@@ -176,6 +176,7 @@ in {
       image/png=imv.desktop
       image/heic=imv.desktop
       image/heif=imv.desktop
+      image/webp=imv.desktop
 
       video/mp4=mpv.desktop
       video/avi=mpv.desktop

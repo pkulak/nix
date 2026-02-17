@@ -179,6 +179,12 @@ window-rule {
     open-floating true
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 

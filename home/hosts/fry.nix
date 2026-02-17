@@ -26,6 +26,11 @@
           match app-id="com.mitchellh.ghostty" title="termfilechooser"
           default-column-width { proportion 0.5; }
       }
+
+      window-rule {
+          match app-id=r#"firefox$"#
+          default-column-width { proportion 0.5; }
+      }
     '';
 
   systemd.user.services.swayidle = {
