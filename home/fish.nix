@@ -109,6 +109,20 @@
           -define png:exclude-chunk=all \
           (basename_no_ext $argv[1]).png
       '';
+
+      dkillall.body = ''
+        set containers (docker ps -q)
+        if test (count $containers) -gt 0
+          docker kill $containers
+        end
+      '';
+
+      dup = {
+        body = ''
+          dkillall && docker compose up $argv
+        '';
+        wraps = "docker compose up";
+      };
     };
   };
 }
