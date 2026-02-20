@@ -46,6 +46,12 @@ in {
       fish_vcs_prompt.body = ''
         fish_jj_prompt $argv or fish_git_prompt $argv
       '';
+
+      "_pure_prompt_git".body = ''
+        set_color $pure_color_mute
+        fish_vcs_prompt $argv
+        set_color normal
+      '';
     };
   };
 

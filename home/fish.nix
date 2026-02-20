@@ -4,8 +4,15 @@
   programs.fish = {
     enable = true;
 
+    plugins = with pkgs.fishPlugins; [
+      {
+        name = "pure";
+        inherit (pure) src;
+      }
+    ];
+
     shellInit = ''
-      fish_vi_key_bindings
+      set pure_show_system_time true
       set fish_greeting
 
       zoxide init fish | source

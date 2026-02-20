@@ -136,6 +136,7 @@ in {
     # Direnv
     "direnv/direnv.toml".text = ''
       [global]
+      log_filter="^$"
       load_dotenv = true
       hide_env_diff = true
     '';
