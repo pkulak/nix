@@ -9,6 +9,7 @@
     btop
     bc
     beets
+    claude-code
     cmatrix
     cowsay
     curl
@@ -18,6 +19,7 @@
     ffmpegthumbnailer
     file
     gcc
+    gemini-cli
     git
     ghostty
     glib
