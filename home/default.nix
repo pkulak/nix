@@ -157,7 +157,7 @@ in {
 
     # Matui
     "matui/config.toml".text = ''
-      reactions = ["👍️", "😂", "🤣", "😘", "❤️", "🎉", "👎", "‼️", "❓️", "🙁", "🚀", "👆", "😱"]
+      reactions = ["👍️", "✅", "😂", "🤣", "😘", "❤️", "🎉", "👎", "‼️", "❓️", "🙁", "🚀", "👆", "😱"]
       muted = ["!hMPITSQBLFEleSJmVm:kulak.us", "!zCIiPpUbrNESgmegGW:kulak.us"]
       max_events = 16384
     '';
@@ -186,6 +186,14 @@ in {
       video/flv=mpv.desktop
       video/quicktime=mpv.desktop
       video/mp2t=mpv.desktop
+
+      audio/ogg=mpv.desktop
+      audio/opus=mpv.desktop
+      audio/aac=mpv.desktop
+      audio/flac=mpv.desktop
+      audio/mpeg=mpv.desktop
+      audio/mpa=mpv.desktop
+      audio/wav=mpv.desktop
 
       application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
     '';

@@ -5,11 +5,12 @@
 
   environment.systemPackages = with pkgs; [
     age
+    amber
     awscli2
     btop
     bc
     beets
-    claude-code
+    pkgs-unstable.claude-code
     cmatrix
     cowsay
     curl
@@ -19,7 +20,7 @@
     ffmpegthumbnailer
     file
     gcc
-    gemini-cli
+    pkgs-unstable.gemini-cli
     git
     ghostty
     glib
