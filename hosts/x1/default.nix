@@ -10,9 +10,10 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
 
-  environment.systemPackages = [
-    pkgs.jetbrains.idea
-    pkgs.wdisplays
+  environment.systemPackages = with pkgs; [
+    brightnessctl
+    jetbrains.idea
+    wdisplays
   ];
 
   programs.light.enable = true;
