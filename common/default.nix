@@ -49,6 +49,7 @@
     zoom-us
     zoxide
 
+    (callPackage ./jai.nix pkgs)
     (callPackage ./pgen pkgs)
     (callPackage ./pixlet.nix pkgs)
   ];
