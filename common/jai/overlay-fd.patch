@@ -1,0 +1,23 @@
+--- a/jai.cc
++++ b/jai.cc
+@@ -304,13 +304,14 @@
+   restore.reset();
+ 
+   Fd fsfd = xfsopen("overlay", cat("jai-", sb).c_str());
+-  auto xsetfd = [&](const char *param, int fd) {
+-    if (fsconfig(*fsfd, FSCONFIG_SET_FD, param, nullptr, fd))
+-      syserr("fsconfig(FSCONFIG_SET_FD, \"{}\")", param);
++  auto xsetpath = [&](const char *param, int fd) {
++    auto p = fdpath(fd, true);
++    if (fsconfig(*fsfd, FSCONFIG_SET_STRING, param, p.c_str(), 0))
++      syserr("fsconfig(FSCONFIG_SET_STRING, \"{}\")", param);
+   };
+-  xsetfd("lowerdir+", home());
+-  xsetfd("upperdir", *changes);
+-  xsetfd("workdir", *work);
++  xsetpath("lowerdir+", home());
++  xsetpath("upperdir", *changes);
++  xsetpath("workdir", *work);
+   Fd mnt = make_mount(*fsfd);
+ 
+   xmnt_move(*mnt, *sandboxed_home);

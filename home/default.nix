@@ -76,6 +76,7 @@ in {
     ./firefox.nix
     ./fish.nix
     ./git.nix
+    ./jai
     ./jj
     ./mpd
     ./niri

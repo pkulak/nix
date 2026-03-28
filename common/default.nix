@@ -1,7 +1,14 @@
 { config, pkgs, pkgs-unstable, ... }:
 
 {
-  imports = [ ./1password.nix ./snapper.nix ./smb.nix ./niri.nix ./rust.nix ];
+  imports = [
+    ./1password.nix
+    ./jai
+    ./niri.nix
+    ./snapper.nix
+    ./rust.nix
+    ./smb.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     age
@@ -49,7 +56,6 @@
     zoom-us
     zoxide
 
-    (callPackage ./jai.nix pkgs)
     (callPackage ./pgen pkgs)
     (callPackage ./pixlet.nix pkgs)
   ];
