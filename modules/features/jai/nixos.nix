@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let 
-  jai = (pkgs.callPackage ./jai.nix {});
+  jai = (pkgs.callPackage ./nixos/jai.nix {});
 in {
   security.wrappers.jai = {
     source = "${jai}/bin/jai";

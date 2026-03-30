@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.core = { config, pkgs, ... }: {
+  flake.nixosModules.core = { config, host, pkgs, ... }: {
     boot.loader.grub.enable = true;
     boot.loader.grub.efiSupport = true;
     boot.loader.grub.device = "nodev";
@@ -41,6 +41,7 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWOTXI/ryuoyQSepiKc+EF5lm+Ye3vqa2a5xS4pBA4C"
       ];
+      hashedPassword = "$6$FyNPgBac91py3OFQ$6v4B2x7NOlHH.ZqG1eCw4Gd5GWTkYJZeB9vi/2xr8H6zqlkzfvahzFhhCl6MbuSfpvUm4RCV6UkJSkmiHaT6/0";
     };
 
     services.getty.autologinUser = "phil";
@@ -53,9 +54,37 @@
         inputs.nur.overlays.default
         (final: prev: {
           inherit (inputs.matui.packages.${prev.stdenv.system}) matui;
-          neovim = inputs.neovim.packages.${prev.stdenv.system}.default;
+          unstable = import inputs.nixpkgs-unstable {
+            inherit (prev.stdenv) system;
+            config.allowUnfree = true;
+          };
         })
       ];
+    };
+
+    environment.systemPackages = with pkgs; [
+      btop
+      curl
+      neovim
+      ripgrep
+    ];
+
+    programs = {
+      ssh.startAgent = true;
+    };
+
+    services = {
+      avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+      };
+      openssh = {
+        enable = true;
+        settings = { PasswordAuthentication = false; };
+      };
+      tailscale.enable = true;
+      resolved.enable = true;
     };
 
     system.stateVersion = "23.05";
@@ -71,6 +100,8 @@
     };
 
     nix = {
+      nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      registry.nixpkgs.flake = inputs.nixpkgs;
       settings = {
         warn-dirty = false;
         auto-optimise-store = true;
@@ -84,5 +115,19 @@
       };
     };
 
+    imports = [ inputs.home-manager.nixosModules.home-manager ];
+
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+
+      extraSpecialArgs = {
+        inherit host;
+      };
+
+      sharedModules = [
+        inputs.agenix.homeManagerModules.default
+      ];
+    };
   };
 }

@@ -1,6 +1,4 @@
 { self, inputs, ... }: {
-  flake.nixosModules.fish = { pkgs, ... }: {
-    programs.fish.enable = true;
-  };
+  flake.nixosModules.fish = import ./nixos.nix;
   flake.homeModules.fish = import ./home.nix;
 }

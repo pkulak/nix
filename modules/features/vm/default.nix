@@ -1,1 +1,1 @@
-{ self, inputs, ... }: { flake.nixosModules.vm = ./nixos.nix; }
+{ self, inputs, ... }: { flake.nixosModules.vm = import ./nixos.nix; }

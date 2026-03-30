@@ -1,38 +1,41 @@
 { self, inputs, ... }: {
-  flake.nixosModules.packages = { config, pkgs, pkgs-unstable, ... }: {
+  flake.nixosModules.desktop = { config, pkgs, ... }: {
+    nixpkgs.overlays = [
+      (final: prev: {
+        neovim = inputs.neovim.packages.${prev.stdenv.system}.default;
+      })
+    ];
     environment.systemPackages = with pkgs; [
+      (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
+
       amber
       awscli2
-      btop
       bc
-      pkgs-unstable.claude-code
+      bind.dnsutils
       cmatrix
       cowsay
-      curl
       distrobox
       fastfetchMinimal
       ffmpeg-full
       ffmpegthumbnailer
       file
       gcc
-      gocryptfs
-      pkgs-unstable.gemini-cli
       glib
-      httpie
+      gocryptfs
       imv
       jq
-      bind.dnsutils
       libinput
       lsd
       masterpdfeditor
-      (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
-      ripgrep
+      unstable.claude-code
+      unstable.gemini-cli
+      unstable.yt-dlp
       serpl
       sublime-merge
       tldr
       unzip
       woeusb
-      pkgs-unstable.yt-dlp
+      xh
       zathura
       zenity
       zoom-us
@@ -42,20 +45,10 @@
     programs = {
       dconf.enable = true;
       seahorse.enable = true;
-      ssh.startAgent = true;
     };
 
     services = {
       printing.enable = true;
-      avahi = {
-        enable = true;
-        nssmdns4 = true;
-        openFirewall = true;
-      };
-      openssh = {
-        enable = true;
-        settings = { PasswordAuthentication = false; };
-      };
       earlyoom = {
         enable = true;
         enableNotifications = true;
@@ -65,8 +58,6 @@
         gcr-ssh-agent.enable = false;
       };
       flatpak.enable = true;
-      tailscale.enable = true;
-      resolved.enable = true;
     };
 
     fonts = {

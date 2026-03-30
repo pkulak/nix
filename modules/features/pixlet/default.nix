@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
+{ self, ... }: {
   perSystem = { pkgs, ... }: {
-    packages.pixlet = pkgs.callPackage ./nixos.nix {};
+    packages.pixlet = pkgs.callPackage ./package.nix {};
   };
 }

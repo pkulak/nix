@@ -42,6 +42,8 @@
   };
 
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; }
-      ((inputs.import-tree.match ".*/default\\.nix") ./modules);
+    let match = inputs.import-tree.match ".*/default\\.nix";
+    in inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ (match ./modules) (match ./hosts) ];
+    };
 }

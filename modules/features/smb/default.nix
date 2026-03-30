@@ -1,1 +1,1 @@
-{ self, inputs, ... }: { flake.nixosModules.smb = ./nixos.nix; }
+{ self, inputs, ... }: { flake.nixosModules.smb = import ./nixos.nix; }

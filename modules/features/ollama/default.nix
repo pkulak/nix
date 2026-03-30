@@ -1,1 +1,1 @@
-{ self, inputs, ... }: { flake.nixosModules.ollama = ./nixos.nix; }
+{ self, inputs, ... }: { flake.nixosModules.ollama = import ./nixos.nix; }

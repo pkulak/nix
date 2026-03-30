@@ -1,9 +1,6 @@
 { ... }: {
   imports = [
-    ./options.nix
-    ./systems.nix
     ./nixos.nix
     ./home.nix
-    ./lib.nix
   ];
 }

@@ -1,10 +1,10 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
   programs.firefox = {
     enable = true;
 
-    package = pkgs.wrapFirefox pkgs-unstable.firefox-unwrapped {
+    package = pkgs.wrapFirefox pkgs.unstable.firefox-unwrapped {
       extraPolicies = {
         CaptivePortal = false;
         DisableFirefoxStudies = true;

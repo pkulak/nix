@@ -1,9 +1,3 @@
 { self, inputs, ... }: {
-  flake.nixosModules._1password = { ... }: {
-    programs._1password.enable = true;
-    programs._1password-gui = {
-      enable = true;
-      polkitPolicyOwners = [ "phil" ];
-    };
-  };
+  flake.nixosModules._1password = import ./nixos.nix;
 }
