@@ -14,10 +14,10 @@ in
 
     specialArgs = {
       inherit host pkgs-unstable system;
-      inherit (inputs) nixos-hardware nur matui neovim agenix;
     };
 
     modules = [
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
       self.nixosModules.core
       self.nixosModules.home
       self.nixosModules.apps

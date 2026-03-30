@@ -14,7 +14,6 @@ in
 
     specialArgs = {
       inherit host pkgs-unstable system;
-      inherit (inputs) nixos-hardware nur matui neovim agenix;
     };
 
     modules = [
