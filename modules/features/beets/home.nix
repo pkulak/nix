@@ -1,0 +1,16 @@
+{ pkgs, ... }: {
+  home.packages = [ pkgs.beets ];
+
+  xdg.configFile."beets/config.yaml".text = ''
+    directory: /mnt/music
+    plugins: fetchart replaygain
+
+    replaygain:
+      backend: ffmpeg
+
+    paths:
+      default: $albumartist/$album%aunique{}/$track - $title
+      singleton: Non-Album/$artist/$title
+      comp: Compilations/$album%aunique{}/$track - $title
+  '';
+}
