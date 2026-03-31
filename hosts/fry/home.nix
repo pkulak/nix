@@ -5,33 +5,28 @@
     ts = "sudo tailscale switch kulak.us && sudo tailscale up";
   };
 
-  xdg.configFile."niri/host.kdl".text = # kdl
-    ''
-      window-rule {
-          match app-id="com.mitchellh.ghostty"
-          default-column-width { proportion 0.3; }
-      }
-
-      window-rule {
-          match app-id="jetbrains-idea"
-          default-column-width { proportion 0.6; }
-      }
-
-      window-rule {
-          match app-id="com.mitchellh.ghostty" title="Matui"
-          default-column-width { proportion 0.4; }
-      }
-
-      window-rule {
-          match app-id="com.mitchellh.ghostty" title="termfilechooser"
-          default-column-width { proportion 0.5; }
-      }
-
-      window-rule {
-          match app-id=r#"firefox$"#
-          default-column-width { proportion 0.5; }
-      }
-    '';
+  programs.niri.settings.window-rules = [
+    {
+      matches = [{ app-id = "com.mitchellh.ghostty"; }];
+      default-column-width.proportion = 0.3;
+    }
+    {
+      matches = [{ app-id = "jetbrains-idea"; }];
+      default-column-width.proportion = 0.6;
+    }
+    {
+      matches = [{ app-id = "com.mitchellh.ghostty"; title = "Matui"; }];
+      default-column-width.proportion = 0.4;
+    }
+    {
+      matches = [{ app-id = "com.mitchellh.ghostty"; title = "termfilechooser"; }];
+      default-column-width.proportion = 0.5;
+    }
+    {
+      matches = [{ app-id = ''firefox$''; }];
+      default-column-width.proportion = 0.5;
+    }
+  ];
 
   systemd.user.services.swayidle = {
     Unit = {

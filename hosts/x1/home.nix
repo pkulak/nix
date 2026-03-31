@@ -5,42 +5,32 @@
     ts = "sudo tailscale switch kulak.us && sudo tailscale up --accept-routes";
   };
 
-  xdg.configFile."niri/host.kdl".text = # kdl
-    ''
-      input {
-          keyboard {
-              xkb {
-                  options "altwin:swap_lalt_lwin,caps:escape"
-              }
-          }
-      }
+  programs.niri.settings = {
+    input.keyboard.xkb.options = "altwin:swap_lalt_lwin,caps:escape";
 
-      output "eDP-1" {
-          layout {
-              preset-column-widths {
-                  proportion 0.6
-                  proportion 0.8
-              }
+    # eDP-1 is the only monitor on x1, so per-output layout overrides
+    # are equivalent to overriding the global layout defaults.
+    layout.preset-column-widths = [
+      { proportion = 0.6; }
+      { proportion = 0.8; }
+    ];
+    layout.default-column-width.proportion = 0.6;
 
-              default-column-width { proportion 0.6; }
-          }
+    window-rules = [
+      {
+        matches = [{ app-id = "jetbrains-idea"; }];
+        default-column-width.proportion = 1.0;
       }
-
-      window-rule {
-          match app-id="jetbrains-idea"
-          default-column-width { proportion 1.0; }
+      {
+        matches = [{ app-id = "com.mitchellh.ghostty"; }];
+        default-column-width.proportion = 0.4;
       }
-
-      window-rule {
-          match app-id="com.mitchellh.ghostty"
-          default-column-width { proportion 0.4; }
+      {
+        matches = [{ app-id = "com.mitchellh.ghostty"; title = "termfilechooser"; }];
+        default-column-width.proportion = 0.6;
       }
-
-      window-rule {
-          match app-id="com.mitchellh.ghostty" title="termfilechooser"
-          default-column-width { proportion 0.6; }
-      }
-    '';
+    ];
+  };
 
   systemd.user.services.swayidle = {
     Unit = {

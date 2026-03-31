@@ -39,6 +39,12 @@
       url = "github:pkulak/neovim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:

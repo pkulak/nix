@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   rofi-power = pkgs.stdenv.mkDerivation {
@@ -57,7 +57,15 @@ in {
       '';
   };
 
-  xdg.configFile."niri/config.kdl".source = ./config.kdl;
+  programs.niri.package = pkgs.niri;
+
+  programs.niri.settings = lib.mkMerge [
+    (import ./config/binds.nix { inherit config; })
+    (import ./config/input.nix)
+    (import ./config/layout.nix)
+    (import ./config/misc.nix)
+    (import ./config/rules.nix)
+  ];
 
   home.pointerCursor = {
     gtk.enable = true;
