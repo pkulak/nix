@@ -58,6 +58,10 @@
             inherit (prev.stdenv) system;
             config.allowUnfree = true;
           };
+          inherit (import inputs.nixpkgs-claude {
+            inherit (prev.stdenv) system;
+            config.allowUnfree = true;
+          }) claude-code;
         })
       ];
     };

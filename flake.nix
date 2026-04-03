@@ -35,8 +35,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim = {
-      url = "github:pkulak/neovim";
+    nixpkgs-claude = {
+      url = "github:NixOS/nixpkgs/7a17139823551e1fb824ccca70540ff99dea0ea2";
+    };
+
+    wrappers = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };

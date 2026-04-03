@@ -2,7 +2,7 @@
   flake.nixosModules.desktop = { config, pkgs, ... }: {
     nixpkgs.overlays = [
       (final: prev: {
-        neovim = inputs.neovim.packages.${prev.stdenv.system}.default;
+        neovim = self.packages.${prev.stdenv.system}.neovim;
       })
     ];
     environment.systemPackages = with pkgs; [
@@ -27,7 +27,7 @@
       libinput
       lsd
       masterpdfeditor
-      unstable.claude-code
+      claude-code
       unstable.gemini-cli
       unstable.yt-dlp
       serpl
