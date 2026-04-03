@@ -842,6 +842,7 @@ nixInfo.lze.load({
 			require("blink.cmp").setup({
 				-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
 				-- See :h blink-cmp-config-keymap for configuring keymaps
+				fuzzy = { implementation = "lua" },
 				keymap = {
 					preset = "enter",
 				},
