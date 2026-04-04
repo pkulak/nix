@@ -68,7 +68,6 @@
     after = [ "lze" ];
     lazy = true;
     extraPackages = with pkgs; [
-      lazygit
       tree-sitter
       jq
       libxml2
