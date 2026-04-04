@@ -9,7 +9,6 @@ in
       let
         pkgs = import inputs.nixpkgs-unstable {
           inherit system;
-          config.allowUnfree = true;
         };
       in
       wrapper.config.wrap { inherit pkgs; };
