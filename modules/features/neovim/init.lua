@@ -3,22 +3,7 @@
 -- the rest is usage of lze and various core plugins!
 vim.loader.enable() -- <- bytecode caching
 do
-	-- Set up a global in a way that also handles non-nix compat
-	local ok
-	ok, _G.nixInfo = pcall(require, vim.g.nix_info_plugin_name)
-	if not ok then
-		package.loaded[vim.g.nix_info_plugin_name] = setmetatable({}, {
-			__call = function(_, default)
-				return default
-			end,
-		})
-		_G.nixInfo = require(vim.g.nix_info_plugin_name)
-		-- If you always use the fetcher function to fetch nix values,
-		-- rather than indexing into the tables directly,
-		-- it will use the value you specified as the default
-		-- TODO: for non-nix compat, vim.pack.add in another file and require here.
-	end
-	nixInfo.isNix = vim.g.nix_info_plugin_name ~= nil
+	_G.nixInfo = require(vim.g.nix_info_plugin_name)
 	---@module 'lzextras'
 	---@type lzextras | lze
 	nixInfo.lze = setmetatable(require("lze"), getmetatable(require("lzextras")))
@@ -35,22 +20,20 @@ nixInfo.lze.register_handlers({
 		spec_field = "auto_enable",
 		set_lazy = false,
 		modify = function(plugin)
-			if vim.g.nix_info_plugin_name then
-				if type(plugin.auto_enable) == "table" then
-					for _, name in pairs(plugin.auto_enable) do
-						if not nixInfo.get_nix_plugin_path(name) then
-							plugin.enabled = false
-							break
-						end
-					end
-				elseif type(plugin.auto_enable) == "string" then
-					if not nixInfo.get_nix_plugin_path(plugin.auto_enable) then
+			if type(plugin.auto_enable) == "table" then
+				for _, name in pairs(plugin.auto_enable) do
+					if not nixInfo.get_nix_plugin_path(name) then
 						plugin.enabled = false
+						break
 					end
-				elseif type(plugin.auto_enable) == "boolean" and plugin.auto_enable then
-					if not nixInfo.get_nix_plugin_path(plugin.name) then
-						plugin.enabled = false
-					end
+				end
+			elseif type(plugin.auto_enable) == "string" then
+				if not nixInfo.get_nix_plugin_path(plugin.auto_enable) then
+					plugin.enabled = false
+				end
+			elseif type(plugin.auto_enable) == "boolean" and plugin.auto_enable then
+				if not nixInfo.get_nix_plugin_path(plugin.name) then
+					plugin.enabled = false
 				end
 			end
 			return plugin
@@ -62,10 +45,8 @@ nixInfo.lze.register_handlers({
 		spec_field = "for_cat",
 		set_lazy = false,
 		modify = function(plugin)
-			if vim.g.nix_info_plugin_name then
-				if type(plugin.for_cat) == "string" then
-					plugin.enabled = nixInfo(false, "settings", "cats", plugin.for_cat)
-				end
+			if type(plugin.for_cat) == "string" then
+				plugin.enabled = nixInfo(false, "settings", "cats", plugin.for_cat)
 			end
 			return plugin
 		end,
@@ -84,13 +65,8 @@ nixInfo.lze.register_handlers({
 -- If you do provide a filetype, this will never be called.
 nixInfo.lze.h.lsp.set_ft_fallback(function(name)
 	local lspcfg = nixInfo.get_nix_plugin_path("nvim-lspconfig")
-	if lspcfg then
-		local ok, cfg = pcall(dofile, lspcfg .. "/lsp/" .. name .. ".lua")
-		return (ok and cfg or {}).filetypes or {}
-	else
-		-- the less performant thing we are trying to avoid at startup
-		return (vim.lsp.config[name] or {}).filetypes or {}
-	end
+	local ok, cfg = pcall(dofile, lspcfg .. "/lsp/" .. name .. ".lua")
+	return (ok and cfg or {}).filetypes or {}
 end)
 
 -- NOTE: These 2 should be set up before any plugins with keybinds are loaded.
@@ -462,15 +438,6 @@ vim.keymap.set("n", "<leader>sf", function()
 		end,
 	},
 	{
-		"mason.nvim",
-		enabled = not nixInfo.isNix,
-		priority = 100, -- <- run lsp hook before lspconfig's hook
-		on_plugin = { "nvim-lspconfig" },
-		lsp = function(plugin)
-			vim.cmd.MasonInstall(plugin.name)
-		end,
-	},
-	{
 		-- lazydev makes your lua lsp load only the relevant definitions for a file.
 		-- It also gives us a nice way to correlate globals we create with files.
 		"lazydev.nvim",
@@ -515,7 +482,6 @@ vim.keymap.set("n", "<leader>sf", function()
 	},
 	{
 		"nixd",
-		enabled = nixInfo.isNix, -- mason doesn't have nixd
 		for_cat = "nix",
 		lsp = {
 			filetypes = { "nix" },
