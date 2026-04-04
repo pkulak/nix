@@ -14,7 +14,7 @@
     }@inputs:
     let
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
-      module = nixpkgs.lib.modules.importApply ./module.nix inputs;
+      module = import ./module.nix;
       wrapper = wrappers.lib.evalModule module;
     in
     {

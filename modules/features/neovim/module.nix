@@ -1,4 +1,3 @@
-_inputs:
 {
   config,
   wlib,

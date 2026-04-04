@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  module = inputs.nixpkgs-unstable.lib.modules.importApply ./module.nix inputs;
+  module = import ./module.nix;
   wrapper = inputs.wrappers.lib.evalModule module;
 in
 {
