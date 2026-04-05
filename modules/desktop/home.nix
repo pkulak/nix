@@ -1,5 +1,7 @@
-{ self, inputs, ... }: {
-  flake.homeModules.desktop = { config, pkgs, ... }:
+{ self, inputs, ... }:
+{
+  flake.homeModules.desktop =
+    { config, pkgs, ... }:
     let
       todo = pkgs.writeShellApplication {
         name = "todo";
@@ -38,23 +40,26 @@
 
       sync-notes = pkgs.writeShellApplication {
         name = "sync-notes";
-        runtimeInputs = with pkgs; [ coreutils git openssh ];
+        runtimeInputs = with pkgs; [
+          coreutils
+          git
+          openssh
+        ];
         text = ''
           cd ~/notes
 
           if [[ $(git status --porcelain) ]]; then
-            git stash save
-            git pull --rebase
-            git stash pop || true
             git add .
             git -c "user.name=Phil Kulak" -c "user.email=phil@kulak.us" commit -m "$(date)"
+            git pull --rebase
             git push origin main
           else
-            git pull
+            git pull --rebase
           fi
         '';
       };
-    in {
+    in
+    {
       home.packages = [
         import-photos
         mnt-usb
