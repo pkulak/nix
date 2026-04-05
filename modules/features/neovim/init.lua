@@ -77,6 +77,8 @@ vim.g.maplocalleader = " "
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+vim.o.background = "dark"
+
 -- allow .nvim.lua in current dir and parents (project config)
 vim.o.exrc = false -- can be toggled off in that file to stop it from searching further
 
