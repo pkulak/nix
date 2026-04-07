@@ -16,8 +16,8 @@
     ];
 
     environment.systemPackages = [
-      self.packages.${pkgs.system}.pgen
-      self.packages.${pkgs.system}.pixlet
+      self.packages.${pkgs.stdenv.hostPlatform.system}.pgen
+      self.packages.${pkgs.stdenv.hostPlatform.system}.pixlet
     ];
   };
 

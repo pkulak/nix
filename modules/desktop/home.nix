@@ -66,7 +66,7 @@
         sync-notes
         todo
 
-        inputs.agenix.packages.${pkgs.system}.default
+        inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 
       programs.direnv.enable = true;

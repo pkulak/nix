@@ -53,13 +53,13 @@
       overlays = [
         inputs.nur.overlays.default
         (final: prev: {
-          inherit (inputs.matui.packages.${prev.stdenv.system}) matui;
+          inherit (inputs.matui.packages.${prev.stdenv.hostPlatform.system}) matui;
           unstable = import inputs.nixpkgs-unstable {
-            inherit (prev.stdenv) system;
+            inherit (prev.stdenv.hostPlatform) system;
             config.allowUnfree = true;
           };
           inherit (import inputs.nixpkgs-claude {
-            inherit (prev.stdenv) system;
+            inherit (prev.stdenv.hostPlatform) system;
             config.allowUnfree = true;
           }) claude-code;
         })

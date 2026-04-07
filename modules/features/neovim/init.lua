@@ -2,6 +2,13 @@
 -- The first 100ish lines are setup,
 -- the rest is usage of lze and various core plugins!
 vim.loader.enable() -- <- bytecode caching
+
+-- Disable termsync when launched as a subprocess editor to avoid
+-- "Did not detect DSR response" warnings
+if vim.env.MATUI_EDITOR or vim.env.GIT_EDITOR or vim.env.SUDO_EDITOR or vim.env.JJ_EDITOR then
+  vim.o.termsync = false
+end
+
 do
   _G.nixInfo = require(vim.g.nix_info_plugin_name)
   ---@module 'lzextras'
