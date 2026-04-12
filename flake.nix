@@ -35,19 +35,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-claude = {
-      url = "github:NixOS/nixpkgs/7a17139823551e1fb824ccca70540ff99dea0ea2";
-    };
-
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
-  outputs = inputs:
-    let match = inputs.import-tree.match ".*/default\\.nix";
-    in inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ (match ./modules) (match ./hosts) ];
+  outputs =
+    inputs:
+    let
+      match = inputs.import-tree.match ".*/default\\.nix";
+    in
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        (match ./modules)
+        (match ./hosts)
+      ];
     };
 }

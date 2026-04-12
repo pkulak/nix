@@ -11,7 +11,7 @@
     window-padding-y = 2
     window-padding-balance = true
 
-    keybind = ctrl+c=copy_to_clipboard
+    keybind = ctrl+c=copy_to_clipboard:plain
     keybind = ctrl+v=paste_from_clipboard
 
     keybind = ctrl+shift+c=text:\x03
