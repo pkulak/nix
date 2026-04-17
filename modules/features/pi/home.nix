@@ -22,6 +22,7 @@
 
   home.file = {
     ".pi/agent/themes/catppuccin-mocha.json".source = ./themes/catpuccin-mocha.json;
+    ".pi/agent/prompts/setup.md".source = ./prompts/setup.md;
     ".pi/agent/skills/agent-browser/SKILL.md".source = ./skills/agent-browser/SKILL.md;
 
     ".agent-browser/config.json".text = builtins.toJSON {
@@ -32,7 +33,7 @@
     ".pi/agent/models.json".text = builtins.toJSON {
       providers = {
         ollama = {
-          baseUrl = "http://wiggles.home:11434/v1";
+          baseUrl = "http://debian.home:11434/v1";
           api = "openai-completions";
           apiKey = "ollama";
           models = [
@@ -49,4 +50,3 @@
     };
   };
 }
-
