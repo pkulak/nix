@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   rofi-power = pkgs.stdenv.mkDerivation {
@@ -30,30 +30,10 @@ in {
       ''
         #!/usr/bin/env bash
 
-        export TERMINAL="ghostty"
         export BROWSER="firefox"
-        export EDITOR="nvim"
-        export VISUAL="nvim"
-
         export _JAVA_AWT_WM_NONREPARENTING=1
         export GTK_THEME="Adwaita-dark"
-
-        export JAVA_HOME=${pkgs.jdk17}/lib/openjdk
-        export JAVA_11_HOME=${pkgs.jdk11}/lib/openjdk
-        export JAVA_17_HOME=${pkgs.jdk17}/lib/openjdk
-
         export MOZ_ENABLE_WAYLAND=1
-
-        # jam some Vevo stuff in the env to make builds easier
-        if test -f /home/phil/.m2/settings.xml; then
-          export NEXUS_USER=deployment
-          export NEXUS_PASSWORD=$(${pkgs.xq-xml}/bin/xq /home/phil/.m2/settings.xml -x "/settings/servers/*[1]/password")
-        fi
-
-        # and load secrets
-        if test -f /home/phil/.config/niri/secrets; then
-          source /home/phil/.config/niri/secrets
-        fi
       '';
   };
 

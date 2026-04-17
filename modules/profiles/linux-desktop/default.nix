@@ -27,6 +27,7 @@
       desktop
 
       beets
+      env
       firefox
       fish
       ghostty

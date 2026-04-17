@@ -9,11 +9,14 @@ let
     text = ''
       #!/usr/bin/env bash
 
-      # Load user environment
+      # Load shared environment, just in case
+      if [ -f "''${XDG_CONFIG_HOME:-$HOME/.config}/environment.sh" ]; then
+          . "''${XDG_CONFIG_HOME:-$HOME/.config}/environment.sh"
+      fi
+
+      # Load desktop-specific environment
       if [ -f "''${XDG_CONFIG_HOME:-$HOME/.config}/niri/environment" ]; then
-          set -o allexport
           . "''${XDG_CONFIG_HOME:-$HOME/.config}/niri/environment"
-          set +o allexport
       fi
 
       # Start Niri in Systemd
@@ -21,7 +24,8 @@ let
     '';
   };
 
-in {
+in
+{
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
     gnome-themes-extra
@@ -47,7 +51,7 @@ in {
 
   xdg.portal = {
     enable = true;
-    
+
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-termfilechooser

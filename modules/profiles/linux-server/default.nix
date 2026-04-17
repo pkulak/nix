@@ -14,6 +14,7 @@
       core
 
       beets
+      env
       fish
       git
       jj
