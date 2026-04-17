@@ -21,6 +21,7 @@
   ];
 
   home.file = {
+    ".pi/agent/themes/catppuccin-mocha.json".source = ./themes/catpuccin-mocha.json;
     ".pi/agent/skills/agent-browser/SKILL.md".source = ./skills/agent-browser/SKILL.md;
 
     ".agent-browser/config.json".text = builtins.toJSON {
@@ -44,6 +45,8 @@
     ".pi/agent/settings.json".text = builtins.toJSON {
       defaultProvider = "ollama";
       defaultModel = "glm-5.1:cloud";
+      theme = "catppuccin-mocha";
     };
   };
 }
+
