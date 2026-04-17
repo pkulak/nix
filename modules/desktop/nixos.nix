@@ -31,8 +31,7 @@
         lsd
         masterpdfeditor
         unstable.claude-code
-        unstable.codex
-        unstable.gemini-cli
+        unstable.opencode
         unstable.yt-dlp
         serpl
         sublime-merge
