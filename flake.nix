@@ -39,6 +39,11 @@
       url = "github:BirdeeHub/nix-wrapper-modules";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    opencrow = {
+      url = "github:pkulak/opencrow";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

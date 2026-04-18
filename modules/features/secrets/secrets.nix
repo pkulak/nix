@@ -7,6 +7,8 @@ in
   "crypt/aws-credentials.age".publicKeys = keys;
   "crypt/m2-settings.xml.age".publicKeys = keys;
   "crypt/env.age".publicKeys = keys;
+  "crypt/opencrow.env".publicKeys = keys;
+  "crypt/opencrow-group.env".publicKeys = keys;
 }
 
 # add a line for the new secret file

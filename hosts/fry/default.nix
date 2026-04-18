@@ -8,6 +8,8 @@
       ./nixos.nix
       ./hardware.nix
     ];
-    homeModules = [ ./home.nix ];
+    homeModules = [
+      ./home.nix
+    ];
   };
 }

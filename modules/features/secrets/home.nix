@@ -16,6 +16,7 @@ in {
       m2-settings = mkSecret ./crypt/m2-settings.xml.age "m2-settings";
       smb-secrets = mkSecret ./crypt/smb-secrets.age "smb-secrets";
       env = mkSecret ./crypt/env.age "env";
+      opencrow-env = mkSecret ./crypt/opencrow.env "opencrow-env";
     };
   };
 

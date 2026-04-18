@@ -78,6 +78,8 @@
         "phil"
       ];
 
+      age.identityPaths = [ "/home/phil/.ssh/id_ed25519" ];
+
       nixpkgs = {
         config.allowUnfree = true;
         overlays = [
@@ -150,7 +152,7 @@
         };
       };
 
-      imports = [ inputs.home-manager.nixosModules.home-manager ];
+      imports = [ inputs.home-manager.nixosModules.home-manager inputs.agenix.nixosModules.default ];
 
       home-manager = {
         useGlobalPkgs = true;
