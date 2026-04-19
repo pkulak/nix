@@ -120,12 +120,17 @@ in
   services.opencrow = sharedInstanceConfig // {
     enable = true;
 
+    environment = sharedInstanceConfig.environment // {
+      OPENCROW_SOUL_FILE = ./souls/wiggles.txt;
+    };
+
     instances.group = sharedInstanceConfig // {
       enable = true;
 
       environment = sharedInstanceConfig.environment // {
         OPENCROW_MATRIX_USER_ID = "@barnaby:kulak.us";
         OPENCROW_MATRIX_TRIGGER = "barnaby";
+        OPENCROW_SOUL_FILE = ./souls/barnaby.txt;
       };
 
       environmentFiles = sharedInstanceConfig.environmentFiles ++ [
