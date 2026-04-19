@@ -4,14 +4,18 @@
     {
       config,
       host,
+      lib,
       pkgs,
       ...
     }:
     {
       boot.loader.grub.enable = true;
-      boot.loader.grub.efiSupport = true;
-      boot.loader.grub.device = "nodev";
-      boot.loader.efi.canTouchEfiVariables = true;
+
+      # EFI by default; override in the host for BIOS.
+      boot.loader.grub.efiSupport = lib.mkDefault true;
+      boot.loader.grub.device = lib.mkDefault "nodev";
+      boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
+
       networking.networkmanager.enable = true;
       time.timeZone = "America/Los_Angeles";
       hardware.graphics.enable = true;
