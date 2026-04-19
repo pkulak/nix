@@ -124,7 +124,7 @@ in
       enable = true;
 
       environment = sharedInstanceConfig.environment // {
-        OPENCROW_MATRIX_TRIGGER = "wiggles";
+        OPENCROW_MATRIX_TRIGGER = "barnaby";
       };
 
       environmentFiles = sharedInstanceConfig.environmentFiles ++ [
