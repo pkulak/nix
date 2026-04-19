@@ -1,6 +1,8 @@
 { pkgs, host, ... }:
 
 {
+  home.packages = [ pkgs.zoxide ];
+
   programs.fish = {
     enable = true;
 

@@ -42,7 +42,6 @@
         zathura
         zenity
         zoom-us
-        zoxide
       ];
 
       programs = {
