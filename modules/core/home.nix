@@ -22,7 +22,6 @@
         username = "phil";
         homeDirectory = "/home/phil";
         packages = [ rebuild update ];
-        stateVersion = "23.05";
       };
 
       home.file = {

@@ -100,7 +100,6 @@
         resolved.enable = true;
       };
 
-      system.stateVersion = "23.05";
 
       networking.networkmanager.dns = "systemd-resolved";
       security.polkit.enable = true;

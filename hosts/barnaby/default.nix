@@ -9,6 +9,7 @@
     ];
     homeModules = [
       self.homeModules.opencrow
+      ./home.nix
     ];
   };
 }

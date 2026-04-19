@@ -1,6 +1,7 @@
 { pkgs, lib, ... }:
 
 {
+  home.stateVersion = "23.05";
   programs.fish.shellAliases = {
     ts = "sudo tailscale switch kulak.us && sudo tailscale up --accept-routes";
   };

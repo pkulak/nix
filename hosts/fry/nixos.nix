@@ -6,6 +6,7 @@ in {
   environment.systemPackages = [ vuescan ];
 
   networking.hostName = "fry";
+  system.stateVersion = "23.05";
 
   fileSystems = {
     "/mnt/storage" = {
