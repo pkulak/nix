@@ -65,6 +65,7 @@
           inputs.nur.overlays.default
           (final: prev: {
             inherit (inputs.matui.packages.${prev.stdenv.hostPlatform.system}) matui;
+            neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
             unstable = import inputs.nixpkgs-unstable {
               inherit (prev.stdenv.hostPlatform) system;
               config.allowUnfree = true;

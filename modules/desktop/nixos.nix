@@ -3,11 +3,6 @@
   flake.nixosModules.desktop =
     { config, pkgs, ... }:
     {
-      nixpkgs.overlays = [
-        (final: prev: {
-          neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
-        })
-      ];
       environment.systemPackages = with pkgs; [
         (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
 
