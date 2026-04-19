@@ -36,7 +36,7 @@ let
 
     environment = {
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
-      OPENCROW_MATRIX_USER_ID = "@mathbot:kulak.us";
+      OPENCROW_MATRIX_USER_ID = "@wiggles:kulak.us";
       OPENCROW_PI_PROVIDER = "ollama";
       OPENCROW_PI_MODEL = "glm-5.1:cloud";
     };
@@ -124,6 +124,7 @@ in
       enable = true;
 
       environment = sharedInstanceConfig.environment // {
+        OPENCROW_MATRIX_USER_ID = "@barnaby:kulak.us";
         OPENCROW_MATRIX_TRIGGER = "barnaby";
       };
 
