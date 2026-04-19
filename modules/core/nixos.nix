@@ -11,32 +11,7 @@
       boot.loader.grub.enable = true;
       boot.loader.grub.efiSupport = true;
       boot.loader.grub.device = "nodev";
-      boot.loader.grub.useOSProber = true;
       boot.loader.efi.canTouchEfiVariables = true;
-      boot.supportedFilesystems = [ "ntfs" ];
-      boot.kernelParams = [ "rd.luks.options=discard" ];
-
-      fileSystems = {
-        "/".options = [
-          "compress-force=zstd"
-          "autodefrag"
-        ];
-        "/home".options = [
-          "compress-force=zstd"
-          "autodefrag"
-        ];
-        "/nix".options = [
-          "compress-force=zstd"
-          "noatime"
-          "nodiratime"
-          "autodefrag"
-        ];
-        "/swap".options = [
-          "noatime"
-          "nodiratime"
-        ];
-      };
-
       networking.networkmanager.enable = true;
       time.timeZone = "America/Los_Angeles";
       hardware.graphics.enable = true;
@@ -152,7 +127,10 @@
         };
       };
 
-      imports = [ inputs.home-manager.nixosModules.home-manager inputs.agenix.nixosModules.default ];
+      imports = [
+        inputs.home-manager.nixosModules.home-manager
+        inputs.agenix.nixosModules.default
+      ];
 
       home-manager = {
         useGlobalPkgs = true;

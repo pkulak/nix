@@ -8,6 +8,7 @@
         desktop
 
         _1password
+        btrfs
         fish
         game-devices
         jai
