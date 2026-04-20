@@ -136,11 +136,11 @@ in
         "/var/lib/opencrow-group/.agent-browser" = {
           hostPath = "/home/phil/.agent-browser";
         };
-        "/var/lib/opencrow-group/.config/khal" = {
-          hostPath = "/home/phil/.config/khal";
+        "/var/lib/opencrow-group/.config" = {
+          hostPath = "/home/phil/.config";
         };
-        "/var/lib/opencrow-group/.local/share/vdirsyncer/calendars" = {
-          hostPath = "/home/phil/.local/share/vdirsyncer/calendars";
+        "/var/lib/opencrow-group/.local" = {
+          hostPath = "/home/phil/.local";
         };
       };
 
