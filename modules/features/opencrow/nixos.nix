@@ -11,10 +11,12 @@
 # journalctl -M opencrow -f & journalctl -M opencrow-group -f
 
 let
+  python = pkgs.python3.withPackages (ps: [ ps.beautifulsoup4 ]);
+
   mkPyScript =
     file:
     pkgs.writeShellScriptBin (builtins.replaceStrings [ ".py" ] [ "" ] file) ''
-      exec ${pkgs.python3}/bin/python3 ${./bin}/${file} "$@"
+      exec ${python}/bin/python3 ${./bin}/${file} "$@"
     '';
 
   mkBashScript =

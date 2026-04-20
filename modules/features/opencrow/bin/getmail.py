@@ -2,10 +2,8 @@
 import imaplib, email, json, os, sys, argparse, textwrap
 from bs4 import BeautifulSoup
 
-os.makedirs(os.path.dirname(SEEN_FILE), exist_ok=True)
-
-CONFIG_DIR = os.path.expanduser('~/.config/mailcheck')
-SEEN_FILE = os.path.join(CONFIG_DIR, 'seen.json')
+SEEN_DIR = '/var/lib/opencrow/pi-agent/mailcheck'
+SEEN_FILE = os.path.join(SEEN_DIR, 'seen.json')
 SEEN_LIMIT = 2056
 
 def load_seen():
@@ -15,7 +13,7 @@ def load_seen():
     return []
 
 def save_seen(seen):
-    os.makedirs(CONFIG_DIR, exist_ok=True)
+    os.makedirs(SEEN_DIR, exist_ok=True)
     with open(SEEN_FILE, 'w') as f:
         json.dump(seen[-SEEN_LIMIT:], f)
 
