@@ -27,6 +27,14 @@ let
 
   watchmail = mkPyScript "watchmail.py";
 
+  mkSharedBindMounts = prefix: {
+    "${prefix}/.agent-browser" = { hostPath = "/home/phil/.agent-browser"; };
+    "${prefix}/.config" = { hostPath = "/home/phil/.config"; };
+    "${prefix}/.config/systemd" = { hostPath = "/var/empty"; };
+    "${prefix}/.local" = { hostPath = "/home/phil/.local"; };
+    "${prefix}/.local/share/systemd" = { hostPath = "/var/empty"; };
+  };
+
   mkDefaultServices =
     { pipePath, envFiles }: import ./services/personal.nix { inherit watchmail pipePath envFiles; };
 
@@ -114,10 +122,7 @@ in
       OPENCROW_SOUL_FILE = "${./souls/wiggles.txt}";
     };
 
-    extraBindMounts = {
-      "/var/lib/opencrow/.agent-browser" = {
-        hostPath = "/home/phil/.agent-browser";
-      };
+    extraBindMounts = mkSharedBindMounts "/var/lib/opencrow" // {
       "/var/lib/opencrow/notes" = {
         hostPath = "/home/phil/notes";
       };
@@ -132,23 +137,7 @@ in
         OPENCROW_SOUL_FILE = "${./souls/barnaby.txt}";
       };
 
-      extraBindMounts = {
-        "/var/lib/opencrow-group/.agent-browser" = {
-          hostPath = "/home/phil/.agent-browser";
-        };
-        "/var/lib/opencrow-group/.config" = {
-          hostPath = "/home/phil/.config";
-        };
-        "/var/lib/opencrow-group/.config/systemd" = {
-          hostPath = "/var/empty";
-        };
-        "/var/lib/opencrow-group/.local" = {
-          hostPath = "/home/phil/.local";
-        };
-        "/var/lib/opencrow-group/.local/share/systemd" = {
-          hostPath = "/var/empty";
-        };
-      };
+      extraBindMounts = mkSharedBindMounts "/var/lib/opencrow-group";
 
       environmentFiles = sharedInstanceConfig.environmentFiles ++ [
         config.age.secrets.opencrow-group-env.path
