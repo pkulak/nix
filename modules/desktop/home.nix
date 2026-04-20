@@ -69,8 +69,6 @@
         inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 
-      programs.direnv.enable = true;
-
       # sync our notes on a schedule
       systemd.user.services.sync-notes = {
         Unit.Description = "Synchronize my notes repo";

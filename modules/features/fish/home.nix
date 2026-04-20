@@ -3,6 +3,8 @@
 {
   home.packages = [ pkgs.zoxide ];
 
+  programs.direnv.enable = true;
+
   programs.fish = {
     enable = true;
 

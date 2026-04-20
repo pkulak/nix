@@ -59,6 +59,7 @@ let
       check-email = ./skills/check-email;
       check-tennis = ./skills/check-tennis;
       morning-summary = ./skills/morning-summary;
+      transcribe = ./skills/transcribe;
       watch-tennis = ./skills/watch-tennis;
     };
 
