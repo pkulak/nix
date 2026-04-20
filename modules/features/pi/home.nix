@@ -38,6 +38,7 @@
           apiKey = "ollama";
           models = [
             { id = "glm-5.1:cloud"; }
+            { id = "kimi-k2.5:cloud"; }
           ];
         };
       };

@@ -61,7 +61,7 @@ let
       OPENCROW_PI_IDLE_TIMEOUT = "6h";
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
       OPENCROW_PI_PROVIDER = "ollama";
-      OPENCROW_PI_MODEL = "glm-5.1:cloud";
+      OPENCROW_PI_MODEL = "kimi-k2.5:cloud";
     };
 
     piModels = {
@@ -69,7 +69,10 @@ let
         baseUrl = "http://debian.home:11434/v1";
         api = "openai-completions";
         apiKey = "ollama";
-        models = [ { id = "glm-5.1:cloud"; } ];
+        models = [
+          { id = "glm-5.1:cloud"; }
+          { id = "kimi-k2.5:cloud"; }
+        ];
       };
     };
 
