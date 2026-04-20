@@ -64,6 +64,16 @@
     ];
   };
 
+  config.specs.go = {
+    after = [ "general" ];
+    lazy = true;
+    data = null;
+    extraPackages = with pkgs; [
+      gopls
+      gotools
+    ];
+  };
+
   config.specs.general = {
     after = [ "lze" ];
     lazy = true;

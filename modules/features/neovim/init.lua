@@ -515,6 +515,21 @@ nixInfo.lze.load({
     },
   },
   {
+    "gopls",
+    for_cat = "go",
+    lsp = {
+      filetypes = { "go" },
+      settings = {
+        gopls = {
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+        },
+      },
+    },
+  },
+  {
     "rustaceanvim",
     for_cat = "rust",
     lazy = false,
@@ -697,6 +712,7 @@ nixInfo.lze.load({
           lua = nixInfo(nil, "settings", "cats", "lua") and { "stylua" } or nil,
           nix = nixInfo(nil, "settings", "cats", "nix") and { "nixfmt" } or nil,
           rust = nixInfo(nil, "settings", "cats", "rust") and { "rustfmt" } or nil,
+          go = nixInfo(nil, "settings", "cats", "go") and { "gofmt" } or nil,
           -- go = { "gofmt", "golint" },
           -- templ = { "templ" },
           -- Conform will run multiple formatters sequentially
