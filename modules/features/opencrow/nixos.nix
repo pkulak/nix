@@ -61,6 +61,7 @@ let
       morning-summary = ./skills/morning-summary;
       transcribe = ./skills/transcribe;
       watch-tennis = ./skills/watch-tennis;
+      wikipedia-lookup = ./skills/wikipedia-lookup;
     };
 
     extraBindMounts = {
