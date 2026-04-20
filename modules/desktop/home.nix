@@ -37,49 +37,15 @@
           sudo mount -o uid=phil,gid=users /dev/sdb1 /mnt/usbstick
         '';
       };
-
-      sync-notes = pkgs.writeShellApplication {
-        name = "sync-notes";
-        runtimeInputs = with pkgs; [
-          coreutils
-          git
-          openssh
-        ];
-        text = ''
-          cd ~/notes
-
-          if [[ $(git status --porcelain) ]]; then
-            git add .
-            git -c "user.name=Phil Kulak" -c "user.email=phil@kulak.us" commit -m "$(date)"
-            git pull --rebase
-            git push origin main
-          else
-            git pull --rebase
-          fi
-        '';
-      };
     in
     {
       home.packages = [
         import-photos
         mnt-usb
-        sync-notes
         todo
 
         inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
-
-      # sync our notes on a schedule
-      systemd.user.services.sync-notes = {
-        Unit.Description = "Synchronize my notes repo";
-        Service.ExecStart = "${sync-notes}/bin/sync-notes";
-      };
-
-      systemd.user.timers.sync-notes = {
-        Unit.Description = "Synchronize notes hourly";
-        Timer.OnCalendar = "hourly";
-        Install.WantedBy = [ "timers.target" ];
-      };
 
       xdg.configFile = {
         # Direnv
