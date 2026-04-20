@@ -82,7 +82,6 @@ let
       check-email = ./skills/check-email;
       check-tennis = ./skills/check-tennis;
       morning-summary = ./skills/morning-summary;
-      refresh = ./skills/refresh;
       transcribe = ./skills/transcribe;
       watch-tennis = ./skills/watch-tennis;
       wikipedia-lookup = ./skills/wikipedia-lookup;
