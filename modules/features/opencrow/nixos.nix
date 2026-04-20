@@ -28,11 +28,24 @@ let
   watchmail = mkPyScript "watchmail.py";
 
   mkSharedBindMounts = prefix: {
-    "${prefix}/.agent-browser" = { hostPath = "/home/phil/.agent-browser"; };
-    "${prefix}/.config" = { hostPath = "/home/phil/.config"; };
-    "${prefix}/.config/systemd" = { hostPath = "/var/empty"; };
-    "${prefix}/.local" = { hostPath = "/home/phil/.local"; };
-    "${prefix}/.local/share/systemd" = { hostPath = "/var/empty"; };
+    "${prefix}/.agent-browser" = {
+      hostPath = "/home/phil/.agent-browser";
+    };
+    "${prefix}/.ssh" = {
+      hostPath = "/home/phil/.ssh";
+    };
+    "${prefix}/.config" = {
+      hostPath = "/home/phil/.config";
+    };
+    "${prefix}/.config/systemd" = {
+      hostPath = "/var/empty";
+    };
+    "${prefix}/.local" = {
+      hostPath = "/home/phil/.local";
+    };
+    "${prefix}/.local/share/systemd" = {
+      hostPath = "/var/empty";
+    };
   };
 
   mkDefaultServices =
