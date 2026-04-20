@@ -8,7 +8,7 @@
 
 # sudo machinectl shell opencrow@opencrow
 # sudo machinectl shell opencrow@opencrow-group
-# journalctl -M opencrow -f & journalctl -M opencrow-group -f
+# journalctl -M opencrow -f
 
 let
   python = pkgs.python3.withPackages (ps: [ ps.beautifulsoup4 ]);
@@ -60,7 +60,6 @@ let
     environment = {
       OPENCROW_PI_IDLE_TIMEOUT = "6h";
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
-      OPENCROW_MATRIX_USER_ID = "@wiggles:kulak.us";
       OPENCROW_PI_PROVIDER = "ollama";
       OPENCROW_PI_MODEL = "glm-5.1:cloud";
     };
@@ -80,7 +79,6 @@ let
 
     skills = {
       agent-browser = ../pi/skills/agent-browser;
-      check-email = ./skills/check-email;
       check-tennis = ./skills/check-tennis;
       morning-summary = ./skills/morning-summary;
       transcribe = ./skills/transcribe;
@@ -132,9 +130,17 @@ in
     enable = true;
 
     environment = sharedInstanceConfig.environment // {
+      OPENCROW_MATRIX_USER_ID = "@wiggles:kulak.us";
       OPENCROW_SOUL_FILE = "${./souls/wiggles.txt}";
     };
 
+    # skills that I only want in the default container
+    skills = sharedInstanceConfig.skills // {
+      check-email = ./skills/check-email;
+      check-notes = ./skills/check-notes;
+    };
+
+    # mounts that I only want in the default container
     extraBindMounts = mkSharedBindMounts "/var/lib/opencrow" // {
       "/var/lib/opencrow/notes" = {
         hostPath = "/home/phil/notes";
