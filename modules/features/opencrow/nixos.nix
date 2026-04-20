@@ -139,8 +139,14 @@ in
         "/var/lib/opencrow-group/.config" = {
           hostPath = "/home/phil/.config";
         };
+        "/var/lib/opencrow-group/.config/systemd" = {
+          hostPath = "/var/empty";
+        };
         "/var/lib/opencrow-group/.local" = {
           hostPath = "/home/phil/.local";
+        };
+        "/var/lib/opencrow-group/.local/share/systemd" = {
+          hostPath = "/var/empty";
         };
       };
 
