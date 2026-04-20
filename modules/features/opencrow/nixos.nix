@@ -58,6 +58,7 @@ let
     piPackage = pkgs.unstable.pi-coding-agent;
 
     environment = {
+      OPENCROW_PI_IDLE_TIMEOUT = "6h";
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
       OPENCROW_MATRIX_USER_ID = "@wiggles:kulak.us";
       OPENCROW_PI_PROVIDER = "ollama";
