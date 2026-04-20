@@ -67,21 +67,6 @@ let
       wikipedia-lookup = ./skills/wikipedia-lookup;
     };
 
-    extraBindMounts = {
-      "/home/opencrow/.agent-browser" = {
-        hostPath = "/home/phil/.agent-browser";
-      };
-      "/var/lib/opencrow/.config/khal" = {
-        hostPath = "/home/phil/.config/khal";
-      };
-      "/var/lib/opencrow/.local/share/vdirsyncer/calendars" = {
-        hostPath = "/home/phil/.local/share/vdirsyncer/calendars";
-      };
-      "/var/lib/opencrow/notes" = {
-        hostPath = "/home/phil/notes";
-      };
-    };
-
     environmentFiles = [
       config.age.secrets.opencrow-env.path
     ];
@@ -129,6 +114,15 @@ in
       OPENCROW_SOUL_FILE = "${./souls/wiggles.txt}";
     };
 
+    extraBindMounts = {
+      "/var/lib/opencrow/.agent-browser" = {
+        hostPath = "/home/phil/.agent-browser";
+      };
+      "/var/lib/opencrow/notes" = {
+        hostPath = "/home/phil/notes";
+      };
+    };
+
     instances.group = sharedInstanceConfig // {
       enable = true;
 
@@ -136,6 +130,18 @@ in
         OPENCROW_MATRIX_USER_ID = "@barnaby:kulak.us";
         OPENCROW_MATRIX_TRIGGER = "barnaby";
         OPENCROW_SOUL_FILE = "${./souls/barnaby.txt}";
+      };
+
+      extraBindMounts = {
+        "/var/lib/opencrow-group/.agent-browser" = {
+          hostPath = "/home/phil/.agent-browser";
+        };
+        "/var/lib/opencrow-group/.config/khal" = {
+          hostPath = "/home/phil/.config/khal";
+        };
+        "/var/lib/opencrow-group/.local/share/vdirsyncer/calendars" = {
+          hostPath = "/home/phil/.local/share/vdirsyncer/calendars";
+        };
       };
 
       environmentFiles = sharedInstanceConfig.environmentFiles ++ [
