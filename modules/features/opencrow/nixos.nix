@@ -62,6 +62,7 @@ let
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
       OPENCROW_PI_PROVIDER = "ollama";
       OPENCROW_PI_MODEL = "kimi-k2.5:cloud";
+      TZ = "America/Los_Angeles";
     };
 
     piModels = {
