@@ -83,6 +83,10 @@ Present the information naturally:
 
 Use the `date` field (ISO 8601 UTC) and convert to Pacific time for the user. Round to the nearest sensible time.
 
+**Emphasize relative dates:** When the game is **today** or **tomorrow**, use bold formatting for those words in your response. Examples:
+- "The **Trail Blazers** play the **Spurs** **today** at 5:00 PM PDT..."
+- "The **Canadiens** play the **Lightning** **tomorrow** at 4:00 PM PDT..."
+
 ## Step 5: Get today's scores
 
 **For a specific team**, run:
