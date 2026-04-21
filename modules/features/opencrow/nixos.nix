@@ -84,6 +84,7 @@ let
       agent-browser = ../pi/skills/agent-browser;
       check-tennis = ./skills/check-tennis;
       morning-summary = ./skills/morning-summary;
+      sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;
       watch-tennis = ./skills/watch-tennis;
       wikipedia-lookup = ./skills/wikipedia-lookup;
@@ -147,6 +148,9 @@ in
     extraBindMounts = mkSharedBindMounts "/var/lib/opencrow" // {
       "/var/lib/opencrow/notes" = {
         hostPath = "/home/phil/notes";
+      };
+      "/var/lib/opencrow/nix" = {
+        hostPath = "/home/phil/nix";
       };
     };
 
