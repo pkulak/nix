@@ -7,7 +7,7 @@
 
 let
   triggerPipe = pkgs.writeShellScript "trigger-pipe" ''
-    echo "[Triggered at $(TZ=America/Los_Angeles date -Iseconds)] $1" > ${pipePath}
+    echo "$1" > ${pipePath}
   '';
 in
 {
