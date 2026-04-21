@@ -50,11 +50,13 @@ Upload using curl:
 curl -T /tmp/ytdl/<slug>.mp4 https://files.kulak.us/public/
 ```
 
-## Step 4: Share the link
+## Step 4: Return the link in chat
 
-Report the public URL to the user:
+**CRITICAL:** You must always return the download link directly in your chat response. Do not rely on the `curl` output being visible to the user. Explicitly include the URL in your reply.
 
 ```
+Done! Here's your video:
+
 https://files.kulak.us/public/<slug>.mp4
 ```
 
