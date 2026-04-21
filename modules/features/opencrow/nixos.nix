@@ -83,6 +83,7 @@ let
     skills = {
       agent-browser = ../pi/skills/agent-browser;
       check-tennis = ./skills/check-tennis;
+      download = ./skills/download;
       morning-summary = ./skills/morning-summary;
       sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;

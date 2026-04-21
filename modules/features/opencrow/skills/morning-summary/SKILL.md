@@ -30,7 +30,7 @@ Note: the hourly forecast will very likely start in the past. Please note the cu
 
 Execute the following to get calendar events for today: `events`.
 
-Then, after a blank line, convert each calendar event into a short spoken-style sentence, one event per line.
+Then, convert each calendar event into a short spoken-style sentence, displayed as a markdown bulleted list.
 
 When you see an abbreviation from the follow list, expand it:
 
