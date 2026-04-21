@@ -17,9 +17,11 @@ Navigate to `https://anc.apm.activecommunities.com/portlandparks/signin` (same p
 
 From the environment, read AC_USERNAME and AC_PASSWORD, and use those to fill out the signin form.
 
-**Important:** This site uses reCAPTCHA. Press Enter to submit the form — this sometimes bypasses the CAPTCHA better than clicking the button. If that doesn't work, try clicking the "Sign In" button instead.
+**Finding form fields:** Run `agent-browser snapshot` to get the accessibility tree with refs, then use the `@ref` syntax to fill fields (e.g. `agent-browser fill @e10 "user@example.com"`). Do NOT guess CSS selectors — this site's inputs may not match standard selectors.
 
-Wait 8 seconds, then check the URL. If it still contains `/signin`, the login failed. Report the failure and stop — do not retry or take screenshots.
+This site uses reCAPTCHA. Press Enter to submit the form — this sometimes bypasses the CAPTCHA better than clicking the button. If that doesn't work, try clicking the "Sign In" button (using its `@ref` from the snapshot) instead.
+
+Wait 8 seconds, then check the URL. If it still contains `/signin`, the login failed.
 
 If the URL changed (e.g. `/myaccount`), proceed.
 
