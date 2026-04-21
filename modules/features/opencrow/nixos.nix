@@ -98,10 +98,20 @@ let
     extraPackages =
       with pkgs;
       [
+        curl
         fd
+        ffmpeg-full
+        git
+        imagemagick
+        jq
         khal
-        w3m
+        pandoc
+        poppler
+        ripgrep
         unstable.agent-browser
+        unstable.yt-dlp
+        unzip
+        w3m
       ]
       ++ map mkPyScript [
         "getmail.py"
