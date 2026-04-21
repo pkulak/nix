@@ -7,33 +7,19 @@
         (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
 
         amber
-        awscli2
-        bc
-        bind.dnsutils
         cmatrix
         cowsay
         distrobox
         fastfetchMinimal
-        ffmpeg-full
         ffmpegthumbnailer
         file
-        gcc
-        glib
-        gocryptfs
         imv
-        jq
         libinput
-        lsd
         masterpdfeditor
         unstable.claude-code
         unstable.opencode
-        unstable.yt-dlp
-        serpl
         sublime-merge
-        tldr
-        unzip
         woeusb
-        xh
         zathura
         zenity
         zoom-us

@@ -75,10 +75,25 @@
       };
 
       environment.systemPackages = with pkgs; [
+        awscli2
+        bc
+        bind.dnsutils
         btop
         curl
+        ffmpeg-full
+        gcc
+        glib
+        jq
+        gocryptfs
+        lsd
+        serpl
+        tldr
         neovim
         ripgrep
+        serpl
+        unzip
+        unstable.yt-dlp
+        xh
       ];
 
       programs = {
@@ -100,7 +115,6 @@
         tailscale.enable = true;
         resolved.enable = true;
       };
-
 
       networking.networkmanager.dns = "systemd-resolved";
       security.polkit.enable = true;

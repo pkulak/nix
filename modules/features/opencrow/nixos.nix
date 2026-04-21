@@ -98,11 +98,7 @@ let
     extraPackages =
       with pkgs;
       [
-        curl
-        jq
-        ripgrep
         fd
-        git
         khal
         w3m
         unstable.agent-browser
