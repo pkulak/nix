@@ -13,7 +13,7 @@ Execute the following to get the current current temperature in degrees Fahrenhe
 
 Execute the following to get other weather details for today: `weather`.
 
-Summarize this information into a single sentence, first stating the current temperature, then other important details about the rest of the day. Use of emojis is encouraged to convey concepts such as sunny, cloudy, windy, rainy, etc. Disregard any days not today.
+Summarize this information into a single sentence, first stating the current temperature, then other important details about the rest of the day. Use of emojis is encouraged to convey concepts such as sunny, cloudy, windy, rainy, etc. Bold text should be used to help the important data (temperatures, precipitation) stand out. Disregard any days not today.
 
 Data to prioritize and always mention:
 
@@ -24,7 +24,7 @@ If there are any clouds in the forecast, mention if it will rain (or snow), or n
 
 Important: always use the temperature from the first command ("ha") as the current temperature; never get that from the "weather" response.
 
-Note: the hourly forecast will very likely start in the past. Please note the current time and disregard hourly forecasts that have already passed.
+Note: Stay concise with the weather report. It should be easy to scan quickly without any fluff to slow down the reader.
 
 ## Events
 
@@ -66,3 +66,5 @@ Input:  to  - Chase: MAC MEET
 Output: Chase has a MAC Meet.
 
 If there are no events, say so, but in a slightly whimsical way. For example: "Nothing of import is scheduled on the calendar."
+
+Do not include a final, closing sentence.
