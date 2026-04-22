@@ -71,6 +71,7 @@ let
       OPENCROW_PI_PROVIDER = "ollama";
       OPENCROW_PI_MODEL = "kimi-k2.5:cloud";
       TZ = "America/Los_Angeles";
+      OPENCROW_PI_EXTRA_SKILLS_DIR = "/var/lib/opencrow/skills";
     };
 
     piModels = {
@@ -181,6 +182,7 @@ in
         OPENCROW_MATRIX_USER_ID = "@barnaby:kulak.us";
         OPENCROW_MATRIX_TRIGGER = "barnaby";
         OPENCROW_SOUL_FILE = "${./souls/barnaby.txt}";
+        OPENCROW_PI_EXTRA_SKILLS_DIR = "/var/lib/opencrow-group/skills";
       };
 
       extraBindMounts = mkSharedBindMounts "/var/lib/opencrow-group";
