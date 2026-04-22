@@ -32,7 +32,7 @@
     type = "caldav"
     url = "https://caldav.fastmail.com/"
     username = "phil@kulak.us"
-    password.fetch = ["command", "sh", "-c", "grep OPENCROW_ICAL_PASSWORD ${config.age.secrets.opencrow-env.path} | cut -d= -f2-"]
+    password.fetch = ["command", "${pkgs.bash}/bin/sh", "-c", "grep OPENCROW_ICAL_PASSWORD ${config.age.secrets.opencrow-env.path} | cut -d= -f2-"]
   '';
 
   xdg.configFile."khal/config".text = ''
