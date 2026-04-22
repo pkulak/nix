@@ -190,7 +190,6 @@ in
 
       environment = sharedInstanceConfig.environment // {
         OPENCROW_MATRIX_USER_ID = "@barnaby:kulak.us";
-        OPENCROW_MATRIX_TRIGGER = "barnaby";
         OPENCROW_MATRIX_ROOM_ID = "!XNagljoCngXYEYCYCn:kulak.us";
         OPENCROW_SOUL_FILE = "${./souls/barnaby.txt}";
       };
