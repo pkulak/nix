@@ -1,6 +1,6 @@
 ---
 name: Check Email
-description: Check for new email via the `getmail` command and summarize any messages found. Use whenever the user asks to check mail, check email, see new messages, or check the inbox — even if they don't mention `getmail` by name.
+description: Check for new email via the `getmail` command and summarize any messages found. Use whenever the user asks to check mail, check email, see new messages, or check the inbox.
 ---
 
 # Check Email
@@ -9,7 +9,7 @@ Run `getmail` and summarize the result.
 
 ## Output format
 
-- **If no mail:** output exactly `HEARTBEAT_OK` and nothing else.
+- **If no mail:** output exactly `NO_REPLY`.
 - **If one or more emails:** output a one-sentence summary of each email, one per line, with no blank lines between them. No preamble, no closing remarks, no other text. Keep each summary tight — only the most important details.
 
 ## Special case: Team Privacy

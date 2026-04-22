@@ -49,7 +49,15 @@ let
   };
 
   mkDefaultServices =
-    { pipePath, envFiles }: import ./services/personal.nix { inherit watchmail pipePath envFiles; };
+    { pipePath, envFiles }:
+    import ./services/personal.nix {
+      inherit
+        pkgs
+        watchmail
+        pipePath
+        envFiles
+        ;
+    };
 
   mkGroupServices =
     { pipePath, envFiles }: import ./services/group.nix { inherit pkgs pipePath envFiles; };
@@ -85,6 +93,7 @@ let
       agent-browser = ../pi/skills/agent-browser;
       check-tennis = ./skills/check-tennis;
       download = ./skills/download;
+      low-priority-email = ./skills/low-priority-email;
       morning-summary = ./skills/morning-summary;
       sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;

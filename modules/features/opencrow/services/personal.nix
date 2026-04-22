@@ -1,10 +1,16 @@
 # Extra systemd services for the default (personal) opencrow container.
 {
+  pkgs,
   watchmail,
   pipePath,
   envFiles,
 }:
 
+let
+  triggerPipe = pkgs.writeShellScript "trigger-pipe" ''
+    echo "$1" > ${pipePath}
+  '';
+in
 {
   services = {
     watchmail = {
@@ -25,7 +31,27 @@
         OPENCROW_TRIGGER_PIPE = pipePath;
       };
     };
+
+    check-lp-mail = {
+      description = "Trigger low-priority mail check";
+      after = [ "opencrow.service" ];
+      requires = [ "opencrow.service" ];
+
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = ''${triggerPipe} "Please run the low-priority-email skill."'';
+      };
+    };
   };
 
-  timers = { };
+  timers = {
+    check-lp-mail = {
+      description = "Check low priority mail at 10am";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "*-*-* 10:00:00";
+        Persistent = true;
+      };
+    };
+  };
 }
