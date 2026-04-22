@@ -115,6 +115,9 @@ let
         imagemagick
         jq
         khal
+        neovim
+        oath-toolkit
+        openssh
         pandoc
         poppler
         ripgrep
