@@ -36,10 +36,28 @@
           baseUrl = "http://debian.home:11434/v1";
           api = "openai-completions";
           apiKey = "ollama";
+
+          compat = {
+            supportsDeveloperRole = false;
+            supportsReasoningEffort = false;
+          };
+
           models = [
             { id = "glm-5.1:cloud"; }
-            { id = "kimi-k2.6:cloud"; }
-            { id = "kimi-k2.5:cloud"; }
+            {
+              id = "kimi-k2.6:cloud";
+              input = [
+                "text"
+                "image"
+              ];
+            }
+            {
+              id = "kimi-k2.5:cloud";
+              input = [
+                "text"
+                "image"
+              ];
+            }
           ];
         };
       };
