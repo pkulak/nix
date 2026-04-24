@@ -83,16 +83,17 @@
         ffmpeg-full
         gcc
         glib
-        jq
         gocryptfs
+        jq
+        loudgain
         lsd
-        serpl
-        tldr
         neovim
         ripgrep
         serpl
-        unzip
+        serpl
+        tldr
         unstable.yt-dlp
+        unzip
         xh
       ];
 
