@@ -86,7 +86,7 @@ let
 
         models = [
           {
-            id = "kimi-k2.5:cloud";
+            id = "kimi-k2.6:cloud";
             input = [
               "text"
               "image"
@@ -167,6 +167,7 @@ in
     environment = sharedInstanceConfig.environment // {
       OPENCROW_MATRIX_USER_ID = "@wiggles:kulak.us";
       OPENCROW_SOUL_FILE = "${./souls/wiggles.txt}";
+      OPENCROW_HEARTBEAT_INTERVAL = "12h";
     };
 
     # skills that I only want in the default container

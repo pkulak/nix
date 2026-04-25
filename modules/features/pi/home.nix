@@ -27,7 +27,7 @@
 
     ".agent-browser/config.json".text = builtins.toJSON {
       "$schema" = "https://agent-browser.dev/schema.json";
-      cdp = "ws://portainer.home:4445/?stealth=1&--disable-web-security=true";
+      cdp = "ws://debian.home:3000/";
     };
 
     ".pi/agent/models.json".text = builtins.toJSON {
