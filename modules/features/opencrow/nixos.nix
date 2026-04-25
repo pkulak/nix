@@ -121,7 +121,7 @@ let
       [
         curl
         fd
-        ffmpeg-full
+        ffmpeg-over-ip
         git
         imagemagick
         jq

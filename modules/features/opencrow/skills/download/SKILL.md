@@ -101,10 +101,24 @@ Use `ffmpeg` with **full re-encoding** (never `-c copy`) to apply transforms —
 
 Combine all transforms into a single `ffmpeg` pass to avoid multi-generation quality loss.
 
-Example trim:
+The system has GPU-accelerated ffmpeg via ffmpeg-over-ip. Always use hardware acceleration:
 
 ```bash
-ffmpeg -i "/tmp/ytdl/<source-file>" -ss <START> -to <END> -c:v libx264 -c:a aac -movflags +faststart -pix_fmt yuv420p "/tmp/ytdl/<slug>.mp4"
+ffmpeg -hwaccel vaapi -hwaccel_output_format vaapi -vaapi_device /dev/dri/renderD129 \
+  -i "/tmp/ytdl/<source-file>" -ss <START> -to <END> \
+  -c:v hevc_vaapi -c:a aac -movflags +faststart "/tmp/ytdl/<slug>.mp4"
+```
+
+Key flags:
+- `-hwaccel vaapi -hwaccel_output_format vaapi -vaapi_device /dev/dri/renderD129` — GPU decode and encode
+- `-c:v hevc_vaapi` — H.265/HEVC via VAAPI
+- `-c:a aac` — always transcode audio to AAC for compatibility
+
+If VAAPI encoding fails for a particular input, fall back to software:
+
+```bash
+ffmpeg -i "/tmp/ytdl/<source-file>" -ss <START> -to <END> \
+  -c:v libx265 -c:a aac -movflags +faststart -pix_fmt yuv420p "/tmp/ytdl/<slug>.mp4"
 ```
 
 ### Step T3: Rename to a clean slug
