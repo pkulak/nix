@@ -72,18 +72,21 @@ Execute the following JavaScript on the page:
       };
     })();
 
-If it returns an object, say this, using the fields from the object:
+### Step 5: Clean up and respond
+
+Close this browser session: `agent-browser close`
+
+If the previous JS returned an object, say this, using its fields:
 
     Heads up! It's almost time to register for <title> on <date>:
 
     https://anc.apm.activecommunities.com/portlandparks/wishlist
 
-Otherwise (it returns false), reply with only HEARTBEAT_OK.
+Otherwise (it returns false), there are no open events.
 
 ## Notes
 
 - Do not comment on the steps you take as you take them. Respond once, at the end.
-- Always use the browser tool for all steps — this is a JavaScript-rendered UI.
-- Always use `--profile ~/.activecommunities` on `agent-browser open` to persist the login session across runs.
-- Never retry a failed login or take screenshots to debug — just report the failure.
+- Always use the browser-agent tool for all steps — this is a JavaScript-rendered UI.
+- Always use `--profile ~/.activecommunities` on the first `agent-browser open` to persist the login session across runs.
 - If sign-in is needed, try pressing Enter first to submit (reCAPTCHA workaround); if that fails, try clicking the button.

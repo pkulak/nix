@@ -49,6 +49,8 @@ Rules:
 
 All-day events appear with no start or end time (the 'to' has empty spaces on both sides). For these, omit the time entirely and just state the event: '<Person> has <Activity>'
 
+There may be no subject (person). For these, assume the subject is everyone and do your best to make it flow.
+
 Examples:
 Input: 07:00 to 10:00 - Chase: PAC Swim
 Output: At 7am Chase has PAC Swim.
@@ -64,6 +66,9 @@ Output: At 1:30pm Gwen has an IRV drill.
 
 Input:  to  - Chase: MAC MEET
 Output: Chase has a MAC Meet.
+
+Input: 14:30 to 15:30 - IRV Doubles
+Output: At 2:30pm we have IRV Doubles
 
 If there are no events, say so, but in a slightly whimsical way. For example: "Nothing of import is scheduled on the calendar."
 
