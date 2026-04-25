@@ -36,6 +36,8 @@ yt-dlp --merge-output-format mp4 --recode-video mp4 -S vcodec:h265,vcodec:h264,l
 
 The downloaded filename will be long and ugly (e.g. "Funny Cat Compilation 2024 [abc123] FULL VIDEO HD.mp4"). Rename it to a short, readable, lower-kebab-case slug based on the **content** — not the format, channel, or metadata noise.
 
+The filename may contain no usefull information ("video by mark", etc). In that case, use the browser skill to open the link in a browser and find a suitable name there. If no suitable name can be found anywhere, use a random, 6-digit number.
+
 Rules for the slug:
 - 2–5 words max, lower-kebab-case
 - Describe what the video **is about** or what happens in it
@@ -101,7 +103,7 @@ Use `ffmpeg` with **full re-encoding** (never `-c copy`) to apply transforms —
 
 Combine all transforms into a single `ffmpeg` pass to avoid multi-generation quality loss.
 
-The system has GPU-accelerated ffmpeg via ffmpeg-over-ip. Always use hardware acceleration:
+The system has GPU-accelerated ffmpeg. Always use hardware acceleration:
 
 ```bash
 ffmpeg -hwaccel vaapi -hwaccel_output_format vaapi -vaapi_device /dev/dri/renderD129 \
@@ -118,7 +120,7 @@ If VAAPI encoding fails for a particular input, fall back to software:
 
 ```bash
 ffmpeg -i "/tmp/ytdl/<source-file>" -ss <START> -to <END> \
-  -c:v libx265 -c:a aac -movflags +faststart -pix_fmt yuv420p "/tmp/ytdl/<slug>.mp4"
+  -c:v libx264 -c:a aac -movflags +faststart -pix_fmt yuv420p "/tmp/ytdl/<slug>.mp4"
 ```
 
 ### Step T3: Rename to a clean slug
