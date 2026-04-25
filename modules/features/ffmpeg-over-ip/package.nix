@@ -24,6 +24,14 @@ buildGoModule {
   postInstall = ''
     mv $out/bin/client $out/bin/ffmpeg-over-ip-client
     ln -s $out/bin/ffmpeg-over-ip-client $out/bin/ffmpeg-over-ip-ffprobe
+
+    cat > $out/bin/ffmpeg-over-ip.client.jsonc << 'EOF'
+    {
+      "address": "debian.home:5050",
+      "authSecret": "local-network-only",
+      "log": "stderr"
+    }
+    EOF
   '';
 
   meta = with lib; {
