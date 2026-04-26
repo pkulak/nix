@@ -59,6 +59,7 @@
       tsd = "sudo tailscale down";
       tss = "sudo tailscale status";
       jdr = ''jj diff -f "$(current-bookmark)@origin"'';
+      chat = "cd ~/tmp; jai -j pi pi";
     };
 
     functions = {
