@@ -5,53 +5,25 @@
   envFiles,
 }:
 
-let
-  triggerPipe = pkgs.writeShellScript "trigger-pipe" ''
-    echo "$1" > ${pipePath}
-  '';
-in
-{
-  services = {
-    morning-summary = {
-      description = "Trigger morning summary";
-      after = [ "opencrow.service" ];
-      requires = [ "opencrow.service" ];
+import ./checks.nix {
+  inherit pkgs pipePath;
 
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = ''${triggerPipe} "Please run the morning-summary skill."'';
-      };
-    };
-
-    check-tennis = {
-      description = "Trigger tennis check";
-      after = [ "opencrow.service" ];
-      requires = [ "opencrow.service" ];
-
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = ''${triggerPipe} "Please run the check-tennis skill. If there are no open events, respond with NO_REPLY."'';
-      };
-    };
-  };
-
-  timers = {
-    morning-summary = {
-      description = "Morning summary at 6am";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "*-*-* 06:00:00";
-        Persistent = true;
-      };
-    };
-
-    check-tennis = {
-      description = "Check tennis at 9:20am";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "*-*-* 09:20:00";
-        Persistent = true;
-      };
-    };
-  };
+  checks = [
+    {
+      name = "morning-summary";
+      calendar = "*-*-* 06:00:00";
+      prompt = "Run the morning-summary skill.";
+    }
+    {
+      name = "check-tennis";
+      calendar = "*-*-* 09:20:00";
+      prompt = "Run the check-tennis skill. If there are no open events, respond with NO_REPLY.";
+    }
+    {
+      name = "check-navi";
+      calendar = "Sat,Sun *-*-* 12:00:00";
+      prompt = "Remind everyone that Navi needs to be fed, if not already.";
+    }
+  ];
 }
+
