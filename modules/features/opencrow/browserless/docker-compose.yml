@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  browserless:
+    build: .
+    ports:
+      - "0.0.0.0:3000:3000"
+    environment:
+      # Stealth fingerprint args — activate the CloakBrowser patches
+      # Change --fingerprint=<seed> per session for fingerprint diversity
+      - DEFAULT_LAUNCH_ARGS=["--no-sandbox","--disable-breakpad","--disable-blink-features=AutomationControlled","--fingerprint=6441796505875","--fingerprint-platform=windows","--fingerprint-hardware-concurrency=8","--fingerprint-gpu-vendor=NVIDIA Corporation","--fingerprint-gpu-renderer=NVIDIA GeForce RTX 3070","--fingerprint-screen-width=1920","--fingerprint-screen-height=1080","--window-size=1920,1080"]
+      # Suppress --enable-automation (Playwright injects it; it sets navigator.webdriver=true)
+      - DEFAULT_IGNORE_DEFAULT_ARGS=["--enable-automation"]
+      # Show Chrome stderr in logs for debugging
+      - DEFAULT_DUMPIO=true
+      # Keep connections alive much longer (default is 60s!) 
+      - CONNECTION_TIMEOUT=600000
