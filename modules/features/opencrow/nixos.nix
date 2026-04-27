@@ -161,6 +161,8 @@ in
     mode = "400";
   };
 
+  environment.systemPackages = [ (mkBashScript "session.sh") ];
+
   services.opencrow = sharedInstanceConfig // {
     enable = true;
 
