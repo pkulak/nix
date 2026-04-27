@@ -39,17 +39,35 @@
 
           compat = {
             supportsDeveloperRole = false;
-            supportsReasoningEffort = false;
           };
 
           models = [
-            { id = "glm-5.1:cloud"; }
+            {
+              id = "glm-5.1:cloud";
+              reasoning = true;
+              compat = {
+                supportsReasoningEffort = true;
+                thinkingFormat = "zai";
+              };
+            }
+            {
+              id = "deepseek-v4-pro:cloud";
+              reasoning = true;
+              compat = {
+                supportsReasoningEffort = true;
+              };
+            }
             {
               id = "kimi-k2.6:cloud";
               input = [
                 "text"
                 "image"
               ];
+              reasoning = true;
+              compat = {
+                supportsReasoningEffort = true;
+                thinkingFormat = "qwen";
+              };
             }
             {
               id = "kimi-k2.5:cloud";
@@ -57,6 +75,11 @@
                 "text"
                 "image"
               ];
+              reasoning = true;
+              compat = {
+                supportsReasoningEffort = true;
+                thinkingFormat = "qwen";
+              };
             }
           ];
         };
@@ -66,6 +89,7 @@
     ".pi/agent/settings.json".text = builtins.toJSON {
       defaultProvider = "ollama";
       defaultModel = "glm-5.1:cloud";
+      defaultThinkingLevel = "medium";
       theme = "catppuccin-mocha";
     };
   };
