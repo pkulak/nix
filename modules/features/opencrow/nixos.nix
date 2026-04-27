@@ -63,7 +63,7 @@ let
     { pipePath, envFiles }: import ./services/group.nix { inherit pkgs pipePath envFiles; };
 
   sharedInstanceConfig = {
-    piPackage = pkgs.unstable.pi-coding-agent;
+    piPackage = pkgs.llm-agents.pi;
 
     environment = {
       OPENCROW_PI_IDLE_TIMEOUT = "6h";
@@ -132,7 +132,7 @@ let
         pandoc
         poppler
         ripgrep
-        unstable.agent-browser
+        llm-agents.agent-browser
         unstable.yt-dlp
         unzip
         w3m

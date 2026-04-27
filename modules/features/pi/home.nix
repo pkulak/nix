@@ -1,21 +1,15 @@
 { config, pkgs, ... }:
 {
   home.packages = [
-    pkgs.unstable.agent-browser
+    pkgs.llm-agents.agent-browser
 
     (pkgs.symlinkJoin {
-      name = "pi-coding-agent";
+      name = "pi";
       nativeBuildInputs = [ pkgs.makeWrapper ];
-      paths = [ pkgs.unstable.pi-coding-agent ];
+      paths = [ pkgs.llm-agents.pi ];
       postBuild = ''
         wrapProgram $out/bin/pi \
-          --set NPM_CONFIG_PREFIX ${config.home.homeDirectory}/.pi/npm/ \
-          --prefix PATH : ${
-            pkgs.lib.makeBinPath [
-              pkgs.unstable.nodejs_latest
-              pkgs.unstable.fd
-            ]
-          }
+          --set NPM_CONFIG_PREFIX ${config.home.homeDirectory}/.pi/npm/
       '';
     })
   ];

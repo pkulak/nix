@@ -63,6 +63,7 @@
         config.allowUnfree = true;
         overlays = [
           inputs.nur.overlays.default
+          inputs.llm-agents.overlays.default
           (final: prev: {
             inherit (inputs.matui.packages.${prev.stdenv.hostPlatform.system}) matui;
             neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
