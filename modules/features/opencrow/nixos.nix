@@ -155,8 +155,7 @@ let
         less
         jq
         yq
-        miller
-        xsv
+        xan
         gron
         xmlstarlet
         libxml2
