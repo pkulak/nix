@@ -15,6 +15,7 @@
         file
         imv
         libinput
+        llm-agents.codex
         masterpdfeditor
         unstable.claude-code
         unstable.opencode
