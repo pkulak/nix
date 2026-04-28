@@ -73,19 +73,20 @@ let
       TZ = "America/Los_Angeles";
     };
 
+    piSettings = {
+      defaultThinkingLevel = "low";
+    };
+
     piModels = {
       providers.llm = {
         baseUrl = "https://llm.kulak.us/v1";
-        api = "openai-completions";
+        api = "openai-responses";
         apiKey = "sk-local-use-only";
-
-        compat = {
-          supportsDeveloperRole = false;
-        };
 
         models = [
           {
             id = "gpt-main";
+            reasoning = true;
             input = [
               "text"
               "image"
