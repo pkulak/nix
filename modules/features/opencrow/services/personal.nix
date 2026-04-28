@@ -18,7 +18,7 @@ let
       }
       {
         name = "check-navi";
-        calendar = "1-5 *-*-* 12:00:00";
+        calendar = "Mon..Fri *-*-* 12:00:00";
         prompt = "Remind me that Navi needs to be fed, if not already.";
       }
     ];
