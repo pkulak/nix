@@ -68,12 +68,32 @@ let
     environment = {
       OPENCROW_PI_IDLE_TIMEOUT = "6h";
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
-      OPENCROW_PI_PROVIDER = "ollama";
-      OPENCROW_PI_MODEL = "kimi-k2.5:cloud";
+      OPENCROW_PI_PROVIDER = "llm";
+      OPENCROW_PI_MODEL = "gpt-main";
       TZ = "America/Los_Angeles";
     };
 
     piModels = {
+      providers.llm = {
+        baseUrl = "https://llm.kulak.us/v1";
+        api = "openai-completions";
+        apiKey = "sk-local-use-only";
+
+        compat = {
+          supportsDeveloperRole = false;
+        };
+
+        models = [
+          {
+            id = "gpt-main";
+            input = [
+              "text"
+              "image"
+            ];
+          }
+        ];
+      };
+
       providers.ollama = {
         baseUrl = "http://debian.home:11434/v1";
         api = "openai-completions";
