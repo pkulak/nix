@@ -7,8 +7,6 @@ description: Look up sports scores, upcoming games, and schedules using the ESPN
 
 Look up game schedules and live scores via the ESPN public API.
 
-Before anything else, run `date` to establish the current date and time. Use this to convert UTC timestamps to relative terms ("tonight", "tomorrow", "yesterday") and for the date arithmetic in Step 6.
-
 ## Step 1: Resolve the sport/league
 
 The ESPN API uses sport/league paths. If the user mentions a specific league by name or abbreviation, map it:
