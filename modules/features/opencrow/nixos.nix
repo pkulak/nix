@@ -141,22 +141,95 @@ let
       with pkgs;
       [
         curl
+        wget
         fd
-        ffmpeg-over-ip
+        ripgrep
         git
-        imagemagick
+        git-lfs
+        gh
+        delta
+
+        file
+        tree
+        which
+        less
         jq
-        khal
+        yq
+        miller
+        xsv
+        gron
+        xmlstarlet
+        libxml2
+        htmlq
+        sd
+        fzf
+
+        zip
+        unzip
+        p7zip
+        zstd
+        xz
+        gzip
+        bzip2
+        gnutar
+
+        imagemagick
+        ffmpeg-over-ip
+        poppler
+        pandoc
+        qpdf
+        ghostscript
+        exiftool
+        mediainfo
+        tesseract
+        ocrmypdf
+
+        sqlite
         neovim
+        w3m
+
+        shellcheck
+        shfmt
+        just
+        gnumake
+        cmake
+        pkg-config
+        gcc
+
+        nodejs
+        pnpm
+
+        nix-output-monitor
+        nixfmt-rfc-style
+        nil
+        statix
+        deadnix
+
+        dnsutils
+        iputils
+        iproute2
+        netcat
+        socat
+        openssl
+
+        khal
         oath-toolkit
         openssh
-        pandoc
-        poppler
-        ripgrep
         llm-agents.agent-browser
         unstable.yt-dlp
-        unzip
-        w3m
+
+        (python3.withPackages (
+          ps: with ps; [
+            requests
+            beautifulsoup4
+            lxml
+            pyyaml
+            pillow
+            python-dateutil
+            pandas
+            pypdf
+          ]
+        ))
       ]
       ++ map mkPyScript [
         "getmail.py"
