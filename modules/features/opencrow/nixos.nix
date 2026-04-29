@@ -119,6 +119,7 @@ let
 
     extensions = {
       reminders = true;
+      openai-priority = ./extensions/openai-priority.ts;
     };
 
     skills = {
