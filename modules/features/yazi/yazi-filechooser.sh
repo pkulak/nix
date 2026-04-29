@@ -16,7 +16,7 @@ path="$4"
 out="$5"
 
 cmd="yazi"
-termcmd="ghostty --title=termfilechooser -e"
+termcmd="footclient --app-id=termfilechooser -e"
 
 if [ "$save" = "1" ]; then
     # save a file

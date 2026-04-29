@@ -11,7 +11,7 @@
     extraConfig = {
       modi = "drun,calc,emoji";
       show-icons = true;
-      terminal = "ghostty +new-window";
+      terminal = "footclient";
       drun-display-format = "{icon} {name}";
       disable-history = false;
       hide-scrollbar = true;

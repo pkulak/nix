@@ -8,7 +8,7 @@
       ''
         #!/usr/bin/env bash
 
-        export TERMINAL="ghostty"
+        export TERMINAL="footclient"
         export EDITOR="nvim"
         export VISUAL="nvim"
 

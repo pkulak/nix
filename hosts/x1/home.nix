@@ -33,12 +33,12 @@
       }
 
       window-rule {
-          match app-id="com.mitchellh.ghostty"
+          match app-id="footclient"
           default-column-width { proportion 0.4; }
       }
 
       window-rule {
-          match app-id="com.mitchellh.ghostty" title="termfilechooser"
+          match app-id="termfilechooser"
           default-column-width { proportion 0.6; }
       }
     '';

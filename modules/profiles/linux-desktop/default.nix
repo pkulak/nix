@@ -36,7 +36,7 @@
         env
         firefox
         fish
-        ghostty
+        foot
         git
         intellij
         jai

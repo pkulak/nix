@@ -11,7 +11,7 @@
     name = "Matui";
     genericName = "Kulak Chat";
     comment = "Launch the Matui Matix client.";
-    exec = "ghostty --title=Matui -e matui";
+    exec = "footclient --app-id=matui -e matui";
     icon = "im-matrix";
     terminal = false;
     categories = [ "Network" "InstantMessaging" "Chat" ];

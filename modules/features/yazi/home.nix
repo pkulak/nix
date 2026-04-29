@@ -4,7 +4,7 @@
 
     runtimeInputs = with pkgs; [
       yazi
-      ghostty
+      foot
     ];
 
     text = builtins.readFile ./yazi-filechooser.sh;
@@ -16,7 +16,7 @@ in {
     name = "Yazi";
     icon = "yazi";
     comment = "Blazing fast terminal file manager written in Rust, based on async I/O";
-    exec = "ghostty -e yazi %u";
+    exec = "footclient --app-id=yazi -e yazi %u";
     terminal = false;  # We're handling the terminal ourselves
     type = "Application";
     mimeType = [ "inode/directory" ];
