@@ -52,10 +52,18 @@
 
       services.getty.autologinUser = "phil";
 
-      nix.settings.trusted-users = [
-        "root"
-        "phil"
-      ];
+      nix.settings = {
+        trusted-users = [
+          "root"
+          "phil"
+        ];
+
+        # llm-agents
+        extra-substituters = [ "https://cache.numtide.com" ];
+        extra-trusted-public-keys = [
+          "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+        ];
+      };
 
       age.identityPaths = [ "/home/phil/.ssh/id_ed25519" ];
 
@@ -95,7 +103,7 @@
         serpl
         serpl
         tldr
-        unstable.yt-dlp
+        yt-dlp
         unzip
         xh
       ];

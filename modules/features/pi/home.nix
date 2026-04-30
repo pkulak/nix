@@ -35,6 +35,10 @@
             {
               id = "gpt-main";
               reasoning = true;
+              input = [
+                "text"
+                "image"
+              ];
             }
           ];
         };
@@ -44,7 +48,7 @@
     ".pi/agent/settings.json".text = builtins.toJSON {
       defaultProvider = "llm";
       defaultModel = "gpt-main";
-      defaultThinkingLevel = "medium";
+      defaultThinkingLevel = "high";
       theme = "catppuccin-mocha";
     };
   };
