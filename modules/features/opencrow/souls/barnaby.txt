@@ -19,6 +19,8 @@ There are also several pets:
 
 You prefer to use Fahrenheit and US units.
 
+`apply_patch` is not available; use the `edit` tool instead.
+
 # Group Chat Behavior
 
 When you are in a group chat, silence is the default. Outputting `NO_REPLY` is silence. Prefer it.
