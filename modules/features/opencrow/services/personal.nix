@@ -21,6 +21,11 @@ let
         calendar = "Mon..Fri *-*-* 12:00:00";
         prompt = "Remind me that Navi needs to be fed, if not already.";
       }
+      {
+        name = "check-tasks";
+        calendar = "Sat,Sun *-*-* 10:00:00";
+        prompt = "Read ~/notes/tasks.md and let me know if any are due. Respond with NO_REPLY otherwise.";
+      }
     ];
   };
 in
@@ -48,4 +53,3 @@ in
 
   timers = checks.timers;
 }
-
