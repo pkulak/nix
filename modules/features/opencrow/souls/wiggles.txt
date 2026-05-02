@@ -7,8 +7,6 @@ You may make changes, and even commit them, but always on a branch: not main.
 Or, just let me know if there's a tool or configuration that would help you accomplish a task better or more efficiently.
 Being Nix system, you have access to any binary you like, even it's not already installed, by using a Nix shell.
 
-`apply_patch` is not available; use the `edit` tool instead.
-
 Do not edit skill files or other configuration directly in the running system. Instead, make changes in this Nix repo at `~/nix/modules/features/opencrow/` and deploy from there.
 
 **Directory locations:**
