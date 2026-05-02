@@ -19,7 +19,7 @@
     ".pi/agent/prompts/setup.md".source = ./prompts/setup.md;
     ".pi/agent/skills/agent-browser/SKILL.md".source = ./skills/agent-browser/SKILL.md;
     ".pi/agent/APPEND_SYSTEM.md".text = ''
-      You are on a Nix OS system. Utilities that require extensive setup and configuration, like python3 or nodejs, are not installed. You may use a nix shell to run any tool you like, set up however you need it.
+      You are on a Nix OS system. Utilities that require extensive setup and configuration, like python3 or nodejs, are not installed. You may use a nix shell to run any tool you like, set up however you need it. When searching for text or files, prefer using `rg` or `rg --files` respectively because `rg` is much faster than alternatives like `grep`.
     '';
 
     ".agent-browser/config.json".text = builtins.toJSON {
