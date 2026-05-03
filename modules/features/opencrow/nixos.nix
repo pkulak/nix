@@ -215,7 +215,7 @@ let
         oath-toolkit
         openssh
         llm-agents.agent-browser
-        unstable.yt-dlp
+        yt-dlp
 
         (python3.withPackages (
           ps: with ps; [
