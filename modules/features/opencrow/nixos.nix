@@ -125,8 +125,8 @@ let
       agent-browser = ../pi/skills/agent-browser;
       check-tennis = ./skills/check-tennis;
       download = ./skills/download;
-      low-priority-email = ./skills/low-priority-email;
       morning-summary = ./skills/morning-summary;
+      noise-machine = ./skills/noise-machine;
       sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;
       watch-tennis = ./skills/watch-tennis;
@@ -215,7 +215,7 @@ let
         oath-toolkit
         openssh
         llm-agents.agent-browser
-        yt-dlp
+        unstable.yt-dlp
 
         (python3.withPackages (
           ps: with ps; [
@@ -269,6 +269,7 @@ in
     skills = sharedInstanceConfig.skills // {
       check-email = ./skills/check-email;
       check-notes = ./skills/check-notes;
+      low-priority-email = ./skills/low-priority-email;
     };
 
     # mounts that I only want in the default container
