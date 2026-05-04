@@ -6,7 +6,7 @@
     # -*- conf -*-
     font=FantasqueSansM Nerd Font Mono:size=13.5
 
-    pad=0x0 center
+    pad=2x2 center
 
     selection-target=clipboard
 

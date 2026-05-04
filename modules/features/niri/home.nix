@@ -18,9 +18,11 @@ let
     text = builtins.readFile ./switch-audio.sh;
     checkPhase = "";
   };
-in {
+in
+{
   home.packages = [
-    rofi-power switch-audio
+    rofi-power
+    switch-audio
   ];
 
   xdg.configFile."niri/environment" = {
@@ -48,7 +50,7 @@ in {
 
   gtk = {
     enable = true;
-    
+
     theme = {
       package = pkgs.gnome-themes-extra;
       name = "Adwaita-dark";
@@ -81,6 +83,17 @@ in {
   };
 
   # use systemd to manage some services
+  systemd.user.services.wl-clip-persist = {
+    Unit = {
+      Description = "Wayland clipboard persistence daemon";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
+    Service.ExecStart = "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular";
+    Install.WantedBy = [ "niri.service" ];
+  };
+
   systemd.user.services.wlsunset = {
     Unit = {
       Description = "wlsunet daemon";
@@ -99,8 +112,7 @@ in {
       After = [ "graphical-session.target" ];
       Requisite = [ "graphical-session.target" ];
     };
-    Service.ExecStart =
-      "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    Service.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     Install.WantedBy = [ "niri.service" ];
   };
 
@@ -108,7 +120,10 @@ in {
     Unit = {
       Description = "waybar daemon";
       PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" "network-online.target" ];
+      After = [
+        "graphical-session.target"
+        "network-online.target"
+      ];
       Requisite = [ "graphical-session.target" ];
     };
     Service.ExecStart = "${pkgs.waybar}/bin/waybar";
@@ -122,8 +137,7 @@ in {
       After = [ "graphical-session.target" ];
       Requisite = [ "graphical-session.target" ];
     };
-    Service.ExecStart =
-      "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png} -m fill";
+    Service.ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png} -m fill";
     Install.WantedBy = [ "niri.service" ];
   };
 
