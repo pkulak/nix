@@ -20,9 +20,7 @@
   ];
 
   home.file = {
-    ".pi/agent/APPEND_SYSTEM.md".text = ''
-      You are on a Nix OS system. Utilities that require extensive setup and configuration, like python3 or nodejs, are not installed. You may use a nix shell to run any tool you like, set up however you need it. When searching for text or files, prefer using `rg` or `rg --files` respectively because `rg` is much faster than alternatives like `grep`.
-    '';
+    ".pi/agent/APPEND_SYSTEM.md".source = ./APPEND_SYSTEM.md;
 
     ".agent-browser/config.json".text = builtins.toJSON {
       "$schema" = "https://agent-browser.dev/schema.json";
