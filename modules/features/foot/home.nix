@@ -23,7 +23,7 @@
 
     [colors]
     foreground=cdd6f4
-    background=1e1e2e
+    background=181825
     alpha=0.90
     cursor=11111b f5e0dc
 
