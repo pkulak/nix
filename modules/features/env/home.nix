@@ -1,20 +1,21 @@
 { pkgs, ... }:
 
 {
+  home.sessionVariables = {
+    TERMINAL = "footclient";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    JAVA_HOME = "${pkgs.jdk17}/lib/openjdk";
+    JAVA_11_HOME = "${pkgs.jdk11}/lib/openjdk";
+    JAVA_17_HOME = "${pkgs.jdk17}/lib/openjdk";
+  };
+
   xdg.configFile."environment.sh" = {
     executable = true;
 
     text = # bash
       ''
         #!/usr/bin/env bash
-
-        export TERMINAL="footclient"
-        export EDITOR="nvim"
-        export VISUAL="nvim"
-
-        export JAVA_HOME=${pkgs.jdk17}/lib/openjdk
-        export JAVA_11_HOME=${pkgs.jdk11}/lib/openjdk
-        export JAVA_17_HOME=${pkgs.jdk17}/lib/openjdk
 
         # jam some Vevo stuff in the env to make builds easier
         if test -f /home/phil/.m2/settings.xml; then

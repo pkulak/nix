@@ -1,26 +1,7 @@
-{
-  pkgs,
-  lib,
-  host,
-  ...
-}:
+{ pkgs, host, ... }:
 
-let
-  execFishForInteractiveBash = ''
-    if [[ "$(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm)" != "fish" && -z "''${BASH_EXECUTION_STRING-}" ]]; then
-      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-    fi
-  '';
-in
 {
   home.packages = [ pkgs.zoxide ];
-
-  programs.bash = {
-    enable = true;
-    initExtra = execFishForInteractiveBash;
-    profileExtra = lib.mkAfter execFishForInteractiveBash;
-  };
 
   programs.direnv.enable = true;
 
@@ -28,6 +9,10 @@ in
     enable = true;
 
     plugins = with pkgs.fishPlugins; [
+      {
+        name = "foreign-env";
+        inherit (foreign-env) src;
+      }
       {
         name = "pure";
         inherit (pure) src;
@@ -37,6 +22,10 @@ in
     shellInit = ''
       set pure_show_system_time true
       set fish_greeting
+
+      if test -f ~/.config/environment.sh
+        fenv source ~/.config/environment.sh
+      end
 
       zoxide init fish | source
       direnv hook fish | source
