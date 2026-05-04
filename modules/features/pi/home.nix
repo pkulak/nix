@@ -36,7 +36,7 @@
 
           models = [
             {
-              id = "gpt-main";
+              id = "gpt-5.5";
               reasoning = true;
               input = [
                 "text"
@@ -50,7 +50,7 @@
 
     ".pi/agent/settings.json".text = builtins.toJSON {
       defaultProvider = "llm";
-      defaultModel = "gpt-main";
+      defaultModel = "gpt-5.5";
       defaultThinkingLevel = "high";
       theme = "catppuccin-mocha";
 

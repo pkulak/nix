@@ -69,7 +69,7 @@ let
       OPENCROW_PI_IDLE_TIMEOUT = "6h";
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
       OPENCROW_PI_PROVIDER = "llm";
-      OPENCROW_PI_MODEL = "gpt-main";
+      OPENCROW_PI_MODEL = "gpt-5.5";
       TZ = "America/Los_Angeles";
     };
 
@@ -85,7 +85,7 @@ let
 
         models = [
           {
-            id = "gpt-main";
+            id = "gpt-5.5";
             reasoning = true;
             input = [
               "text"
