@@ -12,7 +12,7 @@
 
 # Testing
 
-- Before running tests, check whether the project has a `docker-compose.yml`.
-- If `docker-compose.yml` exists, run `docker compose up -d` before tests and shut it down afterward with `docker compose down`.
-- For Gradle projects, `./gradlew --no-daemon test` is the default test command.
-- If `./gradlew --no-daemon test` does not run meaningful tests, also try `./gradlew --no-daemon integrationTest` for full coverage.
+- Docker Compose is only required for integration tests.
+- Before running integration tests, check whether the project has a `docker-compose.yml`.
+- If `docker-compose.yml` exists, run `docker compose up -d` before integration tests and shut it down afterward with `docker compose down`.
+- For Gradle projects, `./gradlew --no-daemon test` is the default unit test command, `./gradlew --no-daemon integrationTest` runs the integration tests.
