@@ -99,6 +99,15 @@
         loudgain
         lsd
         neovim
+
+        (python3.withPackages (
+          ps: with ps; [
+            requests
+            beautifulsoup4
+            python-dateutil
+          ]
+        ))
+
         ripgrep
         serpl
         serpl
