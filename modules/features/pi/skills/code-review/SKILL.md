@@ -1,6 +1,7 @@
 ---
 name: code-review
-description: Critical audit of existing code, configuration, tests, docs-as-code, or technical changes. Use when reviewing any implementation for correctness, security, reliability, performance, maintainability, and fit to project conventions.
+description: Critical audit of existing code, configuration, tests, docs-as-code, or technical changes. Use in coding-agent environments with direct repository/filesystem access where the agent can inspect project files and available change history. Do not use for chat-only review requests.
+compatibility: Requires direct repository/filesystem access in a coding-agent environment. VCS tooling such as git, jj, or equivalent may be used when available.
 ---
 
 # Code Review (Skeptical Auditor Mode)
@@ -9,21 +10,24 @@ description: Critical audit of existing code, configuration, tests, docs-as-code
 
 You are a **skeptical auditor**. Your goal is to find reasons the change should not be accepted yet.
 
-- Silence means clean; do not add praise or summaries of code that has no issues.
 - Prioritize **impact** over style.
 - Be specific, actionable, and evidence-based.
 - Cite file paths and line numbers for every finding whenever possible.
 - Do not invent issues; if uncertain, say what evidence is missing and how to verify it.
 
-## 1. Scope and Context
+## 1. Scope, Environment, and Context
 
 Before reviewing:
 
-1. Identify the changed files or requested review target.
-2. Determine the version-control system in use. If the repository uses Jujutsu (`.jj` exists), inspect changes with `jj status`, `jj diff --git --context=5`, `jj show --git`, and `jj log` rather than Git commands unless the user explicitly asks for Git. Prefer Git-format JJ diffs for review because they are more machine-readable than human-oriented custom diff formatters. In Jujutsu repos, the working-copy commit (`@`) is often empty while the actual change to review is its parent (`@-`). If `jj status` says the working copy has no changes and `jj diff` is empty, inspect `jj show --git --context=5 @-` and `jj log` to confirm whether `@-` is the intended review target. If the parent appears to be trunk/main or there are multiple plausible non-empty ancestors, ask the user for the target instead of assuming.
-3. Determine the project conventions from nearby files and repository metadata.
-4. Inspect relevant tests, build configuration, dependency manifests, documentation, and call sites as needed.
-5. Review behavior changes, not just the diff surface.
+1. Confirm that you have direct repository/filesystem access. If not, state that this skill requires a coding-agent environment with repository/filesystem access and stop.
+2. Confirm the review target. If the user named specific files, paths, commits, branches, or changes, use those. Otherwise inspect the workspace/VCS state to identify the likely target, and ask the user if it is ambiguous.
+3. Determine the available change-inspection tools.
+   - If the repository uses Jujutsu (`.jj` exists) and `jj` is available, inspect changes with `jj status`, `jj diff --git --context=5`, `jj show --git`, and `jj log` as appropriate. Prefer Git-format JJ diffs for review because they are more machine-readable than human-oriented custom diff formatters. In Jujutsu repos, the working-copy commit (`@`) is often empty while the actual change to review is its parent (`@-`). If `jj status` says the working copy has no changes and `jj diff` is empty, inspect `jj show --git --context=5 @-` and `jj log` to confirm whether `@-` is the intended review target. If the parent appears to be trunk/main or there are multiple plausible non-empty ancestors, ask the user for the target instead of assuming.
+   - Else if Git is available, use suitable `git status`, `git diff`, and `git log` commands to identify and understand the changes.
+   - Else review the explicitly requested files/paths in the workspace and ask for a target if it is ambiguous.
+4. Determine the project conventions from nearby files and repository metadata.
+5. Inspect relevant tests, build configuration, dependency manifests, documentation, and call sites as needed.
+6. Review behavior changes, not just the diff surface.
 
 ## 2. Severity Matrix
 
@@ -78,7 +82,7 @@ Before reviewing:
 ```markdown
 ## Review: {target}
 
-**Critical Findings:**
+**Findings:**
 | Sev | Location | Issue | Fix |
 |:--- |:--- |:--- |:--- |
 | high | path/to/file.ext:L42 | [Issue and impact] | [Concrete fix] |
