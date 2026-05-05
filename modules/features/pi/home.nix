@@ -38,6 +38,10 @@
             {
               id = "gpt-5.5";
               reasoning = true;
+              thinkingLevelMap = {
+                off = null;
+                xhigh = "xhigh";
+              };
               input = [
                 "text"
                 "image"
@@ -51,7 +55,7 @@
     ".pi/agent/settings.json".text = builtins.toJSON {
       defaultProvider = "llm";
       defaultModel = "gpt-5.5";
-      defaultThinkingLevel = "high";
+      defaultThinkingLevel = "xhigh";
       theme = "catppuccin-mocha";
 
       prompts = [

@@ -87,6 +87,10 @@ let
           {
             id = "gpt-5.5";
             reasoning = true;
+            thinkingLevelMap = {
+              off = null;
+              xhigh = "xhigh";
+            };
             input = [
               "text"
               "image"
