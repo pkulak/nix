@@ -52,19 +52,6 @@
 
       services.getty.autologinUser = "phil";
 
-      nix.settings = {
-        trusted-users = [
-          "root"
-          "phil"
-        ];
-
-        # llm-agents
-        extra-substituters = [ "https://cache.numtide.com" ];
-        extra-trusted-public-keys = [
-          "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
-        ];
-      };
-
       age.identityPaths = [ "/home/phil/.ssh/id_ed25519" ];
 
       nixpkgs = {
@@ -110,7 +97,6 @@
 
         ripgrep
         serpl
-        serpl
         tldr
         uv
         yt-dlp
@@ -152,6 +138,17 @@
         nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
         registry.nixpkgs.flake = inputs.nixpkgs;
         settings = {
+          trusted-users = [
+            "root"
+            "phil"
+          ];
+
+          # llm-agents
+          extra-substituters = [ "https://cache.numtide.com" ];
+          extra-trusted-public-keys = [
+            "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+          ];
+
           warn-dirty = false;
           auto-optimise-store = true;
           experimental-features = [
