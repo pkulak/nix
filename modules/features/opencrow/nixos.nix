@@ -89,6 +89,7 @@ let
             reasoning = true;
             thinkingLevelMap = {
               off = null;
+              minimal = null;
               xhigh = "xhigh";
             };
             input = [

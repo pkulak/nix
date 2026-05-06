@@ -1,26 +1,13 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
     pkgs.llm-agents.agent-browser
-
-    (pkgs.symlinkJoin {
-      name = "pi";
-      nativeBuildInputs = [ pkgs.makeWrapper ];
-      paths = [ pkgs.llm-agents.pi ];
-      postBuild = ''
-        wrapProgram $out/bin/pi \
-          --set NPM_CONFIG_PREFIX ${config.home.homeDirectory}/.pi/npm/ \
-          --prefix PATH : ${
-            pkgs.lib.makeBinPath [
-              pkgs.nodejs_latest
-            ]
-          }
-      '';
-    })
+    pkgs.llm-agents.pi
   ];
 
   home.file = {
     ".pi/agent/APPEND_SYSTEM.md".source = ./APPEND_SYSTEM.md;
+    ".pi/agent/extensions/copy-code-block.ts".source = ./extensions/copy-code-block.ts;
 
     ".agent-browser/config.json".text = builtins.toJSON {
       "$schema" = "https://agent-browser.dev/schema.json";
@@ -40,6 +27,7 @@
               reasoning = true;
               thinkingLevelMap = {
                 off = null;
+                minimal = null;
                 xhigh = "xhigh";
               };
               input = [

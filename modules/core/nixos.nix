@@ -112,6 +112,7 @@
         serpl
         serpl
         tldr
+        uv
         yt-dlp
         unzip
         xh
