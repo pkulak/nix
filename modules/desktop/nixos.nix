@@ -11,13 +11,10 @@
         cowsay
         distrobox
         fastfetchMinimal
-        ffmpegthumbnailer
         file
         imv
         libinput
         masterpdfeditor
-        unstable.claude-code
-        unstable.opencode
         sublime-merge
         woeusb
         zathura

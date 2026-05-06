@@ -70,6 +70,7 @@ let
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
       OPENCROW_PI_PROVIDER = "llm";
       OPENCROW_PI_MODEL = "gpt-5.5";
+      PI_CACHE_RETENTION = "long";
       TZ = "America/Los_Angeles";
     };
 
