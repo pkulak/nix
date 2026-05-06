@@ -26,7 +26,7 @@
               id = "gpt-5.5";
               reasoning = true;
               thinkingLevelMap = {
-                off = null;
+                off = "none";
                 minimal = null;
                 xhigh = "xhigh";
               };

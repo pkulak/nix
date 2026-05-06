@@ -37,6 +37,7 @@ When you see an abbreviation from the follow list, expand it:
 CL = City League
 IRV = Irvington
 GL = Glendoveer
+GLN = Glendoveer
 VTC = Vancouver Tennis Center
 ITT = Impact Team Tennis
 
