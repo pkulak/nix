@@ -109,6 +109,10 @@ window#waybar > box {
     margin: 0 4px;
 }
 
+#custom-weather {
+    padding-right: 15px;
+}
+
 #battery.charging {
     color: #ffffff;
     background-color: #26A65B;
