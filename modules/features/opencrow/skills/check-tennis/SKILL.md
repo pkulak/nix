@@ -29,11 +29,9 @@ https://anc.apm.activecommunities.com/portlandparks/signin
 
 Wait for the sign-in page to settle.
 
-Read `AC_USERNAME` and `AC_PASSWORD` from the environment. Fill the username and password fields using the browser page, but do not expose the password in chat.
+Use the `AC_USERNAME` and `AC_PASSWORD` environment variables to fill the sign-in form. Do not inspect or display their contents.
 
-Use the accessibility tree to find the form fields and button: take an interactive snapshot, then use the current `@ref` values from that snapshot. Do **not** guess CSS selectors for the sign-in form — this site's inputs may not match standard selectors.
-
-This site uses reCAPTCHA. Try pressing Enter to submit first; this sometimes works better than clicking the button. If Enter does not work, take a fresh interactive snapshot and click the "Sign In" button using its current `@ref`.
+Try pressing Enter to submit first; this sometimes works better than clicking the button. If Enter does not work, take a fresh interactive snapshot and click the "Sign In" button.
 
 Wait about 8 seconds, then check the URL. If it still contains `/signin`, tell the user that sign-in failed and stop. If the URL changed, continue.
 
