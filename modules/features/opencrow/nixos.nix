@@ -76,6 +76,9 @@ let
 
     piSettings = {
       defaultThinkingLevel = "low";
+      packages = [
+        "${pkgs.pi-agent-browser-native}"
+      ];
     };
 
     piModels = {
@@ -128,7 +131,6 @@ let
     };
 
     skills = {
-      agent-browser = ../pi/skills/agent-browser;
       check-tennis = ./skills/check-tennis;
       download = ./skills/download;
       morning-summary = ./skills/morning-summary;
@@ -221,6 +223,7 @@ let
         oath-toolkit
         openssh
         llm-agents.agent-browser
+        pi-agent-browser-native
         yt-dlp
 
         (python3.withPackages (

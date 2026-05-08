@@ -36,7 +36,7 @@ yt-dlp --merge-output-format mp4 --recode-video mp4 -S vcodec:h265,vcodec:h264,l
 
 The downloaded filename will be long and ugly (e.g. "Funny Cat Compilation 2024 [abc123] FULL VIDEO HD.mp4"). Rename it to a short, readable, lower-kebab-case slug based on the **content** — not the format, channel, or metadata noise.
 
-The filename may contain no usefull information ("video by mark", etc). In that case, use the browser skill to open the link in a browser and find a suitable name there. If no suitable name can be found anywhere, use a random, 6-digit number.
+The filename may contain no usefull information ("video by mark", etc). In that case, use the native `agent_browser` tool to open the link in a browser and find a suitable name there. If no suitable name can be found anywhere, use a random, 6-digit number.
 
 Rules for the slug:
 - 2–5 words max, lower-kebab-case

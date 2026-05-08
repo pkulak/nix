@@ -5,29 +5,41 @@ description: Add a change detection watch for an ActiveCommunities page via the 
 
 # Watch Tennis
 
+Use the native `agent_browser` tool for browser interaction in this skill.
+
 ## Step 1: Gather Information
 
-Navigate to the activecommunities.com URL and wait for it to load.
+Open the activecommunities.com URL in the browser and wait for the JavaScript-rendered page content to load.
 
-Run this Javascript snippet, which will return an object with important info:
+Run this JavaScript on the page with `agent_browser` using `eval --stdin`:
 
-  (() => {
-    const title = document.querySelector('[data-qa-id="activity-detail-general-name"] span').textContent;
-    const date = document.querySelector('.listbox-item__content span').textContent;
-    const weekday = document.querySelector('.meeting-time__weekays').textContent;
-    const timeRange = document.querySelector('.meeting-time__item span:last-child').textContent;
+```javascript
+(() => {
+  const title = document.querySelector('[data-qa-id="activity-detail-general-name"] span').textContent;
+  const date = document.querySelector('.listbox-item__content span').textContent;
+  const weekday = document.querySelector('.meeting-time__weekays').textContent;
+  const timeRange = document.querySelector('.meeting-time__item span:last-child').textContent;
 
-    return { title, date, weekday, timeRange };
-  })();
+  return { title, date, weekday, timeRange };
+})();
+```
 
-Remember these values for later steps.
+Remember the returned `title`, `date`, `weekday`, and `timeRange` values for the confirmation.
 
-## Step 1: Add the URL
+If the JavaScript fails because expected elements are missing, wait briefly or inspect the page to confirm it has fully loaded before retrying.
 
-Call the following script:
+## Step 2: Add the URL
 
-`~/bin/watchtennis.sh "<activecommunities.com URL>" "<title>"`
+Call the `watchtennis` helper from PATH:
 
-## Step 2: Confirm
+```bash
+watchtennis "<activecommunities.com URL>" "<title>"
+```
 
-Use those values to tell the user: "Done! I'm now watching <title> on <weekday> <date>, <timeRange>."
+## Step 3: Confirm
+
+Use the gathered values to tell the user:
+
+```text
+Done! I'm now watching <title> on <weekday> <date>, <timeRange>.
+```

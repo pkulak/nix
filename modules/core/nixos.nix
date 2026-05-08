@@ -64,6 +64,7 @@
             neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
             ffmpeg-over-ip-client = self.packages.${prev.stdenv.hostPlatform.system}.ffmpeg-over-ip-client;
             ffmpeg-over-ip = self.packages.${prev.stdenv.hostPlatform.system}.ffmpeg-over-ip;
+            pi-agent-browser-native = self.packages.${prev.stdenv.hostPlatform.system}.pi-agent-browser-native;
             unstable = import inputs.nixpkgs-unstable {
               inherit (prev.stdenv.hostPlatform) system;
               config.allowUnfree = true;

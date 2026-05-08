@@ -3,6 +3,7 @@
   home.packages = [
     pkgs.llm-agents.agent-browser
     pkgs.llm-agents.pi
+    pkgs.pi-agent-browser-native
   ];
 
   home.file = {
@@ -45,6 +46,10 @@
       defaultModel = "gpt-5.5";
       defaultThinkingLevel = "xhigh";
       theme = "catppuccin-mocha";
+
+      packages = [
+        "${pkgs.pi-agent-browser-native}"
+      ];
 
       prompts = [
         "${./prompts}"

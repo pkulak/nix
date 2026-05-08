@@ -5,88 +5,105 @@ description: Check to see if there's any tennis classes to sign up for today.
 
 # Check Tennis
 
-### Step 1: Check for existing session
+Use the native `agent_browser` tool for browser interaction in this skill.
 
-Navigate the browser to `https://anc.apm.activecommunities.com/portlandparks/wishlist` using the `--profile ~/.activecommunities` flag on `agent-browser open`. Wait 5 seconds.
+## Step 1: Check whether ActiveCommunities is already signed in
 
-Check the current URL. If it contains `/wishlist` and the page title does NOT say "Sign in", you are already logged in — skip to Step 3.
+Open:
 
-### Step 2: Sign in (only if needed)
+```text
+https://anc.apm.activecommunities.com/portlandparks/wishlist
+```
 
-Navigate to `https://anc.apm.activecommunities.com/portlandparks/signin` (same profile). Wait 5 seconds.
+Wait for the JavaScript-rendered app to settle, then check the page URL and title.
 
-From the environment, read AC_USERNAME and AC_PASSWORD, and use those to fill out the signin form.
+If the URL contains `/wishlist` and the title does **not** say "Sign in", assume the saved list is already available and continue to Step 3.
 
-**Finding form fields:** Run `agent-browser snapshot` to get the accessibility tree with refs, then use the `@ref` syntax to fill fields (e.g. `agent-browser fill @e10 "user@example.com"`). Do NOT guess CSS selectors — this site's inputs may not match standard selectors.
+## Step 2: Sign in only if needed
 
-This site uses reCAPTCHA. Press Enter to submit the form — this sometimes bypasses the CAPTCHA better than clicking the button. If that doesn't work, try clicking the "Sign In" button (using its `@ref` from the snapshot) instead.
+Open:
 
-Wait 8 seconds, then check the URL. If it still contains `/signin`, the login failed.
+```text
+https://anc.apm.activecommunities.com/portlandparks/signin
+```
 
-If the URL changed (e.g. `/myaccount`), proceed.
+Wait for the sign-in page to settle.
 
-### Step 3: Navigate to the saved list
+Read `AC_USERNAME` and `AC_PASSWORD` from the environment. Fill the username and password fields using the browser page, but do not expose the password in chat.
 
-Navigate the browser to `https://anc.apm.activecommunities.com/portlandparks/wishlist` (same profile). Wait 5 seconds for the page to load.
+Use the accessibility tree to find the form fields and button: take an interactive snapshot, then use the current `@ref` values from that snapshot. Do **not** guess CSS selectors for the sign-in form — this site's inputs may not match standard selectors.
 
-### Step 4: Search the list
+This site uses reCAPTCHA. Try pressing Enter to submit first; this sometimes works better than clicking the button. If Enter does not work, take a fresh interactive snapshot and click the "Sign In" button using its current `@ref`.
 
-Execute the following JavaScript on the page:
+Wait about 8 seconds, then check the URL. If it still contains `/signin`, tell the user that sign-in failed and stop. If the URL changed, continue.
 
-    (function() {
-      const countdownBtn = document.querySelector('.countdown');
-      if (!countdownBtn) return false;
+## Step 3: Navigate to the saved list
 
-      let card = countdownBtn.closest('.wishlist-card');
-      if (!card) return false;
+Open the wishlist page again and wait for it to load:
 
-      const nameEl = card.querySelector('[data-qa-id="enhancedWishlist-item-name"]');
-      const title = nameEl ? nameEl.textContent.trim() : null;
+```text
+https://anc.apm.activecommunities.com/portlandparks/wishlist
+```
 
-      const nameLink = nameEl ? nameEl.querySelector('a') : null;
-      const ariaLabel = nameLink ? nameLink.getAttribute('aria-label').trim() : null;
+## Step 4: Search the list
 
-      const wishIcon = card.querySelector('[data-qa-id="enhancedWishlist-item-wished"] a[aria-label]');
-      const wishLabel = wishIcon ? wishIcon.getAttribute('aria-label') : '';
-      const activityMatch = wishLabel.match(/Activity number (\d+)/);
-      const activityNumber = activityMatch ? activityMatch[1] : null;
+Run this JavaScript on the page with `agent_browser` using `eval --stdin`:
 
-      const dtItems = card.querySelectorAll('.wishlist-card__datetime__item');
-      let date = null;
-      let time = null;
-      dtItems.forEach((item, i) => {
-        const span = item.querySelector('svg ~ span');
-        if (span) {
-          const text = span.textContent.trim();
-          if (i === 0) date = text;
-          if (i === 1) time = text;
-        }
-      });
+```javascript
+(function() {
+  const countdownBtn = document.querySelector('.countdown');
+  if (!countdownBtn) return false;
 
-      return {
-        title,
-        ariaLabel,
-        activityNumber,
-        date,
-        time
-      };
-    })();
+  let card = countdownBtn.closest('.wishlist-card');
+  if (!card) return false;
 
-### Step 5: Clean up and respond
+  const nameEl = card.querySelector('[data-qa-id="enhancedWishlist-item-name"]');
+  const title = nameEl ? nameEl.textContent.trim() : null;
 
-Close this browser session: `agent-browser close`
+  const nameLink = nameEl ? nameEl.querySelector('a') : null;
+  const ariaLabel = nameLink ? nameLink.getAttribute('aria-label').trim() : null;
 
-If the previous JS returned an object, say this, using its fields:
+  const wishIcon = card.querySelector('[data-qa-id="enhancedWishlist-item-wished"] a[aria-label]');
+  const wishLabel = wishIcon ? wishIcon.getAttribute('aria-label') : '';
+  const activityMatch = wishLabel.match(/Activity number (\d+)/);
+  const activityNumber = activityMatch ? activityMatch[1] : null;
 
-    Heads up! It's almost time to register for <title> on <date>:
+  const dtItems = card.querySelectorAll('.wishlist-card__datetime__item');
+  let date = null;
+  let time = null;
+  dtItems.forEach((item, i) => {
+    const span = item.querySelector('svg ~ span');
+    if (span) {
+      const text = span.textContent.trim();
+      if (i === 0) date = text;
+      if (i === 1) time = text;
+    }
+  });
 
-    https://anc.apm.activecommunities.com/portlandparks/wishlist
+  return {
+    title,
+    ariaLabel,
+    activityNumber,
+    date,
+    time
+  };
+})();
+```
 
-Otherwise (it returns false), there are no open events.
+## Step 5: Respond
+
+If the JavaScript returned an object, say this, using its fields:
+
+```text
+Heads up! It's almost time to register for <title> on <date>:
+
+https://anc.apm.activecommunities.com/portlandparks/wishlist
+```
+
+Otherwise, if it returned `false`, say there are no open events.
 
 ## Notes
 
-- Do not comment on the steps you take as you take them. Respond once, at the end.
-- Always use the browser-agent tool for all steps — this is a JavaScript-rendered UI.
-- Always use `--profile ~/.activecommunities` on the first `agent-browser open` to persist the login session across runs.
-- If sign-in is needed, try pressing Enter first to submit (reCAPTCHA workaround); if that fails, try clicking the button.
+- Always use the native `agent_browser` tool for browser steps — this is a JavaScript-rendered UI.
+- Do not use named sessions, manual browser state flags, or direct `agent-browser` CLI commands for this skill.
+- If sign-in is needed, try pressing Enter first to submit; if that fails, try clicking the button.
