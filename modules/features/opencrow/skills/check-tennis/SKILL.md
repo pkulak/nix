@@ -29,7 +29,11 @@ https://anc.apm.activecommunities.com/portlandparks/signin
 
 Wait for the sign-in page to settle.
 
-Use the saved agent-browser auth entry named `activecommunities` to sign in.
+Use the saved agent-browser auth entry named `activecommunities` to sign in with the `auth login` subcommand:
+
+```text
+agent_browser args: ["auth", "login", "activecommunities"]
+```
 
 Wait about 8 seconds after the login attempt, then check the URL. If it still contains `/signin`, tell the user that sign-in failed and stop. If the URL changed, continue.
 
