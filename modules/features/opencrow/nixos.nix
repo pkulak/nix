@@ -31,6 +31,9 @@ let
     "${prefix}/.agent-browser" = {
       hostPath = "/home/phil/.agent-browser";
     };
+    "${prefix}/.agent-browser/auth" = {
+      hostPath = "${./agent-browser-auth}";
+    };
     "${prefix}/.ssh" = {
       hostPath = "/home/phil/.ssh";
     };

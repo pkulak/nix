@@ -29,11 +29,9 @@ https://anc.apm.activecommunities.com/portlandparks/signin
 
 Wait for the sign-in page to settle.
 
-Use the `AC_USERNAME` and `AC_PASSWORD` environment variables to fill the sign-in form. Do not inspect or display their contents.
+Use the saved agent-browser auth entry named `activecommunities` to sign in.
 
-Try pressing Enter to submit first; this sometimes works better than clicking the button. If Enter does not work, take a fresh interactive snapshot and click the "Sign In" button.
-
-Wait about 8 seconds, then check the URL. If it still contains `/signin`, tell the user that sign-in failed and stop. If the URL changed, continue.
+Wait about 8 seconds after the login attempt, then check the URL. If it still contains `/signin`, tell the user that sign-in failed and stop. If the URL changed, continue.
 
 ## Step 3: Navigate to the saved list
 
