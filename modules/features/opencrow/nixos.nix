@@ -282,6 +282,7 @@ in
       check-email = ./skills/check-email;
       check-notes = ./skills/check-notes;
       low-priority-email = ./skills/low-priority-email;
+      update-memory = ./skills/update-memory;
     };
 
     # mounts that I only want in the default container

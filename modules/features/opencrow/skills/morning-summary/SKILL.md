@@ -1,5 +1,5 @@
 ---
-name: Morning Summary
+name: morning-summary
 description: Give a nice summary of what's to come in the day.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: Check Low Priority Email
+name: low-priority-email
 description: Check for new low-priority email and summarize the results. Trigger by explicitly asking to check "low priority" mail or email.
 ---
 

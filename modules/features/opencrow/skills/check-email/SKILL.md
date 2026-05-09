@@ -1,5 +1,5 @@
 ---
-name: Check Email
+name: check-email
 description: Check for new email via the `getmail` command and summarize any messages found. Use whenever the user asks to check mail, check email, see new messages, or check the inbox.
 ---
 

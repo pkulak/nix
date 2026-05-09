@@ -1,5 +1,5 @@
 ---
-name: Transcribe
+name: transcribe
 description: Transcribe audio and video file attachments (voice messages, audio files, video files) to text. Use this skill automatically whenever a user sends a voice message or media file.
 ---
 
