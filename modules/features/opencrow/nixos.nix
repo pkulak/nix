@@ -131,6 +131,7 @@ let
 
     extensions = {
       reminders = true;
+      memory-context = ../pi/extensions/memory-context.ts;
     };
 
     skills = {
@@ -140,6 +141,7 @@ let
       noise-machine = ./skills/noise-machine;
       sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;
+      update-memory = ./skills/update-memory;
       watch-tennis = ./skills/watch-tennis;
       wikipedia-lookup = ./skills/wikipedia-lookup;
     };
@@ -277,16 +279,11 @@ in
       OPENCROW_HEARTBEAT_INTERVAL = "12h";
     };
 
-    extensions = sharedInstanceConfig.extensions // {
-      memory-context = ../pi/extensions/memory-context.ts;
-    };
-
     # skills that I only want in the default container
     skills = sharedInstanceConfig.skills // {
       check-email = ./skills/check-email;
       check-notes = ./skills/check-notes;
       low-priority-email = ./skills/low-priority-email;
-      update-memory = ./skills/update-memory;
     };
 
     # mounts that I only want in the default container
@@ -308,7 +305,11 @@ in
         OPENCROW_SOUL_FILE = "${./souls/barnaby.txt}";
       };
 
-      extraBindMounts = mkSharedBindMounts "/var/lib/opencrow-group";
+      extraBindMounts = mkSharedBindMounts "/var/lib/opencrow-group" // {
+        "/var/lib/opencrow-group/notes/memory" = {
+          hostPath = "/home/phil/notes/memory";
+        };
+      };
 
       environmentFiles = sharedInstanceConfig.environmentFiles ++ [
         config.age.secrets.opencrow-group-env.path

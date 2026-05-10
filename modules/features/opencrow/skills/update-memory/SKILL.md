@@ -5,10 +5,11 @@ description: Review recent conversation context and preserve durable memories in
 
 # Update Memory
 
-Preserve only useful, durable information from the recent conversation into Phil's memory notes.
+Preserve only useful, durable information from the recent conversation into the shared memory notes for Wiggles and Barnaby.
 
 ## Scope
 
+- These memory notes are shared by Wiggles, Phil's private DM opencrow assistant, and Barnaby, the family group-chat opencrow assistant. Anything saved here may be loaded by either bot.
 - Review the visible conversation/context only as far back as the previous local calendar day. Ignore anything older.
 - Use the local timezone configured for the agent, normally `America/Los_Angeles`.
 - If message timestamps are unavailable, use only the recent visible context that clearly belongs to this interaction; do not guess about older context.
@@ -33,7 +34,7 @@ touch "$main"
 
 ## What to remember
 
-Prefer memory that will help future Wiggles avoid re-learning or repeating mistakes:
+Prefer memory that will help future Wiggles or Barnaby avoid re-learning or repeating mistakes:
 
 - Explicit requests to remember, not forget, save, or treat something as a preference.
 - Stable facts about Phil, family, household, projects, recurring workflows, naming conventions, infrastructure, or personal preferences.
@@ -63,6 +64,7 @@ Guidelines:
 
 - One memory per bullet.
 - Keep bullets short but specific enough to be actionable later.
+- Mention the relevant bot or context when it matters, e.g. prefix with `Wiggles:` or `Barnaby:`. Do not prefix generic shared facts.
 - If an existing bullet is nearly the same, update it instead of adding a duplicate.
 - Use neutral, factual wording. Include names, paths, dates, and project names when they matter.
 
