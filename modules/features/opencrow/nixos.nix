@@ -277,6 +277,10 @@ in
       OPENCROW_HEARTBEAT_INTERVAL = "12h";
     };
 
+    extensions = sharedInstanceConfig.extensions // {
+      memory-context = ../pi/extensions/memory-context.ts;
+    };
+
     # skills that I only want in the default container
     skills = sharedInstanceConfig.skills // {
       check-email = ./skills/check-email;
