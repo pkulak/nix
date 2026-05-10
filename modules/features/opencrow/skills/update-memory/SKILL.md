@@ -16,18 +16,18 @@ Preserve only useful, durable information from the recent conversation into Phil
 
 ## Files
 
-- Daily memory files live at `~/notes/memory/<YYYY-MM-DD>.md`, where the date is ISO 8601 local date (`date +%F`).
-- Long-term memory lives at `~/notes/memory/MAIN.md`.
-- Always ensure `~/notes/memory/` and `MAIN.md` exist.
+- Daily memory files live at `~/notes/memory/daily/<YYYY-MM-DD>.md`, where the date is ISO 8601 local date (`date +%F`).
+- Long-term memory lives at `~/notes/memory/MEMORY.md`.
+- Always ensure `~/notes/memory/daily` and `MEMORY.md` exist.
 - Create or update a daily file only when there is a new memory for that local date. If context clearly belongs to both yesterday and today, update each date's file as appropriate; otherwise use today's local date.
 
 Useful setup commands:
 
 ```bash
-mkdir -p ~/notes/memory
+mkdir -p ~/notes/memory/daily
 today="$(date +%F)"
 yesterday="$(date --date='yesterday' +%F)"
-main=~/notes/memory/MAIN.md
+main=~/notes/memory/MEMORY.md
 touch "$main"
 ```
 
@@ -66,24 +66,24 @@ Guidelines:
 - If an existing bullet is nearly the same, update it instead of adding a duplicate.
 - Use neutral, factual wording. Include names, paths, dates, and project names when they matter.
 
-## MAIN.md rules
+## MEMORY.md rules
 
-`MAIN.md` is only for important facts that cannot be easily re-learned if forgotten, especially process notes that prevent future mistakes.
+`MEMORY.md` is only for important facts that cannot be easily re-learned if forgotten, especially process notes that prevent future mistakes.
 
-- Read `MAIN.md` before changing it.
-- Add to `MAIN.md` only when a memory is high-value and long-lived; most memories belong only in the daily file.
-- Keep `MAIN.md` under **10,000 bytes** at all times.
+- Read `MEMORY.md` before changing it.
+- Add to `MEMORY.md` only when a memory is high-value and long-lived; most memories belong only in the daily file.
+- Keep `MEMORY.md` under **10,000 bytes** at all times.
 - Cleaning up old, obsolete, duplicate, over-specific, or low-value entries before reaching the byte limit is encouraged.
-- If adding new information would make `MAIN.md` exceed 10,000 bytes, replace or compress less relevant existing content rather than exceeding the limit.
-- Never create spillover files for `MAIN.md`; curate it.
+- If adding new information would make `MEMORY.md` exceed 10,000 bytes, replace or compress less relevant existing content rather than exceeding the limit.
+- Never create spillover files for `MEMORY.md`; curate it.
 
 Check size with:
 
 ```bash
-wc -c < ~/notes/memory/MAIN.md
+wc -c < ~/notes/memory/MEMORY.md
 ```
 
-If creating `MAIN.md`, start with:
+If creating `MEMORY.md`, start with:
 
 ```markdown
 # Main Memory
@@ -100,12 +100,12 @@ Long-term facts and process notes that are important, durable, and hard to re-le
 1. Determine local `today` and `yesterday` with `date +%F` and `date --date='yesterday' +%F`.
 2. Review only in-scope conversation/context: today and, at most, the previous local calendar day.
 3. Extract candidate memories using the criteria above.
-4. Create `~/notes/memory/` and `MAIN.md` if needed.
-5. Read `MAIN.md` and any daily memory file(s) you are about to update.
+4. Create `~/notes/memory/daily` and `MEMORY.md` if needed.
+5. Read `MEMORY.md` and any daily memory file(s) you are about to update.
 6. Deduplicate and merge with existing bullets.
 7. Write daily memories to the appropriate `YYYY-MM-DD.md` file(s).
-8. Promote only the most important long-term facts/process notes to `MAIN.md`.
-9. Verify `MAIN.md` is under 10,000 bytes after editing; curate if necessary.
+8. Promote only the most important long-term facts/process notes to `MEMORY.md`.
+9. Verify `MEMORY.md` is under 10,000 bytes after editing; curate if necessary.
 10. If no new memories are found, leave daily files untouched.
 
 ## Heartbeat Response
