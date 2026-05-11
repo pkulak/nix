@@ -337,11 +337,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1778258912,
-        "narHash": "sha256-e5gUh67yxbILYKX8VIPxLjUpj2e1zpo0fZ4dYUDJd/M=",
+        "lastModified": 1778541722,
+        "narHash": "sha256-riiMiphNiKOzALXR2gzlG6dWNEnYnKLltTWbGPZI81U=",
         "owner": "pkulak",
         "repo": "opencrow",
-        "rev": "87aaacc3c5c20605c2dfb870d5bccef74688a571",
+        "rev": "bd584a05bcf2b0ae44e447124ef8b28df1fcc559",
         "type": "github"
       },
       "original": {
