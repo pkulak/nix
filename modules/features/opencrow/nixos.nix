@@ -70,6 +70,7 @@ let
 
     environment = {
       OPENCROW_PI_IDLE_TIMEOUT = "6h";
+      OPENCROW_HEARTBEAT_INTERVAL = "12h";
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
       OPENCROW_PI_PROVIDER = "llm";
       OPENCROW_PI_MODEL = "gpt-5.5";
@@ -276,7 +277,6 @@ in
     environment = sharedInstanceConfig.environment // {
       OPENCROW_MATRIX_USER_ID = "@wiggles:kulak.us";
       OPENCROW_SOUL_FILE = "${./souls/wiggles.txt}";
-      OPENCROW_HEARTBEAT_INTERVAL = "12h";
     };
 
     # skills that I only want in the default container
