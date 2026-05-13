@@ -17,7 +17,7 @@
 
     matui = {
       url = "github:pkulak/matui";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     agenix = {
