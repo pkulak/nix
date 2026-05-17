@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-entries="☁️  Darken\n⏾  Suspend\n⇠  Logout\n⭮  Reboot\n⏻  Shutdown"
+entries="☁️  Darken\n🔒  Lock\n⏾  Suspend\n⇠  Logout\n⭮  Reboot\n⏻  Shutdown"
 
 selected=$(echo -e $entries | rofi -wayland -dmenu -cache-file /dev/null | awk '{print tolower($2)}')
 
 case $selected in
   darken)
     niri msg action power-off-monitors;;
+  lock)
+    exec swaylock -f;;
   suspend)
     exec systemctl suspend;;
   logout)

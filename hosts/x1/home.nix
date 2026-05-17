@@ -1,5 +1,10 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
+let
+  lock = "${pkgs.swaylock-effects}/bin/swaylock -f";
+  powerOffMonitors = "${pkgs.niri}/bin/niri msg action power-off-monitors";
+  suspend = "${pkgs.systemd}/bin/systemctl suspend";
+in
 {
   home.stateVersion = "23.05";
   programs.fish.shellAliases = {
@@ -53,8 +58,11 @@
 
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 120 'niri msg action power-off-monitors' \
-            timeout 600 'systemctl suspend'
+            timeout 60 '${lock}' \
+            timeout 120 '${powerOffMonitors}' \
+            timeout 600 '${suspend}' \
+            before-sleep '${lock}' \
+            lock '${lock}'
       '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";

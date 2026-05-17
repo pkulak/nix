@@ -8,7 +8,12 @@ let
 
     installPhase = ''
       makeWrapper ${./rofi-power} $out/bin/rofi-power \
-        --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.rofi ]}
+        --prefix PATH : ${pkgs.lib.makeBinPath (with pkgs; [
+          niri
+          rofi
+          swaylock-effects
+          systemd
+        ])}
     '';
   };
 
@@ -20,6 +25,8 @@ let
   };
 in
 {
+  imports = [ ../swaylock/home.nix ];
+
   home.packages = [
     rofi-power
     switch-audio
