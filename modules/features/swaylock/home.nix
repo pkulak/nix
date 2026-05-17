@@ -7,8 +7,6 @@
     clock
     timestr=%-I:%M:%S %p
     datestr=%a, %m/%d/%Y
-    grace=10
-
     color=1e1e2e
     bs-hl-color=f5e0dc
     caps-lock-bs-hl-color=f5e0dc

@@ -2,6 +2,7 @@
 
 let
   lock = "${pkgs.swaylock-effects}/bin/swaylock -f";
+  lockWithGrace = "${lock} --grace 10";
   pause = "${pkgs.playerctl}/bin/playerctl pause";
   powerOffMonitors = "${pkgs.niri}/bin/niri msg action power-off-monitors";
   suspend = "${pkgs.systemd}/bin/systemctl suspend";
@@ -51,7 +52,7 @@ in
     Service.ExecStart = ''
         ${pkgs.swayidle}/bin/swayidle -w \
             timeout 300 '${pause}' \
-            timeout 540 '${lock}' \
+            timeout 540 '${lockWithGrace}' \
             timeout 600 '${powerOffMonitors}' \
             timeout 7200 '${suspend}' \
             before-sleep '${lock}' \

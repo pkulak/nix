@@ -35,11 +35,14 @@
         };
       };
 
+      users.mutableUsers = false;
+      users.users.root.hashedPassword = config.users.users.phil.hashedPassword;
+
       users.users.phil = {
         isNormalUser = true;
+        uid = 1000;
         description = "Phil";
         extraGroups = [
-          "libvirtd"
           "networkmanager"
           "wheel"
           "video"
@@ -47,7 +50,7 @@
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWOTXI/ryuoyQSepiKc+EF5lm+Ye3vqa2a5xS4pBA4C"
         ];
-        hashedPassword = "$6$FyNPgBac91py3OFQ$6v4B2x7NOlHH.ZqG1eCw4Gd5GWTkYJZeB9vi/2xr8H6zqlkzfvahzFhhCl6MbuSfpvUm4RCV6UkJSkmiHaT6/0";
+        hashedPassword = "$y$j9T$WMTHW9sbkykK1QmdVoJK0/$WVjyKol4xAKGA3YkcshqCtanzbBb1v7D.x0dOnpJiI.";
       };
 
       services.getty.autologinUser = "phil";
