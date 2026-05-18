@@ -19,7 +19,7 @@ let
       {
         name = "check-navi";
         calendar = "Mon..Fri *-*-* 12:00:00";
-        prompt = "Remind me that Navi needs to be fed, if not already.";
+        prompt = "Notify Phil: Navi needs to be fed, if not already.";
       }
       {
         name = "check-tasks";
