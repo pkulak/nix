@@ -57,7 +57,7 @@
       y = "yazi";
       timestamp = ''date -u +"%Y-%m-%dT%H:%M:%SZ"'';
       bc = "bc -lq";
-      rs = "rsync -avH --info=progress2";
+      rs = "rsync -avH --delete --info=progress2";
       dr = "${pkgs.ripdrag}/bin/ripdrag -a";
       screencast = "${pkgs.wf-recorder}/bin/wf-recorder -g (${pkgs.slurp}/bin/slurp)";
       mnt-private = "mkdir -p ~/private && ${pkgs.gocryptfs}/bin/gocryptfs -noprealloc ~/notes/private ~/private";
