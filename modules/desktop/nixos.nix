@@ -55,7 +55,7 @@
           defaultFonts = {
             serif = [ "Noto Serif" ];
             sansSerif = [ "Cantarell" ];
-            monospace = [ "Ubuntu Mono" ];
+            monospace = [ "FantasqueSansM Nerd Font Mono" ];
           };
         };
       };

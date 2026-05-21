@@ -96,6 +96,7 @@
             requests
             beautifulsoup4
             python-dateutil
+            click
           ]
         ))
 
