@@ -16,6 +16,7 @@
         libinput
         masterpdfeditor
         sublime-merge
+        via
         woeusb
         zathura
         zenity

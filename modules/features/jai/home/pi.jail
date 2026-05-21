@@ -1,0 +1,4 @@
+# Run Pi as the invoking user with a bare home. This keeps the home
+# directory hidden while avoiding cross-UID desktop integration issues
+# such as flaky Wayland clipboard ownership.
+mode bare

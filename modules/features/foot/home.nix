@@ -10,6 +10,9 @@
 
     selection-target=clipboard
 
+    [security]
+    osc52=enabled
+
     [key-bindings]
     clipboard-copy=Control+c XF86Copy
     clipboard-paste=Control+v XF86Paste

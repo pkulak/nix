@@ -8,12 +8,17 @@ let
 
     installPhase = ''
       makeWrapper ${./rofi-power} $out/bin/rofi-power \
-        --prefix PATH : ${pkgs.lib.makeBinPath (with pkgs; [
-          niri
-          rofi
-          swaylock-effects
-          systemd
-        ])}
+        --prefix PATH : ${
+          pkgs.lib.makeBinPath (
+            with pkgs;
+            [
+              niri
+              rofi
+              swaylock-effects
+              systemd
+            ]
+          )
+        }
     '';
   };
 
@@ -97,7 +102,9 @@ in
       After = [ "graphical-session.target" ];
       Requisite = [ "graphical-session.target" ];
     };
-    Service.ExecStart = "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular";
+    # If a source cannot be read cleanly, keep the original source instead
+    # of taking over with partial or empty clipboard data.
+    Service.ExecStart = "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular --ignore-event-on-error";
     Install.WantedBy = [ "niri.service" ];
   };
 
