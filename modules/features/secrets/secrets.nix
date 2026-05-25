@@ -9,6 +9,7 @@ in
   "crypt/env.age".publicKeys = keys;
   "crypt/opencrow.env".publicKeys = keys;
   "crypt/opencrow-group.env".publicKeys = keys;
+  "crypt/agent_ed25519.age".publicKeys = keys;
 }
 
 # add a line for the new secret file

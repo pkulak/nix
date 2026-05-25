@@ -11,6 +11,28 @@
 # journalctl -M opencrow -f
 
 let
+  agentKeyCredentialName = "agent_ed25519";
+  agentPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICgVKFb5W+aqkySq65AdTNklx6fgsflItBk3EYJZXll0 phil@fry";
+  agentPublicKeyFile = pkgs.writeText "agent_ed25519.pub" ''
+    ${agentPublicKey}
+  '';
+  agentAllowedSignersFile = pkgs.writeText "agent_allowed_signers" ''
+    * ${agentPublicKey}
+  '';
+
+  agentSshConfig = ''
+    Host *
+      BatchMode yes
+      StrictHostKeyChecking accept-new
+  '';
+
+  mkAgentSshTmpfiles = stateDir: [
+    "d ${stateDir}/.ssh 0700 opencrow opencrow -"
+    "L+ ${stateDir}/.ssh/id_ed25519 - - - - /run/credentials/opencrow.service/${agentKeyCredentialName}"
+    "L+ ${stateDir}/.ssh/id_ed25519.pub - - - - ${agentPublicKeyFile}"
+    "L+ ${stateDir}/.ssh/allowed_signers - - - - ${agentAllowedSignersFile}"
+  ];
+
   python = pkgs.python3.withPackages (ps: [ ps.beautifulsoup4 ]);
 
   mkPyScript =
@@ -33,9 +55,6 @@ let
     };
     "${prefix}/.agent-browser/auth" = {
       hostPath = "${./agent-browser-auth}";
-    };
-    "${prefix}/.ssh" = {
-      hostPath = "/home/phil/.ssh";
     };
     "${prefix}/.config" = {
       hostPath = "/home/phil/.config";
@@ -83,6 +102,10 @@ let
       packages = [
         "${pkgs.pi-agent-browser-native}"
       ];
+    };
+
+    credentialFiles = {
+      ${agentKeyCredentialName} = config.age.secrets.agent-key.path;
     };
 
     piModels = {
@@ -259,6 +282,11 @@ in
 {
   imports = [ inputs.opencrow.nixosModules.default ];
 
+  age.secrets.agent-key = {
+    file = ../secrets/crypt/agent_ed25519.age;
+    mode = "400";
+  };
+
   age.secrets.opencrow-env = {
     file = ../secrets/crypt/opencrow.env;
     mode = "400";
@@ -320,39 +348,51 @@ in
     };
   };
 
-  containers.opencrow.config.users.users.opencrow = {
-    isSystemUser = lib.mkForce false;
-    isNormalUser = lib.mkForce true;
-    uid = lib.mkForce 1000;
-    shell = "/run/current-system/sw/bin/bash";
-  };
-  containers.opencrow.config.systemd =
-    let
-      personal = mkDefaultServices {
-        pipePath = "/var/lib/opencrow/sessions/trigger.pipe";
-        envFiles = [ "/run/secrets/opencrow-envfile-0" ];
-      };
-    in
-    {
-      services = personal.services;
-      timers = personal.timers;
+  containers.opencrow.config = {
+    programs.ssh.extraConfig = agentSshConfig;
+
+    users.users.opencrow = {
+      isSystemUser = lib.mkForce false;
+      isNormalUser = lib.mkForce true;
+      uid = lib.mkForce 1000;
+      shell = "/run/current-system/sw/bin/bash";
     };
 
-  containers.opencrow-group.config.users.users.opencrow = {
-    isSystemUser = lib.mkForce false;
-    isNormalUser = lib.mkForce true;
-    uid = lib.mkForce 1000;
-    shell = "/run/current-system/sw/bin/bash";
-  };
-  containers.opencrow-group.config.systemd =
-    let
-      group = mkGroupServices {
-        pipePath = "/var/lib/opencrow-group/sessions/trigger.pipe";
-        envFiles = [ "/run/secrets/opencrow-group-envfile-0" ];
+    systemd =
+      let
+        personal = mkDefaultServices {
+          pipePath = "/var/lib/opencrow/sessions/trigger.pipe";
+          envFiles = [ "/run/secrets/opencrow-envfile-0" ];
+        };
+      in
+      {
+        services = personal.services;
+        timers = personal.timers;
+        tmpfiles.rules = mkAgentSshTmpfiles "/var/lib/opencrow";
       };
-    in
-    {
-      services = group.services;
-      timers = group.timers;
+  };
+
+  containers.opencrow-group.config = {
+    programs.ssh.extraConfig = agentSshConfig;
+
+    users.users.opencrow = {
+      isSystemUser = lib.mkForce false;
+      isNormalUser = lib.mkForce true;
+      uid = lib.mkForce 1000;
+      shell = "/run/current-system/sw/bin/bash";
     };
+
+    systemd =
+      let
+        group = mkGroupServices {
+          pipePath = "/var/lib/opencrow-group/sessions/trigger.pipe";
+          envFiles = [ "/run/secrets/opencrow-group-envfile-0" ];
+        };
+      in
+      {
+        services = group.services;
+        timers = group.timers;
+        tmpfiles.rules = mkAgentSshTmpfiles "/var/lib/opencrow-group";
+      };
+  };
 }

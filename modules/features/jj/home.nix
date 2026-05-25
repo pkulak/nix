@@ -15,7 +15,7 @@ let
       [signing]
       behavior = "own"
       backend = "ssh"
-      key = "/home/phil/.ssh/id_ed25519.pub"
+      key = "~/.ssh/id_ed25519.pub"
 
       [revset-aliases]
       all = "latest(all(), 16)"
@@ -27,7 +27,8 @@ let
       [templates]
       git_push_bookmark = '"phil-" ++ change_id.short()'
     '';
-in {
+in
+{
   home.packages = [ pkgs.jujutsu ];
 
   programs.fish = {
@@ -59,9 +60,7 @@ in {
   xdg.configFile = {
     "jj/config.toml".text = config;
 
-    "jj/vevo.toml".text =
-      builtins.replaceStrings [ "phil@kulak.us" ] [ "phil.kulak@vevo.com" ]
-      config;
+    "jj/vevo.toml".text = builtins.replaceStrings [ "phil@kulak.us" ] [ "phil.kulak@vevo.com" ] config;
   };
 
   home.file = {

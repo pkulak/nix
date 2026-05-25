@@ -5,7 +5,8 @@ let
     file = file;
     path = "/run/user/1000/agenix/${name}";
   };
-in {
+in
+{
   home.packages = [ pkgs.age ];
 
   age = {
@@ -16,13 +17,17 @@ in {
       m2-settings = mkSecret ./crypt/m2-settings.xml.age "m2-settings";
       smb-secrets = mkSecret ./crypt/smb-secrets.age "smb-secrets";
       env = mkSecret ./crypt/env.age "env";
+      agent-key = mkSecret ./crypt/agent_ed25519.age "agent-key";
       opencrow-env = mkSecret ./crypt/opencrow.env "opencrow-env";
     };
   };
 
-  home.file = with config.age.secrets; with config.lib.file; {
-    ".aws/credentials".source = mkOutOfStoreSymlink aws-credentials.path;
-    ".m2/settings.xml".source = mkOutOfStoreSymlink m2-settings.path;
-    ".config/environment-secrets.sh".source = mkOutOfStoreSymlink env.path;
-  };
+  home.file =
+    with config.age.secrets;
+    with config.lib.file;
+    {
+      ".aws/credentials".source = mkOutOfStoreSymlink aws-credentials.path;
+      ".m2/settings.xml".source = mkOutOfStoreSymlink m2-settings.path;
+      ".config/environment-secrets.sh".source = mkOutOfStoreSymlink env.path;
+    };
 }
