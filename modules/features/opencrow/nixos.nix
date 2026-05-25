@@ -283,8 +283,11 @@ in
     skills = sharedInstanceConfig.skills // {
       check-email = ./skills/check-email;
       check-notes = ./skills/check-notes;
+      jujutsu = ../pi/skills/jujutsu;
       low-priority-email = ./skills/low-priority-email;
     };
+
+    extraPackages = sharedInstanceConfig.extraPackages ++ [ pkgs.jujutsu ];
 
     # mounts that I only want in the default container
     extraBindMounts = mkSharedBindMounts "/var/lib/opencrow" // {
