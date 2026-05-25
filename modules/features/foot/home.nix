@@ -13,14 +13,6 @@
     [security]
     osc52=enabled
 
-    [key-bindings]
-    clipboard-copy=Control+c XF86Copy
-    clipboard-paste=Control+v XF86Paste
-
-    [text-bindings]
-    \x03=Control+Shift+c
-    \x16=Control+Shift+v
-
     [scrollback]
     lines = 10000
 
