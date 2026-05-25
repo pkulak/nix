@@ -33,6 +33,12 @@ in
           }
       }
 
+      binds {
+          // Alternative media controls for keyboards without media keys.
+          Prior allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+          Next  allow-when-locked=true { spawn-sh "playerctl next"; }
+      }
+
       window-rule {
           match app-id="jetbrains-idea"
           default-column-width { proportion 1.0; }
@@ -58,13 +64,13 @@ in
     };
 
     Service.ExecStart = ''
-        ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 60 '${lockWithGrace}' \
-            timeout 120 '${powerOffMonitors}' \
-            timeout 600 '${suspend}' \
-            before-sleep '${lock}' \
-            lock '${lock}'
-      '';
+      ${pkgs.swayidle}/bin/swayidle -w \
+          timeout 60 '${lockWithGrace}' \
+          timeout 120 '${powerOffMonitors}' \
+          timeout 600 '${suspend}' \
+          before-sleep '${lock}' \
+          lock '${lock}'
+    '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
     Install.WantedBy = [ "niri.service" ];
