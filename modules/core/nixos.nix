@@ -78,6 +78,7 @@
 
       environment.systemPackages = with pkgs; [
         awscli2
+        bat
         bc
         bind.dnsutils
         btop
