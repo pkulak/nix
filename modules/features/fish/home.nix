@@ -3,7 +3,17 @@
 {
   home.packages = [ pkgs.zoxide ];
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableFishIntegration = true;
+
+    config.global = {
+      log_filter = "^$";
+      load_dotenv = true;
+      hide_env_diff = true;
+    };
+  };
 
   programs.fish = {
     enable = true;
@@ -28,7 +38,6 @@
       end
 
       zoxide init fish | source
-      direnv hook fish | source
     '';
 
     shellAliases = {
