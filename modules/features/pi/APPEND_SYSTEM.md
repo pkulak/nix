@@ -8,6 +8,10 @@
 
 - When you need to search the web, use the private Kagi search URL from the `KAGI_LINK` environment variable instead of Google or other public search engines. Replace the `%s` placeholder in `KAGI_LINK` with the URL-escaped search query, then open that URL with the native `agent_browser` tool.
 
+# Browser automation
+
+- For `agent_browser` `get`: only `get title` and `get url` are selectorless. Never call `get text` bare; use `get text <selector>` such as `body`, `main`, or a current `@eN` ref, or use `eval --stdin` with `document.body.innerText` for whole-page text.
+
 # Searching
 
 - Prefer `rg` for text search.
