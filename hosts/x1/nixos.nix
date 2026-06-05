@@ -10,8 +10,6 @@
     wdisplays
   ];
 
-  programs.light.enable = true;
-
   networking.hostName = "x1";
   system.stateVersion = "23.05";
 }
