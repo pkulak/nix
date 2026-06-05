@@ -75,9 +75,12 @@ in
 
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
 
-    # Override just for GTK4 to use plain Adwaita
-    gtk4.extraConfig = {
-      gtk-theme-name = "Adwaita";
+    # Keep GTK4 on stock Adwaita instead of inheriting the GTK3 theme.
+    gtk4 = {
+      theme = null;
+      extraConfig = {
+        gtk-theme-name = "Adwaita";
+      };
     };
   };
 

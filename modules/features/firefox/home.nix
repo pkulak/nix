@@ -3,6 +3,7 @@
 {
   programs.firefox = {
     enable = true;
+    configPath = ".mozilla/firefox";
 
     package = pkgs.wrapFirefox pkgs.unstable.firefox-unwrapped {
       extraPolicies = {

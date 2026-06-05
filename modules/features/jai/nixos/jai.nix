@@ -16,8 +16,6 @@ gcc15Stdenv.mkDerivation rec {
     hash = "sha256-3uGFsdsyG7Nl/D3NtCDU0+S8Je/KiRKMMiGuyCWDx6E=";
   };
 
-  patches = [ ./overlay-fd.patch ];
-
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [
     util-linux

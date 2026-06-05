@@ -16,7 +16,7 @@
     [scrollback]
     lines = 10000
 
-    [colors]
+    [colors-dark]
     foreground=cdd6f4
     background=181825
     alpha=0.90

@@ -10,7 +10,7 @@
         cmatrix
         cowsay
         distrobox
-        fastfetchMinimal
+        fastfetch.minimal
         file
         imv
         libinput

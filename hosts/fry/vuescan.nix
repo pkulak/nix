@@ -4,7 +4,7 @@
 , autoPatchelfHook
 , glibc
 , gtk3
-, xorg
+, libsm
 , libgudev
 , libxkbcommon
 , makeDesktopItem
@@ -50,7 +50,7 @@ in
     buildInputs = [
       glibc
       gtk3
-      xorg.libSM
+      libsm
       libgudev
       libxkbcommon
     ];
