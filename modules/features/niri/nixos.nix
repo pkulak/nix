@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   start-niri = pkgs.writeTextFile {
@@ -57,6 +57,9 @@ in
       xdg-desktop-portal-termfilechooser
     ];
 
-    config.common."org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+    config = {
+      common."org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+      niri."org.freedesktop.impl.portal.FileChooser" = lib.mkForce "termfilechooser";
+    };
   };
 }

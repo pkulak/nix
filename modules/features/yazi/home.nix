@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   yazi-filechooser = pkgs.writeShellApplication {
     name = "yazi-filechooser";
 
@@ -9,7 +10,8 @@
 
     text = builtins.readFile ./yazi-filechooser.sh;
   };
-in {
+in
+{
   home.packages = [ pkgs.yazi ];
 
   xdg.desktopEntries.yazi = {
@@ -17,12 +19,19 @@ in {
     icon = "yazi";
     comment = "Blazing fast terminal file manager written in Rust, based on async I/O";
     exec = "footclient --app-id=yazi -e yazi %u";
-    terminal = false;  # We're handling the terminal ourselves
+    terminal = false; # We're handling the terminal ourselves
     type = "Application";
     mimeType = [ "inode/directory" ];
-    categories = [ "Utility" "Core" "System" "FileTools" "FileManager" "ConsoleOnly" ];
+    categories = [
+      "Utility"
+      "Core"
+      "System"
+      "FileTools"
+      "FileManager"
+      "ConsoleOnly"
+    ];
   };
-  
+
   xdg.configFile = {
     "xdg-desktop-portal-termfilechooser/config" = {
       enable = true;
@@ -44,7 +53,7 @@ in {
           { on = "D", run = "noop" },
           { on = ["d", "d"], run = "remove", desc = "Trash selected files" },
           { on = ["d", "m"], run = 'shell "umount $@"', desc = "Unmount" },
-	        { on = ["d", "D"], run = "remove --permanently", desc = "Permanently delete selected files" },
+          { on = ["d", "D"], run = "remove --permanently", desc = "Permanently delete selected files" },
 
           # use RipDrag
           { on = ["d", "r"], run = 'shell "${pkgs.ripdrag}/bin/ripdrag -a $@"', desc = "Drag and drop selected files" },
