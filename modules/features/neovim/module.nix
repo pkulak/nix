@@ -3,6 +3,7 @@
   wlib,
   lib,
   pkgs,
+  options,
   ...
 }:
 {
@@ -25,7 +26,7 @@
 
   config.specs.nix = {
     data = null;
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       nixd
       nixfmt
     ];
@@ -37,7 +38,7 @@
     data = with pkgs.vimPlugins; [
       lazydev-nvim
     ];
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       lua-language-server
       stylua
     ];
@@ -47,7 +48,7 @@
     after = [ "general" ];
     lazy = true;
     data = null;
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       harper
     ];
   };
@@ -58,7 +59,7 @@
     data = with pkgs.vimPlugins; [
       rustaceanvim
     ];
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       rust-analyzer
       rustfmt
     ];
@@ -68,7 +69,7 @@
     after = [ "general" ];
     lazy = true;
     data = null;
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       gopls
       gotools
     ];
@@ -77,7 +78,7 @@
   config.specs.general = {
     after = [ "lze" ];
     lazy = true;
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       tree-sitter
       jq
       libxml2
@@ -108,22 +109,12 @@
     ];
   };
 
-  config.specMods =
-    {
-      parentSpec ? null,
-      parentOpts ? null,
-      parentName ? null,
-      config,
-      ...
-    }:
-    {
-      options.extraPackages = lib.mkOption {
-        type = lib.types.listOf wlib.types.stringable;
-        default = [ ];
-        description = "packages to suffix to the PATH";
-      };
+  config.specMods = {
+    options.runtimePkgs = options.runtimePkgs // {
+      description = "packages to suffix to the PATH";
     };
-  config.extraPackages = config.specCollect (acc: v: acc ++ (v.extraPackages or [ ])) [ ];
+  };
+  config.runtimePkgs = config.specCollect (acc: v: acc ++ (v.runtimePkgs or [ ])) [ ];
 
   # expose spec enable/disable state to lua: nixInfo(false, "settings", "cats", "rust")
   options.settings.cats = lib.mkOption {
