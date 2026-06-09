@@ -26,6 +26,8 @@
             {
               id = "gpt-5.5";
               reasoning = true;
+              contextWindow = 272000;
+              maxTokens = 128000;
               thinkingLevelMap = {
                 off = "none";
                 minimal = null;

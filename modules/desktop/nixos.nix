@@ -14,6 +14,7 @@
         file
         imv
         libinput
+        llm-agents.claude-code
         masterpdfeditor
         sublime-merge
         via
