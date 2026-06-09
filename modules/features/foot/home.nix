@@ -19,7 +19,8 @@
     [colors-dark]
     foreground=cdd6f4
     background=181825
-    alpha=0.90
+    alpha=0.80
+    blur=yes
     cursor=11111b f5e0dc
 
     regular0=181825
