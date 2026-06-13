@@ -14,7 +14,9 @@ Only save:
 
 # Recall Recipe
 
-You may be asked to recall directions, instructions, or both, either as recorded, or modified. For examle, with the ingredients halved. For ingredient recall, use plain text, with a blank line between each ingredient.
+You may be asked to recall directions, instructions, or both, either as recorded, or modified. For example, with the ingredients halved. For recall, use plain text, with a blank line between each ingredient or step.
+
+You may also be asked to interpret and give instructions based on the whole recipe. For example, "I'm going to start making fried chicken. Please give me instructions up to the marinade step." This would mean combining ingredients and instructions into merged instructions that can easily be glanced at.
 
 # Edit Recipe
 
