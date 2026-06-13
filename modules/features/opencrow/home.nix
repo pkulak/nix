@@ -9,7 +9,7 @@
   home.activation.ensureBindMountDirs = config.lib.dag.entryBefore [ "checkLinkTargets" ] ''
     mkdir -p ~/.local/share/vdirsyncer/calendars
     mkdir -p ~/.local/share/vdirsyncer/status
-    mkdir -p ~/notes
+    mkdir -p ~/notes/recipes
   '';
 
   xdg.configFile."vdirsyncer/config".text = ''

@@ -165,6 +165,7 @@ let
       download = ./skills/download;
       morning-summary = ./skills/morning-summary;
       noise-machine = ./skills/noise-machine;
+      save-recipe = ./skills/save-recipe;
       sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;
       update-memory = ./skills/update-memory;
@@ -315,7 +316,6 @@ in
       check-notes = ./skills/check-notes;
       jujutsu = ../pi/skills/jujutsu;
       low-priority-email = ./skills/low-priority-email;
-      save-recipe = ./skills/save-recipe;
     };
 
     extraPackages = sharedInstanceConfig.extraPackages ++ [ pkgs.jujutsu ];
@@ -342,6 +342,9 @@ in
       extraBindMounts = mkSharedBindMounts "/var/lib/opencrow-group" // {
         "/var/lib/opencrow-group/notes/memory" = {
           hostPath = "/home/phil/notes/memory";
+        };
+        "/var/lib/opencrow-group/notes/recipes" = {
+          hostPath = "/home/phil/notes/recipes";
         };
       };
 
