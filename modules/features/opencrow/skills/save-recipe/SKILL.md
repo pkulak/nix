@@ -25,10 +25,12 @@ You may also be asked to interpret and give instructions based on the whole reci
 When asked to show, display, view, print, or provide a printable version of a recipe, render the recipe as very basic print-friendly HTML, write it to `./recipe.html`, and upload it to the public file folder. Apply any requested modifications first, such as halving, doubling, scaling servings, or converting units.
 
 ```bash
-curl -T ./recipe.html https://files.kulak.us/public/recipe.html
+curl -T ./recipe.html \
+  -H "X-OC-Mtime: $(date +%s)" \
+  https://files.kulak.us/public/recipe.html
 ```
 
-This intentionally overwrites the existing public file if one is already there. Reply with the link: https://files.kulak.us/public/recipe.html
+This intentionally overwrites the existing public file (due to the X-OC-Mtime header) if one is already there. Reply with the link: https://files.kulak.us/public/recipe.html
 
 # Edit Recipe
 
