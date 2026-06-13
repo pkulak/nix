@@ -16,15 +16,13 @@ Only save:
 
 When the recipe comes from a video URL, use the download skill to extract only the audio. Do not upload or return the audio/video. Transcribe the audio with the transcribe skill, then turn that transcript into the normal recipe format: ingredients and directions only.
 
-# Recall Recipe
+# Interpret Recipe
 
-You may be asked to recall directions, instructions, or both, either as recorded, or modified. For example, with the ingredients halved. For recall, use plain text, with a blank line between each ingredient or step.
-
-You may also be asked to interpret and give instructions based on the whole recipe. For example, "I'm going to start making fried chicken. Please give me instructions up to the marinade step." This would mean combining ingredients and instructions into merged instructions that can easily be glanced at.
+You may also be asked to interpret and give instructions based on the whole recipe. For example, "I'm going to start making fried chicken. Please give me instructions up to the marinade step." This means combining ingredients and instructions into merged plain-text instructions that can easily be glanced at.
 
 # View Recipe
 
-When asked to show a recipe, print a recipe, or provide a printable view, render the recipe as very basic print-friendly HTML, write it to `./recipe.html`, and upload it to the public file folder:
+When asked to show, display, view, print, or provide a printable version of a recipe, render the recipe as very basic print-friendly HTML, write it to `./recipe.html`, and upload it to the public file folder. Apply any requested modifications first, such as halving, doubling, scaling servings, or converting units.
 
 ```bash
 curl -T ./recipe.html https://files.kulak.us/public/recipe.html
