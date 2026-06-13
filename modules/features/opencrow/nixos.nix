@@ -157,7 +157,6 @@ let
 
     extensions = {
       reminders = true;
-      memory-context = ../pi/extensions/memory-context.ts;
     };
 
     skills = {
@@ -168,7 +167,6 @@ let
       save-recipe = ./skills/save-recipe;
       sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;
-      update-memory = ./skills/update-memory;
       watch-tennis = ./skills/watch-tennis;
       wikipedia-lookup = ./skills/wikipedia-lookup;
     };
@@ -340,9 +338,6 @@ in
       };
 
       extraBindMounts = mkSharedBindMounts "/var/lib/opencrow-group" // {
-        "/var/lib/opencrow-group/notes/memory" = {
-          hostPath = "/home/phil/notes/memory";
-        };
         "/var/lib/opencrow-group/notes/recipes" = {
           hostPath = "/home/phil/notes/recipes";
         };
