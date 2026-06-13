@@ -315,6 +315,7 @@ in
       check-notes = ./skills/check-notes;
       jujutsu = ../pi/skills/jujutsu;
       low-priority-email = ./skills/low-priority-email;
+      save-recipe = ./skills/save-recipe;
     };
 
     extraPackages = sharedInstanceConfig.extraPackages ++ [ pkgs.jujutsu ];
