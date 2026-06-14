@@ -314,9 +314,14 @@ in
       check-notes = ./skills/check-notes;
       jujutsu = ../pi/skills/jujutsu;
       low-priority-email = ./skills/low-priority-email;
+      money = ./skills/money;
     };
 
-    extraPackages = sharedInstanceConfig.extraPackages ++ [ pkgs.jujutsu ];
+    extraPackages = sharedInstanceConfig.extraPackages ++ [
+      pkgs.jujutsu
+      pkgs.xh
+      (mkBashScript "money.sh")
+    ];
 
     # mounts that I only want in the default container
     extraBindMounts = mkSharedBindMounts "/var/lib/opencrow" // {
