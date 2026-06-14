@@ -1,6 +1,6 @@
 ---
 name: money
-description: Check balances and transfer money between household members using the family bank. Use when asked how much money someone has, to send/give/transfer money, pay an allowance, etc.
+description: Check balances, transfer money between household members, and reverse the last transaction using the family bank. Use when asked how much money someone has, to send/give/transfer money, pay an allowance, undo/reverse a transfer, etc.
 ---
 
 # Money
@@ -28,6 +28,15 @@ notes it in the Bank room. The memo is optional and may be several words.
 ```text
 money transfer dad charlie 5.00 weekly allowance
 ```
+
+## Reverse the last transaction
+
+```text
+money reverse
+```
+
+Reverses the most recent transaction by adding a new transaction in the opposite
+direction, and notes it in the Bank room.
 
 ## Notes
 

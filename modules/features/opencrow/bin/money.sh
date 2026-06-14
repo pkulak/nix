@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Money bot CLI — check balances and transfer funds via the money bot API.
+# Money bot CLI — check balances, transfer funds, and reverse transactions via the money bot API.
 # Usage: money.sh <command> [args...]
 
 set -euo pipefail
@@ -35,6 +35,12 @@ case "$cmd" in
     echo "✓ Sent $amount to $to from $from"
     ;;
 
+  reverse)
+    # Reverse the latest transaction: money.sh reverse
+    api POST "$API/reverse" >/dev/null
+    echo "✓ Reversed the last transaction"
+    ;;
+
   help|*)
     cat <<EOF
 Money bot CLI
@@ -44,6 +50,7 @@ Usage: money <command> [args...]
 Commands:
   balance <user>                       Show a user's current balance
   transfer <from> <to> <amount> [memo] Transfer money between users
+  reverse                              Reverse the last transaction
 
 Environment:
   MONEY_API_TOKEN   Bearer token for the money API (required)
@@ -51,6 +58,7 @@ Environment:
 Examples:
   money balance charlie
   money transfer dad charlie 5.00 weekly allowance
+  money reverse
 EOF
     ;;
 esac
