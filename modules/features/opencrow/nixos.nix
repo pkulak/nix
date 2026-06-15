@@ -237,7 +237,7 @@ let
         pnpm
 
         nix-output-monitor
-        nixfmt-rfc-style
+        nixfmt
         nil
         statix
         deadnix
