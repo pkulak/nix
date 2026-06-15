@@ -3,6 +3,8 @@
   flake.nixosModules.linux-server =
     { ... }:
     {
+      networking.tempAddresses = "disabled";
+
       imports = with self.nixosModules; [
         core
 
