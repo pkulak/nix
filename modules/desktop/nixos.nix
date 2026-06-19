@@ -20,7 +20,6 @@
         via
         woeusb
         zathura
-        zenity
         zoom-us
       ];
 

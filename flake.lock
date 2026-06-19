@@ -210,11 +210,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1780939356,
-        "narHash": "sha256-zIIXTxgwM8YbdkTP9xDp9zskQmE0exo1E6lnZHkc2h0=",
+        "lastModified": 1781903665,
+        "narHash": "sha256-ni8rTFHfR3PCFsQIWRzAQS5KO9FmOXiSx/QAtabiu28=",
         "owner": "pkulak",
         "repo": "matui",
-        "rev": "3cbfe73bf42924a2f4ba6404aea6f4b45e71819a",
+        "rev": "d74f01bbc22d16a64ad94995bd8beec3a06d9b53",
         "type": "github"
       },
       "original": {
