@@ -22,7 +22,7 @@ import ./checks.nix {
     {
       name = "check-navi";
       calendar = "*-*-* 12:00:00";
-      prompt = "In The Fam, remind Charlie that Navi needs to be fed, if not already.";
+      prompt = "In The Fam, remind Charlie that Navi needs to be fed. Use a Matrix mention for his name.";
     }
   ];
 }
