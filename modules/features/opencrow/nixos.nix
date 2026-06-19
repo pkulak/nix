@@ -50,6 +50,10 @@ let
   watchmail = mkPyScript "watchmail.py";
 
   mkSharedBindMounts = prefix: {
+    "/tmp" = {
+      hostPath = "${prefix}/tmp";
+      isReadOnly = false;
+    };
     "${prefix}/.agent-browser" = {
       hostPath = "/home/phil/.agent-browser";
     };
@@ -299,6 +303,11 @@ in
   };
 
   environment.systemPackages = [ (mkBashScript "session.sh") ];
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/opencrow/tmp 1777 root root -"
+    "d /var/lib/opencrow-group/tmp 1777 root root -"
+  ];
 
   services.opencrow = sharedInstanceConfig // {
     enable = true;
