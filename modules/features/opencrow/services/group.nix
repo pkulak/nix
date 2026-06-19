@@ -22,8 +22,7 @@ import ./checks.nix {
     {
       name = "check-navi";
       calendar = "*-*-* 12:00:00";
-      prompt = "Remind Charlie that Navi needs to be fed, if not already. Send this as a DM if possible.";
+      prompt = "In The Fam, remind Charlie that Navi needs to be fed, if not already.";
     }
   ];
 }
-
