@@ -1,15 +1,17 @@
 ---
 name: download
-description: Download a video from a URL using yt-dlp, rename it to a clean slug, re-upload it to the public file server, and share the link. Use when the user says "download this <url>", "get me a link for this <url>", "grab this video", "save this <url>", or any similar request to fetch and reshare a video. Also handles transforms (trim, crop, extract audio, etc.) — when a transform is requested, downloads highest quality source and transcodes to ensure frame-accurate output with proper A/V sync.
+description: Download a video from a URL using yt-dlp, rename it to a clean slug, re-upload it to the public file server, and share the link. Use when the user says "download this <url>", "get me a link for this <url>", "grab this video", "save this <url>", or any similar request to fetch and reshare a video. Also provides an internal audio-only helper for downstream transcription workflows, plus video transforms (trim, crop, etc.) that download the highest quality source and transcode to ensure frame-accurate output with proper A/V sync.
 ---
 
 # Download & Re-upload
 
 When the user provides a URL and wants a clean, shareable link to the video, follow these steps in order.
 
-## Decide: transform or direct download?
+## Decide: direct, audio-only, or transform?
 
-**If the user also wants a transform** (trim, crop, scale, audio-only extract, etc.) on the downloaded video, use the **Transform flow** below. Transforms require full transcoding, so we download the highest-quality source first and transcode during the transform — this avoids the A/V desync and imprecise cuts that `-c copy` causes.
+**If another skill/workflow needs only the audio for transcription**, use the **Audio-only helper** below. It uses yt-dlp's `ba` / `bestaudio` format selector so it downloads an audio-only stream instead of wasting bandwidth on video. Do not upload this temporary audio or present it to the user.
+
+**If the user also wants a video transform** (trim, crop, scale, etc.) on the downloaded video, use the **Transform flow** below. Transforms require full transcoding, so we download the highest-quality source first and transcode during the transform — this avoids the A/V desync and imprecise cuts that `-c copy` causes.
 
 **If no transform is needed**, use the **Direct flow** — download and remux straight to MP4.
 
@@ -82,9 +84,53 @@ rm /tmp/ytdl/<slug>.mp4
 
 ---
 
-## Transform Flow (trim, crop, or any other transform requested)
+## Audio-only Helper (for downstream transcription)
 
-When the user wants any transform applied to the video (e.g. "trim from 1:20 to 3:00", "crop to the left half", "extract just the audio"), do NOT use `-c copy` / stream copy — it can only cut on keyframes and causes A/V desync. Instead, download the highest-quality source and transcode during the transform.
+Use when another skill/workflow needs a local audio file from a URL, such as recipe extraction from a video. Do **not** slug, upload, or return a public link for this helper; pass the local file path to the downstream workflow and delete it afterward.
+
+yt-dlp's docs define `ba` / `bestaudio` as the best audio-only format, and `-x` / `--extract-audio` converts the downloaded file to an audio-only file using ffmpeg/ffprobe.
+
+### Step A1: Download the best audio stream to a temp file
+
+Prefer native M4A/AAC audio, fall back to any audio-only stream, and only fall back to a combined audio/video format if no audio-only stream exists:
+
+```bash
+workdir="$(mktemp -d /tmp/ytdl-audio.XXXXXX)"
+yt-dlp -f "ba[ext=m4a]/ba/b" -x --audio-format m4a --audio-quality 128K \
+  -o "$workdir/audio.%(ext)s" "<URL>"
+```
+
+This should produce:
+
+```bash
+$workdir/audio.m4a
+```
+
+Do **not** run plain `yt-dlp -x "<URL>"` for audio-only requests; without `-f ba`, yt-dlp's default format selection may download the best video+audio first and then discard the video.
+
+### Step A2: Use and clean up the temporary file
+
+Pass the local audio file to the downstream workflow, such as the transcribe skill:
+
+```bash
+curl -s https://api.openai.com/v1/audio/transcriptions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F "file=@$workdir/audio.m4a" \
+  -F "model=gpt-4o-transcribe" \
+  -F "response_format=text"
+```
+
+Then delete the temp directory after the downstream workflow no longer needs it:
+
+```bash
+rm -rf "$workdir"
+```
+
+---
+
+## Transform Flow (trim, crop, or any other video transform requested)
+
+When the user wants any transform applied to the video (e.g. "trim from 1:20 to 3:00", "crop to the left half"), do NOT use `-c copy` / stream copy — it can only cut on keyframes and causes A/V desync. Instead, download the highest-quality source and transcode during the transform.
 
 ### Step T1: Download highest-quality source
 
