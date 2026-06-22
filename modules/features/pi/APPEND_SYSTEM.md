@@ -15,8 +15,8 @@
 # Searching
 
 - Prefer `rg` for text search.
-- Prefer `rg --files` for file discovery.
-- Avoid slower alternatives like `grep` or broad `find` scans unless `rg` is unsuitable.
+- Prefer built-in `find`/`ls` tools for file discovery when suitable.
+- Keep broad file discovery scoped to avoid large outputs.
 
 # Testing in ~/vevo
 

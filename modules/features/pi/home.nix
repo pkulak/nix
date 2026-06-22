@@ -1,14 +1,28 @@
 { pkgs, ... }:
+
+let
+  rtkPiExtension = pkgs.runCommand "rtk-pi-extension.ts" { } ''
+    export HOME="$TMPDIR/home"
+    mkdir -p "$HOME"
+
+    ${pkgs.llm-agents.rtk}/bin/rtk init -g --agent pi --hook-only --no-patch
+
+    test -s "$HOME/.pi/agent/extensions/rtk.ts"
+    cp "$HOME/.pi/agent/extensions/rtk.ts" "$out"
+  '';
+in
 {
   home.packages = [
     pkgs.llm-agents.agent-browser
     pkgs.llm-agents.pi
+    pkgs.llm-agents.rtk
     pkgs.pi-agent-browser-native
   ];
 
   home.file = {
     ".pi/agent/APPEND_SYSTEM.md".source = ./APPEND_SYSTEM.md;
     ".pi/agent/extensions/copy-code-block.ts".source = ./extensions/copy-code-block.ts;
+    ".pi/agent/extensions/rtk.ts".source = rtkPiExtension;
 
     ".agent-browser/config.json".text = builtins.toJSON {
       "$schema" = "https://agent-browser.dev/schema.json";
