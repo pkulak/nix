@@ -322,6 +322,7 @@ in
       check-email = ./skills/check-email;
       check-notes = ./skills/check-notes;
       jujutsu = ../pi/skills/jujutsu;
+      used-local-items = ./skills/used-local-items;
       low-priority-email = ./skills/low-priority-email;
       money = ./skills/money;
     };
