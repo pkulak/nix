@@ -8,7 +8,7 @@ allowed-tools: Bash(jj *)
 
 This skill helps you work with Jujutsu, a Git-compatible VCS with mutable commits and automatic rebasing.
 
-**Tested with jj v0.37.0** - Commands may differ in other versions.
+**Tested with jj v0.41.0** - Commands may differ in other versions.
 
 ## Important: Automated/Agent Environment
 
@@ -25,6 +25,34 @@ jj squash -m "message"    # NOT: jj squash (which opens editor)
 Editor-based commands will fail in non-interactive environments.
 
 2. **Verify operations with `jj st`** after mutations (`squash`, `abandon`, `rebase`, `restore`) to confirm the operation succeeded.
+
+3. **Use RTK only for large read-only JJ output.** RTK does not currently rewrite `jj` commands automatically, so call it explicitly for high-volume diffs. Keep mutating commands raw so warnings/errors are preserved.
+
+Preferred progression for review:
+
+```bash
+# Start compact
+jj st
+jj diff --summary
+jj diff --stat
+
+# Use RTK for LLM-friendly patch output
+jj diff --git | rtk diff -
+jj show --git <change-id> | rtk diff -
+
+# Add limited context when needed
+jj diff --git --context 2 | rtk pipe -f git-diff
+jj show --git --context 2 <change-id> | rtk pipe -f git-diff
+```
+
+If RTK output hides needed context or a pipeline reports errors, rerun raw and path-scoped:
+
+```bash
+jj diff --git path/to/file
+jj show --git <change-id>
+```
+
+Do not use RTK for `jj st`, mutating commands, or pushes.
 
 ## Core Concepts
 
@@ -95,19 +123,20 @@ Examples:
 
 ```bash
 # View recent commits
-jj log
+jj log -n 20
 
-# View with patches
-jj log -p
+# View current branch compactly
+jj log -r 'trunk()..@' --no-graph --template 'change_id.short() ++ " " ++ commit_id.short() ++ " " ++ description.first_line() ++ "\n"'
 
-# View specific commit
-jj show <change-id>
+# View specific commit summary
+jj show --summary <change-id>
 
-# View diff of working copy (use --git for familiar +/- format)
-jj diff --git
+# View compact working-copy diff
+jj diff --summary
+jj diff --git | rtk diff -
 ```
 
-**IMPORTANT: `jj diff` output format**: The default `jj diff` output uses a side-by-side line number format (e.g. `26   26:`) that looks very different from git's `+`/`-` prefix format. This is **normal and correct** — it is NOT corrupted or showing stale content. However, to avoid confusion, **always use `jj diff --git`** to get standard unified diff format with `+`/`-` lines.
+Avoid broad `jj log -p`; inspect specific commits instead. The default `jj diff` output uses a side-by-side line number format (e.g. `26   26:`). For patch output, use `jj diff --git` (optionally piped to RTK) so changes use familiar `+`/`-` lines.
 
 ### Moving Between Commits
 
@@ -328,7 +357,7 @@ jj st
 
 **IMPORTANT**: Because commits are mutable, always refine them before considering work done:
 
-1. **Review your commit**: `jj show @` or `jj diff --git`
+1. **Review your commit**: `jj show --stat @`, `jj diff --summary`, or `jj diff --git | rtk diff -`; use raw `jj diff --git` when you need full context
 2. **Is it atomic?** One logical change per commit
 3. **Is the message clear?** Use imperative verb phrase in sentence case format with no full stop: e.g. "Add login endpoint", "Fix null pointer in payment processor", "Remove deprecated API endpoints"
 4. **Are there unrelated changes?** Use `jj restore` to move changes out, then create separate commits
@@ -340,8 +369,8 @@ jj st
 |--------|---------|
 | Describe commit | `jj desc -m "message"` |
 | View status | `jj st` |
-| View log | `jj log` |
-| View diff | `jj diff --git` |
+| View log | `jj log -n 20` |
+| View diff | `jj diff --summary` or `jj diff --git | rtk diff -` |
 | New commit | `jj new -m "message"` (use `jj st` first; skip if `@` is empty) |
 | Edit commit | `jj edit <id>` |
 | Squash to parent | `jj squash` |
