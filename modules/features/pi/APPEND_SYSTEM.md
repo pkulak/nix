@@ -15,8 +15,24 @@
 # Searching
 
 - Prefer `rg` for text search.
-- Prefer built-in `find`/`ls` tools for file discovery when suitable.
-- Keep broad file discovery scoped to avoid large outputs.
+- Prefer `rg --files` for file discovery.
+- Avoid slower alternatives like `grep` or broad `find` scans unless `rg` is unsuitable.
+
+# RTK usage
+
+- Prefer RTK whenever it can safely reduce high-volume read-only output; saving context is valuable.
+- Use RTK by default for these eligible command categories when exact formatting is not required:
+  - Large diffs: `git diff ... | rtk diff -`, `jj diff --git ... | rtk diff -`, or `jj show --git <rev> | rtk diff -`.
+  - Broad VCS history: prefer scoped `jj log`/`git log` commands first; pipe large read-only history to `rtk log` when you only need an overview.
+  - Large logs: `rtk log <file>` or `<log command> | rtk log`. For remote logs, pipe on the local side: `ssh host 'journalctl ...' | rtk log`.
+  - Broad exploratory searches with many expected matches or long lines: use `rtk grep <pattern> <path> ...` for simple searches, or `rg ... | rtk pipe -f grep` for complex pipelines. Keep targeted searches raw.
+  - Verbose builds/tests/lints: use the specific wrapper when available (`rtk gradlew ...`, `rtk cargo ...`, `rtk go test ...`, `rtk pytest ...`, `rtk npm ...`, `rtk pnpm ...`, `rtk npx ...`, `rtk tsc ...`, `rtk lint ...`) or fall back to `rtk test ...` / `rtk err ...`.
+  - Docker output: `rtk docker build ...`, `rtk docker compose ...`, `rtk docker logs ...`, or `docker ... 2>&1 | rtk log`.
+  - Large HTTP/JSON/API output: `rtk curl ...`, `rtk json <file>`, or pipe arbitrary command output through `rtk log` when shape/errors matter more than exact payload.
+- If an eligible command might produce a lot of output, start with RTK and rerun raw only when needed.
+- Do not use RTK for normal targeted search or file discovery. Use raw `rg`, `rg --files`, `grep`, `find`, `ls`, and built-in tools for exact paths and small outputs.
+- If RTK hides needed context, rerun the raw command scoped to the relevant file, test, or log range.
+- Never rely on RTK output for exact text replacement; use `read` or raw/path-scoped commands when exact whitespace/context matters.
 
 # Testing in ~/vevo
 
