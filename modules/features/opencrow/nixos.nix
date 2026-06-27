@@ -174,14 +174,12 @@ let
       download = ./skills/download;
       frigate = ./skills/frigate;
       morning-summary = ./skills/morning-summary;
-      noise-machine = ./skills/noise-machine;
       print = ./skills/print;
       save-recipe = ./skills/save-recipe;
       sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;
       unwatch-tennis = ./skills/unwatch-tennis;
       watch-tennis = ./skills/watch-tennis;
-      wikipedia-lookup = ./skills/wikipedia-lookup;
     };
 
     environmentFiles = [

@@ -1,11 +1,11 @@
 ---
 name: frigate
-description: Answer questions about Phil's Frigate home cameras, recent alerts, people/packages/animals outside, the front door/front yard/backyard, or "what's going on" after a camera alert. Use for requests to check, show, describe, or send recent Frigate camera activity.
+description: Answer questions about the Frigate home cameras, recent alerts, people/packages/animals outside, the front door/front yard/backyard, or "what's going on" after a camera alert. Use for requests to check, show, describe, or send recent Frigate camera activity.
 ---
 
 # Frigate Home Cameras
 
-Use Phil's local Frigate API. It is available on the local network with no auth:
+Use the local Frigate API. It is available on the local network with no auth:
 
 ```text
 http://debian.home:5000/api
