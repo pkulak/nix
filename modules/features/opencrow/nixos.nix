@@ -166,6 +166,7 @@ let
     skills = {
       check-tennis = ./skills/check-tennis;
       download = ./skills/download;
+      frigate = ./skills/frigate;
       morning-summary = ./skills/morning-summary;
       noise-machine = ./skills/noise-machine;
       save-recipe = ./skills/save-recipe;
