@@ -3,6 +3,7 @@
     host = "barnaby";
     profile = "linux-server";
     nixosModules = [
+      self.nixosModules.garage-printer
       self.nixosModules.opencrow
       ./nixos.nix
       ./hardware.nix

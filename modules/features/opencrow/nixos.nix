@@ -54,6 +54,10 @@ let
       hostPath = "${prefix}/tmp";
       isReadOnly = false;
     };
+    "/run/cups" = {
+      hostPath = "/run/cups";
+      isReadOnly = false;
+    };
     "${prefix}/.agent-browser" = {
       hostPath = "/home/phil/.agent-browser";
     };
@@ -99,6 +103,8 @@ let
       OPENCROW_PI_MODEL = "gpt-5.5";
       PI_CACHE_RETENTION = "long";
       TZ = "America/Los_Angeles";
+      CUPS_SERVER = "/run/cups/cups.sock";
+      LPDEST = "Garage";
     };
 
     piSettings = {
@@ -184,6 +190,7 @@ let
     extraPackages =
       with pkgs;
       [
+        cups
         curl
         wget
         fd
