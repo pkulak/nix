@@ -175,6 +175,7 @@ let
       frigate = ./skills/frigate;
       morning-summary = ./skills/morning-summary;
       noise-machine = ./skills/noise-machine;
+      print = ./skills/print;
       save-recipe = ./skills/save-recipe;
       sports-scores = ./skills/sports-scores;
       transcribe = ./skills/transcribe;
@@ -226,7 +227,9 @@ let
         imagemagick
         ffmpeg-over-ip
         poppler
+        poppler-utils
         pandoc
+        typst
         qpdf
         ghostscript
         exiftool
@@ -375,6 +378,8 @@ in
   };
 
   containers.opencrow.config = {
+    fonts.packages = [ pkgs.libertinus ];
+
     programs.ssh.extraConfig = agentSshConfig;
 
     users.users.opencrow = {
@@ -399,6 +404,8 @@ in
   };
 
   containers.opencrow-group.config = {
+    fonts.packages = [ pkgs.libertinus ];
+
     programs.ssh.extraConfig = agentSshConfig;
 
     users.users.opencrow = {
