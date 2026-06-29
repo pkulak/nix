@@ -285,6 +285,15 @@ def fetch_json(url: str) -> dict:
         fail("Timed out contacting ESPN API")
 
 
+def fetch_json_optional(url: str) -> dict | None:
+    request = urllib.request.Request(url, headers={"User-Agent": "opencrow-sports-scores/1"})
+    try:
+        with urllib.request.urlopen(request, timeout=15) as response:
+            return json.load(response)
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError):
+        return None
+
+
 def parse_espn_datetime(value: str | None) -> dt.datetime | None:
     if not value:
         return None
@@ -340,11 +349,17 @@ def normalize_competitor(item: dict) -> dict:
     }
 
 
+def event_status_type(event: dict) -> dict:
+    competitions = event.get("competitions") or []
+    competition = competitions[0] if competitions else {}
+    return (event.get("status") or {}).get("type") or competition.get("status", {}).get("type", {})
+
+
 def normalize_event(event: dict) -> dict:
     local = parse_espn_datetime(event.get("date"))
     competitions = event.get("competitions") or []
     competition = competitions[0] if competitions else {}
-    status_type = (event.get("status") or {}).get("type") or competition.get("status", {}).get("type", {})
+    status_type = event_status_type(event)
 
     broadcasts = []
     for broadcast in competition.get("broadcasts") or []:
@@ -376,11 +391,48 @@ def normalize_event(event: dict) -> dict:
     }
 
 
+def select_next_event(events: list[dict]) -> dict | None:
+    now = dt.datetime.now(PACIFIC)
+    candidates = []
+    for event in events:
+        status_type = event_status_type(event)
+        state = status_type.get("state")
+        completed = status_type.get("completed")
+        local = parse_espn_datetime(event.get("date"))
+
+        if state == "in":
+            priority = 0
+        elif state == "pre" and (local is None or local >= now - dt.timedelta(hours=3)):
+            priority = 1
+        elif state != "post" and completed is not True:
+            priority = 2
+        else:
+            continue
+
+        candidates.append((priority, local or dt.datetime.max.replace(tzinfo=PACIFIC), event))
+
+    if not candidates:
+        return None
+    candidates.sort(key=lambda item: (item[0], item[1]))
+    return candidates[0][2]
+
+
 def team_next(args: argparse.Namespace) -> None:
     db = load_database()
-    url = f"{BASE_URL}/{args.sport}/{args.league}/teams/{urllib.parse.quote(str(args.team_id))}"
-    data = fetch_json(url)
-    team_data = data.get("team") or {}
+    team_id = urllib.parse.quote(str(args.team_id))
+    schedule_url = f"{BASE_URL}/{args.sport}/{args.league}/teams/{team_id}/schedule"
+    schedule_data = fetch_json_optional(schedule_url)
+
+    if schedule_data is not None:
+        team_data = schedule_data.get("team") or {}
+        events = schedule_data.get("events") or []
+        event = select_next_event(events)
+    else:
+        url = f"{BASE_URL}/{args.sport}/{args.league}/teams/{team_id}"
+        data = fetch_json(url)
+        team_data = data.get("team") or {}
+        event = select_next_event(team_data.get("nextEvent") or [])
+
     db_team = find_team(db, args.sport, args.league, args.team_id)
     team = db_team or {
         "id": str(team_data.get("id", args.team_id)),
@@ -390,8 +442,7 @@ def team_next(args: argparse.Namespace) -> None:
         "sport": args.sport,
         "league": args.league,
     }
-    events = team_data.get("nextEvent") or []
-    emit({"team": team_identity(team, db), "event": normalize_event(events[0]) if events else None})
+    emit({"team": team_identity(team, db), "event": normalize_event(event) if event else None})
 
 
 def scoreboard(args: argparse.Namespace) -> None:
