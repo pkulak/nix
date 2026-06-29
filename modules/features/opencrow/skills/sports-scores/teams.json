@@ -1,1 +1,2724 @@
-[["1","ATL","Atlanta Hawks","Hawks","basketball","nba"],["2","BOS","Boston Celtics","Celtics","basketball","nba"],["17","BKN","Brooklyn Nets","Nets","basketball","nba"],["30","CHA","Charlotte Hornets","Hornets","basketball","nba"],["4","CHI","Chicago Bulls","Bulls","basketball","nba"],["5","CLE","Cleveland Cavaliers","Cavaliers","basketball","nba"],["6","DAL","Dallas Mavericks","Mavericks","basketball","nba"],["7","DEN","Denver Nuggets","Nuggets","basketball","nba"],["8","DET","Detroit Pistons","Pistons","basketball","nba"],["9","GS","Golden State Warriors","Warriors","basketball","nba"],["10","HOU","Houston Rockets","Rockets","basketball","nba"],["11","IND","Indiana Pacers","Pacers","basketball","nba"],["12","LAC","LA Clippers","Clippers","basketball","nba"],["13","LAL","Los Angeles Lakers","Lakers","basketball","nba"],["29","MEM","Memphis Grizzlies","Grizzlies","basketball","nba"],["14","MIA","Miami Heat","Heat","basketball","nba"],["15","MIL","Milwaukee Bucks","Bucks","basketball","nba"],["16","MIN","Minnesota Timberwolves","Timberwolves","basketball","nba"],["3","NO","New Orleans Pelicans","Pelicans","basketball","nba"],["18","NY","New York Knicks","Knicks","basketball","nba"],["25","OKC","Oklahoma City Thunder","Thunder","basketball","nba"],["19","ORL","Orlando Magic","Magic","basketball","nba"],["20","PHI","Philadelphia 76ers","76ers","basketball","nba"],["21","PHX","Phoenix Suns","Suns","basketball","nba"],["22","POR","Portland Trail Blazers","Trail Blazers","basketball","nba"],["23","SAC","Sacramento Kings","Kings","basketball","nba"],["24","SA","San Antonio Spurs","Spurs","basketball","nba"],["28","TOR","Toronto Raptors","Raptors","basketball","nba"],["26","UTAH","Utah Jazz","Jazz","basketball","nba"],["27","WSH","Washington Wizards","Wizards","basketball","nba"],["44","AMER","American University Eagles","American","basketball","mens-college-basketball"],["9","ASU","Arizona State Sun Devils","Arizona St","basketball","mens-college-basketball"],["12","ARIZ","Arizona Wildcats","Arizona","basketball","mens-college-basketball"],["8","ARK","Arkansas Razorbacks","Arkansas","basketball","mens-college-basketball"],["2","AUB","Auburn Tigers","Auburn","basketball","mens-college-basketball"],["91","BELL","Bellarmine Knights","Bellarmine","basketball","mens-college-basketball"],["68","BOIS","Boise State Broncos","Boise St","basketball","mens-college-basketball"],["71","BRAD","Bradley Braves","Bradley","basketball","mens-college-basketball"],["13","CP","Cal Poly Mustangs","Cal Poly","basketball","mens-college-basketball"],["25","CAL","California Golden Bears","California","basketball","mens-college-basketball"],["38","COLO","Colorado Buffaloes","Colorado","basketball","mens-college-basketball"],["36","CSU","Colorado State Rams","Colorado St","basketball","mens-college-basketball"],["48","DEL","Delaware Blue Hens","Delaware","basketball","mens-college-basketball"],["50","FAMU","Florida A&M Rattlers","Florida A&M","basketball","mens-college-basketball"],["57","FLA","Florida Gators","Florida","basketball","mens-college-basketball"],["52","FSU","Florida State Seminoles","Florida St","basketball","mens-college-basketball"],["45","GW","George Washington Revolutionaries","G Washington","basketball","mens-college-basketball"],["46","GTWN","Georgetown Hoyas","Georgetown","basketball","mens-college-basketball"],["61","UGA","Georgia Bulldogs","Georgia","basketball","mens-college-basketball"],["59","GT","Georgia Tech Yellow Jackets","Georgia Tech","basketball","mens-college-basketball"],["62","HAW","Hawai'i Rainbow Warriors","Hawai'i","basketball","mens-college-basketball"],["47","HOW","Howard Bison","Howard","basketball","mens-college-basketball"],["85","IUIN","IU Indianapolis Jaguars","IU Indy","basketball","mens-college-basketball"],["70","IDHO","Idaho Vandals","Idaho","basketball","mens-college-basketball"],["84","IU","Indiana Hoosiers","Indiana","basketball","mens-college-basketball"],["66","ISU","Iowa State Cyclones","Iowa State","basketball","mens-college-basketball"],["55","JXST","Jacksonville State Gamecocks","Jax State","basketball","mens-college-basketball"],["96","UK","Kentucky Wildcats","Kentucky","basketball","mens-college-basketball"],["97","LOU","Louisville Cardinals","Louisville","basketball","mens-college-basketball"],["93","MUR","Murray State Racers","Murray St","basketball","mens-college-basketball"],["94","NKU","Northern Kentucky Norse","N Kentucky","basketball","mens-college-basketball"],["77","NU","Northwestern Wildcats","Northwestern","basketball","mens-college-basketball"],["87","ND","Notre Dame Fighting Irish","Notre Dame","basketball","mens-college-basketball"],["16","SAC","Sacramento State Hornets","Sacramento St","basketball","mens-college-basketball"],["21","SDSU","San Diego State Aztecs","San Diego St","basketball","mens-college-basketball"],["23","SJSU","San Jos\u00e9 State Spartans","San Jos\u00e9 St","basketball","mens-college-basketball"],["6","USA","South Alabama Jaguars","South Alabama","basketball","mens-college-basketball"],["58","USF","South Florida Bulls","South Florida","basketball","mens-college-basketball"],["79","SIU","Southern Illinois Salukis","S Illinois","basketball","mens-college-basketball"],["24","STAN","Stanford Cardinal","Stanford","basketball","mens-college-basketball"],["56","STET","Stetson Hatters","Stetson","basketball","mens-college-basketball"],["5","UAB","UAB Blazers","UAB","basketball","mens-college-basketball"],["27","UCR","UC Riverside Highlanders","UC Riverside","basketball","mens-college-basketball"],["28","UCSD","UC San Diego Tritons","UC San Diego","basketball","mens-college-basketball"],["26","UCLA","UCLA Bruins","UCLA","basketball","mens-college-basketball"],["41","CONN","UConn Huskies","UConn","basketball","mens-college-basketball"],["82","UIC","UIC Flames","UIC","basketball","mens-college-basketball"],["30","USC","USC Trojans","USC","basketball","mens-college-basketball"],["98","WKU","Western Kentucky Hilltoppers","Western KY","basketball","mens-college-basketball"],["43","YALE","Yale Bulldogs","Yale","basketball","mens-college-basketball"],["29","ARI","Arizona Diamondbacks","Diamondbacks","baseball","mlb"],["11","ATH","Athletics","Athletics","baseball","mlb"],["15","ATL","Atlanta Braves","Braves","baseball","mlb"],["1","BAL","Baltimore Orioles","Orioles","baseball","mlb"],["2","BOS","Boston Red Sox","Red Sox","baseball","mlb"],["16","CHC","Chicago Cubs","Cubs","baseball","mlb"],["4","CHW","Chicago White Sox","White Sox","baseball","mlb"],["17","CIN","Cincinnati Reds","Reds","baseball","mlb"],["5","CLE","Cleveland Guardians","Guardians","baseball","mlb"],["27","COL","Colorado Rockies","Rockies","baseball","mlb"],["6","DET","Detroit Tigers","Tigers","baseball","mlb"],["18","HOU","Houston Astros","Astros","baseball","mlb"],["7","KC","Kansas City Royals","Royals","baseball","mlb"],["3","LAA","Los Angeles Angels","Angels","baseball","mlb"],["19","LAD","Los Angeles Dodgers","Dodgers","baseball","mlb"],["28","MIA","Miami Marlins","Marlins","baseball","mlb"],["8","MIL","Milwaukee Brewers","Brewers","baseball","mlb"],["9","MIN","Minnesota Twins","Twins","baseball","mlb"],["21","NYM","New York Mets","Mets","baseball","mlb"],["10","NYY","New York Yankees","Yankees","baseball","mlb"],["22","PHI","Philadelphia Phillies","Phillies","baseball","mlb"],["23","PIT","Pittsburgh Pirates","Pirates","baseball","mlb"],["25","SD","San Diego Padres","Padres","baseball","mlb"],["26","SF","San Francisco Giants","Giants","baseball","mlb"],["12","SEA","Seattle Mariners","Mariners","baseball","mlb"],["24","STL","St. Louis Cardinals","Cardinals","baseball","mlb"],["30","TB","Tampa Bay Rays","Rays","baseball","mlb"],["13","TEX","Texas Rangers","Rangers","baseball","mlb"],["14","TOR","Toronto Blue Jays","Blue Jays","baseball","mlb"],["20","WSH","Washington Nationals","Nationals","baseball","mlb"],["22","ARI","Arizona Cardinals","Cardinals","football","nfl"],["1","ATL","Atlanta Falcons","Falcons","football","nfl"],["33","BAL","Baltimore Ravens","Ravens","football","nfl"],["2","BUF","Buffalo Bills","Bills","football","nfl"],["29","CAR","Carolina Panthers","Panthers","football","nfl"],["3","CHI","Chicago Bears","Bears","football","nfl"],["4","CIN","Cincinnati Bengals","Bengals","football","nfl"],["5","CLE","Cleveland Browns","Browns","football","nfl"],["6","DAL","Dallas Cowboys","Cowboys","football","nfl"],["7","DEN","Denver Broncos","Broncos","football","nfl"],["8","DET","Detroit Lions","Lions","football","nfl"],["9","GB","Green Bay Packers","Packers","football","nfl"],["34","HOU","Houston Texans","Texans","football","nfl"],["11","IND","Indianapolis Colts","Colts","football","nfl"],["30","JAX","Jacksonville Jaguars","Jaguars","football","nfl"],["12","KC","Kansas City Chiefs","Chiefs","football","nfl"],["13","LV","Las Vegas Raiders","Raiders","football","nfl"],["24","LAC","Los Angeles Chargers","Chargers","football","nfl"],["14","LAR","Los Angeles Rams","Rams","football","nfl"],["15","MIA","Miami Dolphins","Dolphins","football","nfl"],["16","MIN","Minnesota Vikings","Vikings","football","nfl"],["17","NE","New England Patriots","Patriots","football","nfl"],["18","NO","New Orleans Saints","Saints","football","nfl"],["19","NYG","New York Giants","Giants","football","nfl"],["20","NYJ","New York Jets","Jets","football","nfl"],["21","PHI","Philadelphia Eagles","Eagles","football","nfl"],["23","PIT","Pittsburgh Steelers","Steelers","football","nfl"],["25","SF","San Francisco 49ers","49ers","football","nfl"],["26","SEA","Seattle Seahawks","Seahawks","football","nfl"],["27","TB","Tampa Bay Buccaneers","Buccaneers","football","nfl"],["10","TEN","Tennessee Titans","Titans","football","nfl"],["28","WSH","Washington Commanders","Commanders","football","nfl"],["7","AMH","Amherst Mammoths","Amherst","football","college-football"],["15","ANMR","Anna Maria Amcats","Anna Maria","football","college-football"],["9","ASU","Arizona State Sun Devils","Arizona St","football","college-football"],["12","ARIZ","Arizona Wildcats","Arizona","football","college-football"],["8","ARK","Arkansas Razorbacks","Arkansas","football","college-football"],["2","AUB","Auburn Tigers","Auburn","football","college-football"],["68","BOIS","Boise State Broncos","Boise St","football","college-football"],["18","BRIS","Bridgewater State Bears","Bridgewater St","football","college-football"],["63","BVU","Buena Vista Beavers","Buena Vista","football","college-football"],["13","CP","Cal Poly Mustangs","Cal Poly","football","college-football"],["25","CAL","California Golden Bears","California","football","college-football"],["32","CRU","Carroll (WI) Pioneers","Carroll (WI)","football","college-football"],["17","CMS","Claremont Mudd Scripps Stags/Athenas","Claremont-M-S","football","college-football"],["33","CLBY","Colby White Mules","Colby","football","college-football"],["38","COLO","Colorado Buffaloes","Colorado","football","college-football"],["11","COMU","Colorado Mesa Mavericks","Colorado Mesa","football","college-football"],["36","CSU","Colorado State Rams","Colorado St","football","college-football"],["40","CC","Curry Colonels","Curry","football","college-football"],["48","DEL","Delaware Blue Hens","Delaware","football","college-football"],["49","DBQ","Dubuque Spartans","Dubuque","football","college-football"],["72","ELMH","Elmhurst Bluejays","Elmhurst","football","college-football"],["50","FAMU","Florida A&M Rattlers","Florida A&M","football","college-football"],["57","FLA","Florida Gators","Florida","football","college-football"],["52","FSU","Florida State Seminoles","Florida St","football","college-football"],["46","GTWN","Georgetown Hoyas","Georgetown","football","college-football"],["61","UGA","Georgia Bulldogs","Georgia","football","college-football"],["59","GT","Georgia Tech Yellow Jackets","Georgia Tech","football","college-football"],["65","GRNL","Grinnell Pioneers","Grinnell","football","college-football"],["62","HAW","Hawai'i Rainbow Warriors","Hawai'i","football","college-football"],["47","HOW","Howard Bison","Howard","football","college-football"],["70","IDHO","Idaho Vandals","Idaho","football","college-football"],["66","ISU","Iowa State Cyclones","Iowa State","football","college-football"],["55","JXST","Jacksonville State Gamecocks","Jax State","football","college-football"],["67","LUT","Luther Norse","Luther","football","college-football"],["74","MIL","Millikin Big Blue","Millikin","football","college-football"],["60","MOR","Morehouse College Maroon Tigers","Morehouse","football","college-football"],["75","NOR","North Park Vikings","North Park","football","college-football"],["29","RED","Redlands Bulldogs","Redlands","football","college-football"],["16","SAC","Sacramento State Hornets","Sacramento St","football","college-football"],["21","SDSU","San Diego State Aztecs","San Diego St","football","college-football"],["23","SJSU","San Jos\u00e9 State Spartans","San Jos\u00e9 St","football","college-football"],["6","USA","South Alabama Jaguars","South Alabama","football","college-football"],["58","USF","South Florida Bulls","South Florida","football","college-football"],["24","STAN","Stanford Cardinal","Stanford","football","college-football"],["56","STET","Stetson Hatters","Stetson","football","college-football"],["5","UAB","UAB Blazers","UAB","football","college-football"],["26","UCLA","UCLA Bruins","UCLA","football","college-football"],["41","CONN","UConn Huskies","UConn","football","college-football"],["30","USC","USC Trojans","USC","football","college-football"],["43","YALE","Yale Bulldogs","Yale","football","college-football"],["25","ANA","Anaheim Ducks","Ducks","hockey","nhl"],["1","BOS","Boston Bruins","Bruins","hockey","nhl"],["2","BUF","Buffalo Sabres","Sabres","hockey","nhl"],["3","CGY","Calgary Flames","Flames","hockey","nhl"],["7","CAR","Carolina Hurricanes","Hurricanes","hockey","nhl"],["4","CHI","Chicago Blackhawks","Blackhawks","hockey","nhl"],["17","COL","Colorado Avalanche","Avalanche","hockey","nhl"],["29","CBJ","Columbus Blue Jackets","Blue Jackets","hockey","nhl"],["9","DAL","Dallas Stars","Stars","hockey","nhl"],["5","DET","Detroit Red Wings","Red Wings","hockey","nhl"],["6","EDM","Edmonton Oilers","Oilers","hockey","nhl"],["26","FLA","Florida Panthers","Panthers","hockey","nhl"],["8","LA","Los Angeles Kings","Kings","hockey","nhl"],["30","MIN","Minnesota Wild","Wild","hockey","nhl"],["10","MTL","Montreal Canadiens","Canadiens","hockey","nhl"],["27","NSH","Nashville Predators","Predators","hockey","nhl"],["11","NJ","New Jersey Devils","Devils","hockey","nhl"],["12","NYI","New York Islanders","Islanders","hockey","nhl"],["13","NYR","New York Rangers","Rangers","hockey","nhl"],["14","OTT","Ottawa Senators","Senators","hockey","nhl"],["15","PHI","Philadelphia Flyers","Flyers","hockey","nhl"],["16","PIT","Pittsburgh Penguins","Penguins","hockey","nhl"],["18","SJ","San Jose Sharks","Sharks","hockey","nhl"],["124292","SEA","Seattle Kraken","Kraken","hockey","nhl"],["19","STL","St. Louis Blues","Blues","hockey","nhl"],["20","TB","Tampa Bay Lightning","Lightning","hockey","nhl"],["21","TOR","Toronto Maple Leafs","Maple Leafs","hockey","nhl"],["129764","UTAH","Utah Mammoth","Mammoth","hockey","nhl"],["22","VAN","Vancouver Canucks","Canucks","hockey","nhl"],["37","VGK","Vegas Golden Knights","Golden Knights","hockey","nhl"],["23","WSH","Washington Capitals","Capitals","hockey","nhl"],["28","WPG","Winnipeg Jets","Jets","hockey","nhl"],["18418","ATL","Atlanta United FC","Atlanta","soccer","usa.1"],["20906","ATX","Austin FC","Austin","soccer","usa.1"],["9720","MTL","CF Montr\u00e9al","CF Montr\u00e9al","soccer","usa.1"],["21300","CLT","Charlotte FC","Charlotte","soccer","usa.1"],["182","CHI","Chicago Fire FC","Chicago","soccer","usa.1"],["184","COL","Colorado Rapids","Colorado","soccer","usa.1"],["183","CLB","Columbus Crew","Columbus","soccer","usa.1"],["193","DC","D.C. United","D.C. United","soccer","usa.1"],["18267","CIN","FC Cincinnati","Cincinnati","soccer","usa.1"],["185","DAL","FC Dallas","Dallas","soccer","usa.1"],["6077","HOU","Houston Dynamo FC","Houston","soccer","usa.1"],["20232","MIA","Inter Miami CF","Miami","soccer","usa.1"],["187","LA","LA Galaxy","LA Galaxy","soccer","usa.1"],["18966","LAFC","LAFC","LAFC","soccer","usa.1"],["17362","MIN","Minnesota United FC","Minnesota","soccer","usa.1"],["18986","NSH","Nashville SC","Nashville","soccer","usa.1"],["189","NE","New England Revolution","New England","soccer","usa.1"],["17606","NYC","New York City FC","NYCFC","soccer","usa.1"],["12011","ORL","Orlando City SC","Orlando","soccer","usa.1"],["10739","PHI","Philadelphia Union","Philadelphia","soccer","usa.1"],["9723","POR","Portland Timbers","Portland","soccer","usa.1"],["4771","RSL","Real Salt Lake","Salt Lake","soccer","usa.1"],["190","RBNY","Red Bull New York","Red Bull NY","soccer","usa.1"],["22529","SD","San Diego FC","San Diego","soccer","usa.1"],["191","SJ","San Jose Earthquakes","San Jose","soccer","usa.1"],["9726","SEA","Seattle Sounders FC","Seattle","soccer","usa.1"],["186","SKC","Sporting Kansas City","Kansas City","soccer","usa.1"],["21812","STL","St. Louis CITY SC","St. Louis","soccer","usa.1"],["7318","TOR","Toronto FC","Toronto","soccer","usa.1"],["9727","VAN","Vancouver Whitecaps","Vancouver","soccer","usa.1"],["349","BOU","AFC Bournemouth","Bournemouth","soccer","eng.1"],["359","ARS","Arsenal","Arsenal","soccer","eng.1"],["362","AVL","Aston Villa","Aston Villa","soccer","eng.1"],["337","BRE","Brentford","Brentford","soccer","eng.1"],["331","BHA","Brighton & Hove Albion","Brighton","soccer","eng.1"],["379","BUR","Burnley","Burnley","soccer","eng.1"],["363","CHE","Chelsea","Chelsea","soccer","eng.1"],["384","CRY","Crystal Palace","C Palace","soccer","eng.1"],["368","EVE","Everton","Everton","soccer","eng.1"],["370","FUL","Fulham","Fulham","soccer","eng.1"],["357","LEE","Leeds United","Leeds","soccer","eng.1"],["364","LIV","Liverpool","Liverpool","soccer","eng.1"],["382","MNC","Manchester City","Man City","soccer","eng.1"],["360","MAN","Manchester United","Man United","soccer","eng.1"],["361","NEW","Newcastle United","Newcastle","soccer","eng.1"],["393","NFO","Nottingham Forest","Nottm Forest","soccer","eng.1"],["366","SUN","Sunderland","Sunderland","soccer","eng.1"],["367","TOT","Tottenham Hotspur","Spurs","soccer","eng.1"],["371","WHU","West Ham United","West Ham","soccer","eng.1"],["380","WOL","Wolverhampton Wanderers","Wolves","soccer","eng.1"],["20","ATL","Atlanta Dream","Dream","basketball","wnba"],["19","CHI","Chicago Sky","Sky","basketball","wnba"],["18","CON","Connecticut Sun","Sun","basketball","wnba"],["3","DAL","Dallas Wings","Wings","basketball","wnba"],["129689","GS","Golden State Valkyries","Valkyries","basketball","wnba"],["5","IND","Indiana Fever","Fever","basketball","wnba"],["17","LV","Las Vegas Aces","Aces","basketball","wnba"],["6","LA","Los Angeles Sparks","Sparks","basketball","wnba"],["8","MIN","Minnesota Lynx","Lynx","basketball","wnba"],["9","NY","New York Liberty","Liberty","basketball","wnba"],["11","PHX","Phoenix Mercury","Mercury","basketball","wnba"],["132052","POR","Portland Fire","Fire","basketball","wnba"],["14","SEA","Seattle Storm","Storm","basketball","wnba"],["131935","TOR","Toronto Tempo","Tempo","basketball","wnba"],["16","WSH","Washington Mystics","Mystics","basketball","wnba"]]
+{
+  "leagues": [
+    {
+      "aliases": [
+        "nba",
+        "pro basketball"
+      ],
+      "league": "nba",
+      "name": "NBA",
+      "sport": "basketball"
+    },
+    {
+      "aliases": [
+        "wnba",
+        "women's basketball"
+      ],
+      "league": "wnba",
+      "name": "WNBA",
+      "sport": "basketball"
+    },
+    {
+      "aliases": [
+        "nfl",
+        "pro football"
+      ],
+      "league": "nfl",
+      "name": "NFL",
+      "sport": "football"
+    },
+    {
+      "aliases": [
+        "college football",
+        "cfb",
+        "ncaaf"
+      ],
+      "league": "college-football",
+      "name": "College Football",
+      "sport": "football"
+    },
+    {
+      "aliases": [
+        "mlb",
+        "baseball"
+      ],
+      "league": "mlb",
+      "name": "MLB",
+      "sport": "baseball"
+    },
+    {
+      "aliases": [
+        "nhl",
+        "hockey"
+      ],
+      "league": "nhl",
+      "name": "NHL",
+      "sport": "hockey"
+    },
+    {
+      "aliases": [
+        "mls",
+        "major league soccer"
+      ],
+      "league": "usa.1",
+      "name": "MLS",
+      "sport": "soccer"
+    },
+    {
+      "aliases": [
+        "epl",
+        "premier league",
+        "english soccer"
+      ],
+      "league": "eng.1",
+      "name": "English Premier League",
+      "sport": "soccer"
+    },
+    {
+      "aliases": [
+        "men's college basketball",
+        "college basketball",
+        "march madness",
+        "ncaam"
+      ],
+      "league": "mens-college-basketball",
+      "name": "Men's College Basketball",
+      "sport": "basketball"
+    }
+  ],
+  "teams": [
+    {
+      "abbreviation": "ARI",
+      "aliases": [],
+      "displayName": "Arizona Diamondbacks",
+      "id": "29",
+      "league": "mlb",
+      "shortDisplayName": "Diamondbacks",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "ATH",
+      "aliases": [],
+      "displayName": "Athletics",
+      "id": "11",
+      "league": "mlb",
+      "shortDisplayName": "Athletics",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "ATL",
+      "aliases": [],
+      "displayName": "Atlanta Braves",
+      "id": "15",
+      "league": "mlb",
+      "shortDisplayName": "Braves",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "BAL",
+      "aliases": [],
+      "displayName": "Baltimore Orioles",
+      "id": "1",
+      "league": "mlb",
+      "shortDisplayName": "Orioles",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "BOS",
+      "aliases": [],
+      "displayName": "Boston Red Sox",
+      "id": "2",
+      "league": "mlb",
+      "shortDisplayName": "Red Sox",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "CHC",
+      "aliases": [],
+      "displayName": "Chicago Cubs",
+      "id": "16",
+      "league": "mlb",
+      "shortDisplayName": "Cubs",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "CHW",
+      "aliases": [],
+      "displayName": "Chicago White Sox",
+      "id": "4",
+      "league": "mlb",
+      "shortDisplayName": "White Sox",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "CIN",
+      "aliases": [],
+      "displayName": "Cincinnati Reds",
+      "id": "17",
+      "league": "mlb",
+      "shortDisplayName": "Reds",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "CLE",
+      "aliases": [],
+      "displayName": "Cleveland Guardians",
+      "id": "5",
+      "league": "mlb",
+      "shortDisplayName": "Guardians",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "COL",
+      "aliases": [],
+      "displayName": "Colorado Rockies",
+      "id": "27",
+      "league": "mlb",
+      "shortDisplayName": "Rockies",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "DET",
+      "aliases": [],
+      "displayName": "Detroit Tigers",
+      "id": "6",
+      "league": "mlb",
+      "shortDisplayName": "Tigers",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "HOU",
+      "aliases": [],
+      "displayName": "Houston Astros",
+      "id": "18",
+      "league": "mlb",
+      "shortDisplayName": "Astros",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "KC",
+      "aliases": [],
+      "displayName": "Kansas City Royals",
+      "id": "7",
+      "league": "mlb",
+      "shortDisplayName": "Royals",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "LAA",
+      "aliases": [],
+      "displayName": "Los Angeles Angels",
+      "id": "3",
+      "league": "mlb",
+      "shortDisplayName": "Angels",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "LAD",
+      "aliases": [],
+      "displayName": "Los Angeles Dodgers",
+      "id": "19",
+      "league": "mlb",
+      "shortDisplayName": "Dodgers",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "MIA",
+      "aliases": [],
+      "displayName": "Miami Marlins",
+      "id": "28",
+      "league": "mlb",
+      "shortDisplayName": "Marlins",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "MIL",
+      "aliases": [],
+      "displayName": "Milwaukee Brewers",
+      "id": "8",
+      "league": "mlb",
+      "shortDisplayName": "Brewers",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "MIN",
+      "aliases": [],
+      "displayName": "Minnesota Twins",
+      "id": "9",
+      "league": "mlb",
+      "shortDisplayName": "Twins",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "NYM",
+      "aliases": [],
+      "displayName": "New York Mets",
+      "id": "21",
+      "league": "mlb",
+      "shortDisplayName": "Mets",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "NYY",
+      "aliases": [],
+      "displayName": "New York Yankees",
+      "id": "10",
+      "league": "mlb",
+      "shortDisplayName": "Yankees",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "PHI",
+      "aliases": [],
+      "displayName": "Philadelphia Phillies",
+      "id": "22",
+      "league": "mlb",
+      "shortDisplayName": "Phillies",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "PIT",
+      "aliases": [],
+      "displayName": "Pittsburgh Pirates",
+      "id": "23",
+      "league": "mlb",
+      "shortDisplayName": "Pirates",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "SD",
+      "aliases": [],
+      "displayName": "San Diego Padres",
+      "id": "25",
+      "league": "mlb",
+      "shortDisplayName": "Padres",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "SF",
+      "aliases": [],
+      "displayName": "San Francisco Giants",
+      "id": "26",
+      "league": "mlb",
+      "shortDisplayName": "Giants",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "SEA",
+      "aliases": [],
+      "displayName": "Seattle Mariners",
+      "id": "12",
+      "league": "mlb",
+      "shortDisplayName": "Mariners",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "STL",
+      "aliases": [],
+      "displayName": "St. Louis Cardinals",
+      "id": "24",
+      "league": "mlb",
+      "shortDisplayName": "Cardinals",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "TB",
+      "aliases": [],
+      "displayName": "Tampa Bay Rays",
+      "id": "30",
+      "league": "mlb",
+      "shortDisplayName": "Rays",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "TEX",
+      "aliases": [],
+      "displayName": "Texas Rangers",
+      "id": "13",
+      "league": "mlb",
+      "shortDisplayName": "Rangers",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "TOR",
+      "aliases": [],
+      "displayName": "Toronto Blue Jays",
+      "id": "14",
+      "league": "mlb",
+      "shortDisplayName": "Blue Jays",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "WSH",
+      "aliases": [],
+      "displayName": "Washington Nationals",
+      "id": "20",
+      "league": "mlb",
+      "shortDisplayName": "Nationals",
+      "sport": "baseball"
+    },
+    {
+      "abbreviation": "AMER",
+      "aliases": [],
+      "displayName": "American University Eagles",
+      "id": "44",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "American",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "ASU",
+      "aliases": [],
+      "displayName": "Arizona State Sun Devils",
+      "id": "9",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Arizona St",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "ARIZ",
+      "aliases": [],
+      "displayName": "Arizona Wildcats",
+      "id": "12",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Arizona",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "ARK",
+      "aliases": [],
+      "displayName": "Arkansas Razorbacks",
+      "id": "8",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Arkansas",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "AUB",
+      "aliases": [],
+      "displayName": "Auburn Tigers",
+      "id": "2",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Auburn",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "BELL",
+      "aliases": [],
+      "displayName": "Bellarmine Knights",
+      "id": "91",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Bellarmine",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "BOIS",
+      "aliases": [],
+      "displayName": "Boise State Broncos",
+      "id": "68",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Boise St",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "BRAD",
+      "aliases": [],
+      "displayName": "Bradley Braves",
+      "id": "71",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Bradley",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CP",
+      "aliases": [],
+      "displayName": "Cal Poly Mustangs",
+      "id": "13",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Cal Poly",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CAL",
+      "aliases": [],
+      "displayName": "California Golden Bears",
+      "id": "25",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "California",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "COLO",
+      "aliases": [],
+      "displayName": "Colorado Buffaloes",
+      "id": "38",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Colorado",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CSU",
+      "aliases": [],
+      "displayName": "Colorado State Rams",
+      "id": "36",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Colorado St",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "DEL",
+      "aliases": [],
+      "displayName": "Delaware Blue Hens",
+      "id": "48",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Delaware",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "FAMU",
+      "aliases": [],
+      "displayName": "Florida A&M Rattlers",
+      "id": "50",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Florida A&M",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "FLA",
+      "aliases": [],
+      "displayName": "Florida Gators",
+      "id": "57",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Florida",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "FSU",
+      "aliases": [],
+      "displayName": "Florida State Seminoles",
+      "id": "52",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Florida St",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "GW",
+      "aliases": [],
+      "displayName": "George Washington Revolutionaries",
+      "id": "45",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "G Washington",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "GTWN",
+      "aliases": [],
+      "displayName": "Georgetown Hoyas",
+      "id": "46",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Georgetown",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "UGA",
+      "aliases": [],
+      "displayName": "Georgia Bulldogs",
+      "id": "61",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Georgia",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "GT",
+      "aliases": [],
+      "displayName": "Georgia Tech Yellow Jackets",
+      "id": "59",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Georgia Tech",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "HAW",
+      "aliases": [],
+      "displayName": "Hawai'i Rainbow Warriors",
+      "id": "62",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Hawai'i",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "HOW",
+      "aliases": [],
+      "displayName": "Howard Bison",
+      "id": "47",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Howard",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "IUIN",
+      "aliases": [],
+      "displayName": "IU Indianapolis Jaguars",
+      "id": "85",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "IU Indy",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "IDHO",
+      "aliases": [],
+      "displayName": "Idaho Vandals",
+      "id": "70",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Idaho",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "IU",
+      "aliases": [],
+      "displayName": "Indiana Hoosiers",
+      "id": "84",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Indiana",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "ISU",
+      "aliases": [],
+      "displayName": "Iowa State Cyclones",
+      "id": "66",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Iowa State",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "JXST",
+      "aliases": [],
+      "displayName": "Jacksonville State Gamecocks",
+      "id": "55",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Jax State",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "UK",
+      "aliases": [],
+      "displayName": "Kentucky Wildcats",
+      "id": "96",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Kentucky",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "LOU",
+      "aliases": [],
+      "displayName": "Louisville Cardinals",
+      "id": "97",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Louisville",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "MUR",
+      "aliases": [],
+      "displayName": "Murray State Racers",
+      "id": "93",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Murray St",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "NKU",
+      "aliases": [],
+      "displayName": "Northern Kentucky Norse",
+      "id": "94",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "N Kentucky",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "NU",
+      "aliases": [],
+      "displayName": "Northwestern Wildcats",
+      "id": "77",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Northwestern",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "ND",
+      "aliases": [],
+      "displayName": "Notre Dame Fighting Irish",
+      "id": "87",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Notre Dame",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "SAC",
+      "aliases": [],
+      "displayName": "Sacramento State Hornets",
+      "id": "16",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Sacramento St",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "SDSU",
+      "aliases": [],
+      "displayName": "San Diego State Aztecs",
+      "id": "21",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "San Diego St",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "SJSU",
+      "aliases": [],
+      "displayName": "San Jos\u00e9 State Spartans",
+      "id": "23",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "San Jos\u00e9 St",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "USA",
+      "aliases": [],
+      "displayName": "South Alabama Jaguars",
+      "id": "6",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "South Alabama",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "USF",
+      "aliases": [],
+      "displayName": "South Florida Bulls",
+      "id": "58",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "South Florida",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "SIU",
+      "aliases": [],
+      "displayName": "Southern Illinois Salukis",
+      "id": "79",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "S Illinois",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "STAN",
+      "aliases": [],
+      "displayName": "Stanford Cardinal",
+      "id": "24",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Stanford",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "STET",
+      "aliases": [],
+      "displayName": "Stetson Hatters",
+      "id": "56",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Stetson",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "UAB",
+      "aliases": [],
+      "displayName": "UAB Blazers",
+      "id": "5",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "UAB",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "UCR",
+      "aliases": [],
+      "displayName": "UC Riverside Highlanders",
+      "id": "27",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "UC Riverside",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "UCSD",
+      "aliases": [],
+      "displayName": "UC San Diego Tritons",
+      "id": "28",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "UC San Diego",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "UCLA",
+      "aliases": [],
+      "displayName": "UCLA Bruins",
+      "id": "26",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "UCLA",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CONN",
+      "aliases": [],
+      "displayName": "UConn Huskies",
+      "id": "41",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "UConn",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "UIC",
+      "aliases": [],
+      "displayName": "UIC Flames",
+      "id": "82",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "UIC",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "USC",
+      "aliases": [],
+      "displayName": "USC Trojans",
+      "id": "30",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "USC",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "WKU",
+      "aliases": [],
+      "displayName": "Western Kentucky Hilltoppers",
+      "id": "98",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Western KY",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "YALE",
+      "aliases": [],
+      "displayName": "Yale Bulldogs",
+      "id": "43",
+      "league": "mens-college-basketball",
+      "shortDisplayName": "Yale",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "ATL",
+      "aliases": [],
+      "displayName": "Atlanta Hawks",
+      "id": "1",
+      "league": "nba",
+      "shortDisplayName": "Hawks",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "BOS",
+      "aliases": [],
+      "displayName": "Boston Celtics",
+      "id": "2",
+      "league": "nba",
+      "shortDisplayName": "Celtics",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "BKN",
+      "aliases": [],
+      "displayName": "Brooklyn Nets",
+      "id": "17",
+      "league": "nba",
+      "shortDisplayName": "Nets",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CHA",
+      "aliases": [],
+      "displayName": "Charlotte Hornets",
+      "id": "30",
+      "league": "nba",
+      "shortDisplayName": "Hornets",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CHI",
+      "aliases": [],
+      "displayName": "Chicago Bulls",
+      "id": "4",
+      "league": "nba",
+      "shortDisplayName": "Bulls",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CLE",
+      "aliases": [],
+      "displayName": "Cleveland Cavaliers",
+      "id": "5",
+      "league": "nba",
+      "shortDisplayName": "Cavaliers",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "DAL",
+      "aliases": [],
+      "displayName": "Dallas Mavericks",
+      "id": "6",
+      "league": "nba",
+      "shortDisplayName": "Mavericks",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "DEN",
+      "aliases": [],
+      "displayName": "Denver Nuggets",
+      "id": "7",
+      "league": "nba",
+      "shortDisplayName": "Nuggets",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "DET",
+      "aliases": [],
+      "displayName": "Detroit Pistons",
+      "id": "8",
+      "league": "nba",
+      "shortDisplayName": "Pistons",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "GS",
+      "aliases": [],
+      "displayName": "Golden State Warriors",
+      "id": "9",
+      "league": "nba",
+      "shortDisplayName": "Warriors",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "HOU",
+      "aliases": [],
+      "displayName": "Houston Rockets",
+      "id": "10",
+      "league": "nba",
+      "shortDisplayName": "Rockets",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "IND",
+      "aliases": [],
+      "displayName": "Indiana Pacers",
+      "id": "11",
+      "league": "nba",
+      "shortDisplayName": "Pacers",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "LAC",
+      "aliases": [],
+      "displayName": "LA Clippers",
+      "id": "12",
+      "league": "nba",
+      "shortDisplayName": "Clippers",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "LAL",
+      "aliases": [],
+      "displayName": "Los Angeles Lakers",
+      "id": "13",
+      "league": "nba",
+      "shortDisplayName": "Lakers",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "MEM",
+      "aliases": [],
+      "displayName": "Memphis Grizzlies",
+      "id": "29",
+      "league": "nba",
+      "shortDisplayName": "Grizzlies",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "MIA",
+      "aliases": [],
+      "displayName": "Miami Heat",
+      "id": "14",
+      "league": "nba",
+      "shortDisplayName": "Heat",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "MIL",
+      "aliases": [],
+      "displayName": "Milwaukee Bucks",
+      "id": "15",
+      "league": "nba",
+      "shortDisplayName": "Bucks",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "MIN",
+      "aliases": [],
+      "displayName": "Minnesota Timberwolves",
+      "id": "16",
+      "league": "nba",
+      "shortDisplayName": "Timberwolves",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "NO",
+      "aliases": [],
+      "displayName": "New Orleans Pelicans",
+      "id": "3",
+      "league": "nba",
+      "shortDisplayName": "Pelicans",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "NY",
+      "aliases": [],
+      "displayName": "New York Knicks",
+      "id": "18",
+      "league": "nba",
+      "shortDisplayName": "Knicks",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "OKC",
+      "aliases": [],
+      "displayName": "Oklahoma City Thunder",
+      "id": "25",
+      "league": "nba",
+      "shortDisplayName": "Thunder",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "ORL",
+      "aliases": [],
+      "displayName": "Orlando Magic",
+      "id": "19",
+      "league": "nba",
+      "shortDisplayName": "Magic",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "PHI",
+      "aliases": [],
+      "displayName": "Philadelphia 76ers",
+      "id": "20",
+      "league": "nba",
+      "shortDisplayName": "76ers",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "PHX",
+      "aliases": [],
+      "displayName": "Phoenix Suns",
+      "id": "21",
+      "league": "nba",
+      "shortDisplayName": "Suns",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "POR",
+      "aliases": [
+        "blazers",
+        "blazer",
+        "rip city"
+      ],
+      "displayName": "Portland Trail Blazers",
+      "id": "22",
+      "league": "nba",
+      "shortDisplayName": "Trail Blazers",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "SAC",
+      "aliases": [],
+      "displayName": "Sacramento Kings",
+      "id": "23",
+      "league": "nba",
+      "shortDisplayName": "Kings",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "SA",
+      "aliases": [],
+      "displayName": "San Antonio Spurs",
+      "id": "24",
+      "league": "nba",
+      "shortDisplayName": "Spurs",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "TOR",
+      "aliases": [],
+      "displayName": "Toronto Raptors",
+      "id": "28",
+      "league": "nba",
+      "shortDisplayName": "Raptors",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "UTAH",
+      "aliases": [],
+      "displayName": "Utah Jazz",
+      "id": "26",
+      "league": "nba",
+      "shortDisplayName": "Jazz",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "WSH",
+      "aliases": [],
+      "displayName": "Washington Wizards",
+      "id": "27",
+      "league": "nba",
+      "shortDisplayName": "Wizards",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "ATL",
+      "aliases": [],
+      "displayName": "Atlanta Dream",
+      "id": "20",
+      "league": "wnba",
+      "shortDisplayName": "Dream",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CHI",
+      "aliases": [],
+      "displayName": "Chicago Sky",
+      "id": "19",
+      "league": "wnba",
+      "shortDisplayName": "Sky",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "CON",
+      "aliases": [],
+      "displayName": "Connecticut Sun",
+      "id": "18",
+      "league": "wnba",
+      "shortDisplayName": "Sun",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "DAL",
+      "aliases": [],
+      "displayName": "Dallas Wings",
+      "id": "3",
+      "league": "wnba",
+      "shortDisplayName": "Wings",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "GS",
+      "aliases": [],
+      "displayName": "Golden State Valkyries",
+      "id": "129689",
+      "league": "wnba",
+      "shortDisplayName": "Valkyries",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "IND",
+      "aliases": [],
+      "displayName": "Indiana Fever",
+      "id": "5",
+      "league": "wnba",
+      "shortDisplayName": "Fever",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "LV",
+      "aliases": [],
+      "displayName": "Las Vegas Aces",
+      "id": "17",
+      "league": "wnba",
+      "shortDisplayName": "Aces",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "LA",
+      "aliases": [],
+      "displayName": "Los Angeles Sparks",
+      "id": "6",
+      "league": "wnba",
+      "shortDisplayName": "Sparks",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "MIN",
+      "aliases": [],
+      "displayName": "Minnesota Lynx",
+      "id": "8",
+      "league": "wnba",
+      "shortDisplayName": "Lynx",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "NY",
+      "aliases": [],
+      "displayName": "New York Liberty",
+      "id": "9",
+      "league": "wnba",
+      "shortDisplayName": "Liberty",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "PHX",
+      "aliases": [],
+      "displayName": "Phoenix Mercury",
+      "id": "11",
+      "league": "wnba",
+      "shortDisplayName": "Mercury",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "POR",
+      "aliases": [
+        "portland fire"
+      ],
+      "displayName": "Portland Fire",
+      "id": "132052",
+      "league": "wnba",
+      "shortDisplayName": "Fire",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "SEA",
+      "aliases": [],
+      "displayName": "Seattle Storm",
+      "id": "14",
+      "league": "wnba",
+      "shortDisplayName": "Storm",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "TOR",
+      "aliases": [],
+      "displayName": "Toronto Tempo",
+      "id": "131935",
+      "league": "wnba",
+      "shortDisplayName": "Tempo",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "WSH",
+      "aliases": [],
+      "displayName": "Washington Mystics",
+      "id": "16",
+      "league": "wnba",
+      "shortDisplayName": "Mystics",
+      "sport": "basketball"
+    },
+    {
+      "abbreviation": "AMH",
+      "aliases": [],
+      "displayName": "Amherst Mammoths",
+      "id": "7",
+      "league": "college-football",
+      "shortDisplayName": "Amherst",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ANMR",
+      "aliases": [],
+      "displayName": "Anna Maria Amcats",
+      "id": "15",
+      "league": "college-football",
+      "shortDisplayName": "Anna Maria",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ASU",
+      "aliases": [],
+      "displayName": "Arizona State Sun Devils",
+      "id": "9",
+      "league": "college-football",
+      "shortDisplayName": "Arizona St",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ARIZ",
+      "aliases": [],
+      "displayName": "Arizona Wildcats",
+      "id": "12",
+      "league": "college-football",
+      "shortDisplayName": "Arizona",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ARK",
+      "aliases": [],
+      "displayName": "Arkansas Razorbacks",
+      "id": "8",
+      "league": "college-football",
+      "shortDisplayName": "Arkansas",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "AUB",
+      "aliases": [],
+      "displayName": "Auburn Tigers",
+      "id": "2",
+      "league": "college-football",
+      "shortDisplayName": "Auburn",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "BOIS",
+      "aliases": [],
+      "displayName": "Boise State Broncos",
+      "id": "68",
+      "league": "college-football",
+      "shortDisplayName": "Boise St",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "BRIS",
+      "aliases": [],
+      "displayName": "Bridgewater State Bears",
+      "id": "18",
+      "league": "college-football",
+      "shortDisplayName": "Bridgewater St",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "BVU",
+      "aliases": [],
+      "displayName": "Buena Vista Beavers",
+      "id": "63",
+      "league": "college-football",
+      "shortDisplayName": "Buena Vista",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CP",
+      "aliases": [],
+      "displayName": "Cal Poly Mustangs",
+      "id": "13",
+      "league": "college-football",
+      "shortDisplayName": "Cal Poly",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CAL",
+      "aliases": [],
+      "displayName": "California Golden Bears",
+      "id": "25",
+      "league": "college-football",
+      "shortDisplayName": "California",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CRU",
+      "aliases": [],
+      "displayName": "Carroll (WI) Pioneers",
+      "id": "32",
+      "league": "college-football",
+      "shortDisplayName": "Carroll (WI)",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CMS",
+      "aliases": [],
+      "displayName": "Claremont Mudd Scripps Stags/Athenas",
+      "id": "17",
+      "league": "college-football",
+      "shortDisplayName": "Claremont-M-S",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CLBY",
+      "aliases": [],
+      "displayName": "Colby White Mules",
+      "id": "33",
+      "league": "college-football",
+      "shortDisplayName": "Colby",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "COLO",
+      "aliases": [],
+      "displayName": "Colorado Buffaloes",
+      "id": "38",
+      "league": "college-football",
+      "shortDisplayName": "Colorado",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "COMU",
+      "aliases": [],
+      "displayName": "Colorado Mesa Mavericks",
+      "id": "11",
+      "league": "college-football",
+      "shortDisplayName": "Colorado Mesa",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CSU",
+      "aliases": [],
+      "displayName": "Colorado State Rams",
+      "id": "36",
+      "league": "college-football",
+      "shortDisplayName": "Colorado St",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CC",
+      "aliases": [],
+      "displayName": "Curry Colonels",
+      "id": "40",
+      "league": "college-football",
+      "shortDisplayName": "Curry",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "DEL",
+      "aliases": [],
+      "displayName": "Delaware Blue Hens",
+      "id": "48",
+      "league": "college-football",
+      "shortDisplayName": "Delaware",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "DBQ",
+      "aliases": [],
+      "displayName": "Dubuque Spartans",
+      "id": "49",
+      "league": "college-football",
+      "shortDisplayName": "Dubuque",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ELMH",
+      "aliases": [],
+      "displayName": "Elmhurst Bluejays",
+      "id": "72",
+      "league": "college-football",
+      "shortDisplayName": "Elmhurst",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "FAMU",
+      "aliases": [],
+      "displayName": "Florida A&M Rattlers",
+      "id": "50",
+      "league": "college-football",
+      "shortDisplayName": "Florida A&M",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "FLA",
+      "aliases": [],
+      "displayName": "Florida Gators",
+      "id": "57",
+      "league": "college-football",
+      "shortDisplayName": "Florida",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "FSU",
+      "aliases": [],
+      "displayName": "Florida State Seminoles",
+      "id": "52",
+      "league": "college-football",
+      "shortDisplayName": "Florida St",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "GTWN",
+      "aliases": [],
+      "displayName": "Georgetown Hoyas",
+      "id": "46",
+      "league": "college-football",
+      "shortDisplayName": "Georgetown",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "UGA",
+      "aliases": [],
+      "displayName": "Georgia Bulldogs",
+      "id": "61",
+      "league": "college-football",
+      "shortDisplayName": "Georgia",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "GT",
+      "aliases": [],
+      "displayName": "Georgia Tech Yellow Jackets",
+      "id": "59",
+      "league": "college-football",
+      "shortDisplayName": "Georgia Tech",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "GRNL",
+      "aliases": [],
+      "displayName": "Grinnell Pioneers",
+      "id": "65",
+      "league": "college-football",
+      "shortDisplayName": "Grinnell",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "HAW",
+      "aliases": [],
+      "displayName": "Hawai'i Rainbow Warriors",
+      "id": "62",
+      "league": "college-football",
+      "shortDisplayName": "Hawai'i",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "HOW",
+      "aliases": [],
+      "displayName": "Howard Bison",
+      "id": "47",
+      "league": "college-football",
+      "shortDisplayName": "Howard",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "IDHO",
+      "aliases": [],
+      "displayName": "Idaho Vandals",
+      "id": "70",
+      "league": "college-football",
+      "shortDisplayName": "Idaho",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ISU",
+      "aliases": [],
+      "displayName": "Iowa State Cyclones",
+      "id": "66",
+      "league": "college-football",
+      "shortDisplayName": "Iowa State",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "JXST",
+      "aliases": [],
+      "displayName": "Jacksonville State Gamecocks",
+      "id": "55",
+      "league": "college-football",
+      "shortDisplayName": "Jax State",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "LUT",
+      "aliases": [],
+      "displayName": "Luther Norse",
+      "id": "67",
+      "league": "college-football",
+      "shortDisplayName": "Luther",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "MIL",
+      "aliases": [],
+      "displayName": "Millikin Big Blue",
+      "id": "74",
+      "league": "college-football",
+      "shortDisplayName": "Millikin",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "MOR",
+      "aliases": [],
+      "displayName": "Morehouse College Maroon Tigers",
+      "id": "60",
+      "league": "college-football",
+      "shortDisplayName": "Morehouse",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "NOR",
+      "aliases": [],
+      "displayName": "North Park Vikings",
+      "id": "75",
+      "league": "college-football",
+      "shortDisplayName": "North Park",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ORE",
+      "aliases": [
+        "ducks",
+        "oregon ducks",
+        "oregon football"
+      ],
+      "displayName": "Oregon Ducks",
+      "id": "2483",
+      "league": "college-football",
+      "shortDisplayName": "Ducks",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "RED",
+      "aliases": [],
+      "displayName": "Redlands Bulldogs",
+      "id": "29",
+      "league": "college-football",
+      "shortDisplayName": "Redlands",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "SAC",
+      "aliases": [],
+      "displayName": "Sacramento State Hornets",
+      "id": "16",
+      "league": "college-football",
+      "shortDisplayName": "Sacramento St",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "SDSU",
+      "aliases": [],
+      "displayName": "San Diego State Aztecs",
+      "id": "21",
+      "league": "college-football",
+      "shortDisplayName": "San Diego St",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "SJSU",
+      "aliases": [],
+      "displayName": "San Jos\u00e9 State Spartans",
+      "id": "23",
+      "league": "college-football",
+      "shortDisplayName": "San Jos\u00e9 St",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "USA",
+      "aliases": [],
+      "displayName": "South Alabama Jaguars",
+      "id": "6",
+      "league": "college-football",
+      "shortDisplayName": "South Alabama",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "USF",
+      "aliases": [],
+      "displayName": "South Florida Bulls",
+      "id": "58",
+      "league": "college-football",
+      "shortDisplayName": "South Florida",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "STAN",
+      "aliases": [],
+      "displayName": "Stanford Cardinal",
+      "id": "24",
+      "league": "college-football",
+      "shortDisplayName": "Stanford",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "STET",
+      "aliases": [],
+      "displayName": "Stetson Hatters",
+      "id": "56",
+      "league": "college-football",
+      "shortDisplayName": "Stetson",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "UAB",
+      "aliases": [],
+      "displayName": "UAB Blazers",
+      "id": "5",
+      "league": "college-football",
+      "shortDisplayName": "UAB",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "UCLA",
+      "aliases": [],
+      "displayName": "UCLA Bruins",
+      "id": "26",
+      "league": "college-football",
+      "shortDisplayName": "UCLA",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CONN",
+      "aliases": [],
+      "displayName": "UConn Huskies",
+      "id": "41",
+      "league": "college-football",
+      "shortDisplayName": "UConn",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "USC",
+      "aliases": [],
+      "displayName": "USC Trojans",
+      "id": "30",
+      "league": "college-football",
+      "shortDisplayName": "USC",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "YALE",
+      "aliases": [],
+      "displayName": "Yale Bulldogs",
+      "id": "43",
+      "league": "college-football",
+      "shortDisplayName": "Yale",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ARI",
+      "aliases": [],
+      "displayName": "Arizona Cardinals",
+      "id": "22",
+      "league": "nfl",
+      "shortDisplayName": "Cardinals",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ATL",
+      "aliases": [],
+      "displayName": "Atlanta Falcons",
+      "id": "1",
+      "league": "nfl",
+      "shortDisplayName": "Falcons",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "BAL",
+      "aliases": [],
+      "displayName": "Baltimore Ravens",
+      "id": "33",
+      "league": "nfl",
+      "shortDisplayName": "Ravens",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "BUF",
+      "aliases": [],
+      "displayName": "Buffalo Bills",
+      "id": "2",
+      "league": "nfl",
+      "shortDisplayName": "Bills",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CAR",
+      "aliases": [],
+      "displayName": "Carolina Panthers",
+      "id": "29",
+      "league": "nfl",
+      "shortDisplayName": "Panthers",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CHI",
+      "aliases": [],
+      "displayName": "Chicago Bears",
+      "id": "3",
+      "league": "nfl",
+      "shortDisplayName": "Bears",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CIN",
+      "aliases": [],
+      "displayName": "Cincinnati Bengals",
+      "id": "4",
+      "league": "nfl",
+      "shortDisplayName": "Bengals",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "CLE",
+      "aliases": [],
+      "displayName": "Cleveland Browns",
+      "id": "5",
+      "league": "nfl",
+      "shortDisplayName": "Browns",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "DAL",
+      "aliases": [],
+      "displayName": "Dallas Cowboys",
+      "id": "6",
+      "league": "nfl",
+      "shortDisplayName": "Cowboys",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "DEN",
+      "aliases": [],
+      "displayName": "Denver Broncos",
+      "id": "7",
+      "league": "nfl",
+      "shortDisplayName": "Broncos",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "DET",
+      "aliases": [],
+      "displayName": "Detroit Lions",
+      "id": "8",
+      "league": "nfl",
+      "shortDisplayName": "Lions",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "GB",
+      "aliases": [],
+      "displayName": "Green Bay Packers",
+      "id": "9",
+      "league": "nfl",
+      "shortDisplayName": "Packers",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "HOU",
+      "aliases": [],
+      "displayName": "Houston Texans",
+      "id": "34",
+      "league": "nfl",
+      "shortDisplayName": "Texans",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "IND",
+      "aliases": [],
+      "displayName": "Indianapolis Colts",
+      "id": "11",
+      "league": "nfl",
+      "shortDisplayName": "Colts",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "JAX",
+      "aliases": [],
+      "displayName": "Jacksonville Jaguars",
+      "id": "30",
+      "league": "nfl",
+      "shortDisplayName": "Jaguars",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "KC",
+      "aliases": [],
+      "displayName": "Kansas City Chiefs",
+      "id": "12",
+      "league": "nfl",
+      "shortDisplayName": "Chiefs",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "LV",
+      "aliases": [],
+      "displayName": "Las Vegas Raiders",
+      "id": "13",
+      "league": "nfl",
+      "shortDisplayName": "Raiders",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "LAC",
+      "aliases": [
+        "chargers",
+        "bolts",
+        "la chargers"
+      ],
+      "displayName": "Los Angeles Chargers",
+      "id": "24",
+      "league": "nfl",
+      "shortDisplayName": "Chargers",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "LAR",
+      "aliases": [],
+      "displayName": "Los Angeles Rams",
+      "id": "14",
+      "league": "nfl",
+      "shortDisplayName": "Rams",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "MIA",
+      "aliases": [],
+      "displayName": "Miami Dolphins",
+      "id": "15",
+      "league": "nfl",
+      "shortDisplayName": "Dolphins",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "MIN",
+      "aliases": [],
+      "displayName": "Minnesota Vikings",
+      "id": "16",
+      "league": "nfl",
+      "shortDisplayName": "Vikings",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "NE",
+      "aliases": [],
+      "displayName": "New England Patriots",
+      "id": "17",
+      "league": "nfl",
+      "shortDisplayName": "Patriots",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "NO",
+      "aliases": [],
+      "displayName": "New Orleans Saints",
+      "id": "18",
+      "league": "nfl",
+      "shortDisplayName": "Saints",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "NYG",
+      "aliases": [],
+      "displayName": "New York Giants",
+      "id": "19",
+      "league": "nfl",
+      "shortDisplayName": "Giants",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "NYJ",
+      "aliases": [],
+      "displayName": "New York Jets",
+      "id": "20",
+      "league": "nfl",
+      "shortDisplayName": "Jets",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "PHI",
+      "aliases": [],
+      "displayName": "Philadelphia Eagles",
+      "id": "21",
+      "league": "nfl",
+      "shortDisplayName": "Eagles",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "PIT",
+      "aliases": [],
+      "displayName": "Pittsburgh Steelers",
+      "id": "23",
+      "league": "nfl",
+      "shortDisplayName": "Steelers",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "SF",
+      "aliases": [],
+      "displayName": "San Francisco 49ers",
+      "id": "25",
+      "league": "nfl",
+      "shortDisplayName": "49ers",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "SEA",
+      "aliases": [],
+      "displayName": "Seattle Seahawks",
+      "id": "26",
+      "league": "nfl",
+      "shortDisplayName": "Seahawks",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "TB",
+      "aliases": [],
+      "displayName": "Tampa Bay Buccaneers",
+      "id": "27",
+      "league": "nfl",
+      "shortDisplayName": "Buccaneers",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "TEN",
+      "aliases": [],
+      "displayName": "Tennessee Titans",
+      "id": "10",
+      "league": "nfl",
+      "shortDisplayName": "Titans",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "WSH",
+      "aliases": [],
+      "displayName": "Washington Commanders",
+      "id": "28",
+      "league": "nfl",
+      "shortDisplayName": "Commanders",
+      "sport": "football"
+    },
+    {
+      "abbreviation": "ANA",
+      "aliases": [],
+      "displayName": "Anaheim Ducks",
+      "id": "25",
+      "league": "nhl",
+      "shortDisplayName": "Ducks",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "BOS",
+      "aliases": [],
+      "displayName": "Boston Bruins",
+      "id": "1",
+      "league": "nhl",
+      "shortDisplayName": "Bruins",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "BUF",
+      "aliases": [],
+      "displayName": "Buffalo Sabres",
+      "id": "2",
+      "league": "nhl",
+      "shortDisplayName": "Sabres",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "CGY",
+      "aliases": [],
+      "displayName": "Calgary Flames",
+      "id": "3",
+      "league": "nhl",
+      "shortDisplayName": "Flames",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "CAR",
+      "aliases": [],
+      "displayName": "Carolina Hurricanes",
+      "id": "7",
+      "league": "nhl",
+      "shortDisplayName": "Hurricanes",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "CHI",
+      "aliases": [],
+      "displayName": "Chicago Blackhawks",
+      "id": "4",
+      "league": "nhl",
+      "shortDisplayName": "Blackhawks",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "COL",
+      "aliases": [],
+      "displayName": "Colorado Avalanche",
+      "id": "17",
+      "league": "nhl",
+      "shortDisplayName": "Avalanche",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "CBJ",
+      "aliases": [],
+      "displayName": "Columbus Blue Jackets",
+      "id": "29",
+      "league": "nhl",
+      "shortDisplayName": "Blue Jackets",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "DAL",
+      "aliases": [],
+      "displayName": "Dallas Stars",
+      "id": "9",
+      "league": "nhl",
+      "shortDisplayName": "Stars",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "DET",
+      "aliases": [],
+      "displayName": "Detroit Red Wings",
+      "id": "5",
+      "league": "nhl",
+      "shortDisplayName": "Red Wings",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "EDM",
+      "aliases": [],
+      "displayName": "Edmonton Oilers",
+      "id": "6",
+      "league": "nhl",
+      "shortDisplayName": "Oilers",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "FLA",
+      "aliases": [],
+      "displayName": "Florida Panthers",
+      "id": "26",
+      "league": "nhl",
+      "shortDisplayName": "Panthers",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "LA",
+      "aliases": [],
+      "displayName": "Los Angeles Kings",
+      "id": "8",
+      "league": "nhl",
+      "shortDisplayName": "Kings",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "MIN",
+      "aliases": [],
+      "displayName": "Minnesota Wild",
+      "id": "30",
+      "league": "nhl",
+      "shortDisplayName": "Wild",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "MTL",
+      "aliases": [
+        "habs",
+        "canadiens"
+      ],
+      "displayName": "Montreal Canadiens",
+      "id": "10",
+      "league": "nhl",
+      "shortDisplayName": "Canadiens",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "NSH",
+      "aliases": [],
+      "displayName": "Nashville Predators",
+      "id": "27",
+      "league": "nhl",
+      "shortDisplayName": "Predators",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "NJ",
+      "aliases": [],
+      "displayName": "New Jersey Devils",
+      "id": "11",
+      "league": "nhl",
+      "shortDisplayName": "Devils",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "NYI",
+      "aliases": [],
+      "displayName": "New York Islanders",
+      "id": "12",
+      "league": "nhl",
+      "shortDisplayName": "Islanders",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "NYR",
+      "aliases": [],
+      "displayName": "New York Rangers",
+      "id": "13",
+      "league": "nhl",
+      "shortDisplayName": "Rangers",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "OTT",
+      "aliases": [],
+      "displayName": "Ottawa Senators",
+      "id": "14",
+      "league": "nhl",
+      "shortDisplayName": "Senators",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "PHI",
+      "aliases": [],
+      "displayName": "Philadelphia Flyers",
+      "id": "15",
+      "league": "nhl",
+      "shortDisplayName": "Flyers",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "PIT",
+      "aliases": [],
+      "displayName": "Pittsburgh Penguins",
+      "id": "16",
+      "league": "nhl",
+      "shortDisplayName": "Penguins",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "SJ",
+      "aliases": [],
+      "displayName": "San Jose Sharks",
+      "id": "18",
+      "league": "nhl",
+      "shortDisplayName": "Sharks",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "SEA",
+      "aliases": [],
+      "displayName": "Seattle Kraken",
+      "id": "124292",
+      "league": "nhl",
+      "shortDisplayName": "Kraken",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "STL",
+      "aliases": [],
+      "displayName": "St. Louis Blues",
+      "id": "19",
+      "league": "nhl",
+      "shortDisplayName": "Blues",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "TB",
+      "aliases": [],
+      "displayName": "Tampa Bay Lightning",
+      "id": "20",
+      "league": "nhl",
+      "shortDisplayName": "Lightning",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "TOR",
+      "aliases": [],
+      "displayName": "Toronto Maple Leafs",
+      "id": "21",
+      "league": "nhl",
+      "shortDisplayName": "Maple Leafs",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "UTAH",
+      "aliases": [],
+      "displayName": "Utah Mammoth",
+      "id": "129764",
+      "league": "nhl",
+      "shortDisplayName": "Mammoth",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "VAN",
+      "aliases": [
+        "canucks"
+      ],
+      "displayName": "Vancouver Canucks",
+      "id": "22",
+      "league": "nhl",
+      "shortDisplayName": "Canucks",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "VGK",
+      "aliases": [],
+      "displayName": "Vegas Golden Knights",
+      "id": "37",
+      "league": "nhl",
+      "shortDisplayName": "Golden Knights",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "WSH",
+      "aliases": [],
+      "displayName": "Washington Capitals",
+      "id": "23",
+      "league": "nhl",
+      "shortDisplayName": "Capitals",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "WPG",
+      "aliases": [],
+      "displayName": "Winnipeg Jets",
+      "id": "28",
+      "league": "nhl",
+      "shortDisplayName": "Jets",
+      "sport": "hockey"
+    },
+    {
+      "abbreviation": "BOU",
+      "aliases": [],
+      "displayName": "AFC Bournemouth",
+      "id": "349",
+      "league": "eng.1",
+      "shortDisplayName": "Bournemouth",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "ARS",
+      "aliases": [],
+      "displayName": "Arsenal",
+      "id": "359",
+      "league": "eng.1",
+      "shortDisplayName": "Arsenal",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "AVL",
+      "aliases": [],
+      "displayName": "Aston Villa",
+      "id": "362",
+      "league": "eng.1",
+      "shortDisplayName": "Aston Villa",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "BRE",
+      "aliases": [],
+      "displayName": "Brentford",
+      "id": "337",
+      "league": "eng.1",
+      "shortDisplayName": "Brentford",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "BHA",
+      "aliases": [],
+      "displayName": "Brighton & Hove Albion",
+      "id": "331",
+      "league": "eng.1",
+      "shortDisplayName": "Brighton",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "BUR",
+      "aliases": [],
+      "displayName": "Burnley",
+      "id": "379",
+      "league": "eng.1",
+      "shortDisplayName": "Burnley",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "CHE",
+      "aliases": [],
+      "displayName": "Chelsea",
+      "id": "363",
+      "league": "eng.1",
+      "shortDisplayName": "Chelsea",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "CRY",
+      "aliases": [],
+      "displayName": "Crystal Palace",
+      "id": "384",
+      "league": "eng.1",
+      "shortDisplayName": "C Palace",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "EVE",
+      "aliases": [],
+      "displayName": "Everton",
+      "id": "368",
+      "league": "eng.1",
+      "shortDisplayName": "Everton",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "FUL",
+      "aliases": [],
+      "displayName": "Fulham",
+      "id": "370",
+      "league": "eng.1",
+      "shortDisplayName": "Fulham",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "LEE",
+      "aliases": [],
+      "displayName": "Leeds United",
+      "id": "357",
+      "league": "eng.1",
+      "shortDisplayName": "Leeds",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "LIV",
+      "aliases": [],
+      "displayName": "Liverpool",
+      "id": "364",
+      "league": "eng.1",
+      "shortDisplayName": "Liverpool",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "MNC",
+      "aliases": [],
+      "displayName": "Manchester City",
+      "id": "382",
+      "league": "eng.1",
+      "shortDisplayName": "Man City",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "MAN",
+      "aliases": [],
+      "displayName": "Manchester United",
+      "id": "360",
+      "league": "eng.1",
+      "shortDisplayName": "Man United",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "NEW",
+      "aliases": [],
+      "displayName": "Newcastle United",
+      "id": "361",
+      "league": "eng.1",
+      "shortDisplayName": "Newcastle",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "NFO",
+      "aliases": [],
+      "displayName": "Nottingham Forest",
+      "id": "393",
+      "league": "eng.1",
+      "shortDisplayName": "Nottm Forest",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "SUN",
+      "aliases": [],
+      "displayName": "Sunderland",
+      "id": "366",
+      "league": "eng.1",
+      "shortDisplayName": "Sunderland",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "TOT",
+      "aliases": [],
+      "displayName": "Tottenham Hotspur",
+      "id": "367",
+      "league": "eng.1",
+      "shortDisplayName": "Spurs",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "WHU",
+      "aliases": [],
+      "displayName": "West Ham United",
+      "id": "371",
+      "league": "eng.1",
+      "shortDisplayName": "West Ham",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "WOL",
+      "aliases": [],
+      "displayName": "Wolverhampton Wanderers",
+      "id": "380",
+      "league": "eng.1",
+      "shortDisplayName": "Wolves",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "ATL",
+      "aliases": [],
+      "displayName": "Atlanta United FC",
+      "id": "18418",
+      "league": "usa.1",
+      "shortDisplayName": "Atlanta",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "ATX",
+      "aliases": [],
+      "displayName": "Austin FC",
+      "id": "20906",
+      "league": "usa.1",
+      "shortDisplayName": "Austin",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "MTL",
+      "aliases": [],
+      "displayName": "CF Montr\u00e9al",
+      "id": "9720",
+      "league": "usa.1",
+      "shortDisplayName": "CF Montr\u00e9al",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "CLT",
+      "aliases": [],
+      "displayName": "Charlotte FC",
+      "id": "21300",
+      "league": "usa.1",
+      "shortDisplayName": "Charlotte",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "CHI",
+      "aliases": [],
+      "displayName": "Chicago Fire FC",
+      "id": "182",
+      "league": "usa.1",
+      "shortDisplayName": "Chicago",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "COL",
+      "aliases": [],
+      "displayName": "Colorado Rapids",
+      "id": "184",
+      "league": "usa.1",
+      "shortDisplayName": "Colorado",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "CLB",
+      "aliases": [],
+      "displayName": "Columbus Crew",
+      "id": "183",
+      "league": "usa.1",
+      "shortDisplayName": "Columbus",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "DC",
+      "aliases": [],
+      "displayName": "D.C. United",
+      "id": "193",
+      "league": "usa.1",
+      "shortDisplayName": "D.C. United",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "CIN",
+      "aliases": [],
+      "displayName": "FC Cincinnati",
+      "id": "18267",
+      "league": "usa.1",
+      "shortDisplayName": "Cincinnati",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "DAL",
+      "aliases": [],
+      "displayName": "FC Dallas",
+      "id": "185",
+      "league": "usa.1",
+      "shortDisplayName": "Dallas",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "HOU",
+      "aliases": [],
+      "displayName": "Houston Dynamo FC",
+      "id": "6077",
+      "league": "usa.1",
+      "shortDisplayName": "Houston",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "MIA",
+      "aliases": [],
+      "displayName": "Inter Miami CF",
+      "id": "20232",
+      "league": "usa.1",
+      "shortDisplayName": "Miami",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "LA",
+      "aliases": [],
+      "displayName": "LA Galaxy",
+      "id": "187",
+      "league": "usa.1",
+      "shortDisplayName": "LA Galaxy",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "LAFC",
+      "aliases": [],
+      "displayName": "LAFC",
+      "id": "18966",
+      "league": "usa.1",
+      "shortDisplayName": "LAFC",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "MIN",
+      "aliases": [],
+      "displayName": "Minnesota United FC",
+      "id": "17362",
+      "league": "usa.1",
+      "shortDisplayName": "Minnesota",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "NSH",
+      "aliases": [],
+      "displayName": "Nashville SC",
+      "id": "18986",
+      "league": "usa.1",
+      "shortDisplayName": "Nashville",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "NE",
+      "aliases": [],
+      "displayName": "New England Revolution",
+      "id": "189",
+      "league": "usa.1",
+      "shortDisplayName": "New England",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "NYC",
+      "aliases": [],
+      "displayName": "New York City FC",
+      "id": "17606",
+      "league": "usa.1",
+      "shortDisplayName": "NYCFC",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "ORL",
+      "aliases": [],
+      "displayName": "Orlando City SC",
+      "id": "12011",
+      "league": "usa.1",
+      "shortDisplayName": "Orlando",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "PHI",
+      "aliases": [],
+      "displayName": "Philadelphia Union",
+      "id": "10739",
+      "league": "usa.1",
+      "shortDisplayName": "Philadelphia",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "POR",
+      "aliases": [
+        "timbers",
+        "ptfc"
+      ],
+      "displayName": "Portland Timbers",
+      "id": "9723",
+      "league": "usa.1",
+      "shortDisplayName": "Portland",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "RSL",
+      "aliases": [],
+      "displayName": "Real Salt Lake",
+      "id": "4771",
+      "league": "usa.1",
+      "shortDisplayName": "Salt Lake",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "RBNY",
+      "aliases": [],
+      "displayName": "Red Bull New York",
+      "id": "190",
+      "league": "usa.1",
+      "shortDisplayName": "Red Bull NY",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "SD",
+      "aliases": [],
+      "displayName": "San Diego FC",
+      "id": "22529",
+      "league": "usa.1",
+      "shortDisplayName": "San Diego",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "SJ",
+      "aliases": [],
+      "displayName": "San Jose Earthquakes",
+      "id": "191",
+      "league": "usa.1",
+      "shortDisplayName": "San Jose",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "SEA",
+      "aliases": [],
+      "displayName": "Seattle Sounders FC",
+      "id": "9726",
+      "league": "usa.1",
+      "shortDisplayName": "Seattle",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "SKC",
+      "aliases": [],
+      "displayName": "Sporting Kansas City",
+      "id": "186",
+      "league": "usa.1",
+      "shortDisplayName": "Kansas City",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "STL",
+      "aliases": [],
+      "displayName": "St. Louis CITY SC",
+      "id": "21812",
+      "league": "usa.1",
+      "shortDisplayName": "St. Louis",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "TOR",
+      "aliases": [],
+      "displayName": "Toronto FC",
+      "id": "7318",
+      "league": "usa.1",
+      "shortDisplayName": "Toronto",
+      "sport": "soccer"
+    },
+    {
+      "abbreviation": "VAN",
+      "aliases": [],
+      "displayName": "Vancouver Whitecaps",
+      "id": "9727",
+      "league": "usa.1",
+      "shortDisplayName": "Vancouver",
+      "sport": "soccer"
+    }
+  ],
+  "version": 2
+}

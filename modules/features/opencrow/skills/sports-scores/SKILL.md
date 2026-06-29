@@ -1,139 +1,150 @@
 ---
 name: sports-scores
-description: Look up sports scores, upcoming games, and schedules using the ESPN API. Use when anyone asks about a team's next game, current score, game time, or recent results — or asks about all games in a league today. Handles NBA, NFL, MLB, NHL, MLS, EPL, WNBA, and college sports. Triggers on phrases like "when is the next game", "what's the score", "did the Blazers win", "when do the Timbers play", "any NBA games on today", "did they win their last game", etc.
+description: Look up sports scores, upcoming games, and schedules using the ESPN API helper script. Use when anyone asks about a team's next game, current score, game time, recent result, or asks about all games in a league today. Handles NBA, NFL, MLB, NHL, MLS, EPL, WNBA, men's college basketball, and college football.
 ---
 
 # Sports Scores
 
-Look up game schedules and live scores via the ESPN public API.
+Use the deterministic helper script in this skill directory. Do not read `teams.json` into context; the script owns team data, ESPN API calls, Pacific time conversion, and schema normalization.
 
-## Step 1: Resolve the sport/league
+You interpret the user's request. The script does not understand English questions. Decide whether the user wants:
 
-The ESPN API uses sport/league paths. If the user mentions a specific league by name or abbreviation, map it:
+- a team's next game: `team next`
+- today's/live score for a team: `scoreboard --team-id ...`
+- all games in a league today: `scoreboard`
+- a recent completed result / "did they win?": `team last-result`
+- team lookup/disambiguation: `teams search`
+
+Run commands from this skill directory:
+
+```bash
+cd "$OPENCROW_PI_SKILLS_DIR/sports-scores"
+```
+
+## Favorite team IDs
+
+Use these directly when the user clearly means one of them; this avoids a team-search round trip.
+
+| User says | sport | league | team-id |
+|---|---|---|---|
+| Blazers, Trail Blazers, Rip City | basketball | nba | 22 |
+| Timbers, PTFC | soccer | usa.1 | 9723 |
+| Portland Fire | basketball | wnba | 132052 |
+| Chargers, LA Chargers, Bolts | football | nfl | 24 |
+| Canucks | hockey | nhl | 22 |
+| Habs, Canadiens | hockey | nhl | 10 |
+| Oregon Ducks football, Duck football, Ducks, Oregon football | football | college-football | 2483 |
+
+## League IDs
+
+Common ESPN league paths:
 
 | User says | sport | league |
 |---|---|---|
 | NBA | basketball | nba |
 | WNBA | basketball | wnba |
 | NFL | football | nfl |
-| College Football / CFB / NCAAF | football | college-football |
+| College Football, CFB, NCAAF | football | college-football |
 | MLB | baseball | mlb |
-| NHL / hockey | hockey | nhl |
-| MLS / soccer (US) | soccer | usa.1 |
-| EPL / Premier League / English soccer | soccer | eng.1 |
-| Men's College Basketball / March Madness | basketball | mens-college-basketball |
+| NHL, hockey | hockey | nhl |
+| MLS, US soccer | soccer | usa.1 |
+| EPL, Premier League, English soccer | soccer | eng.1 |
+| Men's college basketball, March Madness | basketball | mens-college-basketball |
 
-If the user doesn't specify a sport but mentions a team name, the team lookup in Step 2 will determine the league.
-
-If the user asks about a league generically (e.g. "what NBA games are on today?"), note the sport/league and go directly to **Step 4** — skip Step 2 and Step 3, and omit the `--arg tid` / `select()` filter to get all games for that league.
-
-## Step 2: Identify the team
-
-Read the sidecar file at the path relative to this skill directory: `teams.json`
-
-It is a JSON array of `[id, abbreviation, displayName, shortDisplayName, sport, league]`.
-
-Search for the team by matching the user's query against:
-- `displayName` (e.g. "Portland Trail Blazers")
-- `shortDisplayName` (e.g. "Trail Blazers")
-- `abbreviation` (e.g. "POR")
-
-Use a case-insensitive substring match. The user may say "blazer" or "blazers" when the team is "Portland Trail Blazers" — match flexibly.
-
-Also apply these unofficial nickname aliases before matching:
-
-| User says | Match as |
-|---|---|
-| Habs | Montreal Canadiens |
-
-If multiple teams match (e.g. "Portland" could be Trail Blazers or Timbers), prefer the one in the sport the user seems to be asking about (basketball keywords → NBA, soccer keywords → MLS, etc). If still ambiguous, ask the user to clarify.
-
-From the match, extract: `id`, `sport`, and `league`.
-
-## Step 3: Determine what to look up
-
-- **"When is the next game?" / "next game" / schedule questions** → go to Step 4
-- **"What's the score?" / "how are they doing?"** → go to Step 5
-- **"Did they win?" / "did they win their last game?" / "last result"** → go to Step 6
-- **Both or unclear** → do the relevant steps
-
-## Step 4: Get next game
-
-Run:
+You can inspect supported leagues with:
 
 ```bash
-curl -s "http://site.api.espn.com/apis/site/v2/sports/{sport}/{league}/teams/{id}" | jq '.team.nextEvent'
+python3 scripts/sports_scores.py leagues
 ```
 
-If the array is empty, say "No upcoming games scheduled."
+## Team lookup
 
-Otherwise, take the first event and extract:
+When the team is not in the favorites table, search by team name, short name, abbreviation, or alias:
 
 ```bash
-curl -s "http://site.api.espn.com/apis/site/v2/sports/{sport}/{league}/teams/{id}" | jq '.team.nextEvent[0] | {name, date, status: .status.type.detail, competitions: [.competitions[] | {status: .status.type.detail, broadcasts: [.broadcasts[]?.media.shortName], venue: .venue?.fullName, competitors: [.competitors[] | {team: .team.shortDisplayName, score: .score, homeAway: .homeAway, record: (.records // [] | map(.summary) | join(" "))}]}]}'
+python3 scripts/sports_scores.py teams search --query "canadiens"
+python3 scripts/sports_scores.py teams search --query "portland"
+python3 scripts/sports_scores.py teams search --query "portland" --league nba
+python3 scripts/sports_scores.py teams search --query "ducks" --sport football --league college-football
 ```
 
-Present the information naturally:
+If multiple teams match, use the user's sport/league context to choose. If still ambiguous, ask a short clarification question.
 
-- **Scheduled game:** "The **Trail Blazers** play the **Spurs** on Tuesday, April 21 at 5:00 PM PDT in San Antonio (Frost Bank Center). TV: NBC, streaming: Peacock."
-- **In-progress game:** "The **Trail Blazers** are currently playing the **Spurs** — POR 98, SA 87 (4th quarter)."
-- **Completed game:** "The **Trail Blazers** beat the **Spurs** 112-105."
-
-Use the `date` field (ISO 8601 UTC) and convert to Pacific time for the user. Round to the nearest sensible time.
-
-**Emphasize relative dates:** When the game is **today** or **tomorrow**, use bold formatting for those words in your response. Examples:
-- "The **Trail Blazers** play the **Spurs** **today** at 5:00 PM PDT..."
-- "The **Canadiens** play the **Lightning** **tomorrow** at 4:00 PM PDT..."
-
-## Step 5: Get today's scores
-
-**For a specific team**, run:
+## Next game
 
 ```bash
-curl -s "http://site.api.espn.com/apis/site/v2/sports/{sport}/{league}/scoreboard" | jq --arg tid "{id}" '[.events[] | select(.competitions[].competitors[].team.id == $tid) | {name, date, status: .status.type.detail, statusState: .status.type.state, competitions: [.competitions[] | {status: .status.type.detail, competitors: [.competitors[] | {team: .team.shortDisplayName, score: .score, winner: .winner, homeAway: .homeAway, record: (.records // [] | map(.summary) | join(" "))}]}]}]'
+python3 scripts/sports_scores.py team next \
+  --sport basketball \
+  --league nba \
+  --team-id 22
 ```
 
-**For all games in a league**, omit the team filter:
+If `.event` is `null`, say there is no upcoming game scheduled. Otherwise format naturally. Use the returned `datePacific`, `relativeDatePacific`, status, venue, broadcasts, and competitors.
+
+Emphasize **today** or **tomorrow** in the final response when applicable.
+
+## Today's/live scoreboard
+
+For one team:
 
 ```bash
-curl -s "http://site.api.espn.com/apis/site/v2/sports/{sport}/{league}/scoreboard" | jq '[.events[] | {name, date, status: .status.type.detail, statusState: .status.type.state, competitions: [.competitions[] | {status: .status.type.detail, competitors: [.competitors[] | {team: .team.shortDisplayName, score: .score, winner: .winner, homeAway: .homeAway, record: (.records // [] | map(.summary) | join(" "))}]}]}]'
+python3 scripts/sports_scores.py scoreboard \
+  --sport basketball \
+  --league nba \
+  --team-id 22
 ```
 
-If no results, there are no games today. Say so.
-
-Otherwise, format the results — show opponent, score, game status, and game time. For league-wide queries, list all games for the day.
-
-For completed games, note the winner with the final score.
-For in-progress games, show the current score and period/quarter/inning.
-For scheduled games today, show the game time.
-
-## Step 6: Find a past result ("did they win?")
-
-When the user asks about a completed game ("did the Blazers win?", "last result", etc.), the scoreboard API supports a `dates` parameter in `YYYYMMDD` format.
-
-First check today. If the team didn't play today, check yesterday, and keep going back up to 7 days.
-
-Use `date +%Y%m%d` for today's date and `date -d "N days ago" +%Y%m%d` for past dates.
-
-For each date, run:
+For all games in a league today:
 
 ```bash
-curl -s "http://site.api.espn.com/apis/site/v2/sports/{sport}/{league}/scoreboard?dates={YYYYMMDD}" | jq --arg tid "{id}" '[.events[] | select(.competitions[].competitors[].team.id == $tid) | {name, date, status: .status.type.detail, statusState: .status.type.state, competitions: [.competitions[] | {status: .status.type.detail, competitors: [.competitors[] | {team: .team.shortDisplayName, score: .score, winner: .winner, homeAway: .homeAway}]}]}]'
+python3 scripts/sports_scores.py scoreboard \
+  --sport basketball \
+  --league nba
 ```
 
-As soon as you get a non-empty result with `statusState` of `post` (completed), report it:
-- **Win:** "The **Trail Blazers** beat the **Spurs** 112-105 on Saturday."
-- **Loss:** "The **Trail Blazers** lost to the **Spurs** 98-111 on Saturday."
-- **Tie** (soccer): "The **Timbers** drew with **LAFC** 2-2 on Saturday."
+For a specific date:
 
-If you reach 7 days back with no completed game found, say so: "The **Trail Blazers** haven't played in the last 7 days."
+```bash
+python3 scripts/sports_scores.py scoreboard \
+  --sport basketball \
+  --league nba \
+  --date 20260627
+```
 
-If you find a game that is currently in progress on today's date, report it as a live score instead of continuing to search.
+If there are no events, say there are no games for that team/league today. For league-wide queries, list all games concisely.
 
-## Tips
+## Last result / did they win?
 
-- Always convert UTC times to Pacific (PDT is UTC-7, PST is UTC-8)
-- team records (like "52-30") come from the `records` field in competitor objects
-- The `teams.json` sidecar covers: NBA, NFL, MLB, NHL, MLS, EPL, WNBA, Men's College Basketball, College Football
-- If a team isn't found in `teams.json`, try the ESPN teams API directly: `curl -s "http://site.api.espn.com/apis/site/v2/sports/{sport}/{league}/teams"` and search there
-- Do not comment on individual steps — respond once with the answer
+```bash
+python3 scripts/sports_scores.py team last-result \
+  --sport basketball \
+  --league nba \
+  --team-id 22 \
+  --days 7
+```
+
+If `result.outcome` is:
+
+- `win`: say the team beat the opponent with the score and day.
+- `loss`: say the team lost to the opponent with the score and day.
+- `tie`: for soccer, say they drew; otherwise say tied.
+- `in_progress`: report the current live score instead of looking further back.
+- `null`: say they have not completed a game in the searched window.
+
+## Response style
+
+Respond once with the answer, not the raw JSON. Be concise.
+
+Examples:
+
+```text
+The **Trail Blazers** play the **Spurs** **today** at 5:00 PM PDT in San Antonio.
+```
+
+```text
+The **Timbers** beat **LAFC** 2–1 on Saturday.
+```
+
+```text
+There are no NBA games today.
+```
