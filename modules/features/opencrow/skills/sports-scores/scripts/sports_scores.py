@@ -427,6 +427,12 @@ def team_next(args: argparse.Namespace) -> None:
         team_data = schedule_data.get("team") or {}
         events = schedule_data.get("events") or []
         event = select_next_event(events)
+        if event is None:
+            url = f"{BASE_URL}/{args.sport}/{args.league}/teams/{team_id}"
+            data = fetch_json_optional(url)
+            if data is not None:
+                team_data = data.get("team") or team_data
+                event = select_next_event(team_data.get("nextEvent") or [])
     else:
         url = f"{BASE_URL}/{args.sport}/{args.league}/teams/{team_id}"
         data = fetch_json(url)
