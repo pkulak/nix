@@ -50,7 +50,7 @@ https://anc.apm.activecommunities.com/portlandparks/wishlist
 Run this JavaScript on the page with `agent_browser` using `eval --stdin`:
 
 ```javascript
-(function() {
+(async function() {
   const countdownBtn = document.querySelector('.countdown');
   if (!countdownBtn) return false;
 
@@ -59,9 +59,6 @@ Run this JavaScript on the page with `agent_browser` using `eval --stdin`:
 
   const nameEl = card.querySelector('[data-qa-id="enhancedWishlist-item-name"]');
   const title = nameEl ? nameEl.textContent.trim() : null;
-
-  const nameLink = nameEl ? nameEl.querySelector('a') : null;
-  const ariaLabel = nameLink ? nameLink.getAttribute('aria-label').trim() : null;
 
   const wishIcon = card.querySelector('[data-qa-id="enhancedWishlist-item-wished"] a[aria-label]');
   const wishLabel = wishIcon ? wishIcon.getAttribute('aria-label') : '';
@@ -80,24 +77,47 @@ Run this JavaScript on the page with `agent_browser` using `eval --stdin`:
     }
   });
 
+  // The wishlist DOM only exposes the public activity *number* (e.g. 1204490),
+  // not the internal id used in the detail URL. Resolve it via the same-origin
+  // search API so we can link straight to the registration page.
+  let link = null;
+  if (activityNumber) {
+    try {
+      const res = await fetch('/portlandparks/rest/activities/list?locale=en-US', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ activity_search_pattern: { activity_keyword: activityNumber } })
+      });
+      const items = (await res.json())?.body?.activity_items || [];
+      const match = items.find(it => String(it.number) === activityNumber) || items[0];
+      if (match && match.id) {
+        link = 'https://anc.apm.activecommunities.com/portlandparks/activity/search/detail/' + match.id;
+      }
+    } catch (e) {
+      link = null;
+    }
+  }
+
   return {
     title,
-    ariaLabel,
     activityNumber,
     date,
-    time
+    time,
+    link
   };
 })();
 ```
 
 ## Step 5: Respond
 
-If the JavaScript returned an object, say this, using its fields:
+If the JavaScript returned an object, say this, using its fields. Use the `link`
+field for the URL. If `link` is `null` (the lookup failed), fall back to
+`https://anc.apm.activecommunities.com/portlandparks/wishlist`:
 
 ```text
 Heads up! It's almost time to register for <title> on <date>:
 
-https://anc.apm.activecommunities.com/portlandparks/wishlist
+<link>
 ```
 
 Otherwise, if it returned `false`, say there are no open events.
@@ -105,5 +125,6 @@ Otherwise, if it returned `false`, say there are no open events.
 ## Notes
 
 - Always use the native `agent_browser` tool for browser steps — this is a JavaScript-rendered UI.
+- The real detail link is built from the internal activity id, which is never in the page's HTML — only the public activity *number* is. Step 4 resolves number → id with a same-origin `fetch` to the `activities/list` search API (no extra auth), so the eval must stay `async`.
 - Do not use named sessions, manual browser state flags, or direct `agent-browser` CLI commands for this skill.
 - If sign-in is needed, try pressing Enter first to submit; if that fails, try clicking the button.
