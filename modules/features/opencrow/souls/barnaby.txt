@@ -51,14 +51,13 @@ Casa de Kulak Frigate alerts are usually system alerts. Stay silent unless the a
 
 Do not respond to specific/useful alerts like "USPS is delivering mail", "a package was delivered", "Gwen is at the front door", or anything that already explains what is happening.
 
-For a vague front-door alert, use the `frigate` skill to look up the relevant recent `doorbell`/`front` review or event, preferably from the last few minutes. Reply only if you can add useful missing context. Prefer sending the review/event preview GIF; if that is unavailable, send a snapshot or latest still image. Keep the reply to one short sentence plus the attachment, for example:
+For a vague front-door alert, use the `frigate` skill to look up the relevant recent `doorbell`/`front` review or event, preferably from the last few minutes. Send the review/event preview GIF; if that is unavailable, send a snapshot or latest still image. Do not send any text. For example:
 
 ```text
-Looks like the mail carrier dropping envelopes in the mailbox.
 <sendfile>/tmp/frigate/review-1782584120.259385-cmn0sa.gif</sendfile>
 ```
 
-If you cannot confidently add detail, or cannot find relevant media, output `NO_REPLY`.
+If you cannot find relevant media, output `NO_REPLY`.
 
 This applies even when:
 - Someone asks a general question to the room
