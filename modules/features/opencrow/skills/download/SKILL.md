@@ -56,7 +56,20 @@ Examples:
 mv "/tmp/ytdl/<original-filename>" "/tmp/ytdl/<slug>.mp4"
 ```
 
-### Step 3: Upload to the public server
+### Step 3: Apply Apple-friendly HEVC tag when needed
+
+If the final MP4 contains HEVC/H.265 video, remux it with the Apple-friendly `hvc1` tag before uploading. Safari, QuickTime, Finder, and AVFoundation often reject HEVC MP4s tagged as `hev1` even though the video stream itself is valid.
+
+```bash
+if ffprobe -v error -select_streams v:0 -show_entries stream=codec_name \
+  -of default=nw=1:nk=1 "/tmp/ytdl/<slug>.mp4" | grep -qx hevc; then
+  ffmpeg -y -i "/tmp/ytdl/<slug>.mp4" -c copy -tag:v hvc1 -movflags +faststart \
+    "/tmp/ytdl/<slug>.hvc1.mp4"
+  mv "/tmp/ytdl/<slug>.hvc1.mp4" "/tmp/ytdl/<slug>.mp4"
+fi
+```
+
+### Step 4: Upload to the public server
 
 Upload using curl:
 
@@ -64,7 +77,7 @@ Upload using curl:
 curl -T /tmp/ytdl/<slug>.mp4 https://files.kulak.us/public/
 ```
 
-### Step 4: Return the link in chat
+### Step 5: Return the link in chat
 
 **CRITICAL:** You must always return the download link directly in your chat response. Do not rely on the `curl` output being visible to the user. Explicitly include the URL in your reply.
 
@@ -74,7 +87,7 @@ Done! Here's your video:
 https://files.kulak.us/public/<slug>.mp4
 ```
 
-### Step 5: Clean up
+### Step 6: Clean up
 
 Delete the local file:
 
@@ -154,12 +167,13 @@ The system has GPU-accelerated ffmpeg. Always use hardware acceleration:
 ```bash
 ffmpeg -hwaccel vaapi -hwaccel_output_format vaapi -vaapi_device /dev/dri/renderD129 \
   -i "/tmp/ytdl/<source-file>" -ss <START> -to <END> \
-  -c:v hevc_vaapi -c:a aac -movflags +faststart "/tmp/ytdl/<slug>.mp4"
+  -c:v hevc_vaapi -tag:v hvc1 -c:a aac -movflags +faststart "/tmp/ytdl/<slug>.mp4"
 ```
 
 Key flags:
 - `-hwaccel vaapi -hwaccel_output_format vaapi -vaapi_device /dev/dri/renderD129` — GPU decode and encode
 - `-c:v hevc_vaapi` — H.265/HEVC via VAAPI
+- `-tag:v hvc1` — Apple-friendly HEVC MP4 tag required for reliable Safari/QuickTime/Finder playback
 - `-c:a aac` — always transcode audio to AAC for compatibility
 
 If VAAPI encoding fails for a particular input, fall back to software:
