@@ -7,43 +7,59 @@ description: Check to see if there's any tennis classes to sign up for today.
 
 Use the native `agent_browser` tool for browser interaction in this skill.
 
-## Step 1: Check whether ActiveCommunities is already signed in
+## Step 1: Load the saved list with one browser batch
 
-Open:
+ActiveCommunities is fragile if navigation and inspection happen in separate
+`agent_browser` calls: the follow-up call can lose the tab and report
+`about:blank`, and the JavaScript app can render an empty page for a few
+seconds. Always combine open + wait + inspection in one `batch`.
+
+Call:
 
 ```text
-https://anc.apm.activecommunities.com/portlandparks/wishlist
+agent_browser args: ["batch"]
+stdin:
+[["open", "https://anc.apm.activecommunities.com/portlandparks/wishlist"],
+ ["wait", "3000"],
+ ["get", "title"],
+ ["get", "url"],
+ ["snapshot", "-i"]]
 ```
 
-Wait for the JavaScript-rendered app to settle, then check the page URL and title.
+If the URL contains `/wishlist`, the title does **not** say "Sign in", and the
+snapshot shows the wishlist UI, continue to Step 3.
 
-If the URL contains `/wishlist` and the title does **not** say "Sign in", assume the saved list is already available and continue to Step 3.
+If the URL contains `/signin` or the title says "Sign in", continue to Step 2.
+
+If the URL contains `/wishlist` but the snapshot/body is empty, do **not**
+assume sign-in failed. Repeat the same batch with `wait` set to `8000` before
+deciding what to do.
 
 ## Step 2: Sign in only if needed
 
-Open:
-
-```text
-https://anc.apm.activecommunities.com/portlandparks/signin
-```
-
-Wait for the sign-in page to settle.
-
-Use the saved agent-browser auth entry named `activecommunities` to sign in with the `auth login` subcommand:
+Use the saved agent-browser auth entry named `activecommunities` to sign in with
+the `auth login` subcommand:
 
 ```text
 agent_browser args: ["auth", "login", "activecommunities"]
 ```
 
-Wait about 8 seconds after the login attempt, then check the URL. If it still contains `/signin`, tell the user that sign-in failed and stop. If the URL changed, continue.
+Do not inspect the current page immediately after `auth login`, and do not use
+separate `open`, `get`, or `snapshot` calls for the next load. Immediately reload
+the wishlist with the same batched open + wait + inspection pattern from Step 1.
 
-## Step 3: Navigate to the saved list
+If the batched reload still ends on `/signin` or a page titled "Sign in", tell
+the user that sign-in failed and stop. If it ends on `/wishlist` but the page is
+empty, repeat the batched reload once with an 8 second wait.
 
-Open the wishlist page again and wait for it to load:
+## Step 3: Make sure the saved list is ready
 
-```text
-https://anc.apm.activecommunities.com/portlandparks/wishlist
-```
+Before searching, the current page should be
+`https://anc.apm.activecommunities.com/portlandparks/wishlist` and the snapshot
+should show the wishlist UI, such as the "Saved for Later List" heading.
+
+If a later browser call reports `about:blank`, rerun the Step 1 batch and retry
+the action. Do not re-authenticate unless the batched reload lands on `/signin`.
 
 ## Step 4: Search the list
 
@@ -126,5 +142,5 @@ Otherwise, if it returned `false`, say there are no open events.
 
 - Always use the native `agent_browser` tool for browser steps — this is a JavaScript-rendered UI.
 - The real detail link is built from the internal activity id, which is never in the page's HTML — only the public activity *number* is. Step 4 resolves number → id with a same-origin `fetch` to the `activities/list` search API (no extra auth), so the eval must stay `async`.
-- Do not use named sessions, manual browser state flags, or direct `agent-browser` CLI commands for this skill.
-- If sign-in is needed, try pressing Enter first to submit; if that fails, try clicking the button.
+- Do not use named sessions, manual browser state flags, profile flags, or direct `agent-browser` CLI commands for this skill.
+- Do not manually submit the sign-in form. Use `auth login activecommunities`, then reopen the wishlist with a batched open + wait + inspection.
