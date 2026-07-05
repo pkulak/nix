@@ -48,9 +48,22 @@ Do not inspect the current page immediately after `auth login`, and do not use
 separate `open`, `get`, or `snapshot` calls for the next load. Immediately reload
 the wishlist with the same batched open + wait + inspection pattern from Step 1.
 
-If the batched reload still ends on `/signin` or a page titled "Sign in", tell
-the user that sign-in failed and stop. If it ends on `/wishlist` but the page is
-empty, repeat the batched reload once with an 8 second wait.
+If `auth login` reports `loggedIn: true` but the batched reload still ends on
+`/signin` or a page titled "Sign in", do **not** immediately conclude the saved
+auth entry is bad. This can happen when the agent-browser managed session or
+background process is stale. Recover once:
+
+```text
+agent_browser args: ["close"]
+agent_browser args: ["auth", "login", "activecommunities"]
+```
+
+Then reload the wishlist with the Step 1 batch using `wait` set to `8000`.
+
+Only if this recovery attempt also ends on `/signin` or a page titled "Sign in"
+should you tell the user that the saved auth login failed. If it ends on
+`/wishlist` but the page is empty, repeat the batched reload once with an 8
+second wait.
 
 ## Step 3: Make sure the saved list is ready
 
@@ -144,3 +157,4 @@ Otherwise, if it returned `false`, say there are no open events.
 - The real detail link is built from the internal activity id, which is never in the page's HTML — only the public activity *number* is. Step 4 resolves number → id with a same-origin `fetch` to the `activities/list` search API (no extra auth), so the eval must stay `async`.
 - Do not use named sessions, manual browser state flags, profile flags, or direct `agent-browser` CLI commands for this skill.
 - Do not manually submit the sign-in form. Use `auth login activecommunities`, then reopen the wishlist with a batched open + wait + inspection.
+- If `auth login` returns `loggedIn: true` but the next batched load is still the sign-in page, suspect stale browser/session state first. Close the managed session and retry auth once before declaring the saved auth entry broken.
