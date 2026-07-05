@@ -76,10 +76,36 @@ the action. Do not re-authenticate unless the batched reload lands on `/signin`.
 
 ## Step 4: Search the list
 
-Run this JavaScript on the page with `agent_browser` using `eval --stdin`:
+Run the search eval in the same browser `batch` that opens the wishlist. Do not
+run `eval --stdin` as a separate `agent_browser` call; crossing browser calls is
+where ActiveCommunities most often falls back to `about:blank`.
+
+Call:
+
+```text
+agent_browser args: ["batch"]
+stdin:
+[["open", "https://anc.apm.activecommunities.com/portlandparks/wishlist"],
+ ["wait", "3000"],
+ ["get", "title"],
+ ["get", "url"],
+ ["eval", "<paste the JavaScript below as one JSON string; do not send this placeholder literally>"]]
+```
+
+Inside a batch, the eval step is `["eval", "..."]` — do **not** use
+`["eval", "--stdin"]` there.
+
+Use this JavaScript for the eval step:
 
 ```javascript
 (async function() {
+  if (
+    location.hostname !== 'anc.apm.activecommunities.com' ||
+    location.pathname !== '/portlandparks/wishlist'
+  ) {
+    return { error: 'wrong-page', url: location.href, title: document.title };
+  }
+
   const countdownBtn = document.querySelector('.countdown');
   if (!countdownBtn) return false;
 
@@ -137,10 +163,19 @@ Run this JavaScript on the page with `agent_browser` using `eval --stdin`:
 })();
 ```
 
+Only trust the eval result if the same batch's `get url` step is on
+`/portlandparks/wishlist`, the eval step's origin is also the wishlist page, and
+there is no `about:blank` warning.
+
+If the eval step reports `about:blank`, returns `{ error: "wrong-page", ... }`,
+or the batch URL/title shows `/signin`, do **not** trust a `false` result. Rerun
+Step 1/2 recovery as appropriate, then retry this batched search once.
+
 ## Step 5: Respond
 
-If the JavaScript returned an object, say this, using its fields. Use the `link`
-field for the URL. If `link` is `null` (the lookup failed), fall back to
+If the trusted Step 4 eval returned an object with tennis activity fields, say
+this, using its fields. Use the `link` field for the URL. If `link` is `null`
+(the lookup failed), fall back to
 `https://anc.apm.activecommunities.com/portlandparks/wishlist`:
 
 ```text
@@ -149,12 +184,17 @@ Heads up! It's almost time to register for <title> on <date>:
 <link>
 ```
 
-Otherwise, if it returned `false`, say there are no open events.
+Otherwise, if the trusted Step 4 eval returned `false`, say there are no open
+events.
+
+Do not say there are no open events when the eval ran on `about:blank`, returned
+`{ error: "wrong-page", ... }`, or was paired with a batch URL/title on
+`/signin`; recover and retry instead.
 
 ## Notes
 
 - Always use the native `agent_browser` tool for browser steps — this is a JavaScript-rendered UI.
-- The real detail link is built from the internal activity id, which is never in the page's HTML — only the public activity *number* is. Step 4 resolves number → id with a same-origin `fetch` to the `activities/list` search API (no extra auth), so the eval must stay `async`.
+- The real detail link is built from the internal activity id, which is never in the page's HTML — only the public activity *number* is. Step 4 resolves number → id with a same-origin `fetch` to the `activities/list` search API (no extra auth), so the eval must stay `async` and be run as the eval step inside the wishlist batch.
 - Do not use named sessions, manual browser state flags, profile flags, or direct `agent-browser` CLI commands for this skill.
 - Do not manually submit the sign-in form. Use `auth login activecommunities`, then reopen the wishlist with a batched open + wait + inspection.
 - If `auth login` returns `loggedIn: true` but the next batched load is still the sign-in page, suspect stale browser/session state first. Close the managed session and retry auth once before declaring the saved auth entry broken.
