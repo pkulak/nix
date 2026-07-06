@@ -28,8 +28,9 @@ in
   services = checks.services // {
     watchmail = {
       description = "Watch inbox and trigger opencrow on new mail";
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = [ "opencrow.service" ];
       after = [ "opencrow.service" ];
+      partOf = [ "opencrow.service" ];
       requires = [ "opencrow.service" ];
 
       serviceConfig = {
