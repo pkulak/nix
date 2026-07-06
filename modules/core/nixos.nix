@@ -64,6 +64,9 @@
           inputs.llm-agents.overlays.default
           (final: prev: {
             inherit (inputs.matui.packages.${prev.stdenv.hostPlatform.system}) matui;
+            llm-agents = prev.llm-agents // {
+              agent-browser = inputs.llm-agents-agent-browser-027.packages.${prev.stdenv.hostPlatform.system}.agent-browser;
+            };
             neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
             ffmpeg-over-ip-client = self.packages.${prev.stdenv.hostPlatform.system}.ffmpeg-over-ip-client;
             ffmpeg-over-ip = self.packages.${prev.stdenv.hostPlatform.system}.ffmpeg-over-ip;
