@@ -1,5 +1,39 @@
 { pkgs, ... }:
 
+let
+  firefoxAddons = pkgs.nur.repos.rycee.firefox-addons;
+
+  amazonBrandFilter = firefoxAddons.buildFirefoxXpiAddon {
+    pname = "amazonbrandfilter";
+    version = "0.8.0";
+    addonId = "abf@mosley.xyz";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4607441/amazonbrandfilter-0.8.0.xpi";
+    sha256 = "sha256-CUXnBnG0v71c+Ysc9rtzSh4YOoKdh+Gapr1mrlnHHFs=";
+    meta = with pkgs.lib; {
+      homepage = "https://github.com/chris-mosley/AmazonBrandFilter";
+      description = "Filters unknown brands from Amazon search results";
+      license = licenses.mit;
+      mozPermissions = [
+        "storage"
+        "activeTab"
+        "*://*.amazon.com/*"
+        "*://*.amazon.ca/*"
+        "*://*.amazon.cn/*"
+        "*://*.amazon.co.jp/*"
+        "*://*.amazon.com.au/*"
+        "*://*.amazon.com.mx/*"
+        "*://*.amazon.co.uk/*"
+        "*://*.amazon.de/*"
+        "*://*.amazon.es/*"
+        "*://*.amazon.fr/*"
+        "*://*.amazon.in/*"
+        "*://*.amazon.it/*"
+        "*://*.amazon.nl/*"
+      ];
+      platforms = platforms.all;
+    };
+  };
+in
 {
   programs.firefox = {
     enable = true;
@@ -37,8 +71,9 @@
         id = 0;
         name = "phil";
 
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with firefoxAddons; [
           adsum-notabs
+          amazonBrandFilter
           consent-o-matic
           container-proxy
           decentraleyes
@@ -58,38 +93,45 @@
 
           engines = {
             "Kagi" = {
-              urls = [{
-                template = "https://links.kulak.us";
-                params = [{
-                  name = "q";
-                  value = "{searchTerms}";
-                }];
-              }];
+              urls = [
+                {
+                  template = "https://links.kulak.us";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
             };
 
             "Nix Packages" = {
-              urls = [{
-                template = "https://search.nixos.org/packages";
-                params = [
-                  {
-                    name = "type";
-                    value = "packages";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }];
-              icon =
-                "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@np" ];
             };
 
             "NixOS Wiki" = {
-              urls = [{
-                template = "https://nixos.wiki/index.php?search={searchTerms}";
-              }];
+              urls = [
+                {
+                  template = "https://nixos.wiki/index.php?search={searchTerms}";
+                }
+              ];
               icon = "https://nixos.wiki/favicon.png";
               updateInterval = 24 * 60 * 60 * 1000;
               definedAliases = [ "@nw" ];
@@ -133,6 +175,6 @@
 
   home.file = {
     ".mozilla/native-messaging-hosts/ff2mpv.json".source =
-        "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
+      "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
   };
 }
