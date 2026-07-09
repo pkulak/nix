@@ -33,6 +33,7 @@
         desktop
 
         beets
+        borg
         env
         firefox
         fish

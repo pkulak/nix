@@ -21,6 +21,7 @@
         core
 
         beets
+        borg
         env
         fish
         git
