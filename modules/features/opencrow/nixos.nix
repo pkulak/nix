@@ -170,6 +170,7 @@ let
     };
 
     skills = {
+      alarm = ./skills/alarm;
       check-tennis = ./skills/check-tennis;
       download = ./skills/download;
       frigate = ./skills/frigate;
