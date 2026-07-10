@@ -26,7 +26,7 @@
 
           models = [
             {
-              id = "gpt-5.5";
+              id = "gpt-5.6-sol";
               reasoning = true;
               contextWindow = 272000;
               maxTokens = 128000;
@@ -34,6 +34,7 @@
                 off = "none";
                 minimal = null;
                 xhigh = "xhigh";
+                max = "max";
               };
               input = [
                 "text"
@@ -47,8 +48,8 @@
 
     ".pi/agent/settings.json".text = builtins.toJSON {
       defaultProvider = "llm";
-      defaultModel = "gpt-5.5";
-      defaultThinkingLevel = "xhigh";
+      defaultModel = "gpt-5.6-sol";
+      defaultThinkingLevel = "max";
       theme = "catppuccin-mocha";
 
       packages = [

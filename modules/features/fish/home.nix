@@ -78,7 +78,7 @@
       jdr = ''jj diff -f "$(current-bookmark)@origin"'';
       chat = "cd ~/tmp; jai -j pi pi";
       ai = "jai -j pi pi";
-      vai = "jai -j pi pi --model openai-codex/gpt-5.5";
+      vai = "jai -j pi pi --model openai-codex/gpt-5.6-sol";
     };
 
     functions = {
