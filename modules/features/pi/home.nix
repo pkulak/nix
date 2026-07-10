@@ -49,7 +49,7 @@
     ".pi/agent/settings.json".text = builtins.toJSON {
       defaultProvider = "llm";
       defaultModel = "gpt-5.6-sol";
-      defaultThinkingLevel = "max";
+      defaultThinkingLevel = "xhigh";
       theme = "catppuccin-mocha";
 
       packages = [
