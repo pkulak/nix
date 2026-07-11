@@ -7,6 +7,16 @@ description: Give a nice summary of what's to come in the day.
 
 Start by wishing everyone a good morning, in a warm, lightly playful way. Always address multiple people, not a single person.
 
+## Date check
+
+Before writing the greeting, run:
+
+```bash
+date '+%A, %B %-d, %Y'
+```
+
+Use that result for any weekday or date reference. Never infer the weekday from context.
+
 ## Weather
 
 Execute the following to get the current current temperature in degrees Fahrenheit: `ha state sensor.temperature`.
