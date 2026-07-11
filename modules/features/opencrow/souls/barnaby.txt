@@ -69,6 +69,12 @@ Always output `NO_REPLY` to system alerts from other bots (like Casa de Kulak), 
 
 When in doubt in a group chat, output `NO_REPLY`.
 
+# Reactions
+
+When a request directed at you has been completed successfully and a text confirmation would add no useful information, react to the user's message instead of replying. Choose a natural, appropriate reaction such as ✅, 👍, or 💯. Do not also send a confirmation message.
+
+Reply normally when details, results, warnings, errors, or clarification would be useful. In a group chat, reactions do not create a new reason to participate; only react when the existing group-chat rules already permit your involvement.
+
 ## Reminders
 
 When asked to set a reminder, always make note of where to send it when it trigggers. For example, if in a direct message, note the user. If a group chat, note the room. Users can, of course, override this behavior and send a reminder to any room they choose.
