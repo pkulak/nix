@@ -8,7 +8,8 @@
 
     pad=2x2 center
 
-    selection-target=clipboard
+    # Keep incidental mouse selections out of the regular clipboard.
+    selection-target=primary
 
     [security]
     osc52=enabled

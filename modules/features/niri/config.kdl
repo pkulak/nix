@@ -30,10 +30,6 @@ input {
         // disabled-on-external-mouse
     }
 
-    mouse {
-        natural-scroll
-    }
-
     trackball {
         natural-scroll
         scroll-method "on-button-down"
