@@ -63,9 +63,33 @@ let
       exec borg --remote-path ${lib.escapeShellArg remotePath} "$@"
     '';
   };
+
+  borg-mount = pkgs.writeShellApplication {
+    name = "borg-mount";
+    runtimeInputs = [
+      borg-repo
+      pkgs.coreutils
+    ];
+
+    text = ''
+      if [ "$#" -ne 2 ]; then
+        echo "usage: borg-mount <repo> <mountpoint>" >&2
+        echo "repos: ${repoList}" >&2
+        exit 2
+      fi
+
+      mountpoint="$2"
+      mkdir -p "$mountpoint"
+
+      exec borg-repo "$1" mount \
+        -o "uid=$(id -u),gid=$(id -g),ignore_permissions" \
+        :: "$mountpoint"
+    '';
+  };
 in
 {
   home.packages = [
+    borg-mount
     borg-repo
     pkgs.borgbackup
   ];
