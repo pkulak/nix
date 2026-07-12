@@ -19,24 +19,24 @@ Cameras:
 
 ## Response style: media first
 
-For camera questions, the best answer is usually a short sentence plus an inline visual. Prefer attaching a GIF or image with OpenCrow's sendfile tag:
+For camera questions, the best answer is usually a short sentence plus an inline visual. Prefer attaching a compact MP4 or image with OpenCrow's sendfile tag:
 
 ```text
 Looks like a delivery at the front door.
-<sendfile>/tmp/frigate/review-1782584120.259385-cmn0sa.gif</sendfile>
+<sendfile>/tmp/frigate/review-1782584120.259385-cmn0sa.mp4</sendfile>
 ```
 
-OpenCrow strips the tag and sends the file as a Matrix attachment. Do not make users click links for normal snapshots or preview GIFs.
+OpenCrow strips the tag and sends the file as a Matrix attachment. Do not make users click links for normal snapshots or compact clips.
 
 Use this media priority:
 
-1. Review preview GIF for "what happened?" / alert follow-up / recent motion.
-2. Event preview GIF if you have an event ID but no review ID.
-3. Event snapshot if the GIF is not ready yet.
+1. Transcoded review clip for "what happened?" / alert follow-up / recent motion.
+2. Transcoded event clip if you have an event ID but no review ID.
+3. Event snapshot if the clip is not ready yet.
 4. Latest camera snapshot for "is anyone there now?" / current-state questions.
 5. Contact sheet of latest snapshots when the user asks broadly about all outside cameras and there is no obvious recent event.
 
-Preview GIFs are normally small; attach them inline. If a requested clip/export is over 10 MiB, upload it to the private local file server instead and return the link:
+The clip helper downloads the full retained recording with five seconds of context and converts it to a Matrix-friendly 360p H.264 MP4 at 8 FPS. Check the result size; attach it inline when it is under 10 MiB. If a clip/export is over 10 MiB, upload it to the private local file server instead and return the link:
 
 ```bash
 curl -T /tmp/file-name.ext https://files.kulak.us/public/
@@ -85,6 +85,8 @@ date -d @1782584120 '+%-I:%M %p'
 curl -fsS "http://debian.home:5000/api/events?limit=10&in_progress=1&include_thumbnails=0&cameras=doorbell,front" | jq
 ```
 
+If the relevant event is still active, use Workflow B's latest snapshot; full clips require a completed event or review.
+
 3. Look for recent alert review items. Use about 30 minutes unless the user gives a different time window:
 
 ```bash
@@ -97,25 +99,26 @@ PY
 curl -fsS "http://debian.home:5000/api/review?limit=10&severity=alert&after=$after&cameras=doorbell,front" | jq
 ```
 
-4. Pick the most relevant review. Review items contain grouped detections in `.data.detections`.
-5. Download a review preview GIF:
+4. Pick the most relevant completed review. Review items contain grouped detections in `.data.detections`; require a non-null `.end_time` before making a clip.
+5. Download and transcode the full review range with the helper in this skill directory:
 
 ```bash
+cd "$OPENCROW_PI_SKILLS_DIR/frigate"
 review_id="1782584120.259385-cmn0sa"
-out="/tmp/frigate/review-$review_id.gif"
-curl -fsS "http://debian.home:5000/api/review/$review_id/preview?format=gif" -o "$out"
+out="/tmp/frigate/review-$review_id.mp4"
+scripts/download_clip.sh review "$review_id" "$out"
 file "$out"
 ```
 
-6. If the GIF request fails or the file is not a GIF, wait briefly and retry once:
+6. If the helper fails because the recording is not ready, wait briefly and retry once:
 
 ```bash
 sleep 3
-curl -fsS "http://debian.home:5000/api/review/$review_id/preview?format=gif" -o "$out"
+scripts/download_clip.sh review "$review_id" "$out"
 file "$out"
 ```
 
-7. If the GIF is still unavailable, attach an event snapshot from the first detection:
+7. If the clip is still unavailable, attach an event snapshot from the first detection:
 
 ```bash
 event_id="1782584119.66894-u73jix"
@@ -124,11 +127,11 @@ curl -fsS "http://debian.home:5000/api/events/$event_id/snapshot.jpg?bbox=1&time
 file "$out"
 ```
 
-8. Read the downloaded image/GIF if needed for visual understanding, then respond with concise text and the attachment:
+8. Read the downloaded video or image if needed for visual understanding, then respond with concise text and the attachment:
 
 ```text
 Looks like a person came up to the porch and then left.
-<sendfile>/tmp/frigate/review-1782584120.259385-cmn0sa.gif</sendfile>
+<sendfile>/tmp/frigate/review-1782584120.259385-cmn0sa.mp4</sendfile>
 ```
 
 ## Workflow B: current state / "is anyone still there?"
@@ -177,12 +180,13 @@ For questions like "was that a delivery?", "did a cat go by?", or "show me the l
 curl -fsS "http://debian.home:5000/api/events/search?query=delivery&limit=5&include_thumbnails=0&cameras=doorbell,front" | jq
 ```
 
-Then fetch a preview GIF or snapshot for the best event:
+Then fetch and transcode the best completed event:
 
 ```bash
+cd "$OPENCROW_PI_SKILLS_DIR/frigate"
 event_id="1782584119.66894-u73jix"
-out="/tmp/frigate/event-$event_id.gif"
-curl -fsS "http://debian.home:5000/api/events/$event_id/preview.gif" -o "$out"
+out="/tmp/frigate/event-$event_id.mp4"
+scripts/download_clip.sh event "$event_id" "$out"
 file "$out"
 ```
 
@@ -202,14 +206,13 @@ GET /api/stats
 GET /api/review?limit=10&severity=alert&after=<unix>&cameras=<csv>
 GET /api/review/{review_id}
 GET /api/review/event/{event_id}
-GET /api/review/{review_id}/preview?format=gif
 GET /api/events?limit=10&include_thumbnails=0&cameras=<csv>
 GET /api/events?limit=10&in_progress=1&include_thumbnails=0
 GET /api/events/search?query=<text>&limit=5&include_thumbnails=0&cameras=<csv>
 GET /api/events/{event_id}
-GET /api/events/{event_id}/preview.gif
 GET /api/events/{event_id}/snapshot.jpg?bbox=1&timestamp=1&quality=85
-GET /api/events/{event_id}/clip.mp4
+GET /api/events/{event_id}/clip.mp4?padding=5
+GET /api/{camera}/start/{start_ts}/end/{end_ts}/clip.mp4
 GET /api/{camera}/latest.jpg?height=720&bbox=1&timestamp=1
 ```
 
