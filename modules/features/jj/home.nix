@@ -1,35 +1,51 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
-let
-  config = # toml
-    ''
-      [user]
-      name = "Phil Kulak"
-      email = "phil@kulak.us"
-
-      [ui]
-      paginate = "auto"
-      default-command = ["log", "--no-pager"]
-      diff-formatter = ["${pkgs.difftastic}/bin/difft", "--color=always", "$left", "$right"]
-
-      [signing]
-      behavior = "own"
-      backend = "ssh"
-      key = "~/.ssh/id_ed25519.pub"
-
-      [revset-aliases]
-      all = "latest(all(), 16)"
-      'closest_bookmark(to)' = 'heads(::to & bookmarks())'
-
-      [aliases]
-      tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
-
-      [templates]
-      git_push_bookmark = '"phil-" ++ change_id.short()'
-    '';
-in
 {
-  home.packages = [ pkgs.jujutsu ];
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Phil Kulak";
+        email = "phil@kulak.us";
+      };
+
+      ui = {
+        paginate = "auto";
+        default-command = [
+          "log"
+          "--no-pager"
+        ];
+        diff-formatter = lib.mkDefault [
+          "${pkgs.difftastic}/bin/difft"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
+      };
+
+      signing = {
+        behavior = "own";
+        backend = "ssh";
+        key = "~/.ssh/id_ed25519.pub";
+      };
+
+      revset-aliases = {
+        all = "latest(all(), 16)";
+        "closest_bookmark(to)" = "heads(::to & bookmarks())";
+      };
+
+      aliases.tug = [
+        "bookmark"
+        "move"
+        "--from"
+        "closest_bookmark(@-)"
+        "--to"
+        "@-"
+      ];
+
+      templates.git_push_bookmark = "\"phil-\" ++ change_id.short()";
+    };
+  };
 
   programs.fish = {
     shellInit = ''
@@ -57,15 +73,12 @@ in
     };
   };
 
-  xdg.configFile = {
-    "jj/config.toml".text = config;
+  xdg.configFile."jj/vevo.toml".text = ''
+    [user]
+    email = "phil.kulak@vevo.com"
+  '';
 
-    "jj/vevo.toml".text = builtins.replaceStrings [ "phil@kulak.us" ] [ "phil.kulak@vevo.com" ] config;
-  };
-
-  home.file = {
-    "vevo/.envrc".text = ''
-      export JJ_CONFIG=~/.config/jj/vevo.toml
-    '';
-  };
+  home.file."vevo/.envrc".text = ''
+    export JJ_CONFIG=~/.config/jj/config.toml:~/.config/jj/vevo.toml
+  '';
 }

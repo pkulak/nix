@@ -39,6 +39,7 @@
         fish
         foot
         git
+        hunk
         intellij
         jai
         jj
