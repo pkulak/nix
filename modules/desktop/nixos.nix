@@ -3,6 +3,8 @@
   flake.nixosModules.desktop =
     { config, pkgs, ... }:
     {
+      imports = [ self.nixosModules.vm ];
+
       environment.systemPackages = with pkgs; [
         (mpv.override { scripts = [ mpvScripts.sponsorblock ]; })
 

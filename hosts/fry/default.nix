@@ -4,7 +4,6 @@
     host = "fry";
     profile = "linux-desktop";
     nixosModules = [
-      self.nixosModules.vm
       self.nixosModules.garage-printer
       ./nixos.nix
       ./hardware.nix
