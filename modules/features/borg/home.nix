@@ -6,11 +6,9 @@
 }:
 
 let
-  base = "ssh://fm3067@fm3067.rsync.net/~/borg";
-
   repos = {
-    debian = "${base}/debian";
-    lilnas = "${base}/lilnas";
+    debian = "ssh://dzpop2ga@dzpop2ga.repo.borgbase.com/./repo";
+    lilnas = "ssh://fm3067@fm3067.rsync.net/~/borg/lilnas";
   };
 
   remotePath = "borg14";
