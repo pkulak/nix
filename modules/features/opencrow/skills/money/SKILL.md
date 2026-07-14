@@ -1,6 +1,6 @@
 ---
 name: money
-description: Check balances, transfer money between household members, and reverse the last transaction using the family bank. Use when asked how much money someone has, to send/give/transfer money, pay an allowance, undo/reverse a transfer, etc.
+description: Check balances and transfer money between household members using the family bank. Use when asked how much money someone has, to send/give/transfer money, pay an allowance, undo/reverse a transfer, etc.
 ---
 
 # Money
@@ -29,14 +29,18 @@ notes it in the Bank room. The memo is optional and may be several words.
 money transfer dad charlie 5.00 weekly allowance
 ```
 
-## Reverse the last transaction
+## Reverse a transaction
+
+Reverse a transaction by sending the same amount in the opposite direction with
+`money transfer` and a clear memo.
+
+For example, to reverse a $5.00 transfer from Dad to Charlie:
 
 ```text
-money reverse
+money transfer charlie dad 5.00 "Reverse weekly allowance"
 ```
 
-Reverses the most recent transaction by adding a new transaction in the opposite
-direction, and notes it in the Bank room.
+This creates a new, auditable transaction and notes it in the Bank room.
 
 ## Notes
 
