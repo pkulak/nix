@@ -8,6 +8,7 @@
 let
   repos = {
     debian = "ssh://dzpop2ga@dzpop2ga.repo.borgbase.com/./repo";
+    immich = "ssh://p49ycwc8@p49ycwc8.repo.borgbase.com/./repo";
     lilnas = "ssh://fm3067@fm3067.rsync.net/~/borg/lilnas";
   };
 
