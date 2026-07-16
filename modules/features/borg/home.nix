@@ -9,10 +9,8 @@ let
   repos = {
     debian = "ssh://dzpop2ga@dzpop2ga.repo.borgbase.com/./repo";
     immich = "ssh://p49ycwc8@p49ycwc8.repo.borgbase.com/./repo";
-    lilnas = "ssh://fm3067@fm3067.rsync.net/~/borg/lilnas";
+    lilnas = "ssh://fo411aw7@fo411aw7.repo.borgbase.com/./repo";
   };
-
-  remotePath = "borg14";
 
   repoList = lib.concatStringsSep " " (builtins.attrNames repos);
   repoCases = lib.concatStringsSep "\n" (
@@ -59,7 +57,7 @@ let
 
       export BORG_REPO="$repo"
 
-      exec borg --remote-path ${lib.escapeShellArg remotePath} "$@"
+      exec borg "$@"
     '';
   };
 

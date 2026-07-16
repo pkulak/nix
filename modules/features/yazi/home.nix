@@ -82,6 +82,16 @@ in
         sort_reverse = true
         sort_dir_first = true
         ratio = [0, 5, 7]
+
+        [opener]
+        play = [
+          { run = "mpv %s", orphan = true, for = "linux" },
+        ]
+
+        [open]
+        prepend_rules = [
+          { url = "*.ts", use = "play" },
+        ]
       '';
 
     "yazi/theme.toml".source = ./theme.toml;

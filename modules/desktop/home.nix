@@ -47,6 +47,16 @@
         inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 
+      home.file.".gradle/gradle.properties".text = # properties
+        ''
+          systemProp.http.proxyHost=vevo.home
+          systemProp.http.proxyPort=3128
+          systemProp.https.proxyHost=vevo.home
+          systemProp.https.proxyPort=3128
+
+          systemProp.http.nonProxyHosts=localhost|127.*|[::1]
+        '';
+
       xdg.configFile = {
         # MPV
         "mpv/mpv.conf".text = "mute=yes";

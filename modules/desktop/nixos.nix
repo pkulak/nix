@@ -1,7 +1,7 @@
-{ self, inputs, ... }:
+{ self, ... }:
 {
   flake.nixosModules.desktop =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     {
       imports = [ self.nixosModules.vm ];
 
