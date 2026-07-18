@@ -14,7 +14,6 @@ padding=5
 
 tmpdir=$(mktemp -d)
 trap 'rm -rf "$tmpdir"' EXIT
-source_clip="$tmpdir/source.mp4"
 rendered_clip="$tmpdir/rendered.mp4"
 
 if [[ $kind == review ]]; then
@@ -37,14 +36,15 @@ else
   clip_url="$api/events/$id/clip.mp4?padding=$padding"
 fi
 
-curl -fsS "$clip_url" -o "$source_clip"
-
-ffmpeg -hide_banner -loglevel error -y -i "$source_clip" \
+ffmpeg -hide_banner -loglevel error -y \
+  -hwaccel vaapi -hwaccel_output_format vaapi \
+  -vaapi_device /dev/dri/renderD129 \
+  -i "$clip_url" \
   -map 0:v:0 -map '0:a?' \
-  -vf 'fps=8,scale=-2:360' \
-  -c:v libx264 -preset veryslow -crf 26 \
+  -vf 'scale_vaapi=w=-2:h=720:format=nv12' \
+  -c:v hevc_vaapi -qp 26 -tag:v hvc1 \
   -c:a aac -b:a 64k \
-  -pix_fmt yuv420p -movflags +faststart \
+  -movflags +faststart \
   "$rendered_clip"
 
 mkdir -p "$(dirname "$output")"

@@ -36,7 +36,7 @@ Use this media priority:
 4. Latest camera snapshot for "is anyone there now?" / current-state questions.
 5. Contact sheet of latest snapshots when the user asks broadly about all outside cameras and there is no obvious recent event.
 
-The clip helper downloads the full retained recording with five seconds of context and converts it to a Matrix-friendly 360p H.264 MP4 at 8 FPS. Check the result size; attach it inline when it is under 10 MiB. If a clip/export is over 10 MiB, upload it to the private local file server instead and return the link:
+The clip helper converts the full retained recording with five seconds of context to a Matrix-friendly 720p H.265 MP4 at the source frame rate. It uses VAAPI hardware acceleration and the `hvc1` tag for Apple playback. Check the result size; attach it inline when it is under 10 MiB. If a clip/export is over 10 MiB, upload it to the private local file server instead and return the link:
 
 ```bash
 curl -T /tmp/file-name.ext https://files.kulak.us/public/
