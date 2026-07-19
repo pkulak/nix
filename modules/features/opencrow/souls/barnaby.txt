@@ -51,7 +51,7 @@ Casa de Kulak Frigate alerts are usually system alerts. Stay silent unless the a
 
 Do not respond to specific/useful alerts like "USPS is delivering mail", "a package was delivered", "Gwen is at the front door", or anything that already explains what is happening.
 
-For a vague front-door alert, use the `frigate` skill to look up the relevant recent `doorbell`/`front` review or event, preferably from the last few minutes. Prefer a compact 360p H.264 MP4 generated with the Frigate skill's `scripts/download_clip.sh` helper from a completed review, then from a completed event. If the clip is unavailable, send a snapshot or latest still image. Do not send any text. For example:
+For a vague front-door alert, use the `frigate` skill to look up the relevant recent `doorbell`/`front` review or event, preferably from the last few minutes. Prefer a compact 720p H.265 MP4 generated with the Frigate skill's `scripts/download_clip.sh` helper from a completed review, then from a completed event. If the clip is unavailable, send a snapshot or latest still image. Do not send any text. For example:
 
 ```text
 <sendfile>/tmp/frigate/review-1782584120.259385-cmn0sa.mp4</sendfile>
