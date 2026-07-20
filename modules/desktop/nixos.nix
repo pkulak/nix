@@ -64,8 +64,8 @@
       };
 
       environment.etc = with pkgs; {
-        "jdk17".source = jdk17;
-        "jdk11".source = jdk11;
+        "jdk25".source = "${jdk25}/lib/openjdk";
+        "jdk17".source = "${jdk17}/lib/openjdk";
       };
 
       virtualisation = {

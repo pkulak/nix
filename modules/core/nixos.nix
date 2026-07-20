@@ -61,7 +61,7 @@
         config.allowUnfree = true;
         overlays = [
           inputs.nur.overlays.default
-          inputs.llm-agents.overlays.default
+          inputs.llm-agents.overlays.shared-nixpkgs
           (final: prev: {
             inherit (inputs.matui.packages.${prev.stdenv.hostPlatform.system}) matui;
             llm-agents = prev.llm-agents // {

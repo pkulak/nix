@@ -6,8 +6,8 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     JAVA_HOME = "${pkgs.jdk17}/lib/openjdk";
-    JAVA_11_HOME = "${pkgs.jdk11}/lib/openjdk";
     JAVA_17_HOME = "${pkgs.jdk17}/lib/openjdk";
+    JAVA_25_HOME = "${pkgs.jdk25}/lib/openjdk";
   };
 
   xdg.configFile."environment.sh" = {
