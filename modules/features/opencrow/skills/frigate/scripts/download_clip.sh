@@ -11,28 +11,37 @@ id=$2
 output=$3
 api=${FRIGATE_API_URL:-http://debian.home:5000/api}
 padding=5
+wait_seconds=20
 
 tmpdir=$(mktemp -d)
 trap 'rm -rf "$tmpdir"' EXIT
 rendered_clip="$tmpdir/rendered.mp4"
 
+deadline=$((SECONDS + wait_seconds))
+while true; do
+  if [[ $kind == review ]]; then
+    metadata=$(curl -fsS "$api/review/$id")
+    jq -e '.end_time != null' >/dev/null <<<"$metadata" && break
+  else
+    metadata=$(curl -fsS "$api/events/$id")
+    jq -e '.end_time != null and .has_clip == true' >/dev/null <<<"$metadata" && break
+  fi
+
+  if ((SECONDS >= deadline)); then
+    echo "$kind $id did not have a completed clip after $wait_seconds seconds" >&2
+    exit 1
+  fi
+  sleep 2
+done
+
 if [[ $kind == review ]]; then
-  metadata=$(curl -fsS "$api/review/$id")
   camera=$(jq -er '.camera' <<<"$metadata")
   start_time=$(jq -er '.start_time' <<<"$metadata")
-  end_time=$(jq -er '.end_time // empty' <<<"$metadata") || {
-    echo "review $id is still in progress" >&2
-    exit 1
-  }
+  end_time=$(jq -er '.end_time' <<<"$metadata")
   start_time=$(jq -nr --argjson time "$start_time" --argjson padding "$padding" '$time - $padding')
   end_time=$(jq -nr --argjson time "$end_time" --argjson padding "$padding" '$time + $padding')
   clip_url="$api/$camera/start/$start_time/end/$end_time/clip.mp4"
 else
-  metadata=$(curl -fsS "$api/events/$id")
-  jq -e '.end_time != null and .has_clip == true' >/dev/null <<<"$metadata" || {
-    echo "event $id does not have a completed clip" >&2
-    exit 1
-  }
   clip_url="$api/events/$id/clip.mp4?padding=$padding"
 fi
 

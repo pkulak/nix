@@ -85,7 +85,7 @@ date -d @1782584120 '+%-I:%M %p'
 curl -fsS "http://debian.home:5000/api/events?limit=10&in_progress=1&include_thumbnails=0&cameras=doorbell,front" | jq
 ```
 
-If the relevant event is still active, use Workflow B's latest snapshot; full clips require a completed event or review.
+If the relevant event is still active, continue to the recent reviews below. The clip helper waits up to 20 seconds for a matching review or event to complete before failing.
 
 3. Look for recent alert review items. Use about 30 minutes unless the user gives a different time window:
 
@@ -99,7 +99,7 @@ PY
 curl -fsS "http://debian.home:5000/api/review?limit=10&severity=alert&after=$after&cameras=doorbell,front" | jq
 ```
 
-4. Pick the most relevant completed review. Review items contain grouped detections in `.data.detections`; require a non-null `.end_time` before making a clip.
+4. Pick the most relevant review. Review items contain grouped detections in `.data.detections`. Pass the review to the helper even when `.end_time` is null; the helper polls for completion.
 5. Download and transcode the full review range with the helper in this skill directory:
 
 ```bash
@@ -110,15 +110,7 @@ scripts/download_clip.sh review "$review_id" "$out"
 file "$out"
 ```
 
-6. If the helper fails because the recording is not ready, wait briefly and retry once:
-
-```bash
-sleep 3
-scripts/download_clip.sh review "$review_id" "$out"
-file "$out"
-```
-
-7. If the clip is still unavailable, attach an event snapshot from the first detection:
+6. If the helper cannot produce a clip after polling, attach an event snapshot from the first detection:
 
 ```bash
 event_id="1782584119.66894-u73jix"
@@ -127,7 +119,7 @@ curl -fsS "http://debian.home:5000/api/events/$event_id/snapshot.jpg?bbox=1&time
 file "$out"
 ```
 
-8. Read the downloaded video or image if needed for visual understanding, then respond with concise text and the attachment:
+7. Read the downloaded video or image if needed for visual understanding, then respond with concise text and the attachment:
 
 ```text
 Looks like a person came up to the porch and then left.
