@@ -1,13 +1,16 @@
 { pkgs, ... }:
 
+let
+  jdkRoot = "/run/current-system/sw/lib/jvm";
+in
 {
   home.sessionVariables = {
     TERMINAL = "footclient";
     EDITOR = "nvim";
     VISUAL = "nvim";
-    JAVA_HOME = "${pkgs.jdk17}/lib/openjdk";
-    JAVA_17_HOME = "${pkgs.jdk17}/lib/openjdk";
-    JAVA_25_HOME = "${pkgs.jdk25}/lib/openjdk";
+    JAVA_HOME = "${jdkRoot}/java-17-openjdk";
+    JAVA_17_HOME = "${jdkRoot}/java-17-openjdk";
+    JAVA_25_HOME = "${jdkRoot}/java-25-openjdk";
   };
 
   xdg.configFile."environment.sh" = {

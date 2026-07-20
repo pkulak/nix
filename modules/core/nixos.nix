@@ -8,6 +8,13 @@
       pkgs,
       ...
     }:
+    let
+      jdkHomes = pkgs.runCommandLocal "jdk-homes" { } ''
+        mkdir -p $out/lib/jvm
+        ln -s ${pkgs.jdk17}/lib/openjdk $out/lib/jvm/java-17-openjdk
+        ln -s ${pkgs.jdk25}/lib/openjdk $out/lib/jvm/java-25-openjdk
+      '';
+    in
     {
       boot.loader.grub.enable = true;
 
@@ -80,6 +87,8 @@
       };
 
       environment.systemPackages = with pkgs; [
+        jdkHomes
+
         awscli2
         bat
         bc
