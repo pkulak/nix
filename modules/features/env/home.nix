@@ -8,9 +8,8 @@ in
     TERMINAL = "footclient";
     EDITOR = "nvim";
     VISUAL = "nvim";
-    JAVA_HOME = "${jdkRoot}/java-17-openjdk";
+    JAVA_HOME = "${jdkRoot}/java-25-openjdk";
     JAVA_17_HOME = "${jdkRoot}/java-17-openjdk";
-    JAVA_25_HOME = "${jdkRoot}/java-25-openjdk";
   };
 
   xdg.configFile."environment.sh" = {
