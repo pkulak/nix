@@ -171,6 +171,7 @@ let
     };
 
     skills = {
+      air-quality = ./skills/air-quality;
       alarm = ./skills/alarm;
       check-tennis = ./skills/check-tennis;
       download = ./skills/download;
