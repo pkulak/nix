@@ -60,6 +60,10 @@ def write_note(path, data, body=""):
     os.replace(temporary_path, path)
 
 
+def markdown_body(value):
+    return value.rstrip() + "\n" if value and value.strip() else ""
+
+
 def item_paths():
     return sorted(path for path in ROOT.rglob("*.md") if path.name != "_location.md")
 
@@ -83,13 +87,16 @@ def location_titles(directory):
 
 
 def note_record(path):
-    data, _ = read_note(path)
-    return {
+    data, body = read_note(path)
+    record = {
         "path": relative(path),
         "location": str(path.parent.relative_to(ROOT)),
         "location_titles": location_titles(path.parent),
         **data,
     }
+    if body.strip():
+        record["description"] = body.rstrip()
+    return record
 
 
 def resolve_note(value):
@@ -261,8 +268,10 @@ def cmd_locations(args):
     query = args.query.casefold() if args.query else ""
     records = []
     for marker in location_paths():
-        data, _ = read_note(marker)
+        data, body = read_note(marker)
         record = {"path": str(marker.parent.relative_to(ROOT)), **data}
+        if body.strip():
+            record["description"] = body.rstrip()
         if not query or query in json.dumps(record, ensure_ascii=False).casefold():
             records.append(record)
     print(json.dumps(records, indent=2, ensure_ascii=False))
@@ -286,9 +295,7 @@ def cmd_create(args):
         data["quantity"] = args.quantity
     if args.tag:
         data["tags"] = args.tag
-    if args.description:
-        data["description"] = args.description
-    write_note(destination, data)
+    write_note(destination, data, markdown_body(args.description))
     print(json.dumps(note_record(destination), indent=2, ensure_ascii=False))
 
 
@@ -302,9 +309,9 @@ def cmd_update(args):
     if args.title:
         data["title"] = args.title
     if args.description is not None:
-        data["description"] = args.description
+        body = markdown_body(args.description)
     if args.clear_description:
-        data.pop("description", None)
+        body = ""
     if args.quantity is not None:
         data["quantity"] = args.quantity
     if args.clear_quantity:

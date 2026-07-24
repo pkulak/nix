@@ -5,7 +5,7 @@ description: Find, show, add, update, move, or delete household belongings in th
 
 # Stuff Inventory
 
-The inventory is stored as Markdown under `~/notes/stuff/`. Location comes from the note's directory. Full-resolution images live on the local file server and their permanent URLs are stored in front matter.
+The inventory is stored as Markdown under `~/notes/stuff/`. Location comes from the note's directory. Titles, image URLs, dates, quantities, and tags are stored in front matter; the item or location description is the Markdown body. Full-resolution images live on the local file server.
 
 Use the helper from this skill directory rather than maintaining a separate index or image manifest:
 
@@ -70,7 +70,7 @@ python3 scripts/stuff.py create \
   --description "18V drill and charger"
 ```
 
-Use repeated `--image` and `--tag` options for multiple values. The first image becomes `image`; later images become `additional_images`. Images are uploaded byte-for-byte to `https://files.kulak.us/public/stuff/<uuidv7>.<extension>`, and the server's returned `Location` is stored in the note.
+Use repeated `--image` and `--tag` options for multiple values. The first image becomes `image`; later images become `additional_images`. Images are uploaded byte-for-byte to `https://files.kulak.us/public/stuff/<uuidv7>.<extension>`, and the server's returned `Location` is stored in the note. `--description` writes Markdown body content, not a front-matter field.
 
 If the requested location is ambiguous or does not exist, ask where to put the item rather than inventing a location.
 
