@@ -107,11 +107,12 @@
 
         (python314.withPackages (
           ps: with ps; [
-            requests
             beautifulsoup4
+            click
             pillow
             python-dateutil
-            click
+            requests
+            pyyaml
           ]
         ))
 

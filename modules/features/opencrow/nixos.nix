@@ -180,6 +180,7 @@ let
       print = ./skills/print;
       save-recipe = ./skills/save-recipe;
       sports-scores = ./skills/sports-scores;
+      stuff = ./skills/stuff;
       transcribe = ./skills/transcribe;
       unwatch-tennis = ./skills/unwatch-tennis;
       watch-tennis = ./skills/watch-tennis;
@@ -369,6 +370,9 @@ in
       extraBindMounts = mkSharedBindMounts "/var/lib/opencrow-group" // {
         "/var/lib/opencrow-group/notes/recipes" = {
           hostPath = "/home/phil/notes/recipes";
+        };
+        "/var/lib/opencrow-group/notes/stuff" = {
+          hostPath = "/home/phil/notes/stuff";
         };
       };
 
