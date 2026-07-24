@@ -57,9 +57,22 @@ The cordless drill is in the House / Garage.
 
 For one to four clear matches, send a resized image for each item that has one. For broad result sets, summarize first and send images only for the most relevant few rather than flooding the chat. Never send the full-resolution remote image unless the user explicitly asks for it.
 
+## Create a location or bin
+
+Locations are directories containing an `_location.md` marker. Create one with `create-location`, not the item-oriented `create` command:
+
+```bash
+python3 scripts/stuff.py create-location \
+  --title "Bin 136" \
+  --parent "garage" \
+  --description "Shelf above the printer"
+```
+
+Then use the returned location path, such as `garage/bin-136`, when creating items inside it.
+
 ## Create an item
 
-Use an existing location path or an unambiguous location title. OpenCrow chat attachments are available as local files and can be passed with `--image`:
+The `create` command creates an item Markdown file, never a location or bin. Use an existing location path or an unambiguous location title. OpenCrow chat attachments are available as local files and can be passed with `--image`:
 
 ```bash
 python3 scripts/stuff.py create \

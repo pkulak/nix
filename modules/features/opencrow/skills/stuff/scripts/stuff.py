@@ -99,6 +99,14 @@ def note_record(path):
     return record
 
 
+def location_record(marker):
+    data, body = read_note(marker)
+    record = {"path": str(marker.parent.relative_to(ROOT)), **data}
+    if body.strip():
+        record["description"] = body.rstrip()
+    return record
+
+
 def resolve_note(value):
     candidate = Path(value).expanduser()
     candidates = []
@@ -268,13 +276,25 @@ def cmd_locations(args):
     query = args.query.casefold() if args.query else ""
     records = []
     for marker in location_paths():
-        data, body = read_note(marker)
-        record = {"path": str(marker.parent.relative_to(ROOT)), **data}
-        if body.strip():
-            record["description"] = body.rstrip()
+        record = location_record(marker)
         if not query or query in json.dumps(record, ensure_ascii=False).casefold():
             records.append(record)
     print(json.dumps(records, indent=2, ensure_ascii=False))
+
+
+def cmd_create_location(args):
+    parent = resolve_location(args.parent)
+    destination = parent / slug(args.title)
+    if destination.exists() or destination.with_suffix(".md").exists():
+        raise ValueError(f"Location path already exists: {relative(destination)}")
+    timestamp = now()
+    marker = destination / "_location.md"
+    write_note(
+        marker,
+        {"title": args.title, "created": timestamp, "updated": timestamp},
+        markdown_body(args.description),
+    )
+    print(json.dumps(location_record(marker), indent=2, ensure_ascii=False))
 
 
 def cmd_create(args):
@@ -396,6 +416,12 @@ def build_parser():
     locations = commands.add_parser("locations")
     locations.add_argument("query", nargs="?")
     locations.set_defaults(func=cmd_locations)
+
+    create_location = commands.add_parser("create-location")
+    create_location.add_argument("--title", required=True)
+    create_location.add_argument("--parent", required=True)
+    create_location.add_argument("--description")
+    create_location.set_defaults(func=cmd_create_location)
 
     create = commands.add_parser("create")
     create.add_argument("--title", required=True)
