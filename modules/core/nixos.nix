@@ -72,7 +72,8 @@
           (final: prev: {
             inherit (inputs.matui.packages.${prev.stdenv.hostPlatform.system}) matui;
             llm-agents = prev.llm-agents // {
-              agent-browser = inputs.llm-agents-agent-browser-027.packages.${prev.stdenv.hostPlatform.system}.agent-browser;
+              agent-browser =
+                inputs.llm-agents-agent-browser-027.packages.${prev.stdenv.hostPlatform.system}.agent-browser;
             };
             neovim = self.packages.${prev.stdenv.hostPlatform.system}.neovim;
             ffmpeg-over-ip-client = self.packages.${prev.stdenv.hostPlatform.system}.ffmpeg-over-ip-client;
@@ -104,10 +105,11 @@
         lsd
         neovim
 
-        (python3.withPackages (
+        (python314.withPackages (
           ps: with ps; [
             requests
             beautifulsoup4
+            pillow
             python-dateutil
             click
           ]

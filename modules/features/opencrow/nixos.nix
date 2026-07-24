@@ -273,7 +273,7 @@ let
         pi-agent-browser-native
         yt-dlp
 
-        (python3.withPackages (
+        (python314.withPackages (
           ps: with ps; [
             requests
             beautifulsoup4
