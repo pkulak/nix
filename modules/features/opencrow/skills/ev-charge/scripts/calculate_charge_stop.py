@@ -40,7 +40,7 @@ def calculate(current: int, target: int, start: datetime) -> dict[str, object]:
             "blackout_delay_seconds": 0,
         }
 
-    charge_minutes = (target - current) * 2
+    charge_minutes = (target - current) * 1.8
     charge_seconds = charge_minutes * 60
     start_epoch = start.timestamp()
     blackout_start = datetime.combine(start.date(), BLACKOUT_START, LOCAL_TZ).timestamp()
