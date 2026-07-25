@@ -10,7 +10,7 @@ cmd="${1:-help}"
 shift || true
 
 api() {
-  curl -s -H "Authorization: Bearer $HA_TOKEN" -H "Content-Type: application/json" "$@"
+  curl --fail-with-body -sS -H "Authorization: Bearer $HA_TOKEN" -H "Content-Type: application/json" "$@"
 }
 
 case "$cmd" in
@@ -131,7 +131,8 @@ case "$cmd" in
     # Call any service: ha.sh call light turn_on '{"entity_id":"light.room","brightness":200}'
     domain="${1:?Usage: ha.sh call <domain> <service> [json_data]}"
     service="${2:?Usage: ha.sh call <domain> <service> [json_data]}"
-    data="${3:-{}}"
+    data="${3:-}"
+    [[ -n "$data" ]] || data="{}"
     api -X POST "$HA_URL/api/services/$domain/$service" -d "$data"
     ;;
 

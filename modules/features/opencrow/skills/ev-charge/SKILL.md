@@ -67,13 +67,13 @@ The scheduled EV charging stop is due. It was set from CURRENT% for an estimated
 Immediately run this exact command:
 ha call button press '{"entity_id":"button.cph50_stop_charging"}'
 
-Do not merely remind the user and do not schedule another reminder. Inspect the command's exit status and output. Then send the result to Matrix room ROOM_ID by including this exact routing tag in your response:
+Do not merely remind the user and do not schedule another reminder. Inspect the command's exit status and output. Your final response must begin with this exact routing line:
 <send-to>ROOM_ID</send-to>
 
-On success, say only:
+On success, put exactly this on the next line:
 The Leaf is done charging.
 
-On failure, report the useful Home Assistant error to that same room and do not claim charging stopped.
+On failure, put a short, natural explanation of the useful Home Assistant error on the next line and do not claim charging stopped.
 ```
 
 The reminder prompt must contain the exact `<room-id>` value from the original user message even if the current OpenCrow instance normally has a default room.
