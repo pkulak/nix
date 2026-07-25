@@ -175,6 +175,7 @@ let
       alarm = ./skills/alarm;
       check-tennis = ./skills/check-tennis;
       download = ./skills/download;
+      ev-charge = ./skills/ev-charge;
       frigate = ./skills/frigate;
       morning-summary = ./skills/morning-summary;
       print = ./skills/print;
