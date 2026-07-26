@@ -52,8 +52,6 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    llm-agents-agent-browser-027.url = "github:numtide/llm-agents.nix/644db21f55ababa5e6fc6a8d2006e50369591745";
-
     hunk = {
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs";

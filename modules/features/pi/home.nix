@@ -23,6 +23,9 @@
           baseUrl = "https://llm.kulak.us/v1";
           api = "openai-responses";
           apiKey = "sk-local-use-only";
+          compat = {
+            sessionAffinityFormat = "openai-nosession";
+          };
 
           models = [
             {
