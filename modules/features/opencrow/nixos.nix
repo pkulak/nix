@@ -210,6 +210,7 @@ let
         less
         jq
         yq
+        gawk
         xan
         gron
         xmlstarlet
