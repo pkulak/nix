@@ -10,6 +10,7 @@
 
   home.file = {
     ".pi/agent/APPEND_SYSTEM.md".source = ./APPEND_SYSTEM.md;
+    ".pi/agent/extensions/auto-name-session.ts".source = ./extensions/auto-name-session.ts;
     ".pi/agent/extensions/copy-code-block.ts".source = ./extensions/copy-code-block.ts;
 
     ".agent-browser/config.json".text = builtins.toJSON {

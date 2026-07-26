@@ -25,6 +25,20 @@ python3 scripts/stuff.py search "cordless drill"
 python3 scripts/stuff.py search "camping" --limit 20
 ```
 
+List every tag with its item count, or filter by exact tag membership:
+
+```bash
+python3 scripts/stuff.py tags
+python3 scripts/stuff.py search --tag kitchen --limit 1000
+```
+
+The `--tag` option can be repeated to require all listed tags, and can be combined with a text query:
+
+```bash
+python3 scripts/stuff.py search "thermometer" --tag kitchen
+python3 scripts/stuff.py search --tag outdoors --tag sports-fitness --limit 1000
+```
+
 Read one known item:
 
 ```bash
@@ -87,6 +101,47 @@ Use repeated `--image` and `--tag` options for multiple values. The first image 
 
 If the requested location is ambiguous or does not exist, ask where to put the item rather than inventing a location.
 
+## Tagging strategy
+
+Every item should have at least one category tag from the controlled vocabulary below. When creating or updating an item:
+
+- Use the exact lowercase, kebab-case spelling shown below.
+- Usually choose one tag. Add a second only when it represents another independently useful way to find the item; avoid more than three.
+- Tag what the item is or what it is primarily used for, not its current location, color, material, brand, or condition.
+- Prefer the most specific relevant tag. Use `household` only when no more specific category fits.
+- Do not invent one-off tags when a listed tag works. If a genuinely recurring category is missing, update this vocabulary deliberately before using it.
+- `product-packaging` means the retained packaging itself, not an ordinary product that happens to be boxed.
+
+Controlled vocabulary:
+
+- `apparel` — clothing, footwear, and wearable accessories
+- `automotive` — car and motorcycle parts, accessories, and riding equipment
+- `bags-luggage` — bags, purses, wallets, cases, sleeves, and luggage
+- `bedding-linens` — bedding, blankets, pillows, towels, and household linens
+- `bicycles` — bicycles, bike parts, locks, pumps, and cycling accessories
+- `books` — printed books and bound reading material
+- `camping` — camping and backcountry sleeping or shelter equipment
+- `cleaning` — cleaning supplies, vacuum parts, and cleaning tools
+- `crafts-sewing` — art, paint, craft, and sewing supplies
+- `documents` — personal records, schoolwork, notebooks, and papers kept as records
+- `electronics` — computers, devices, electrical equipment, cables, and device accessories
+- `food-drink` — stored food, beverages, mixes, and edible ingredients
+- `garden` — gardening, plant-growing, and irrigation items
+- `hardware` — fasteners, adhesives, fittings, building parts, and other consumable hardware
+- `health-personal-care` — first aid, medicine, hygiene, grooming, and personal-care items
+- `household` — general household, furnishing, storage, and décor items without a more specific category
+- `kitchen` — cookware, tableware, food-preparation tools, and kitchen appliances
+- `media` — physical movies, recordings, and packaged software
+- `mementos` — photographs, keepsakes, memorabilia, and sentimental objects
+- `office-school` — office, writing, and unused school supplies
+- `outdoors` — general outdoor, pool, weather, and insect-control gear not specific to camping
+- `party` — party, celebration, and event supplies
+- `pets` — pet supplies, food, grooming, and accessories
+- `product-packaging` — empty product boxes and packaging retained for storage or resale
+- `sports-fitness` — sports, exercise, and fitness equipment
+- `tools` — reusable hand or power tools and their bits, blades, and accessories
+- `toys-games` — toys, puzzles, building sets, and tabletop games
+
 ## Update or move an item
 
 Search first when the item is not uniquely identified. The update helper can rename or move the Markdown file while leaving image URLs unchanged:
@@ -98,8 +153,7 @@ python3 scripts/stuff.py update "house/garage/cordless-drill.md" \
 python3 scripts/stuff.py update "house/workshop/cordless-drill.md" \
   --title "18V Cordless Drill" \
   --quantity 2 \
-  --tag tools \
-  --tag power-tools
+  --tag tools
 ```
 
 Other updates:

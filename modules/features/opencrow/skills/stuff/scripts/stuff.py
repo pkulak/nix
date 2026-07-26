@@ -239,18 +239,26 @@ def upload_image(path):
 
 
 def cmd_search(args):
-    terms = args.query.casefold().split()
+    query = args.query or ""
+    terms = query.casefold().split()
+    required_tags = {tag.casefold() for tag in args.tag}
+    if not terms and not required_tags:
+        raise ValueError("Search requires a query or --tag")
+
     matches = []
     for path in item_paths():
         record = note_record(path)
+        tags = {str(tag).casefold() for tag in record.get("tags", [])}
+        if not required_tags.issubset(tags):
+            continue
         haystack = json.dumps(record, ensure_ascii=False).casefold()
         if all(term in haystack for term in terms):
             title = record.get("title", "").casefold()
             score = (
                 0
-                if title == args.query.casefold()
+                if not query or title == query.casefold()
                 else 1
-                if args.query.casefold() in title
+                if query.casefold() in title
                 else 2
             )
             matches.append((score, record))
@@ -260,6 +268,26 @@ def cmd_search(args):
     print(
         json.dumps(
             [record for _, record in matches[: args.limit]],
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
+
+
+def cmd_tags(args):
+    counts = {}
+    for path in item_paths():
+        data, _ = read_note(path)
+        for tag in data.get("tags", []):
+            counts[tag] = counts.get(tag, 0) + 1
+    print(
+        json.dumps(
+            [
+                {"tag": tag, "count": count}
+                for tag, count in sorted(
+                    counts.items(), key=lambda value: value[0].casefold()
+                )
+            ],
             indent=2,
             ensure_ascii=False,
         )
@@ -405,9 +433,13 @@ def build_parser():
     commands = parser.add_subparsers(dest="command", required=True)
 
     search = commands.add_parser("search")
-    search.add_argument("query")
+    search.add_argument("query", nargs="?")
+    search.add_argument("--tag", action="append", default=[])
     search.add_argument("--limit", type=int, default=20)
     search.set_defaults(func=cmd_search)
+
+    tags = commands.add_parser("tags")
+    tags.set_defaults(func=cmd_tags)
 
     get = commands.add_parser("get")
     get.add_argument("item")
