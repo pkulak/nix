@@ -9,11 +9,11 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "pi-agent-browser-native";
-  version = "0.2.64";
+  version = "0.2.72";
 
   src = fetchurl {
     url = "https://registry.npmjs.org/pi-agent-browser-native/-/pi-agent-browser-native-${version}.tgz";
-    hash = "sha256-Bu5ra0UNT4LR26NbE8e4Wp8CnXsyvnSibAQbMIMYN0w=";
+    hash = "sha256-3subgZHSxRN4wigNrM0KO6o2QmNSr8PtdrT4mg2kRlE=";
   };
 
   nativeBuildInputs = [ makeWrapper ];

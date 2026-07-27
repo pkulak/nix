@@ -95,7 +95,7 @@ in
             "Kagi" = {
               urls = [
                 {
-                  template = "https://links.kulak.us";
+                  template = "https://links.kulak.us/go";
                   params = [
                     {
                       name = "q";

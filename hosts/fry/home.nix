@@ -50,14 +50,14 @@ in
     };
 
     Service.ExecStart = ''
-        ${pkgs.swayidle}/bin/swayidle -w \
-            timeout 300 '${pause}' \
-            timeout 540 '${lockWithGrace}' \
-            timeout 600 '${powerOffMonitors}' \
-            timeout 7200 '${suspend}' \
-            before-sleep '${lock}' \
-            lock '${lock}'
-      '';
+      ${pkgs.swayidle}/bin/swayidle -w \
+          timeout 300 '${pause}' \
+          timeout 1080 '${lockWithGrace}' \
+          timeout 1200 '${powerOffMonitors}' \
+          timeout 7200 '${suspend}' \
+          before-sleep '${lock}' \
+          lock '${lock}'
+    '';
 
     Service.Environment = "PATH=/bin:/run/current-system/sw/bin";
     Install.WantedBy = [ "niri.service" ];
@@ -65,8 +65,8 @@ in
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
     };
   };
 }

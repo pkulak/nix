@@ -26,6 +26,7 @@
           apiKey = "sk-local-use-only";
           compat = {
             sessionAffinityFormat = "openai-nosession";
+            supportsStrictMode = true;
           };
 
           models = [
