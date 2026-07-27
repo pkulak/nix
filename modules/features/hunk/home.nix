@@ -5,7 +5,7 @@
     enableJujutsuIntegration = true;
     settings = {
       theme = "catppuccin-mocha";
-      mode = "split";
+      mode = "stacked";
       line_numbers = true;
     };
   };
