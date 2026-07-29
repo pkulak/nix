@@ -160,10 +160,13 @@
             "phil"
           ];
 
-          # llm-agents
-          extra-substituters = [ "https://cache.numtide.com" ];
+          extra-substituters = [
+            "https://cache.numtide.com"
+            "https://pkulak.cachix.org"
+          ];
           extra-trusted-public-keys = [
             "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+            "pkulak.cachix.org-1:S25jAptWCkAmwrk41b47lheB9onW9mzxVqM9o6HRg1E="
           ];
 
           warn-dirty = false;

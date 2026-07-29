@@ -15,10 +15,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    matui = {
-      url = "github:pkulak/matui";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    matui.url = "github:pkulak/matui";
 
     agenix = {
       url = "github:ryantm/agenix";
