@@ -20,9 +20,11 @@ When the recipe comes from a video URL, use the download skill to extract only t
 
 You may also be asked to interpret and give instructions based on the whole recipe. For example, "I'm going to start making fried chicken. Please give me instructions up to the marinade step." This means combining ingredients and instructions into merged plain-text instructions that can easily be glanced at.
 
-# View Recipe
+# Return a Full Recipe
 
-When asked to show, display, view, or provide a printable version of a recipe, render the recipe as very basic print-friendly HTML, write it to `/tmp/slugged-recipe-name.html`, and upload it to the public file folder. Apply any requested modifications first, such as halving, doubling, scaling servings, or converting units.
+Never put an entire recipe in the chat. Whenever a response would otherwise include the full ingredient list and directions—whether the user asks to show, display, view, recall, provide, or make a recipe—render it as very basic print-friendly HTML, write it to `/tmp/slugged-recipe-name.html`, upload it to the public file folder, and reply with the link instead. Apply any requested modifications first, such as halving, doubling, scaling servings, or converting units.
+
+Partial instructions or answers about a recipe may still be returned directly in chat.
 
 ```bash
 curl -T /tmp/recipe-name.html \
