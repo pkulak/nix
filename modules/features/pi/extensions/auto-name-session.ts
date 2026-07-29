@@ -5,10 +5,10 @@ export default function autoNameSession(pi: ExtensionAPI) {
 	pi.registerTool({
 		name: "set_session_name",
 		label: "Name Session",
-		description: "Set a concise display name for the current session",
-		promptSnippet: "Name the current session once the user's actual task is clear",
+		description: "Set or update the concise display name for the current session",
+		promptSnippet: "Name the current session once the user's actual task is clear, and rename it if the focus changes",
 		promptGuidelines: [
-			"Use set_session_name once near the beginning of every unnamed session, after the user's actual task is clear. Do not call set_session_name for /setup or other bootstrap prompts; wait for a task-specific request. Choose a concise 3–7 word title. Never rename a session that already has a name.",
+			"Use set_session_name near the beginning of every unnamed session, after the user's actual task is clear. Do not call set_session_name for /setup or other bootstrap prompts; wait for a task-specific request. Choose a concise 3–7 word title. Rename the session when its current name no longer accurately describes the primary task.",
 		],
 		parameters: Type.Object({
 			name: Type.String({
@@ -19,17 +19,13 @@ export default function autoNameSession(pi: ExtensionAPI) {
 		}),
 		async execute(_toolCallId, { name }) {
 			const currentName = pi.getSessionName();
-			if (currentName) {
-				return {
-					content: [{ type: "text", text: `Session is already named: ${currentName}` }],
-					details: {},
-				};
-			}
-
 			const sessionName = name.trim();
 			pi.setSessionName(sessionName);
+			const message = currentName
+				? `Session renamed from ${currentName} to ${sessionName}`
+				: `Session named: ${sessionName}`;
 			return {
-				content: [{ type: "text", text: `Session named: ${sessionName}` }],
+				content: [{ type: "text", text: message }],
 				details: {},
 			};
 		},
