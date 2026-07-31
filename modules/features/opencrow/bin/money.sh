@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-API="http://lilnas.home:8386"
+API="http://immich.home:8386"
 
 cmd="${1:-help}"
 shift || true
