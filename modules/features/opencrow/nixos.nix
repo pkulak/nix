@@ -169,6 +169,7 @@ let
     };
 
     extensions = {
+      matrix-directory = ./extensions/matrix-directory;
       reminders = true;
     };
 
