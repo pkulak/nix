@@ -124,6 +124,8 @@ let
         api = "openai-responses";
         apiKey = "sk-local-use-only";
 
+        compat.supportsStrictMode = true;
+
         models = [
           {
             id = "gpt-5.6-terra";
