@@ -41,6 +41,7 @@
 - If `docker-compose.yml` exists, run `docker compose up -d` before integration tests and shut it down afterward with `docker compose down`.
 - For Gradle projects, `./gradlew --no-daemon test` is the default unit test command, `./gradlew --no-daemon integrationTest` runs the integration tests.
 - Most tests are integration tests. If you want a test to run, make sure you check which kind it is and run the appropriate group. Integration tests _do not_ run by default.
+- $JAVA_HOME is generally the most recent, stable JDK, though many project still require 17. Java 17 can be accessed using $JAVA_17_HOME.
 
 # Code Style
 

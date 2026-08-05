@@ -100,7 +100,7 @@ let
       OPENCROW_HEARTBEAT_INTERVAL = "12h";
       OPENCROW_MATRIX_HOMESERVER = "https://kulak.us";
       OPENCROW_PI_PROVIDER = "llm";
-      OPENCROW_PI_MODEL = "gpt-5.6-terra";
+      OPENCROW_PI_MODEL = "gpt-5.6-sol";
       PI_CACHE_RETENTION = "long";
       TZ = "America/Los_Angeles";
       CUPS_SERVER = "/run/cups/cups.sock";
@@ -128,7 +128,7 @@ let
 
         models = [
           {
-            id = "gpt-5.6-terra";
+            id = "gpt-5.6-sol";
             reasoning = true;
             contextWindow = 96000;
             maxTokens = 128000;
