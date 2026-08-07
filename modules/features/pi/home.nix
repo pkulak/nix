@@ -15,7 +15,7 @@
 
     ".agent-browser/config.json".text = builtins.toJSON {
       "$schema" = "https://agent-browser.dev/schema.json";
-      cdp = "ws://debian.home:3000/";
+      cdp = "ws://immich.home:9222/";
     };
 
     ".pi/agent/models.json".text = builtins.toJSON {
