@@ -16,6 +16,7 @@
     ".agent-browser/config.json".text = builtins.toJSON {
       "$schema" = "https://agent-browser.dev/schema.json";
       cdp = "ws://immich.home:9222/";
+      initScripts = [ "${./obscura-classlist-compat.js}" ];
     };
 
     ".pi/agent/models.json".text = builtins.toJSON {
