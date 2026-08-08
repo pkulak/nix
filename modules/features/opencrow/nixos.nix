@@ -130,7 +130,7 @@ let
           {
             id = "gpt-5.6-sol";
             reasoning = true;
-            contextWindow = 96000;
+            contextWindow = 80000;
             maxTokens = 128000;
             thinkingLevelMap = {
               off = "none";
