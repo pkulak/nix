@@ -12,6 +12,7 @@
         cmatrix
         cowsay
         distrobox
+        unstable.fetch
         fastfetch.minimal
         file
         imv
