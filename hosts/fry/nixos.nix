@@ -1,6 +1,8 @@
 { pkgs, ... }:
 let vuescan = pkgs.callPackage ./vuescan.nix pkgs;
 in {
+  boot.kernelModules = [ "nct6775" ];
+
   services.udev.packages = [ vuescan ];
 
   environment.systemPackages = [ vuescan ];
