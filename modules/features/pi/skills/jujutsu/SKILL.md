@@ -14,7 +14,9 @@ This skill helps you work with Jujutsu, a Git-compatible VCS with mutable commit
 
 When running as an agent:
 
-1. **Always use `-m` flags** to provide messages inline rather than relying on editor prompts:
+1. **Before writing a commit message, load any available writing skill that covers commit messages.** Treat descriptions passed to `jj new -m`, `jj desc -m`, and `jj squash -m` as commit messages. If no such skill is available, follow the repository's conventions.
+
+2. **Always use `-m` flags** to provide messages inline rather than relying on editor prompts:
 
 ```bash
 # Always use -m to avoid editor prompts
@@ -24,9 +26,9 @@ jj squash -m "message"    # NOT: jj squash (which opens editor)
 
 Editor-based commands will fail in non-interactive environments.
 
-2. **Verify operations with `jj st`** after mutations (`squash`, `abandon`, `rebase`, `restore`) to confirm the operation succeeded.
+3. **Verify operations with `jj st`** after mutations (`squash`, `abandon`, `rebase`, `restore`) to confirm the operation succeeded.
 
-3. **Use RTK only for large read-only JJ output.** RTK does not currently rewrite `jj` commands automatically, so call it explicitly for high-volume diffs. Keep mutating commands raw so warnings/errors are preserved.
+4. **Use RTK only for large read-only JJ output.** RTK does not currently rewrite `jj` commands automatically, so call it explicitly for high-volume diffs. Keep mutating commands raw so warnings/errors are preserved.
 
 Preferred progression for review:
 
@@ -88,9 +90,7 @@ Use revsets with `-r` flags: `jj log -r 'trunk()..@'`
 
 ### Starting Work: Describe First, Then Code
 
-**Always create your commit message before writing code:**
-
-Validate that you're on a blank revision with `jj st`. If you are not, you should type:
+**Always create an initial commit message before writing code.** First load an available commit-message writing skill, then validate that you're on a blank revision with `jj st`. If you are not, you should type:
 
 ```bash
 jj new
@@ -107,9 +107,11 @@ jj desc -m "Add user authentication to login endpoint"
 jj st
 ```
 
+After the change is complete, inspect the final diff and update the message if it no longer describes the result accurately.
+
 ### Creating Atomic Commits
 
-Each commit should represent ONE logical change. Use this format for commit messages:
+Each commit should represent ONE logical change. Follow the loaded writing skill and repository conventions. If neither specifies a format, use:
 
 ```
 Examples:
@@ -359,7 +361,7 @@ jj st
 
 1. **Review your commit**: `jj show --stat @`, `jj diff --summary`, or `jj diff --git | rtk diff -`; use raw `jj diff --git` when you need full context
 2. **Is it atomic?** One logical change per commit
-3. **Is the message clear?** Use imperative verb phrase in sentence case format with no full stop: e.g. "Add login endpoint", "Fix null pointer in payment processor", "Remove deprecated API endpoints"
+3. **Is the message clear?** Follow the loaded writing skill and repository conventions. Otherwise, use an imperative verb phrase in sentence case, such as "Add login endpoint" or "Fix null pointer in payment processor".
 4. **Are there unrelated changes?** Use `jj restore` to move changes out, then create separate commits
 5. **Should changes be elsewhere?** Use `jj squash` or `jj absorb`
 
@@ -385,7 +387,7 @@ jj st
 
 ## Best Practices Summary
 
-1. **Describe first**: Set the commit message before coding
+1. **Describe first**: Load an available commit-message writing skill, then set the message before coding
 2. **One change per commit**: Keep commits atomic and focused
 3. **Use change IDs**: They're stable across rewrites
 4. **Refine commits**: Leverage mutability for clean history
