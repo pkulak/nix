@@ -59,6 +59,7 @@
 
       packages = [
         "${pkgs.pi-agent-browser-native}"
+        "${./extensions/http-tool-guidance.ts}"
       ];
 
       prompts = [

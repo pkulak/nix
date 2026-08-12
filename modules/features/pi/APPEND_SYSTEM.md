@@ -4,9 +4,12 @@
 - Common development tools that require setup, such as `nodejs`, may not be installed globally.
 - Use `nix shell` when you need additional tools or runtimes.
 
-# Web searches
+# HTTP and the web
 
-- When you need to search the web, use the private Kagi search URL from the `KAGI_LINK` environment variable instead of Google or other public search engines. Replace the `%s` placeholder in `KAGI_LINK` with the URL-escaped search query, then open that URL with the native `agent_browser` tool.
+- Choose the simplest appropriate HTTP client. Use `curl`, Python, or another command-line client for APIs, raw HTTP responses, downloads, static files, polling, and repeatable protocol-level checks.
+- Use `agent_browser` when browser behavior matters: JavaScript-rendered content, DOM inspection, clicking or filling controls, screenshots, authenticated browser sessions, cookies, or browser-specific QA.
+- The presence of an HTTP/HTTPS URL, live content, documentation, or a website does not by itself require `agent_browser`.
+- When you need to search the web, use the private Kagi search URL from the `KAGI_LINK` environment variable instead of Google or other public search engines. Replace the `%s` placeholder with the URL-escaped query. Fetch the result with `curl` or `agent_browser`, whichever suits the task.
 
 # Browser automation
 
