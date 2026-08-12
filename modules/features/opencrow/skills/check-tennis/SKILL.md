@@ -133,9 +133,12 @@ Use this JavaScript for the eval step:
   });
 
   // The wishlist DOM only exposes the public activity *number* (e.g. 1204490),
-  // not the internal id used in the detail URL. Resolve it via the same-origin
-  // search API so we can link straight to the registration page.
-  let link = null;
+  // not the internal id used in the detail URL. Start with a public search for
+  // that exact number, then replace it with the canonical detail URL returned
+  // by the same-origin search API when available.
+  let link = activityNumber
+    ? 'https://anc.apm.activecommunities.com/portlandparks/activity/search?onlineSiteId=0&activity_select_param=2&activity_keyword=' + encodeURIComponent(activityNumber)
+    : null;
   if (activityNumber) {
     try {
       const res = await fetch('/portlandparks/rest/activities/list?locale=en-US', {
@@ -145,11 +148,13 @@ Use this JavaScript for the eval step:
       });
       const items = (await res.json())?.body?.activity_items || [];
       const match = items.find(it => String(it.number) === activityNumber) || items[0];
-      if (match && match.id) {
+      if (match?.detail_url) {
+        link = match.detail_url;
+      } else if (match?.id) {
         link = 'https://anc.apm.activecommunities.com/portlandparks/activity/search/detail/' + match.id;
       }
     } catch (e) {
-      link = null;
+      // Keep the exact-number search URL.
     }
   }
 
@@ -175,7 +180,7 @@ Step 1/2 recovery as appropriate, then retry this batched search once.
 
 If the trusted Step 4 eval returned an object with tennis activity fields, say
 this, using its fields. Use the `link` field for the URL. If `link` is `null`
-(the lookup failed), fall back to
+because no activity number was available, fall back to
 `https://anc.apm.activecommunities.com/portlandparks/wishlist`:
 
 ```text
@@ -194,7 +199,7 @@ Do not say there are no open events when the eval ran on `about:blank`, returned
 ## Notes
 
 - Always use the native `agent_browser` tool for browser steps — this is a JavaScript-rendered UI.
-- The real detail link is built from the internal activity id, which is never in the page's HTML — only the public activity *number* is. Step 4 resolves number → id with a same-origin `fetch` to the `activities/list` search API (no extra auth), so the eval must stay `async` and be run as the eval step inside the wishlist batch.
+- The internal activity id is never in the wishlist HTML — only the public activity *number* is. Step 4 asks the same-origin `activities/list` search API for its canonical `detail_url` (no extra auth). If that lookup fails, it retains an exact-number public search URL rather than linking back to the wishlist. The eval must stay `async` and run inside the wishlist batch.
 - Do not use named sessions, manual browser state flags, profile flags, or direct `agent-browser` CLI commands for this skill.
 - Do not manually submit the sign-in form. Use `auth login activecommunities`, then reopen the wishlist with a batched open + wait + inspection.
 - If `auth login` returns `loggedIn: true` but the next batched load is still the sign-in page, suspect stale browser/session state first. Close the managed session and retry auth once before declaring the saved auth entry broken.
