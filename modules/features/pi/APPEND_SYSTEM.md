@@ -1,6 +1,7 @@
 # Environment notes
 
 - This is a NixOS system.
+- Never manually retype a path under `/nix/store`; copy it verbatim from the supplied path. If you must construct one, first obtain it with `realpath` or `readlink`.
 - Common development tools that require setup, such as `nodejs`, may not be installed globally.
 - Use `nix shell` when you need additional tools or runtimes.
 
