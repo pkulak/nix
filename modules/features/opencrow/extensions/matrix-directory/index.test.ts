@@ -87,6 +87,8 @@ test("keeps current names, aliases, and ambiguous names", () => {
 
 	const rendered = renderDirectory(directory);
 	assert.ok(rendered);
+	assert.match(rendered, /External triggers without an explicit destination must omit <send-to>/);
+	assert.match(rendered, /Do not infer a destination from the task, skill, audience, directory, prior turns, or customary behavior/);
 	const payload = JSON.parse(rendered.slice(rendered.indexOf("{"), rendered.lastIndexOf("}") + 1));
 	assert.deepEqual(payload, {
 		users: [

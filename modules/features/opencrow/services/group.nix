@@ -12,12 +12,12 @@ import ./checks.nix {
     {
       name = "morning-summary";
       calendar = "*-*-* 06:00:00";
-      prompt = "Run the morning-summary skill.";
+      prompt = "Run the morning-summary skill. Reply through the trigger's default room by omitting any <send-to> tag.";
     }
     {
       name = "check-tennis";
       calendar = "*-*-* 09:20:00";
-      prompt = "Run the check-tennis skill. If there are no open events, respond with NO_REPLY.";
+      prompt = "Run the check-tennis skill. If there are no open events, respond with NO_REPLY. Otherwise, reply through the trigger's default room by omitting any <send-to> tag.";
     }
     {
       name = "check-navi";
