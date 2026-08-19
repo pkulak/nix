@@ -2,7 +2,6 @@
 {
   pkgs,
   pipePath,
-  envFiles,
 }:
 
 import ./checks.nix {
@@ -12,7 +11,7 @@ import ./checks.nix {
     {
       name = "morning-summary";
       calendar = "*-*-* 06:00:00";
-      prompt = "Run the morning-summary skill. Reply through the trigger's default room by omitting any <send-to> tag.";
+      prompt = "Run the morning-summary skill and send the result to The Fam.";
     }
     {
       name = "check-tennis";
