@@ -2,6 +2,7 @@
 {
   pkgs,
   pipePath,
+  envFiles,
 }:
 
 import ./checks.nix {
