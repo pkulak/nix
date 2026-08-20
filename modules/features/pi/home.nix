@@ -46,6 +46,22 @@
                 "image"
               ];
             }
+            {
+              id = "gpt-5.6-terra";
+              reasoning = true;
+              contextWindow = 272000;
+              maxTokens = 128000;
+              thinkingLevelMap = {
+                off = "none";
+                minimal = null;
+                xhigh = "xhigh";
+                max = "max";
+              };
+              input = [
+                "text"
+                "image"
+              ];
+            }
           ];
         };
       };
