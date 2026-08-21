@@ -77,6 +77,28 @@ class ControlChargingTest(unittest.TestCase):
         self.assertTrue(result["ok"])
         self.assertEqual(result["charger_state"], "Not Charging")
 
+    def test_retries_unconfirmed_stop(self) -> None:
+        clock = FakeClock()
+        pressed: list[str] = []
+
+        def read() -> ChargerStatus:
+            if len(pressed) > 1:
+                return ChargerStatus("Not Charging", 0)
+            return ChargerStatus("In Use", 6.5)
+
+        result = control(
+            "stop",
+            read=read,
+            press=lambda action: pressed.append(action),
+            now=clock.now,
+            sleep=clock.sleep,
+            verify_timeout=10,
+            poll_interval=1,
+            stop_retry_delay=2,
+        )
+        self.assertTrue(result["ok"])
+        self.assertEqual(pressed, ["stop", "stop"])
+
     def test_reports_unconfirmed_action(self) -> None:
         clock = FakeClock()
         result = control(

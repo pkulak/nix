@@ -16,6 +16,7 @@ POWER_ENTITY = "sensor.cph50_power_output"
 CALL_TIMEOUT_SECONDS = 75
 VERIFY_TIMEOUT_SECONDS = 210
 POLL_INTERVAL_SECONDS = 5
+STOP_RETRY_DELAY_SECONDS = 30
 PAST_TENSE = {"start": "started", "stop": "stopped"}
 
 
@@ -97,6 +98,7 @@ def control(
     sleep: Callable[[float], None] = time.sleep,
     verify_timeout: int = VERIFY_TIMEOUT_SECONDS,
     poll_interval: int = POLL_INTERVAL_SECONDS,
+    stop_retry_delay: int = STOP_RETRY_DELAY_SECONDS,
 ) -> dict[str, object]:
     status = read()
     past_tense = PAST_TENSE[action]
@@ -111,7 +113,10 @@ def control(
         }
 
     call_error = press(action)
-    deadline = now() + verify_timeout
+    verify_started = now()
+    deadline = verify_started + verify_timeout
+    stop_retry_at = verify_started + stop_retry_delay
+    stop_retried = False
 
     while True:
         status = read()
@@ -126,7 +131,25 @@ def control(
                 "message": f"Charging {past_tense} successfully.",
             }
 
-        remaining = deadline - now()
+        current_time = now()
+        if (
+            action == "stop"
+            and not stop_retried
+            and stop_retry_at <= current_time < deadline
+        ):
+            # The ChargePoint integration can swallow a failed API command and
+            # still return success from Home Assistant.
+            retry_error = press(action)
+            stop_retried = True
+            if retry_error:
+                call_error = (
+                    retry_error
+                    if call_error is None
+                    else f"{call_error}; retry: {retry_error}"
+                )
+            continue
+
+        remaining = deadline - current_time
         if remaining <= 0:
             break
         sleep(min(poll_interval, remaining))
