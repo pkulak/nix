@@ -85,7 +85,7 @@ date -d @1782584120 '+%-I:%M %p'
 curl -fsS "http://debian.home:5000/api/events?limit=10&in_progress=1&include_thumbnails=0&cameras=doorbell,front" | jq
 ```
 
-If the relevant event is still active, continue to the recent reviews below. The clip helper waits up to 20 seconds for a matching review or event to complete before failing.
+If the relevant event is still active, continue to the recent reviews below. The clip helper waits up to 90 seconds for a matching review or event to complete before failing. Give the Bash tool at least 150 seconds so there is still time to transcode the clip after the wait.
 
 3. Look for recent alert review items. Use about 30 minutes unless the user gives a different time window:
 

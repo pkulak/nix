@@ -11,7 +11,7 @@ id=$2
 output=$3
 api=${FRIGATE_API_URL:-http://debian.home:5000/api}
 padding=5
-wait_seconds=20
+wait_seconds=90
 
 tmpdir=$(mktemp -d)
 trap 'rm -rf "$tmpdir"' EXIT
